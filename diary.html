@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Diary | DailyScalper - XAUUSD Gold Copy Trading</title>
+    <meta name="description" content="Complete trading transparency. Every XAUUSD gold trade documented with entry, exit, and profit details.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dailyscalper.net/diary.html">
+
+    <!-- Favicon (inline SVG as data URI) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230B1219' width='32' height='32' rx='6'/><text x='16' y='22' text-anchor='middle' fill='%2322A65E' font-family='Arial' font-weight='bold' font-size='18'>D</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230B1219' width='180' height='180' rx='30'/><text x='90' y='120' text-anchor='middle' fill='%2322A65E' font-family='Arial' font-weight='bold' font-size='100'>D</text></svg>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyscalper.net/diary.html">
+    <meta property="og:title" content="Trading Diary | DailyScalper - XAUUSD Gold Copy Trading">
+    <meta property="og:description" content="Complete trading transparency. Every XAUUSD gold trade documented with entry, exit, and profit details.">
+    <meta property="og:image" content="https://dailyscalper.net/og-image.png">
+    <meta property="og:site_name" content="DailyScalper">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dailyscalper.net/diary.html">
+    <meta name="twitter:title" content="Trading Diary | DailyScalper - XAUUSD Gold Copy Trading">
+    <meta name="twitter:description" content="Complete trading transparency. Every XAUUSD gold trade documented.">
+    <meta name="twitter:image" content="https://dailyscalper.net/og-image.png">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="DailyScalper">
+    <meta name="keywords" content="trading diary, XAUUSD, gold trading, trade history, forex journal, copy trading results">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1B4D7A',
+                        'primary-green': '#22A65E',
+                        'dark-bg': '#0B1219',
+                        'card-bg': '#111D2A',
+                        'accent-green': '#1E8B4E',
+                        'text-secondary': '#94A3B8',
+                        'success': '#22C55E',
+                        'loss': '#EF4444',
+                        'border-color': '#1E3A52',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1B4D7A 0%, #22A65E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border {
+            background: linear-gradient(135deg, #1B4D7A 0%, #22A65E 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #22A65E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .day-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .day-content.active {
+            max-height: 2000px;
+        }
+        .trade-row:nth-child(even) {
+            background-color: rgba(30, 58, 82, 0.3);
+        }
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: #111D2A;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #1E3A52;
+            border-radius: 3px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: #22A65E;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-border-color">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="h-8 lg:h-10 w-8 lg:w-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#1B4D7A"/>
+                        <path d="M12 10h8c6 0 10 4 10 10s-4 10-10 10h-8V10zm4 4v12h4c3.3 0 6-2.7 6-6s-2.7-6-6-6h-4z" fill="#22A65E"/>
+                    </svg>
+                    <span class="text-xl lg:text-2xl font-bold">
+                        <span class="text-primary-dark">Daily</span><span class="text-primary-green">Scalper</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-text-secondary hover:text-white transition-colors">Home</a>
+                    <a href="diary.html" class="nav-link active text-white transition-colors">Trading Diary</a>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes bg-primary-green hover:bg-accent-green text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
+                        Start Copying
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-card-bg border-t border-border-color">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block text-text-secondary hover:text-white py-2">Home</a>
+                <a href="diary.html" class="block text-primary-green py-2">Trading Diary</a>
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes block bg-primary-green hover:bg-accent-green text-white text-center px-6 py-3 rounded-lg font-semibold mt-4">
+                    Start Copying
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 lg:pt-32 pb-12 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl lg:text-5xl font-bold mb-4">Trading Diary</h1>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+                    Complete transparency. Every trade documented. Real results, real accountability.
+                </p>
+            </div>
+
+            <!-- Live Quote & Date Info -->
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-6 mb-6">
+                <!-- Live Gold Price Widget -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-2 h-2 bg-primary-green rounded-full animate-pulse"></span>
+                        <span class="text-sm text-text-secondary">Live XAUUSD</span>
+                    </div>
+                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes"></iframe>
+                </div>
+            </div>
+
+            <!-- Date Range Info -->
+            <div class="flex flex-wrap items-center justify-center gap-4 text-sm">
+                <div class="flex items-center space-x-2 bg-card-bg border border-border-color rounded-full px-4 py-2">
+                    <i class="fas fa-calendar text-primary-green"></i>
+                    <span class="text-text-secondary">Dec 15, 2025 - Jan 7, 2026</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-card-bg border border-border-color rounded-full px-4 py-2">
+                    <i class="fas fa-sync-alt text-primary-green"></i>
+                    <span class="text-text-secondary">Last Updated: Jan 8, 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Summary Cards -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
+                <!-- Total Yield -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4 lg:p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div class="w-10 h-10 bg-primary-green/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-line text-primary-green"></i>
+                        </div>
+                        <p class="text-text-secondary text-sm">Total Yield</p>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-bold text-success">156.28%</p>
+                </div>
+
+                <!-- Total Profit -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4 lg:p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div class="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-success"></i>
+                        </div>
+                        <p class="text-text-secondary text-sm">Total Profit</p>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-bold text-success">$2,013.60</p>
+                </div>
+
+                <!-- Win Rate -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4 lg:p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div class="w-10 h-10 bg-primary-green/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-percentage text-primary-green"></i>
+                        </div>
+                        <p class="text-text-secondary text-sm">Win Rate</p>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-bold text-white">84.56%</p>
+                </div>
+
+                <!-- Total Trades -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4 lg:p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div class="w-10 h-10 bg-primary-dark/30 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-primary-dark"></i>
+                        </div>
+                        <p class="text-text-secondary text-sm">Total Trades</p>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-bold text-white">622</p>
+                </div>
+
+                <!-- Current Balance -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-4 lg:p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-wallet text-blue-500"></i>
+                        </div>
+                        <p class="text-text-secondary text-sm">Current Balance</p>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-bold text-white">$1,976.06</p>
+                </div>
+            </div>
+
+            <!-- Estimated Daily Profit & Compound Growth Banner -->
+            <div class="mt-6 bg-primary-green/10 border border-primary-green/30 rounded-2xl p-4 lg:p-6">
+                <div class="flex flex-col lg:flex-row items-start justify-between gap-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-success/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-success text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-text-secondary text-sm">Estimated Daily Profit*</p>
+                            <p class="text-2xl lg:text-3xl font-bold text-success">1.6% - 2.1%</p>
+                        </div>
+                    </div>
+
+                    <!-- Compound Growth Projections -->
+                    <div class="w-full lg:w-auto">
+                        <p class="text-xs text-white font-semibold mb-2"><i class="fas fa-rocket mr-1"></i>Potential Growth (after 20% commission)</p>
+                        <div class="grid grid-cols-4 gap-2 text-xs">
+                            <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
+                                <p class="text-text-secondary">1 Mo</p>
+                                <p class="text-success font-bold">$243</p>
+                                <p class="text-text-secondary text-[10px]">+29%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
+                                <p class="text-text-secondary">3 Mo</p>
+                                <p class="text-success font-bold">$431</p>
+                                <p class="text-text-secondary text-[10px]">+129%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
+                                <p class="text-text-secondary">6 Mo</p>
+                                <p class="text-success font-bold">$985</p>
+                                <p class="text-text-secondary text-[10px]">+424%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
+                                <p class="text-text-secondary">1 Yr</p>
+                                <p class="text-success font-bold">$5,170</p>
+                                <p class="text-text-secondary text-[10px]">+2,650%</p>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-text-secondary mt-2">Starting with $188. <strong class="text-yellow-500">Not guaranteed.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Performance Chart -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
+                <h2 class="text-xl font-bold mb-6">Weekly Performance</h2>
+                <div class="h-64 lg:h-80">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Summary Table -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
+                <h2 class="text-xl font-bold mb-6">Weekly Summary</h2>
+                <div class="overflow-x-auto scrollbar-thin">
+                    <table class="w-full min-w-[600px]">
+                        <thead>
+                            <tr class="border-b border-border-color">
+                                <th class="text-left py-3 px-4 text-text-secondary font-semibold">Week</th>
+                                <th class="text-center py-3 px-4 text-text-secondary font-semibold">Trades</th>
+                                <th class="text-center py-3 px-4 text-text-secondary font-semibold">Wins</th>
+                                <th class="text-center py-3 px-4 text-text-secondary font-semibold">Losses</th>
+                                <th class="text-center py-3 px-4 text-text-secondary font-semibold">Win Rate</th>
+                                <th class="text-right py-3 px-4 text-text-secondary font-semibold">Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-border-color/50 hover:bg-border-color/20">
+                                <td class="py-4 px-4 font-medium">Dec 15-21, 2025</td>
+                                <td class="py-4 px-4 text-center">168</td>
+                                <td class="py-4 px-4 text-center text-success">144</td>
+                                <td class="py-4 px-4 text-center text-loss">24</td>
+                                <td class="py-4 px-4 text-center">85.7%</td>
+                                <td class="py-4 px-4 text-right text-success font-semibold">+$323.58</td>
+                            </tr>
+                            <tr class="border-b border-border-color/50 hover:bg-border-color/20">
+                                <td class="py-4 px-4 font-medium">Dec 22-28, 2025</td>
+                                <td class="py-4 px-4 text-center">143</td>
+                                <td class="py-4 px-4 text-center text-success">121</td>
+                                <td class="py-4 px-4 text-center text-loss">22</td>
+                                <td class="py-4 px-4 text-center">84.6%</td>
+                                <td class="py-4 px-4 text-right text-success font-semibold">+$426.91</td>
+                            </tr>
+                            <tr class="border-b border-border-color/50 hover:bg-border-color/20">
+                                <td class="py-4 px-4 font-medium">Dec 29 - Jan 4</td>
+                                <td class="py-4 px-4 text-center">197</td>
+                                <td class="py-4 px-4 text-center text-success">166</td>
+                                <td class="py-4 px-4 text-center text-loss">31</td>
+                                <td class="py-4 px-4 text-center">84.3%</td>
+                                <td class="py-4 px-4 text-right text-success font-semibold">+$811.48</td>
+                            </tr>
+                            <tr class="hover:bg-border-color/20">
+                                <td class="py-4 px-4 font-medium">Jan 5-7, 2026</td>
+                                <td class="py-4 px-4 text-center">114</td>
+                                <td class="py-4 px-4 text-center text-success">95</td>
+                                <td class="py-4 px-4 text-center text-loss">19</td>
+                                <td class="py-4 px-4 text-center">83.3%</td>
+                                <td class="py-4 px-4 text-right text-success font-semibold">+$451.63</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="border-t-2 border-primary-green/50 bg-primary-green/5">
+                                <td class="py-4 px-4 font-bold">Total</td>
+                                <td class="py-4 px-4 text-center font-bold">622</td>
+                                <td class="py-4 px-4 text-center font-bold text-success">526</td>
+                                <td class="py-4 px-4 text-center font-bold text-loss">96</td>
+                                <td class="py-4 px-4 text-center font-bold">84.56%</td>
+                                <td class="py-4 px-4 text-right font-bold text-success">+$2,013.60</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Largest Wins & Losses -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Top 5 Winning Trades -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-trophy text-success"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Top 5 Winning Trades</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div>
+                                <p class="font-semibold">Jan 2, 2026 20:00</p>
+                                <p class="text-text-secondary text-sm">4322.36 → 4356.67</p>
+                            </div>
+                            <p class="text-success font-bold">+$107.73</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div>
+                                <p class="font-semibold">Jan 2, 2026 19:24</p>
+                                <p class="text-text-secondary text-sm">4328.31 → 4356.67</p>
+                            </div>
+                            <p class="text-success font-bold">+$89.05</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div>
+                                <p class="font-semibold">Dec 31, 2025 19:08</p>
+                                <p class="text-text-secondary text-sm">4321.67 → 4382.43</p>
+                            </div>
+                            <p class="text-success font-bold">+$80.81</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div>
+                                <p class="font-semibold">Dec 31, 2025 18:03</p>
+                                <p class="text-text-secondary text-sm">4331.35 → 4382.43</p>
+                            </div>
+                            <p class="text-success font-bold">+$67.94</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div>
+                                <p class="font-semibold">Dec 31, 2025 17:39</p>
+                                <p class="text-text-secondary text-sm">4334.05 → 4382.43</p>
+                            </div>
+                            <p class="text-success font-bold">+$64.35</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Largest Drawdowns -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-loss/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-loss"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Largest Drawdowns</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-loss/5 rounded-lg border border-loss/20">
+                            <div>
+                                <p class="font-semibold">Dec 18, 2025 19:05</p>
+                                <p class="text-text-secondary text-sm">4357.39 → 4336.57</p>
+                            </div>
+                            <p class="text-loss font-bold">-$40.81</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-loss/5 rounded-lg border border-loss/20">
+                            <div>
+                                <p class="font-semibold">Dec 24, 2025 04:00</p>
+                                <p class="text-text-secondary text-sm">4519.02 → 4499.00</p>
+                            </div>
+                            <p class="text-loss font-bold">-$47.25</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-loss/5 rounded-lg border border-loss/20">
+                            <div>
+                                <p class="font-semibold">Dec 29, 2025 17:00</p>
+                                <p class="text-text-secondary text-sm">4359.24 → 4339.43</p>
+                            </div>
+                            <p class="text-loss font-bold">-$49.53</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-loss/5 rounded-lg border border-loss/20">
+                            <div>
+                                <p class="font-semibold">Jan 2, 2026 15:20</p>
+                                <p class="text-text-secondary text-sm">4396.87 → 4356.67</p>
+                            </div>
+                            <p class="text-loss font-bold">-$62.71</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-loss/5 rounded-lg border border-loss/20">
+                            <div>
+                                <p class="font-semibold">Dec 23, 2025 16:03</p>
+                                <p class="text-text-secondary text-sm">4473.97 → 4461.15</p>
+                            </div>
+                            <p class="text-loss font-bold">-$29.61</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mt-4 italic">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Transparency is key. We show both wins and losses.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Trading Log -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold">Daily Trade Log</h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-text-secondary text-sm">Click to expand</span>
+                    <i class="fas fa-chevron-down text-primary-green"></i>
+                </div>
+            </div>
+
+            <div class="space-y-4" id="daily-logs">
+                <!-- January 7, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">January 7, 2026</h3>
+                                <p class="text-text-secondary text-sm">Most Recent</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">47</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">83.0%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$54.36</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">17:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4442.73</td>
+                                            <td class="py-2 px-3 text-center">4443.65</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.98</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">17:44</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4443.32</td>
+                                            <td class="py-2 px-3 text-center">4444.34</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.08</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">18:15</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4445.76</td>
+                                            <td class="py-2 px-3 text-center">4446.89</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.20</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">18:55</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4463.73</td>
+                                            <td class="py-2 px-3 text-center">4464.63</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.95</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4462.77</td>
+                                            <td class="py-2 px-3 text-center">4464.24</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.56</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:36</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4458.03</td>
+                                            <td class="py-2 px-3 text-center">4459.08</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.11</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">20:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4451.68</td>
+                                            <td class="py-2 px-3 text-center">4452.60</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.98</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">20:45</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4455.04</td>
+                                            <td class="py-2 px-3 text-center">4455.94</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.95</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">21:09</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4450.88</td>
+                                            <td class="py-2 px-3 text-center">4451.81</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.99</td>
+                                        </tr>
+                                        <tr class="trade-row">
+                                            <td class="py-2 px-3">21:45</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0106</td>
+                                            <td class="py-2 px-3 text-center">4453.74</td>
+                                            <td class="py-2 px-3 text-center">4454.68</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 10 of 47 trades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- January 6, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">January 6, 2026</h3>
+                                <p class="text-text-secondary text-sm">Monday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">52</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">82.7%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$58.42</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">01:14</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0102</td>
+                                            <td class="py-2 px-3 text-center">4451.81</td>
+                                            <td class="py-2 px-3 text-center">4452.74</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.95</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">02:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0102</td>
+                                            <td class="py-2 px-3 text-center">4437.92</td>
+                                            <td class="py-2 px-3 text-center">4444.82</td>
+                                            <td class="py-2 px-3 text-right text-success">+$7.04</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">03:30</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0103</td>
+                                            <td class="py-2 px-3 text-center">4434.98</td>
+                                            <td class="py-2 px-3 text-center">4435.91</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.96</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">08:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0102</td>
+                                            <td class="py-2 px-3 text-center">4452.64</td>
+                                            <td class="py-2 px-3 text-center">4461.64</td>
+                                            <td class="py-2 px-3 text-right text-success">+$9.18</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">12:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0103</td>
+                                            <td class="py-2 px-3 text-center">4445.40</td>
+                                            <td class="py-2 px-3 text-center">4454.62</td>
+                                            <td class="py-2 px-3 text-right text-success">+$9.50</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 5 of 52 trades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- January 5, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">January 5, 2026</h3>
+                                <p class="text-text-secondary text-sm">Sunday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">57</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">84.2%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$46.15</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">02:40</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0185</td>
+                                            <td class="py-2 px-3 text-center">4387.30</td>
+                                            <td class="py-2 px-3 text-center">4388.21</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.68</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">03:13</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0184</td>
+                                            <td class="py-2 px-3 text-center">4399.78</td>
+                                            <td class="py-2 px-3 text-center">4400.88</td>
+                                            <td class="py-2 px-3 text-right text-success">+$2.02</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">15:30</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0185</td>
+                                            <td class="py-2 px-3 text-center">4399.50</td>
+                                            <td class="py-2 px-3 text-center">4418.41</td>
+                                            <td class="py-2 px-3 text-right text-success">+$34.98</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">16:22</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0102</td>
+                                            <td class="py-2 px-3 text-center">4424.06</td>
+                                            <td class="py-2 px-3 text-center">4422.80</td>
+                                            <td class="py-2 px-3 text-right text-loss">-$1.29</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">17:25</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0101</td>
+                                            <td class="py-2 px-3 text-center">4447.75</td>
+                                            <td class="py-2 px-3 text-center">4448.66</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.92</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 5 of 57 trades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- January 2, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">January 2, 2026</h3>
+                                <p class="text-text-secondary text-sm">Thursday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">23</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">78.3%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$524.19</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">10:20</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0156</td>
+                                            <td class="py-2 px-3 text-center">4383.26</td>
+                                            <td class="py-2 px-3 text-center">4384.16</td>
+                                            <td class="py-2 px-3 text-right text-success">+$1.40</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">18:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0156</td>
+                                            <td class="py-2 px-3 text-center">4334.57</td>
+                                            <td class="py-2 px-3 text-center">4356.67</td>
+                                            <td class="py-2 px-3 text-right text-success">+$34.48</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:24</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0314</td>
+                                            <td class="py-2 px-3 text-center">4328.31</td>
+                                            <td class="py-2 px-3 text-center">4356.67</td>
+                                            <td class="py-2 px-3 text-right text-success">+$89.05</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">20:00</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0314</td>
+                                            <td class="py-2 px-3 text-center">4322.36</td>
+                                            <td class="py-2 px-3 text-center">4356.67</td>
+                                            <td class="py-2 px-3 text-right text-success">+$107.73</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 4 of 23 trades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- December 31, 2025 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">December 31, 2025</h3>
+                                <p class="text-text-secondary text-sm">New Year's Eve</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">34</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">85.3%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$422.92</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">17:02</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0133</td>
+                                            <td class="py-2 px-3 text-center">4343.52</td>
+                                            <td class="py-2 px-3 text-center">4382.43</td>
+                                            <td class="py-2 px-3 text-right text-success">+$51.75</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">17:39</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0133</td>
+                                            <td class="py-2 px-3 text-center">4334.05</td>
+                                            <td class="py-2 px-3 text-center">4382.43</td>
+                                            <td class="py-2 px-3 text-right text-success">+$64.35</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">18:03</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0133</td>
+                                            <td class="py-2 px-3 text-center">4331.35</td>
+                                            <td class="py-2 px-3 text-center">4382.43</td>
+                                            <td class="py-2 px-3 text-right text-success">+$67.94</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:08</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.0133</td>
+                                            <td class="py-2 px-3 text-center">4321.67</td>
+                                            <td class="py-2 px-3 text-center">4382.43</td>
+                                            <td class="py-2 px-3 text-right text-success">+$80.81</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 4 of 34 trades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- December 15, 2025 (First Day) -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-flag text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">December 15, 2025</h3>
+                                <p class="text-text-secondary text-sm">First Trading Day</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">10</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">100%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$1.40</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <div class="overflow-x-auto scrollbar-thin">
+                                <table class="w-full min-w-[600px] text-sm">
+                                    <thead>
+                                        <tr class="border-b border-border-color">
+                                            <th class="text-left py-2 px-3 text-text-secondary">Time</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Type</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Size</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Entry</th>
+                                            <th class="text-center py-2 px-3 text-text-secondary">Exit</th>
+                                            <th class="text-right py-2 px-3 text-text-secondary">P/L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:01</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.001</td>
+                                            <td class="py-2 px-3 text-center">4295.86</td>
+                                            <td class="py-2 px-3 text-center">4296.84</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.10</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">19:50</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.001</td>
+                                            <td class="py-2 px-3 text-center">4302.95</td>
+                                            <td class="py-2 px-3 text-center">4303.88</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.09</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">20:01</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.001</td>
+                                            <td class="py-2 px-3 text-center">4302.51</td>
+                                            <td class="py-2 px-3 text-center">4303.41</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.09</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">21:10</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.001</td>
+                                            <td class="py-2 px-3 text-center">4312.68</td>
+                                            <td class="py-2 px-3 text-center">4313.63</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.10</td>
+                                        </tr>
+                                        <tr class="trade-row border-b border-border-color/30">
+                                            <td class="py-2 px-3">21:30</td>
+                                            <td class="py-2 px-3 text-center"><span class="text-success">BUY</span></td>
+                                            <td class="py-2 px-3 text-center">0.001</td>
+                                            <td class="py-2 px-3 text-center">4309.60</td>
+                                            <td class="py-2 px-3 text-center">4310.54</td>
+                                            <td class="py-2 px-3 text-right text-success">+$0.09</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-text-secondary text-sm mt-4 text-center">Showing 5 of 10 trades</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-8">
+                <p class="text-text-secondary mb-4">Showing 6 of 24 trading days</p>
+                <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 bg-card-bg border border-border-color hover:border-primary-green text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                    <span>View Full History on MyFxBook</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-primary-dark/20 to-primary-green/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6">Ready to Copy These Trades?</h2>
+            <p class="text-text-secondary text-lg mb-6 max-w-2xl mx-auto">
+                Every trade you see here can be automatically copied to your account. Start with just $188.
+            </p>
+            <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-8 max-w-2xl mx-auto text-left">
+                <p class="text-yellow-500 text-sm mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i><strong>Account Setup Requirements:</strong>
+                </p>
+                <ul class="text-yellow-500/80 text-sm space-y-1 ml-6">
+                    <li>• Platform: <strong class="text-white">MetaTrader 4</strong></li>
+                    <li>• Account Type: <strong class="text-white">MT4 ProCent</strong></li>
+                    <li>• Partner's Agent ID: <strong class="text-primary-green">vbes</strong> → click Apply</li>
+                </ul>
+                <p class="text-yellow-500/70 text-xs mt-3">
+                    Copy trading is proportional - your profits will vary based on your deposit amount.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                    <i class="fas fa-rocket mr-2"></i>Start Copying Now
+                </a>
+                <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
+                    <i class="fas fa-user-plus mr-2"></i>Create MT4 ProCent Account
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg border-t border-border-color py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <svg class="h-8 w-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#1B4D7A"/>
+                        <path d="M12 10h8c6 0 10 4 10 10s-4 10-10 10h-8V10zm4 4v12h4c3.3 0 6-2.7 6-6s-2.7-6-6-6h-4z" fill="#22A65E"/>
+                    </svg>
+                    <span class="text-xl font-bold">
+                        <span class="text-primary-dark">Daily</span><span class="text-primary-green">Scalper</span>
+                    </span>
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Sign Up</a>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Copy Trading</a>
+                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="text-text-secondary hover:text-white transition-colors">MyFxBook</a>
+                    <a href="index.html" class="text-text-secondary hover:text-white transition-colors">Home</a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-text-secondary text-sm">
+                    &copy; 2026 DailyScalper. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Day Card Accordion
+        document.querySelectorAll('.day-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const dayCard = this.parentElement;
+                const content = dayCard.querySelector('.day-content');
+                const icon = this.querySelector('i:last-child');
+
+                // Toggle current card
+                content.classList.toggle('active');
+                icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Dec 15-21', 'Dec 22-28', 'Dec 29 - Jan 4', 'Jan 5-7'],
+                datasets: [{
+                    label: 'Profit (USD)',
+                    data: [323.58, 426.91, 811.48, 451.63],
+                    backgroundColor: [
+                        'rgba(34, 166, 94, 0.8)',
+                        'rgba(34, 166, 94, 0.8)',
+                        'rgba(34, 166, 94, 0.8)',
+                        'rgba(34, 166, 94, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(34, 166, 94, 1)',
+                        'rgba(34, 166, 94, 1)',
+                        'rgba(34, 166, 94, 1)',
+                        'rgba(34, 166, 94, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#111D2A',
+                        titleColor: '#fff',
+                        bodyColor: '#94A3B8',
+                        borderColor: '#1E3A52',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return '+$' + context.raw.toFixed(2);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94A3B8',
+                            font: {
+                                family: 'Inter'
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(30, 58, 82, 0.5)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#94A3B8',
+                            font: {
+                                family: 'Inter'
+                            },
+                            callback: function(value) {
+                                return '$' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>

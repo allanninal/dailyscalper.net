@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyScalper - Copy My Gold Trades | XAUUSD Copy Trading Service</title>
+    <meta name="description" content="Copy professional XAUUSD gold trades with 156%+ verified yield. Start with just $188. Zero experience needed. Verified on MyFxBook.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dailyscalper.net/">
+
+    <!-- Favicon (inline SVG as data URI) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230B1219' width='32' height='32' rx='6'/><text x='16' y='22' text-anchor='middle' fill='%2322A65E' font-family='Arial' font-weight='bold' font-size='18'>D</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230B1219' width='180' height='180' rx='30'/><text x='90' y='120' text-anchor='middle' fill='%2322A65E' font-family='Arial' font-weight='bold' font-size='100'>D</text></svg>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyscalper.net/">
+    <meta property="og:title" content="DailyScalper - Copy My Gold Trades | XAUUSD Copy Trading">
+    <meta property="og:description" content="Copy professional XAUUSD gold trades with 156%+ verified yield. Start with just $188. Zero experience needed.">
+    <meta property="og:image" content="https://dailyscalper.net/og-image.png">
+    <meta property="og:site_name" content="DailyScalper">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dailyscalper.net/">
+    <meta name="twitter:title" content="DailyScalper - Copy My Gold Trades | XAUUSD Copy Trading">
+    <meta name="twitter:description" content="Copy professional XAUUSD gold trades with 156%+ verified yield. Start with just $188.">
+    <meta name="twitter:image" content="https://dailyscalper.net/og-image.png">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="DailyScalper">
+    <meta name="keywords" content="XAUUSD, gold trading, copy trading, forex, RoboForex, CopyFX, automated trading">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1B4D7A',
+                        'primary-green': '#22A65E',
+                        'dark-bg': '#0B1219',
+                        'card-bg': '#111D2A',
+                        'accent-green': '#1E8B4E',
+                        'text-secondary': '#94A3B8',
+                        'success': '#22C55E',
+                        'loss': '#EF4444',
+                        'border-color': '#1E3A52',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1B4D7A 0%, #22A65E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border {
+            background: linear-gradient(135deg, #1B4D7A 0%, #22A65E 100%);
+        }
+        .hero-bg {
+            background: radial-gradient(ellipse at top right, rgba(27, 77, 122, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom left, rgba(34, 166, 94, 0.1) 0%, transparent 50%),
+                        #0B1219;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .glow-green {
+            box-shadow: 0 0 40px rgba(34, 166, 94, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #22A65E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .step-connector {
+            position: absolute;
+            top: 40px;
+            left: calc(50% + 60px);
+            width: calc(100% - 120px);
+            height: 2px;
+            background: linear-gradient(90deg, #22A65E 0%, #1B4D7A 100%);
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-content.active {
+            max-height: 500px;
+        }
+        .counter {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-border-color">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="h-8 lg:h-10 w-8 lg:w-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#1B4D7A"/>
+                        <path d="M12 10h8c6 0 10 4 10 10s-4 10-10 10h-8V10zm4 4v12h4c3.3 0 6-2.7 6-6s-2.7-6-6-6h-4z" fill="#22A65E"/>
+                    </svg>
+                    <span class="text-xl lg:text-2xl font-bold">
+                        <span class="text-primary-dark">Daily</span><span class="text-primary-green">Scalper</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#how-it-works" class="nav-link text-text-secondary hover:text-white transition-colors">How It Works</a>
+                    <a href="#why-us" class="nav-link text-text-secondary hover:text-white transition-colors">Why Us</a>
+                    <a href="#pricing" class="nav-link text-text-secondary hover:text-white transition-colors">Pricing</a>
+                    <a href="#faq" class="nav-link text-text-secondary hover:text-white transition-colors">FAQ</a>
+                    <a href="diary.html" class="nav-link text-text-secondary hover:text-white transition-colors">Trading Diary</a>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes bg-primary-green hover:bg-accent-green text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
+                        Start Copying
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-card-bg border-t border-border-color">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#how-it-works" class="block text-text-secondary hover:text-white py-2">How It Works</a>
+                <a href="#why-us" class="block text-text-secondary hover:text-white py-2">Why Us</a>
+                <a href="#pricing" class="block text-text-secondary hover:text-white py-2">Pricing</a>
+                <a href="#faq" class="block text-text-secondary hover:text-white py-2">FAQ</a>
+                <a href="diary.html" class="block text-text-secondary hover:text-white py-2">Trading Diary</a>
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes block bg-primary-green hover:bg-accent-green text-white text-center px-6 py-3 rounded-lg font-semibold mt-4">
+                    Start Copying
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 lg:pt-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center space-x-2 bg-card-bg border border-border-color rounded-full px-4 py-2 mb-8">
+                    <span class="w-2 h-2 bg-primary-green rounded-full animate-pulse"></span>
+                    <span class="text-sm text-text-secondary">Live Trading Since December 2025</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+                    Copy My Gold Trades.<br>
+                    <span class="gradient-text">Earn While You Sleep.</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl lg:text-2xl text-text-secondary mb-10 max-w-2xl mx-auto">
+                    <span class="text-primary-green font-semibold">156%+</span> verified yield trading XAUUSD.
+                    Just <span class="text-white font-semibold">$188</span> to start. Zero experience needed.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-primary-green/25">
+                        <i class="fas fa-rocket mr-2"></i>Start Copying Now
+                    </a>
+                    <a href="diary.html" class="w-full sm:w-auto border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
+                        <i class="fas fa-book-open mr-2"></i>View Trading Diary
+                    </a>
+                </div>
+
+                <!-- Verification Badges -->
+                <div class="flex flex-wrap items-center justify-center gap-4 text-sm">
+                    <div class="flex items-center space-x-2 bg-card-bg/50 border border-border-color rounded-full px-4 py-2">
+                        <i class="fas fa-check-circle text-primary-green"></i>
+                        <span class="text-text-secondary">MyFxBook Verified</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-card-bg/50 border border-border-color rounded-full px-4 py-2">
+                        <i class="fas fa-check-circle text-primary-green"></i>
+                        <span class="text-text-secondary">RoboForex CopyFX</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-card-bg/50 border border-border-color rounded-full px-4 py-2">
+                        <i class="fas fa-check-circle text-primary-green"></i>
+                        <span class="text-text-secondary">84%+ Win Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 lg:py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+                <!-- Stat Card 1 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Total Yield</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-success"><span class="counter" data-target="156">0</span>%</p>
+                </div>
+
+                <!-- Stat Card 2 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Profit Generated</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-success">$<span class="counter" data-target="2013">0</span>+</p>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Win Rate</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-white"><span class="counter" data-target="84.56">0</span>%</p>
+                </div>
+
+                <!-- Stat Card 4 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Winning Trades</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-white counter" data-target="526">0</p>
+                </div>
+
+                <!-- Stat Card 5 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Active Subscribers</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-white counter" data-target="11">0</p>
+                </div>
+
+                <!-- Stat Card 6 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
+                    <p class="text-text-secondary text-sm mb-2">Max Drawdown</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-loss">-<span class="counter" data-target="26.23">0</span>%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 lg:py-24 bg-card-bg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Start copying profitable gold trades in three simple steps</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative">
+                <!-- Connector Line (Desktop Only) -->
+                <div class="hidden md:block absolute top-16 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-primary-green via-primary-dark to-primary-green"></div>
+
+                <!-- Step 1 -->
+                <div class="text-center relative">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
+                        <i class="fas fa-user-plus text-3xl text-primary-green"></i>
+                    </div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                    <h3 class="text-xl font-bold mb-3">Sign Up</h3>
+                    <p class="text-text-secondary mb-4">Create a RoboForex <strong class="text-white">MT4 ProCent</strong> account and deposit $188 or more</p>
+                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes inline-flex items-center text-primary-green hover:text-accent-green text-sm font-semibold">
+                        <span>Create Account</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center relative">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
+                        <i class="fas fa-copy text-3xl text-primary-green"></i>
+                    </div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                    <h3 class="text-xl font-bold mb-3">Subscribe</h3>
+                    <p class="text-text-secondary">Click one button to copy all my XAUUSD trades automatically</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center relative">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
+                        <i class="fas fa-wallet text-3xl text-primary-green"></i>
+                    </div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                    <h3 class="text-xl font-bold mb-3">Earn</h3>
+                    <p class="text-text-secondary">Watch your account grow. Withdraw your profits weekly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why DailyScalper Section -->
+    <section id="why-us" class="py-16 lg:py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Why Choose DailyScalper</h2>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Professional trading, transparent results, and your success is our priority</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Gold Specialist</h3>
+                    <p class="text-text-secondary">We ONLY trade XAUUSD. One market. Total mastery. Deep understanding of gold price movements.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-halved text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Verified Results</h3>
+                    <p class="text-text-secondary">Track record verified on MyFxBook. 100% transparent. Every trade documented and publicly viewable.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-lock text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Risk Managed</h3>
+                    <p class="text-text-secondary">Smart grid system with equity protection. Capital safety first. Maximum drawdown controlled.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Beginner Friendly</h3>
+                    <p class="text-text-secondary">No experience needed. We trade, you profit. Perfect for those new to forex and copy trading.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-dollar-sign text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Low Minimum</h3>
+                    <p class="text-text-secondary">Start with just $188. Proportional copying scales to your balance. Accessible for everyone.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary-green/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-percent text-2xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fair Fees</h3>
+                    <p class="text-text-secondary">20% commission only on profits. You win first, then we earn. No hidden fees or charges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 lg:py-24 bg-card-bg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Subscription Details</h2>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Transparent pricing with no hidden costs</p>
+            </div>
+
+            <div class="max-w-lg mx-auto">
+                <div class="bg-card-bg border-2 border-primary-green rounded-3xl p-8 lg:p-10 glow-green relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-green/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+
+                    <div class="text-center mb-8">
+                        <span class="inline-block bg-primary-green/20 text-primary-green px-4 py-1 rounded-full text-sm font-semibold mb-4">COPY TRADING</span>
+                        <h3 class="text-2xl font-bold">Start Your Journey</h3>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Platform:</strong> <span class="text-text-secondary">MetaTrader 4</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Account Type:</strong> <span class="text-text-secondary">MT4 ProCent (Required)</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Partner's Agent ID:</strong> <span class="text-primary-green font-bold">vbes</span> <span class="text-text-secondary">(click Apply)</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Minimum Deposit:</strong> <span class="text-text-secondary">$188 USD</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Commission:</strong> <span class="text-text-secondary">20% of profits only</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Payout Frequency:</strong> <span class="text-text-secondary">Weekly</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Leverage:</strong> <span class="text-text-secondary">1:2000</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-primary-green text-lg"></i>
+                            <span><strong class="text-white">Copy Delay:</strong> <span class="text-text-secondary">0 minutes (instant)</span></span>
+                        </li>
+                    </ul>
+
+                    <!-- Estimated Returns & Compound Growth -->
+                    <div class="bg-primary-green/10 border border-primary-green/30 rounded-xl p-4 mb-6">
+                        <p class="text-sm text-text-secondary mb-1">Estimated Daily Profit*</p>
+                        <p class="text-2xl font-bold text-success mb-3">1.6% - 2.1%</p>
+
+                        <!-- Compound Growth Projections -->
+                        <p class="text-xs text-white font-semibold mb-2"><i class="fas fa-chart-line mr-1"></i>Potential Growth (after 20% commission)</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-dark-bg/50 rounded-lg p-2">
+                                <p class="text-text-secondary">1 Month</p>
+                                <p class="text-success font-bold">$188 → $243</p>
+                                <p class="text-text-secondary text-[10px]">+29%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2">
+                                <p class="text-text-secondary">3 Months</p>
+                                <p class="text-success font-bold">$188 → $431</p>
+                                <p class="text-text-secondary text-[10px]">+129%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2">
+                                <p class="text-text-secondary">6 Months</p>
+                                <p class="text-success font-bold">$188 → $985</p>
+                                <p class="text-text-secondary text-[10px]">+424%</p>
+                            </div>
+                            <div class="bg-dark-bg/50 rounded-lg p-2">
+                                <p class="text-text-secondary">1 Year</p>
+                                <p class="text-success font-bold">$188 → $5,170</p>
+                                <p class="text-text-secondary text-[10px]">+2,650%</p>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-text-secondary mt-3">*Projections based on 1.6% daily (conservative), compounded weekly after 20% commission. <strong class="text-yellow-500">Not guaranteed.</strong> Past performance doesn't guarantee future results. Profits are proportional to your deposit.</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes block w-full bg-primary-green hover:bg-accent-green text-white text-center py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                            Subscribe Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes block w-full border-2 border-border-color hover:border-primary-green text-text-secondary hover:text-white text-center py-3 rounded-xl font-semibold transition-all">
+                            <i class="fas fa-user-plus mr-2"></i>Create Account First
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Market Data Section -->
+    <section id="live-data" class="py-16 lg:py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Live XAUUSD Data</h2>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Real-time gold prices and market analysis</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+                <!-- Live Quotes Widget -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-primary-green mr-2"></i>
+                        Live Gold Price
+                    </h3>
+                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes"></iframe>
+                </div>
+
+                <!-- Analytics Widget -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-signal text-primary-green mr-2"></i>
+                        Market Forecasts
+                    </h3>
+                    <iframe width="304" height="284" frameborder="0" class="vbes rounded-lg" title="XAUUSD Market Forecasts and Analysis" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=300&theme_2=dark&amount=5&type=forecasts"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section class="py-16 lg:py-24 bg-card-bg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Fully Verified & Transparent</h2>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Check our track record on trusted third-party platforms</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+                <!-- MyFxBook Card -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 text-center card-hover">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-blue-500/10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-chart-line text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MyFxBook Verified</h3>
+                    <p class="text-text-secondary mb-6">Real-time performance tracking and verification</p>
+                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="inline-flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <span>View Live Stats</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <!-- RoboForex Card -->
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 text-center card-hover">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-primary-green/10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-copy text-3xl text-primary-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">RoboForex CopyFX</h3>
+                    <p class="text-text-secondary mb-6">Official copy trading platform profile</p>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes inline-flex items-center justify-center space-x-2 bg-primary-green hover:bg-accent-green text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <span>View Profile</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Disclaimer Section -->
+    <section class="py-12 lg:py-16 bg-card-bg/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-yellow-500/10 border-2 border-yellow-500/50 rounded-2xl p-6 lg:p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-3xl text-yellow-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-yellow-500 mb-2">Risk Disclaimer</h3>
+                        <p class="text-text-secondary leading-relaxed">
+                            Trading involves significant risk. Past performance (156%+ yield) does not guarantee future results.
+                            Maximum drawdown was 26.23%. <strong class="text-yellow-500">Copy trading is proportional to your deposit -
+                            your actual profits will vary based on your account balance.</strong> We cannot guarantee specific profit amounts.
+                            Only invest capital you can afford to lose. Copy trading carries risks and may not be suitable for all investors.
+                            <strong class="text-white">You must use an MT4 ProCent account type</strong> for compatibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 lg:py-24 bg-dark-bg">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-text-secondary text-lg">Everything you need to know about copy trading with DailyScalper</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">What is copy trading?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            Copy trading allows you to automatically replicate the trades of experienced traders in your own account.
+                            When I open a trade, the same trade is automatically opened in your account proportionally to your balance.
+                            You don't need to do anything - the system handles everything automatically.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">How much do I need to start?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            The minimum deposit to start copying is $188 USD. <strong class="text-white">You must create an MT4 ProCent account type</strong> -
+                            other account types are not compatible. When signing up, enter <strong class="text-primary-green">"vbes"</strong> in the Partner's Agent ID field.
+                            The copy system is proportional - trade sizes are automatically adjusted based on your account balance,
+                            so your actual profits will vary depending on your deposit amount.
+                            <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes block mt-3 text-primary-green hover:text-accent-green font-semibold">
+                                <i class="fas fa-user-plus mr-1"></i>Create your MT4 ProCent account here →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">How do I withdraw profits?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            You can withdraw your profits anytime directly from your RoboForex account. RoboForex supports
+                            multiple withdrawal methods including bank transfer, credit cards, and various e-wallets.
+                            Withdrawals are typically processed within 24 hours.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">What is XAUUSD?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            XAUUSD is the forex symbol for gold traded against the US dollar. XAU is the chemical symbol for gold,
+                            and USD represents the US dollar. It's one of the most popular trading instruments in the forex market,
+                            known for its volatility and trading opportunities.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">Is this guaranteed profit?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            <strong class="text-loss">No.</strong> Trading involves risk, and past performance does not guarantee future results. While our track
+                            record shows over 156% yield with an 84%+ win rate, there will be losing trades.
+                            <strong class="text-white">Copy trading is proportional</strong> - your actual profits depend on your deposit amount.
+                            We cannot guarantee specific profit amounts for your account. Never invest money you cannot afford to lose.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-card-bg border border-border-color rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-lg">How do I stop copying?</span>
+                        <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-6 text-text-secondary">
+                            You can stop copying at any time from your RoboForex CopyFX dashboard. Simply click "Stop Copying"
+                            and all future trades will no longer be copied. Any existing open trades will remain in your account,
+                            and you can choose to close them manually or let them run.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-primary-dark/20 to-primary-green/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6">Ready to Start Earning?</h2>
+            <p class="text-text-secondary text-lg mb-10 max-w-2xl mx-auto">
+                Join our growing community of successful copy traders. Start with just $188 and let your money work for you.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                    <i class="fas fa-rocket mr-2"></i>Start Copying Now
+                </a>
+                <a href="diary.html" class="w-full sm:w-auto border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
+                    <i class="fas fa-book-open mr-2"></i>View Trading Diary
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg border-t border-border-color py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <svg class="h-8 w-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#1B4D7A"/>
+                        <path d="M12 10h8c6 0 10 4 10 10s-4 10-10 10h-8V10zm4 4v12h4c3.3 0 6-2.7 6-6s-2.7-6-6-6h-4z" fill="#22A65E"/>
+                    </svg>
+                    <span class="text-xl font-bold">
+                        <span class="text-primary-dark">Daily</span><span class="text-primary-green">Scalper</span>
+                    </span>
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Sign Up</a>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Copy Trading</a>
+                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="text-text-secondary hover:text-white transition-colors">MyFxBook</a>
+                    <a href="diary.html" class="text-text-secondary hover:text-white transition-colors">Trading Diary</a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-text-secondary text-sm">
+                    &copy; 2026 DailyScalper. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+
+                // Close other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-content').classList.remove('active');
+                        item.querySelector('.faq-trigger i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current FAQ item
+                content.classList.toggle('active');
+                icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const animateCounter = (counter) => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const isPercentage = counter.textContent.includes('%') || counter.parentElement.textContent.includes('%');
+            const isDecimal = target % 1 !== 0;
+            const duration = 2000;
+            const start = 0;
+            const startTime = performance.now();
+
+            const updateCounter = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = start + (target - start) * easeOutQuart;
+
+                if (isDecimal) {
+                    counter.textContent = current.toFixed(2);
+                } else {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    if (isDecimal) {
+                        counter.textContent = target.toFixed(2);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
