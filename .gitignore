@@ -1,0 +1,6 @@
+# Generated files
+analyze_trades.py
+trade_analysis.txt
+
+# Claude working directory
+.claude/
