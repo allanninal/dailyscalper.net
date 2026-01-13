@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Diary - January 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a2e;
+            color: white;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .title-icon {
+            font-size: 32px;
+        }
+
+        .username {
+            color: #8b5cf6;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card.green {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .stat-card.orange {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .stat-card.purple {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #d1d5db;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.green { background-color: #10b981; }
+        .legend-dot.red { background-color: #ef4444; }
+        .legend-dot.gray { background-color: #6b7280; }
+
+        .calendar {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header div {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            padding: 10px 0;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .day-cell {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 90px;
+        }
+
+        .day-cell.profit {
+            background: linear-gradient(135deg, #065f46, #047857);
+            border: 1px solid #10b981;
+        }
+
+        .day-cell.loss {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border: 1px solid #ef4444;
+        }
+
+        .day-cell.no-trade {
+            background: rgba(107, 114, 128, 0.2);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+
+        .day-cell.empty {
+            background: transparent;
+            border: none;
+        }
+
+        .day-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .day-profit {
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: auto;
+        }
+
+        .day-profit.positive {
+            color: #34d399;
+        }
+
+        .day-profit.negative {
+            color: #f87171;
+        }
+
+        .day-trades {
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 2px;
+        }
+
+        .day-wl {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .no-trade-text {
+            font-size: 10px;
+            color: #6b7280;
+            margin-top: auto;
+        }
+
+        .best-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #fbbf24;
+            color: #1a1a2e;
+            font-size: 8px;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .profit-indicator {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .bottom-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .bottom-stat {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .bottom-stat.yellow {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .bottom-stat.pink {
+            background: linear-gradient(135deg, #be185d, #ec4899);
+        }
+
+        .bottom-stat.blue {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+
+        .bottom-stat-label {
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .bottom-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title"><span class="title-icon">📊</span> Trading Diary <span class="title-icon">📈</span></div>
+            <div class="username">@DailyScalper</div>
+            <div class="subtitle">January 2026 • XAUUSD (Gold)</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card green">
+                <div class="stat-label">Net Profit</div>
+                <div class="stat-value">+$1,191.85</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value">85.2%</div>
+            </div>
+            <div class="stat-card purple">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value">244</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-label">Win/Loss</div>
+                <div class="stat-value">208/36</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot green"></div>
+                6 Profit Days
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot red"></div>
+                0 Loss Days
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot gray"></div>
+                25 No Trade
+            </div>
+        </div>
+
+        <div class="calendar">
+            <div class="calendar-header">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-grid">
+                <!-- Week 1: Dec 29 - Jan 4 (Jan starts on Wed) -->
+                <div class="day-cell empty"></div>
+                <div class="day-cell empty"></div>
+                <div class="day-cell empty"></div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">1</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell profit">
+                    <div class="day-number">2</div>
+                    <div class="profit-indicator"></div>
+                    <div class="day-profit positive">+$439.46</div>
+                    <div class="day-trades">16 trades</div>
+                    <div class="day-wl">15W / 1L</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">3</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">4</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="day-cell profit">
+                    <div class="day-number">5</div>
+                    <div class="best-badge">🏆 BEST</div>
+                    <div class="day-profit positive">+$570.18</div>
+                    <div class="day-trades">54 trades</div>
+                    <div class="day-wl">44W / 10L</div>
+                </div>
+                <div class="day-cell profit">
+                    <div class="day-number">6</div>
+                    <div class="profit-indicator"></div>
+                    <div class="day-profit positive">+$39.94</div>
+                    <div class="day-trades">39 trades</div>
+                    <div class="day-wl">31W / 8L</div>
+                </div>
+                <div class="day-cell profit">
+                    <div class="day-number">7</div>
+                    <div class="profit-indicator"></div>
+                    <div class="day-profit positive">+$47.71</div>
+                    <div class="day-trades">46 trades</div>
+                    <div class="day-wl">40W / 6L</div>
+                </div>
+                <div class="day-cell profit">
+                    <div class="day-number">8</div>
+                    <div class="profit-indicator"></div>
+                    <div class="day-profit positive">+$47.18</div>
+                    <div class="day-trades">45 trades</div>
+                    <div class="day-wl">38W / 7L</div>
+                </div>
+                <div class="day-cell profit">
+                    <div class="day-number">9</div>
+                    <div class="profit-indicator"></div>
+                    <div class="day-profit positive">+$47.38</div>
+                    <div class="day-trades">44 trades</div>
+                    <div class="day-wl">40W / 4L</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">10</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">11</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="day-cell no-trade">
+                    <div class="day-number">12</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">13</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">14</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">15</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">16</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">17</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">18</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="day-cell no-trade">
+                    <div class="day-number">19</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">20</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">21</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">22</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">23</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">24</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">25</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="day-cell no-trade">
+                    <div class="day-number">26</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">27</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">28</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">29</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">30</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell no-trade">
+                    <div class="day-number">31</div>
+                    <div class="no-trade-text">No Trade</div>
+                </div>
+                <div class="day-cell empty"></div>
+            </div>
+        </div>
+
+        <div class="bottom-stats">
+            <div class="bottom-stat yellow">
+                <div class="bottom-stat-label">🏆 Best Day (Jan 5)</div>
+                <div class="bottom-stat-value">+$570.18</div>
+            </div>
+            <div class="bottom-stat pink">
+                <div class="bottom-stat-label">🚀 First Day (Jan 2)</div>
+                <div class="bottom-stat-value">+$439.46</div>
+            </div>
+            <div class="bottom-stat blue">
+                <div class="bottom-stat-label">📅 Trading Days</div>
+                <div class="bottom-stat-value">6/31</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            RoboForex Cents Account 34182851 • Verified Performance
+        </div>
+    </div>
+</body>
+</html>
