@@ -125,6 +125,104 @@
         .scrollbar-thin::-webkit-scrollbar-thumb:hover {
             background: #22A65E;
         }
+        /* Monthly Calendar Styles */
+        .month-tab {
+            background: rgba(30, 58, 82, 0.5);
+            color: #94A3B8;
+        }
+        .month-tab:hover {
+            background: rgba(30, 58, 82, 0.8);
+            color: white;
+        }
+        .month-tab.active {
+            background: linear-gradient(135deg, #1B4D7A, #22A65E);
+            color: white;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 70px;
+            transition: transform 0.2s ease;
+        }
+        .calendar-day:hover:not(.empty) {
+            transform: scale(1.02);
+        }
+        .calendar-day.profit {
+            background: linear-gradient(135deg, #065f46, #047857);
+            border: 1px solid #10b981;
+        }
+        .calendar-day.loss {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border: 1px solid #ef4444;
+        }
+        .calendar-day.no-trade {
+            background: rgba(107, 114, 128, 0.15);
+            border: 1px solid rgba(107, 114, 128, 0.25);
+        }
+        .calendar-day.empty {
+            background: transparent;
+            border: none;
+        }
+        .calendar-day .day-num {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+        }
+        .calendar-day .profit-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #34d399;
+            margin-top: auto;
+        }
+        .calendar-day .trade-info {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+        }
+        .calendar-day .wl-info {
+            font-size: 8px;
+            color: rgba(255,255,255,0.4);
+        }
+        .calendar-day .day-label {
+            font-size: 9px;
+            color: #6b7280;
+            margin-top: auto;
+        }
+        .calendar-day .best-tag,
+        .calendar-day .first-tag {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #fbbf24;
+            color: #1a1a2e;
+            font-size: 7px;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+        .calendar-day .first-tag {
+            background: #ec4899;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .calendar-day {
+                min-height: 55px;
+                padding: 4px;
+            }
+            .calendar-day .day-num {
+                font-size: 10px;
+            }
+            .calendar-day .profit-badge {
+                font-size: 9px;
+            }
+            .calendar-day .trade-info,
+            .calendar-day .wl-info {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-white">
@@ -281,7 +379,7 @@
                         </div>
                         <div>
                             <p class="text-text-secondary text-sm">Estimated Daily Profit*</p>
-                            <p class="text-2xl lg:text-3xl font-bold text-success">5.0% - 8.5%</p>
+                            <p class="text-2xl lg:text-3xl font-bold text-success">1.89%</p>
                         </div>
                     </div>
 
@@ -291,23 +389,23 @@
                         <div class="grid grid-cols-4 gap-2 text-xs">
                             <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
                                 <p class="text-text-secondary">1 Mo</p>
-                                <p class="text-success font-bold">$400</p>
-                                <p class="text-text-secondary text-[10px]">+113%</p>
+                                <p class="text-success font-bold">$260</p>
+                                <p class="text-text-secondary text-[10px]">+38%</p>
                             </div>
                             <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
                                 <p class="text-text-secondary">3 Mo</p>
-                                <p class="text-success font-bold">$1,500</p>
-                                <p class="text-text-secondary text-[10px]">+698%</p>
+                                <p class="text-success font-bold">$500</p>
+                                <p class="text-text-secondary text-[10px]">+166%</p>
                             </div>
                             <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
                                 <p class="text-text-secondary">6 Mo</p>
-                                <p class="text-success font-bold">$8,000</p>
-                                <p class="text-text-secondary text-[10px]">+4,155%</p>
+                                <p class="text-success font-bold">$1,400</p>
+                                <p class="text-text-secondary text-[10px]">+645%</p>
                             </div>
                             <div class="bg-dark-bg/50 rounded-lg p-2 text-center">
                                 <p class="text-text-secondary">1 Yr</p>
-                                <p class="text-success font-bold">$50,000</p>
-                                <p class="text-text-secondary text-[10px]">+26,496%</p>
+                                <p class="text-success font-bold">$10,000</p>
+                                <p class="text-text-secondary text-[10px]">+5,219%</p>
                             </div>
                         </div>
                         <p class="text-[10px] text-text-secondary mt-2">Starting with $188. <strong class="text-yellow-500">Not guaranteed.</strong></p>
@@ -392,6 +490,258 @@
                         </tfoot>
                     </table>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Calendar View -->
+    <section class="py-8 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-calendar-alt text-primary-green"></i>
+                        Monthly Calendar
+                    </h2>
+                    <!-- Month Tabs -->
+                    <div class="flex gap-2">
+                        <button class="month-tab active px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="jan2026">
+                            Jan 2026
+                        </button>
+                        <button class="month-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="dec2025">
+                            Dec 2025
+                        </button>
+                    </div>
+                </div>
+
+                <!-- January 2026 Calendar -->
+                <div id="calendar-jan2026" class="calendar-month">
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                        <div class="bg-success/10 border border-success/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Net Profit</p>
+                            <p class="text-xl font-bold text-success">+$1,191.85</p>
+                        </div>
+                        <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win Rate</p>
+                            <p class="text-xl font-bold text-orange-400">85.2%</p>
+                        </div>
+                        <div class="bg-primary-dark/20 border border-primary-dark/40 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Total Trades</p>
+                            <p class="text-xl font-bold">244</p>
+                        </div>
+                        <div class="bg-primary-green/10 border border-primary-green/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win/Loss</p>
+                            <p class="text-xl font-bold text-primary-green">208/36</p>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-4 text-sm">
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-success"></span>
+                            <span class="text-text-secondary">6 Profit Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-loss"></span>
+                            <span class="text-text-secondary">0 Loss Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-gray-600"></span>
+                            <span class="text-text-secondary">25 No Trade</span>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <!-- Header -->
+                        <div class="grid grid-cols-7 gap-2 mb-2">
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sun</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Mon</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Tue</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Wed</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Thu</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Fri</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sat</div>
+                        </div>
+                        <!-- Days -->
+                        <div class="grid grid-cols-7 gap-2">
+                            <!-- Week 1 (Jan 1 = Wed) -->
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day no-trade"><span class="day-num">1</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit"><span class="day-num">2</span><span class="profit-badge">+$439.46</span><span class="trade-info">16 trades</span><span class="wl-info">15W/1L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">3</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">4</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 2 -->
+                            <div class="calendar-day profit best"><span class="best-tag">BEST</span><span class="day-num">5</span><span class="profit-badge">+$570.18</span><span class="trade-info">54 trades</span><span class="wl-info">44W/10L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">6</span><span class="profit-badge">+$39.94</span><span class="trade-info">39 trades</span><span class="wl-info">31W/8L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">7</span><span class="profit-badge">+$47.71</span><span class="trade-info">46 trades</span><span class="wl-info">40W/6L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">8</span><span class="profit-badge">+$47.18</span><span class="trade-info">45 trades</span><span class="wl-info">38W/7L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">9</span><span class="profit-badge">+$47.38</span><span class="trade-info">44 trades</span><span class="wl-info">40W/4L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">10</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">11</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 3 -->
+                            <div class="calendar-day no-trade"><span class="day-num">12</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">13</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">14</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">15</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">16</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">17</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">18</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 4 -->
+                            <div class="calendar-day no-trade"><span class="day-num">19</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">20</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">21</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">22</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">23</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">24</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">25</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 5 -->
+                            <div class="calendar-day no-trade"><span class="day-num">26</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">27</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">28</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">29</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">30</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">31</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Stats -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Best Day (Jan 5)</p>
+                            <p class="text-lg font-bold text-yellow-400">+$570.18</p>
+                        </div>
+                        <div class="bg-pink-500/10 border border-pink-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">First Day (Jan 2)</p>
+                            <p class="text-lg font-bold text-pink-400">+$439.46</p>
+                        </div>
+                        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Trading Days</p>
+                            <p class="text-lg font-bold text-blue-400">6/31</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- December 2025 Calendar -->
+                <div id="calendar-dec2025" class="calendar-month hidden">
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                        <div class="bg-success/10 border border-success/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Net Profit</p>
+                            <p class="text-xl font-bold text-success">+$918.46</p>
+                        </div>
+                        <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win Rate</p>
+                            <p class="text-xl font-bold text-orange-400">85.0%</p>
+                        </div>
+                        <div class="bg-primary-dark/20 border border-primary-dark/40 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Total Trades</p>
+                            <p class="text-xl font-bold">474</p>
+                        </div>
+                        <div class="bg-primary-green/10 border border-primary-green/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win/Loss</p>
+                            <p class="text-xl font-bold text-primary-green">403/71</p>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-4 text-sm">
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-success"></span>
+                            <span class="text-text-secondary">12 Profit Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-loss"></span>
+                            <span class="text-text-secondary">0 Loss Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-gray-600"></span>
+                            <span class="text-text-secondary">19 No Trade</span>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <!-- Header -->
+                        <div class="grid grid-cols-7 gap-2 mb-2">
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sun</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Mon</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Tue</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Wed</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Thu</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Fri</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sat</div>
+                        </div>
+                        <!-- Days (Dec 1, 2025 = Monday) -->
+                        <div class="grid grid-cols-7 gap-2">
+                            <!-- Week 1 -->
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day no-trade"><span class="day-num">1</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">2</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">3</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">4</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">5</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">6</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 2 -->
+                            <div class="calendar-day no-trade"><span class="day-num">7</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">8</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">9</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">10</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">11</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">12</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">13</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 3 -->
+                            <div class="calendar-day no-trade"><span class="day-num">14</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit first"><span class="first-tag">1ST</span><span class="day-num">15</span><span class="profit-badge">+$0.65</span><span class="trade-info">7 trades</span><span class="wl-info">7W/0L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">16</span><span class="profit-badge">+$12.95</span><span class="trade-info">49 trades</span><span class="wl-info">44W/5L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">17</span><span class="profit-badge">+$72.29</span><span class="trade-info">43 trades</span><span class="wl-info">36W/7L</span></div>
+                            <div class="calendar-day profit best"><span class="best-tag">BEST</span><span class="day-num">18</span><span class="profit-badge">+$114.40</span><span class="trade-info">48 trades</span><span class="wl-info">39W/9L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">19</span><span class="profit-badge">+$103.73</span><span class="trade-info">49 trades</span><span class="wl-info">45W/4L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">20</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 4 -->
+                            <div class="calendar-day no-trade"><span class="day-num">21</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit"><span class="day-num">22</span><span class="profit-badge">+$105.03</span><span class="trade-info">51 trades</span><span class="wl-info">46W/5L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">23</span><span class="profit-badge">+$89.30</span><span class="trade-info">38 trades</span><span class="wl-info">31W/7L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">24</span><span class="profit-badge">+$97.62</span><span class="trade-info">44 trades</span><span class="wl-info">35W/9L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">25</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit"><span class="day-num">26</span><span class="profit-badge">+$72.78</span><span class="trade-info">30 trades</span><span class="wl-info">28W/2L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">27</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 5 -->
+                            <div class="calendar-day no-trade"><span class="day-num">28</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit"><span class="day-num">29</span><span class="profit-badge">+$89.26</span><span class="trade-info">39 trades</span><span class="wl-info">33W/6L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">30</span><span class="profit-badge">+$95.23</span><span class="trade-info">38 trades</span><span class="wl-info">29W/9L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">31</span><span class="profit-badge">+$65.22</span><span class="trade-info">38 trades</span><span class="wl-info">30W/8L</span></div>
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day empty"></div>
+                            <div class="calendar-day empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Stats -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Best Day (Dec 18)</p>
+                            <p class="text-lg font-bold text-yellow-400">+$114.40</p>
+                        </div>
+                        <div class="bg-pink-500/10 border border-pink-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">First Day (Dec 15)</p>
+                            <p class="text-lg font-bold text-pink-400">+$0.65</p>
+                        </div>
+                        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Trading Days</p>
+                            <p class="text-lg font-bold text-blue-400">12/31</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-text-secondary text-xs mt-4">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    RoboForex Cents Account 34182851 • Verified Performance
+                </p>
             </div>
         </div>
     </section>
@@ -1443,6 +1793,22 @@
                     }
                 }
             }
+        });
+
+        // Monthly Calendar Tab Switching
+        document.querySelectorAll('.month-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.month-tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Hide all calendars
+                document.querySelectorAll('.calendar-month').forEach(cal => cal.classList.add('hidden'));
+                // Show selected calendar
+                const monthId = this.getAttribute('data-month');
+                document.getElementById('calendar-' + monthId).classList.remove('hidden');
+            });
         });
 
         // Navbar background on scroll
