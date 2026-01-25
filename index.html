@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M52H10GCH6"></script>
+    <!-- Google Consent Mode v2 - Set defaults before loading gtag -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      // Set default consent to denied
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+
+      // Check for existing consent
+      const savedConsent = localStorage.getItem('cookie_consent');
+      if (savedConsent === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M52H10GCH6"></script>
+    <script>
+      gtag('js', new Date());
       gtag('config', 'G-M52H10GCH6');
     </script>
 
@@ -1872,6 +1895,83 @@
             document.getElementById(week + '-tab').classList.remove('text-text-secondary');
         }
 
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-500 ease-out">
+        <div class="bg-card-bg border-t border-border-color shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 py-4 sm:py-5">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex-1 pr-4">
+                        <p class="text-text-primary text-sm sm:text-base">
+                            We use cookies to analyze site traffic and optimize your experience. By clicking "Accept", you consent to our use of analytics cookies.
+                            <a href="#" class="text-primary-green hover:underline ml-1">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <button id="cookie-decline" class="flex-1 sm:flex-none px-5 py-2.5 text-sm font-medium text-text-secondary hover:text-text-primary border border-border-color rounded-lg transition-colors">
+                            Decline
+                        </button>
+                        <button id="cookie-accept" class="flex-1 sm:flex-none px-5 py-2.5 text-sm font-medium text-white bg-primary-green hover:bg-primary-green-dark rounded-lg transition-colors">
+                            Accept
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Banner Logic
+        (function() {
+            const banner = document.getElementById('cookie-consent');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
+
+            // Check if consent has already been given
+            const consent = localStorage.getItem('cookie_consent');
+
+            if (!consent) {
+                // Show banner after a short delay
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-full');
+                }, 1000);
+            }
+
+            function hideBanner() {
+                banner.classList.add('translate-y-full');
+            }
+
+            function updateConsent(granted) {
+                if (granted) {
+                    gtag('consent', 'update', {
+                        'ad_storage': 'granted',
+                        'ad_user_data': 'granted',
+                        'ad_personalization': 'granted',
+                        'analytics_storage': 'granted'
+                    });
+                    localStorage.setItem('cookie_consent', 'granted');
+                } else {
+                    gtag('consent', 'update', {
+                        'ad_storage': 'denied',
+                        'ad_user_data': 'denied',
+                        'ad_personalization': 'denied',
+                        'analytics_storage': 'denied'
+                    });
+                    localStorage.setItem('cookie_consent', 'denied');
+                }
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                updateConsent(true);
+                hideBanner();
+            });
+
+            declineBtn.addEventListener('click', () => {
+                updateConsent(false);
+                hideBanner();
+            });
+        })();
     </script>
 </body>
 </html>
