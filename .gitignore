@@ -9,3 +9,8 @@ trade_analysis.txt
 Statement.htm
 logo.png
 quotes/
+
+# Node.js
+node_modules/
+package.json
+package-lock.json
