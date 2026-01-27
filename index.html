@@ -1973,5 +1973,110 @@
             });
         })();
     </script>
+
+    <!-- Google Analytics Click Tracking -->
+    <script>
+        (function() {
+            // Track CTA button clicks (Start Copying)
+            document.querySelectorAll('a.vbes').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'cta_click', {
+                        'event_category': 'CTA',
+                        'event_label': this.textContent.trim().substring(0, 50),
+                        'link_url': this.href
+                    });
+                });
+            });
+
+            // Track MyFxBook verification links
+            document.querySelectorAll('a[href*="myfxbook"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'external_link_click', {
+                        'event_category': 'External Link',
+                        'event_label': 'MyFxBook Verification',
+                        'link_url': this.href
+                    });
+                });
+            });
+
+            // Track week tab clicks
+            document.querySelectorAll('.week-tab').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    gtag('event', 'tab_click', {
+                        'event_category': 'Navigation',
+                        'event_label': this.textContent.trim()
+                    });
+                });
+            });
+
+            // Track deposit calculator preset buttons
+            document.querySelectorAll('button[onclick^="setDeposit"]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    gtag('event', 'calculator_interaction', {
+                        'event_category': 'Calculator',
+                        'event_label': 'Deposit Preset: ' + this.textContent.trim()
+                    });
+                });
+            });
+
+            // Track FAQ accordion clicks
+            document.querySelectorAll('.faq-trigger').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var question = this.querySelector('h3');
+                    gtag('event', 'faq_click', {
+                        'event_category': 'FAQ',
+                        'event_label': question ? question.textContent.trim() : 'Unknown'
+                    });
+                });
+            });
+
+            // Track cookie consent button clicks
+            document.getElementById('cookie-accept').addEventListener('click', function() {
+                gtag('event', 'cookie_consent', {
+                    'event_category': 'Cookie Consent',
+                    'event_label': 'Accepted'
+                });
+            });
+
+            document.getElementById('cookie-decline').addEventListener('click', function() {
+                gtag('event', 'cookie_consent', {
+                    'event_category': 'Cookie Consent',
+                    'event_label': 'Declined'
+                });
+            });
+
+            // Track mobile menu toggle
+            var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    gtag('event', 'menu_toggle', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Mobile Menu'
+                    });
+                });
+            }
+
+            // Track ALL link clicks (excluding already tracked ones)
+            document.addEventListener('click', function(e) {
+                var link = e.target.closest('a');
+                if (!link) return;
+
+                // Skip links already tracked with specific events
+                if (link.classList.contains('vbes')) return;
+                if (link.href && link.href.includes('myfxbook')) return;
+
+                var href = link.href || '';
+                var isExternal = href && !href.includes(window.location.hostname) && href.startsWith('http');
+                var linkText = link.textContent.trim().substring(0, 50) || link.getAttribute('aria-label') || 'No text';
+
+                gtag('event', 'link_click', {
+                    'event_category': isExternal ? 'External Link' : 'Internal Link',
+                    'event_label': linkText,
+                    'link_url': href,
+                    'link_location': link.closest('section')?.id || link.closest('nav') ? 'Navigation' : 'Page'
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
