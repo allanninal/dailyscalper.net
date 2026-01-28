@@ -32,6 +32,38 @@
     <script>
       gtag('js', new Date());
       gtag('config', 'G-M52H10GCH6');
+
+      // JavaScript Error Tracking
+      window.onerror = function(msg, url, line, col, error) {
+        gtag('event', 'js_error', {
+          'event_category': 'Error',
+          'event_label': msg,
+          'error_url': url,
+          'error_line': line,
+          'error_col': col,
+          'error_stack': error ? error.stack : '',
+          'page': 'diary'
+        });
+        return false;
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        gtag('event', 'promise_error', {
+          'event_category': 'Error',
+          'event_label': e.reason ? e.reason.toString() : 'Unknown promise rejection',
+          'page': 'diary'
+        });
+      });
+      // Resource Load Error Tracking
+      window.addEventListener('error', function(e) {
+        if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
+          gtag('event', 'resource_error', {
+            'event_category': 'Error',
+            'event_label': e.target.tagName + ' failed to load',
+            'resource_url': e.target.src || e.target.href || 'unknown',
+            'page': 'diary'
+          });
+        }
+      }, true);
     </script>
 
     <meta charset="UTF-8">
@@ -196,8 +228,13 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://staticmy.roboforex.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -449,7 +486,7 @@
                         <span class="w-2 h-2 bg-primary-green rounded-full animate-pulse"></span>
                         <span class="text-sm text-text-secondary">Live XAUUSD</span>
                     </div>
-                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes"></iframe>
+                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes" loading="lazy"></iframe>
                 </div>
             </div>
 

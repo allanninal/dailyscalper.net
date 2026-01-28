@@ -32,6 +32,35 @@
     <script>
       gtag('js', new Date());
       gtag('config', 'G-M52H10GCH6');
+
+      // JavaScript Error Tracking
+      window.onerror = function(msg, url, line, col, error) {
+        gtag('event', 'js_error', {
+          'event_category': 'Error',
+          'event_label': msg,
+          'error_url': url,
+          'error_line': line,
+          'error_col': col,
+          'error_stack': error ? error.stack : ''
+        });
+        return false;
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        gtag('event', 'promise_error', {
+          'event_category': 'Error',
+          'event_label': e.reason ? e.reason.toString() : 'Unknown promise rejection'
+        });
+      });
+      // Resource Load Error Tracking
+      window.addEventListener('error', function(e) {
+        if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
+          gtag('event', 'resource_error', {
+            'event_category': 'Error',
+            'event_label': e.target.tagName + ' failed to load',
+            'resource_url': e.target.src || e.target.href || 'unknown'
+          });
+        }
+      }, true);
     </script>
 
     <meta charset="UTF-8">
@@ -317,8 +346,14 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://widget.myfxbook.com">
+    <link rel="dns-prefetch" href="https://staticmy.roboforex.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
@@ -1437,7 +1472,7 @@
                         <i class="fas fa-chart-line text-primary-green mr-2"></i>
                         Live Gold Price
                     </h3>
-                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes"></iframe>
+                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes" loading="lazy"></iframe>
                 </div>
 
                 <!-- Analytics Widget -->
@@ -1446,7 +1481,7 @@
                         <i class="fas fa-signal text-primary-green mr-2"></i>
                         Market Forecasts
                     </h3>
-                    <iframe width="304" height="284" frameborder="0" class="vbes rounded-lg" title="XAUUSD Market Forecasts and Analysis" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=300&theme_2=dark&amount=5&type=forecasts"></iframe>
+                    <iframe width="304" height="284" frameborder="0" class="vbes rounded-lg" title="XAUUSD Market Forecasts and Analysis" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=300&theme_2=dark&amount=5&type=forecasts" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -1463,10 +1498,10 @@
             <!-- MyFxBook Live Widgets -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
                 <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
-                    <img alt="MyFxBook Performance Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=4" class="rounded-lg"/>
+                    <img alt="MyFxBook Performance Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=4" class="rounded-lg" loading="lazy" width="300" height="200"/>
                 </a>
                 <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
-                    <img alt="MyFxBook Stats Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=6" class="rounded-lg"/>
+                    <img alt="MyFxBook Stats Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=6" class="rounded-lg" loading="lazy" width="300" height="200"/>
                 </a>
             </div>
 
