@@ -1,0 +1,9 @@
+# DailyScalper.net Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dailyscalper.net/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

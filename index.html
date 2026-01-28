@@ -522,7 +522,7 @@
                     <a href="#faq" class="nav-link text-text-secondary hover:text-white transition-colors">FAQ</a>
                     <a href="diary.html" class="nav-link text-text-secondary hover:text-white transition-colors">Trading Diary</a>
                     <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes bg-primary-green hover:bg-accent-green text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
-                        Start Copying
+                        Start with $188
                     </a>
                 </div>
 
@@ -542,7 +542,7 @@
                 <a href="#faq" class="block text-text-secondary hover:text-white py-2">FAQ</a>
                 <a href="diary.html" class="block text-text-secondary hover:text-white py-2">Trading Diary</a>
                 <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes block bg-primary-green hover:bg-accent-green text-white text-center px-6 py-3 rounded-lg font-semibold mt-4">
-                    Start Copying
+                    Start with $188
                 </a>
             </div>
         </div>
@@ -608,21 +608,21 @@
                 <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
                     <p class="text-text-secondary text-sm mb-2">Total Yield</p>
-                    <p class="text-3xl lg:text-4xl font-bold text-success"><span class="counter" data-target="231.63">0</span>%</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-success"><span class="counter" data-target="231.63" aria-label="231.63 percent">0</span>%</p>
                 </div>
 
                 <!-- Stat Card 2 -->
                 <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
                     <p class="text-text-secondary text-sm mb-2">Profit Generated</p>
-                    <p class="text-3xl lg:text-4xl font-bold text-success">$<span class="counter" data-target="2772">0</span>+</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-success">$<span class="counter" data-target="2772" aria-label="2772 dollars">0</span>+</p>
                 </div>
 
                 <!-- Stat Card 3 -->
                 <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
                     <p class="text-text-secondary text-sm mb-2">Win Rate</p>
-                    <p class="text-3xl lg:text-4xl font-bold text-white"><span class="counter" data-target="86.7">0</span>%</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-white"><span class="counter" data-target="86.7" aria-label="86.7 percent">0</span>%</p>
                 </div>
 
                 <!-- Stat Card 4 -->
@@ -643,7 +643,7 @@
                 <div class="bg-card-bg border border-border-color rounded-2xl p-6 card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-1 gradient-border"></div>
                     <p class="text-text-secondary text-sm mb-2">Max Drawdown</p>
-                    <p class="text-3xl lg:text-4xl font-bold text-loss">-<span class="counter" data-target="26.23">0</span>%</p>
+                    <p class="text-3xl lg:text-4xl font-bold text-loss">-<span class="counter" data-target="26.23" aria-label="26.23 percent">0</span>%</p>
                 </div>
             </div>
         </div>
@@ -1079,9 +1079,13 @@
                         <div class="relative">
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-primary-green font-bold">$</span>
                             <input type="number" id="deposit-input" value="500" min="188" step="50"
-                                class="calculator-input w-full text-3xl font-bold text-white pl-12 pr-4 py-4 rounded-xl">
+                                class="calculator-input w-full text-3xl font-bold text-white pl-12 pr-4 py-4 rounded-xl"
+                                aria-describedby="deposit-hint deposit-error">
                         </div>
-                        <p class="text-text-secondary text-sm mt-2">Minimum: $188 USD</p>
+                        <p id="deposit-hint" class="text-text-secondary text-sm mt-2">Minimum: $188 USD</p>
+                        <p id="deposit-error" class="text-loss text-sm mt-1 hidden" role="alert">
+                            <i class="fas fa-exclamation-circle mr-1"></i>Please enter at least $188
+                        </p>
 
                         <!-- Quick Select Buttons -->
                         <div class="flex flex-wrap gap-2 mt-4">
@@ -1889,7 +1893,18 @@
         }
 
         function updateCalculator() {
-            const deposit = Math.max(188, parseFloat(depositInput.value) || 188);
+            const inputValue = parseFloat(depositInput.value) || 0;
+            const errorEl = document.getElementById('deposit-error');
+            const isValid = inputValue >= 188;
+
+            // Show/hide validation error
+            if (errorEl) {
+                errorEl.classList.toggle('hidden', isValid);
+                depositInput.classList.toggle('border-loss', !isValid);
+                depositInput.setAttribute('aria-invalid', !isValid);
+            }
+
+            const deposit = Math.max(188, inputValue);
             const results = calculateReturns(deposit);
 
             result1m.textContent = '$' + results['1m'].toLocaleString();
