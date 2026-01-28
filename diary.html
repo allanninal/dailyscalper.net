@@ -2434,13 +2434,26 @@
     <!-- Google Analytics Click Tracking -->
     <script>
         (function() {
-            // Track CTA button clicks (Start Copying)
+            // Track CTA button clicks with specific destination detection
             document.querySelectorAll('a.vbes').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    gtag('event', 'cta_click', {
+                    var href = this.href || '';
+                    var destination = 'unknown';
+                    var eventName = 'cta_click';
+
+                    if (href.includes('roboforex.com/copy-trading')) {
+                        destination = 'roboforex_copy_page';
+                        eventName = 'roboforex_copy_click';
+                    } else if (href.includes('my.roboforex.com')) {
+                        destination = 'roboforex_register';
+                        eventName = 'roboforex_register_click';
+                    }
+
+                    gtag('event', eventName, {
                         'event_category': 'CTA',
                         'event_label': this.textContent.trim().substring(0, 50),
-                        'link_url': this.href,
+                        'link_url': href,
+                        'link_destination': destination,
                         'page': 'diary'
                     });
                 });
@@ -2449,10 +2462,11 @@
             // Track MyFxBook verification links
             document.querySelectorAll('a[href*="myfxbook"]').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    gtag('event', 'external_link_click', {
+                    gtag('event', 'myfxbook_click', {
                         'event_category': 'External Link',
                         'event_label': 'MyFxBook Verification',
                         'link_url': this.href,
+                        'link_destination': 'myfxbook',
                         'page': 'diary'
                     });
                 });
@@ -2529,6 +2543,57 @@
                     'link_url': href,
                     'page': 'diary'
                 });
+            });
+
+            // Scroll Depth Tracking
+            var scrollThresholds = [25, 50, 75, 100];
+            var scrollTracked = {};
+            window.addEventListener('scroll', function() {
+                var scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+                scrollThresholds.forEach(function(threshold) {
+                    if (scrollPercent >= threshold && !scrollTracked[threshold]) {
+                        scrollTracked[threshold] = true;
+                        gtag('event', 'scroll_depth', {
+                            'event_category': 'Engagement',
+                            'event_label': threshold + '%',
+                            'scroll_percentage': threshold,
+                            'page': 'diary'
+                        });
+                    }
+                });
+            });
+
+            // Time on Page Tracking
+            var timeThresholds = [30, 60, 120, 300]; // seconds
+            var timeTracked = {};
+            var startTime = Date.now();
+            setInterval(function() {
+                var elapsed = Math.floor((Date.now() - startTime) / 1000);
+                timeThresholds.forEach(function(threshold) {
+                    if (elapsed >= threshold && !timeTracked[threshold]) {
+                        timeTracked[threshold] = true;
+                        var label = threshold < 60 ? threshold + 's' : Math.floor(threshold / 60) + 'm';
+                        gtag('event', 'time_on_page', {
+                            'event_category': 'Engagement',
+                            'event_label': label,
+                            'time_seconds': threshold,
+                            'page': 'diary'
+                        });
+                    }
+                });
+            }, 5000);
+
+            // Copy Text Tracking
+            document.addEventListener('copy', function(e) {
+                var selectedText = window.getSelection().toString().trim();
+                if (selectedText.length > 0) {
+                    gtag('event', 'copy_text', {
+                        'event_category': 'Engagement',
+                        'event_label': selectedText.substring(0, 100),
+                        'text_length': selectedText.length,
+                        'page': 'diary'
+                    });
+                }
             });
         })();
     </script>
