@@ -488,9 +488,28 @@
                 display: none !important;
             }
         }
+        /* Accessibility - Focus indicators */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid #22A65E;
+            outline-offset: 2px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-white">
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-green focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-border-color">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -513,14 +532,14 @@
                     <a href="#pricing" class="nav-link text-text-secondary hover:text-white transition-colors">Pricing</a>
                     <a href="#faq" class="nav-link text-text-secondary hover:text-white transition-colors">FAQ</a>
                     <a href="diary.html" class="nav-link text-text-secondary hover:text-white transition-colors">Trading Diary</a>
-                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes bg-primary-green hover:bg-accent-green text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes bg-primary-green hover:bg-accent-green text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
                         Start Copying
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
-                    <i class="fas fa-bars text-xl"></i>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -533,7 +552,7 @@
                 <a href="#pricing" class="block text-text-secondary hover:text-white py-2">Pricing</a>
                 <a href="#faq" class="block text-text-secondary hover:text-white py-2">FAQ</a>
                 <a href="diary.html" class="block text-text-secondary hover:text-white py-2">Trading Diary</a>
-                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes block bg-primary-green hover:bg-accent-green text-white text-center px-6 py-3 rounded-lg font-semibold mt-4">
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes block bg-primary-green hover:bg-accent-green text-white text-center px-6 py-3 rounded-lg font-semibold mt-4">
                     Start Copying
                 </a>
             </div>
@@ -541,6 +560,7 @@
     </nav>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section class="hero-bg min-h-screen flex items-center pt-20 lg:pt-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
             <div class="text-center max-w-4xl mx-auto">
@@ -564,7 +584,7 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-primary-green/25">
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-primary-green/25">
                         <i class="fas fa-rocket mr-2"></i>Start Copying Now
                     </a>
                     <a href="diary.html" class="w-full sm:w-auto border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
@@ -1047,7 +1067,7 @@
 
             <!-- CTA -->
             <div class="text-center mt-10">
-                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes inline-block bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-block bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
                     Join These Profitable Investors <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -1066,7 +1086,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <!-- Input Side -->
                     <div>
-                        <label class="block text-lg font-semibold mb-4">Your Starting Deposit</label>
+                        <label for="deposit-input" class="block text-lg font-semibold mb-4">Your Starting Deposit</label>
                         <div class="relative">
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-primary-green font-bold">$</span>
                             <input type="number" id="deposit-input" value="500" min="188" step="50"
@@ -1115,7 +1135,7 @@
 
                 <!-- CTA -->
                 <div class="text-center mt-8">
-                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes inline-block bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-block bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
                         Start With This Amount <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -1143,7 +1163,7 @@
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
                     <h3 class="text-xl font-bold mb-3">Sign Up</h3>
                     <p class="text-text-secondary mb-4">Create a RoboForex <strong class="text-white">MT4 ProCent</strong> account and deposit $188 or more</p>
-                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes inline-flex items-center text-primary-green hover:text-accent-green text-sm font-semibold">
+                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center text-primary-green hover:text-accent-green text-sm font-semibold">
                         <span>Create Account</span>
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -1445,10 +1465,10 @@
                     </div>
 
                     <div class="space-y-3">
-                        <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes block w-full bg-primary-green hover:bg-accent-green text-white text-center py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                        <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes block w-full bg-primary-green hover:bg-accent-green text-white text-center py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
                             Subscribe Now <i class="fas fa-arrow-right ml-2"></i>
                         </a>
-                        <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes block w-full border-2 border-border-color hover:border-primary-green text-text-secondary hover:text-white text-center py-3 rounded-xl font-semibold transition-all">
+                        <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes block w-full border-2 border-border-color hover:border-primary-green text-text-secondary hover:text-white text-center py-3 rounded-xl font-semibold transition-all">
                             <i class="fas fa-user-plus mr-2"></i>Create Account First
                         </a>
                     </div>
@@ -1472,7 +1492,7 @@
                         <i class="fas fa-chart-line text-primary-green mr-2"></i>
                         Live Gold Price
                     </h3>
-                    <iframe width="310" height="118" frameborder="0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes" loading="lazy"></iframe>
+                    <iframe width="310" height="118" style="border:0" class="vbes rounded-lg" title="Live XAUUSD Gold Price Quote" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=306&theme=dark&bid=&ask=&change=&change_p=&spread=&XAUUSD=&type=quotes" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
                 </div>
 
                 <!-- Analytics Widget -->
@@ -1481,7 +1501,7 @@
                         <i class="fas fa-signal text-primary-green mr-2"></i>
                         Market Forecasts
                     </h3>
-                    <iframe width="304" height="284" frameborder="0" class="vbes rounded-lg" title="XAUUSD Market Forecasts and Analysis" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=300&theme_2=dark&amount=5&type=forecasts" loading="lazy"></iframe>
+                    <iframe width="304" height="284" style="border:0" class="vbes rounded-lg" title="XAUUSD Market Forecasts and Analysis" src="https://staticmy.roboforex.com/en/partners/informers_get/?width=300&theme_2=dark&amount=5&type=forecasts" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
                 </div>
             </div>
         </div>
@@ -1497,10 +1517,10 @@
 
             <!-- MyFxBook Live Widgets -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
-                <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
+                <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener noreferrer" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
                     <img alt="MyFxBook Performance Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=4" class="rounded-lg" loading="lazy" width="300" height="200"/>
                 </a>
-                <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
+                <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener noreferrer" class="bg-card-bg border border-border-color rounded-2xl p-4 card-hover">
                     <img alt="MyFxBook Stats Widget" src="https://widget.myfxbook.com/widget/widget.png?accountOid=11851295&type=6" class="rounded-lg" loading="lazy" width="300" height="200"/>
                 </a>
             </div>
@@ -1514,7 +1534,7 @@
                     <h3 class="text-xl font-bold mb-2">MyFxBook Verified</h3>
                     <p class="text-text-secondary mb-4">Real-time performance tracking and third-party verification</p>
                     <p class="text-xs text-text-secondary/70 mb-4"><i class="fas fa-info-circle mr-1"></i>Website updated on weekends • MyFxBook syncs in real-time</p>
-                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="inline-flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
                         <span>View Live Stats</span>
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1527,7 +1547,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-2">RoboForex CopyFX</h3>
                     <p class="text-text-secondary mb-6">Official copy trading platform profile</p>
-                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes inline-flex items-center justify-center space-x-2 bg-primary-green hover:bg-accent-green text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center justify-center space-x-2 bg-primary-green hover:bg-accent-green text-white px-6 py-3 rounded-lg font-semibold transition-colors">
                         <span>View Profile</span>
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1595,7 +1615,7 @@
                             other account types are not compatible. When signing up, enter <strong class="text-primary-green">"vbes"</strong> in the Partner's Agent ID field.
                             The copy system is proportional - trade sizes are automatically adjusted based on your account balance,
                             so your actual profits will vary depending on your deposit amount.
-                            <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes block mt-3 text-primary-green hover:text-accent-green font-semibold">
+                            <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes block mt-3 text-primary-green hover:text-accent-green font-semibold">
                                 <i class="fas fa-user-plus mr-1"></i>Create your MT4 ProCent account here →
                             </a>
                         </div>
@@ -1674,7 +1694,7 @@
                 Join our growing community of successful copy traders. Start with just $188 and let your money work for you.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
+                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes w-full sm:w-auto bg-primary-green hover:bg-accent-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105">
                     <i class="fas fa-rocket mr-2"></i>Start Copying Now
                 </a>
                 <a href="diary.html" class="w-full sm:w-auto border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
@@ -1686,11 +1706,13 @@
 
     <!-- Sticky Mobile CTA -->
     <div id="sticky-cta" class="sticky-cta fixed bottom-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-t border-border-color p-4 lg:hidden">
-        <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes flex items-center justify-center gap-2 w-full bg-primary-green hover:bg-accent-green text-white py-4 rounded-xl font-bold text-lg transition-all">
+        <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes flex items-center justify-center gap-2 w-full bg-primary-green hover:bg-accent-green text-white py-4 rounded-xl font-bold text-lg transition-all">
             <i class="fas fa-rocket"></i>
             <span>Start Copying Now</span>
         </a>
     </div>
+
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark-bg border-t border-border-color py-12 pb-24 lg:pb-12">
@@ -1709,9 +1731,9 @@
 
                 <!-- Links -->
                 <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
-                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Sign Up</a>
-                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener" class="vbes text-text-secondary hover:text-white transition-colors">Copy Trading</a>
-                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener" class="text-text-secondary hover:text-white transition-colors">MyFxBook</a>
+                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes text-text-secondary hover:text-white transition-colors">Sign Up</a>
+                    <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes text-text-secondary hover:text-white transition-colors">Copy Trading</a>
+                    <a href="https://www.myfxbook.com/members/allanninal/roboforex/11851295" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-white transition-colors">MyFxBook</a>
                     <a href="diary.html" class="text-text-secondary hover:text-white transition-colors">Trading Diary</a>
                 </div>
 
