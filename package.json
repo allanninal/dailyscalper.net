@@ -1,0 +1,12 @@
+{
+  "name": "dailyscalper",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.36.0",
+    "tailwindcss": "^3.4.1"
+  }
+}
