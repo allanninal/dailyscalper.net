@@ -1210,48 +1210,259 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="py-16 lg:py-24 bg-card-bg/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <h2 class="text-3xl lg:text-4xl font-bold mb-4">How It Works</h2>
-                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Start copying profitable gold trades in three simple steps</p>
+                <p class="text-text-secondary text-lg max-w-2xl mx-auto">Start copying profitable gold trades in 5 simple steps</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative">
-                <!-- Connector Line (Desktop Only) -->
-                <div class="hidden md:block absolute top-16 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-primary-green via-primary-dark to-primary-green"></div>
+            <!-- Progress Bar -->
+            <div class="max-w-3xl mx-auto mb-12">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-text-secondary">Your Progress</span>
+                    <span id="progress-text" class="text-sm text-primary-green font-semibold">0 of 5 completed</span>
+                </div>
+                <div class="h-2 bg-card-bg rounded-full overflow-hidden border border-border-color">
+                    <div id="progress-bar" class="h-full bg-gradient-to-r from-primary-green to-accent-green transition-all duration-500" style="width: 0%"></div>
+                </div>
+            </div>
 
-                <!-- Step 1 -->
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
-                        <i class="fas fa-user-plus text-3xl text-primary-green"></i>
+            <!-- Steps Grid -->
+            <div class="space-y-6 max-w-4xl mx-auto">
+
+                <!-- Step 1: Create Account -->
+                <div class="step-card bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 transition-all" data-step="1">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-user-plus text-2xl text-primary-green step-icon"></i>
+                                <i class="fas fa-check text-2xl text-white step-check hidden"></i>
+                            </div>
+                            <div class="w-0.5 h-full bg-border-color mx-auto mt-4 hidden lg:block"></div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-primary-green/20 text-primary-green text-xs font-bold rounded-full">STEP 1</span>
+                                <h3 class="text-xl font-bold">Create Your Account</h3>
+                            </div>
+                            <p class="text-text-secondary mb-4">Open a RoboForex account. Choose <strong class="text-white">MT4 ProCent</strong> account type - this is required for copy trading to work properly.</p>
+
+                            <!-- Partner Code Box -->
+                            <div class="bg-dark-bg border border-border-color rounded-xl p-4 mb-4">
+                                <p class="text-sm text-text-secondary mb-2">Enter this Partner ID when signing up:</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 bg-card-bg px-4 py-2 rounded-lg text-primary-green font-mono text-lg font-bold">vbes</code>
+                                    <button id="copy-partner-code" class="px-4 py-2 bg-primary-green hover:bg-accent-green text-white rounded-lg font-semibold transition-colors flex items-center gap-2">
+                                        <i class="fas fa-copy"></i>
+                                        <span>Copy</span>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-text-secondary mt-2"><i class="fas fa-info-circle mr-1"></i>This ensures you're linked to DailyScalper for support</p>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center px-5 py-2.5 bg-primary-green hover:bg-accent-green text-white rounded-xl font-semibold transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Open RoboForex
+                                </a>
+                                <label class="step-checkbox flex items-center gap-2 cursor-pointer text-sm text-text-secondary hover:text-white transition-colors">
+                                    <input type="checkbox" class="w-5 h-5 rounded border-border-color text-primary-green focus:ring-primary-green" data-step="1">
+                                    <span>I've created my account</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
-                    <h3 class="text-xl font-bold mb-3">Sign Up</h3>
-                    <p class="text-text-secondary mb-4">Create a RoboForex <strong class="text-white">MT4 ProCent</strong> account and deposit $188 or more</p>
-                    <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center text-primary-green hover:text-accent-green text-sm font-semibold">
-                        <span>Create Account</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
-                        <i class="fas fa-copy text-3xl text-primary-green"></i>
+                <!-- Step 2: Verify Account -->
+                <div class="step-card bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 transition-all opacity-60" data-step="2">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-id-card text-2xl text-primary-green step-icon"></i>
+                                <i class="fas fa-check text-2xl text-white step-check hidden"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-primary-dark/30 text-text-secondary text-xs font-bold rounded-full">STEP 2</span>
+                                <h3 class="text-xl font-bold">Verify Your Identity</h3>
+                            </div>
+                            <p class="text-text-secondary mb-4">Complete the verification process to unlock full account features. This typically takes 1-2 business days.</p>
+
+                            <ul class="text-sm text-text-secondary space-y-2 mb-4">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-primary-green"></i> Upload a valid ID (passport or driver's license)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-primary-green"></i> Provide proof of address (utility bill or bank statement)</li>
+                            </ul>
+
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center px-5 py-2.5 border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white rounded-xl font-semibold transition-colors">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    Verify Account
+                                </a>
+                                <label class="step-checkbox flex items-center gap-2 cursor-pointer text-sm text-text-secondary hover:text-white transition-colors">
+                                    <input type="checkbox" class="w-5 h-5 rounded border-border-color text-primary-green focus:ring-primary-green" data-step="2">
+                                    <span>I'm verified</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                    <h3 class="text-xl font-bold mb-3">Subscribe</h3>
-                    <p class="text-text-secondary">Click one button to copy all my XAUUSD trades automatically</p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative z-10">
-                        <i class="fas fa-wallet text-3xl text-primary-green"></i>
+                <!-- Step 3: Fund Account -->
+                <div class="step-card bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 transition-all opacity-60" data-step="3">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-dollar-sign text-2xl text-primary-green step-icon"></i>
+                                <i class="fas fa-check text-2xl text-white step-check hidden"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-primary-dark/30 text-text-secondary text-xs font-bold rounded-full">STEP 3</span>
+                                <h3 class="text-xl font-bold">Fund Your Account</h3>
+                            </div>
+                            <p class="text-text-secondary mb-4">Deposit at least <strong class="text-primary-green text-lg">$188 USD</strong> to start copy trading. More capital = larger proportional trades.</p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                                <div class="bg-dark-bg rounded-lg p-3 text-center">
+                                    <i class="fas fa-credit-card text-text-secondary mb-1"></i>
+                                    <p class="text-xs text-text-secondary">Card</p>
+                                </div>
+                                <div class="bg-dark-bg rounded-lg p-3 text-center">
+                                    <i class="fas fa-university text-text-secondary mb-1"></i>
+                                    <p class="text-xs text-text-secondary">Bank</p>
+                                </div>
+                                <div class="bg-dark-bg rounded-lg p-3 text-center">
+                                    <i class="fab fa-bitcoin text-text-secondary mb-1"></i>
+                                    <p class="text-xs text-text-secondary">Crypto</p>
+                                </div>
+                                <div class="bg-dark-bg rounded-lg p-3 text-center">
+                                    <i class="fas fa-wallet text-text-secondary mb-1"></i>
+                                    <p class="text-xs text-text-secondary">E-Wallet</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="https://my.roboforex.com/en/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center px-5 py-2.5 border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white rounded-xl font-semibold transition-colors">
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    Deposit Funds
+                                </a>
+                                <label class="step-checkbox flex items-center gap-2 cursor-pointer text-sm text-text-secondary hover:text-white transition-colors">
+                                    <input type="checkbox" class="w-5 h-5 rounded border-border-color text-primary-green focus:ring-primary-green" data-step="3">
+                                    <span>I've funded my account</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                    <h3 class="text-xl font-bold mb-3">Earn</h3>
-                    <p class="text-text-secondary">Watch your account grow. Withdraw your profits weekly.</p>
                 </div>
+
+                <!-- Step 4: Subscribe to Signal -->
+                <div class="step-card bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 transition-all opacity-60" data-step="4">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-link text-2xl text-primary-green step-icon"></i>
+                                <i class="fas fa-check text-2xl text-white step-check hidden"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-primary-dark/30 text-text-secondary text-xs font-bold rounded-full">STEP 4</span>
+                                <h3 class="text-xl font-bold">Subscribe to DailyScalper</h3>
+                            </div>
+                            <p class="text-text-secondary mb-4">Connect your account to automatically copy all my XAUUSD trades. Choose your risk level:</p>
+
+                            <!-- Risk Settings -->
+                            <div class="bg-dark-bg border border-border-color rounded-xl p-4 mb-4">
+                                <p class="text-sm font-semibold mb-3">Copy Coefficient (Risk Level)</p>
+                                <div class="grid grid-cols-3 gap-3 text-center text-sm">
+                                    <div class="bg-card-bg rounded-lg p-3 border border-border-color">
+                                        <p class="text-primary-green font-bold">0.5x</p>
+                                        <p class="text-xs text-text-secondary">Conservative</p>
+                                    </div>
+                                    <div class="bg-card-bg rounded-lg p-3 border-2 border-primary-green relative">
+                                        <span class="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-primary-green text-white text-xs rounded-full">Recommended</span>
+                                        <p class="text-primary-green font-bold">1.0x</p>
+                                        <p class="text-xs text-text-secondary">Standard</p>
+                                    </div>
+                                    <div class="bg-card-bg rounded-lg p-3 border border-border-color">
+                                        <p class="text-yellow-500 font-bold">2.0x</p>
+                                        <p class="text-xs text-text-secondary">Aggressive</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-text-secondary mt-3"><i class="fas fa-info-circle mr-1"></i>1.0x means your trades match my lot sizes proportionally. Higher = more risk & reward.</p>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="https://roboforex.com/copy-trading/rating/aaar/34182851/?a=vbes" target="_blank" rel="noopener noreferrer" class="vbes inline-flex items-center px-5 py-2.5 bg-primary-green hover:bg-accent-green text-white rounded-xl font-semibold transition-colors">
+                                    <i class="fas fa-play-circle mr-2"></i>
+                                    Subscribe to DailyScalper
+                                </a>
+                                <label class="step-checkbox flex items-center gap-2 cursor-pointer text-sm text-text-secondary hover:text-white transition-colors">
+                                    <input type="checkbox" class="w-5 h-5 rounded border-border-color text-primary-green focus:ring-primary-green" data-step="4">
+                                    <span>I'm subscribed</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Monitor & Earn -->
+                <div class="step-card bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8 transition-all opacity-60" data-step="5">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-primary-green/10 border-2 border-primary-green rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-chart-line text-2xl text-primary-green step-icon"></i>
+                                <i class="fas fa-check text-2xl text-white step-check hidden"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-primary-dark/30 text-text-secondary text-xs font-bold rounded-full">STEP 5</span>
+                                <h3 class="text-xl font-bold">Monitor & Earn</h3>
+                            </div>
+                            <p class="text-text-secondary mb-4">That's it! Trades are copied automatically. Monitor your progress and withdraw profits anytime.</p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                                <div class="bg-dark-bg rounded-lg p-3 flex items-center gap-3">
+                                    <i class="fas fa-mobile-alt text-primary-green text-xl"></i>
+                                    <div>
+                                        <p class="text-sm font-semibold">MT4 App</p>
+                                        <p class="text-xs text-text-secondary">Watch live trades</p>
+                                    </div>
+                                </div>
+                                <div class="bg-dark-bg rounded-lg p-3 flex items-center gap-3">
+                                    <i class="fas fa-desktop text-primary-green text-xl"></i>
+                                    <div>
+                                        <p class="text-sm font-semibold">CopyFX Dashboard</p>
+                                        <p class="text-xs text-text-secondary">Full statistics</p>
+                                    </div>
+                                </div>
+                                <div class="bg-dark-bg rounded-lg p-3 flex items-center gap-3">
+                                    <i class="fas fa-money-bill-wave text-primary-green text-xl"></i>
+                                    <div>
+                                        <p class="text-sm font-semibold">Withdraw</p>
+                                        <p class="text-xs text-text-secondary">Anytime, no lock-in</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="step-checkbox flex items-center gap-2 cursor-pointer text-sm text-text-secondary hover:text-white transition-colors">
+                                <input type="checkbox" class="w-5 h-5 rounded border-border-color text-primary-green focus:ring-primary-green" data-step="5">
+                                <span>I'm set up and earning!</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Success Message -->
+            <div id="setup-complete" class="hidden max-w-4xl mx-auto mt-8 p-6 bg-gradient-to-r from-primary-green/20 to-accent-green/20 border border-primary-green rounded-2xl text-center">
+                <i class="fas fa-trophy text-4xl text-primary-green mb-3"></i>
+                <h3 class="text-2xl font-bold mb-2">Setup Complete!</h3>
+                <p class="text-text-secondary">You're now copying DailyScalper's trades. Check your MT4 app or CopyFX dashboard to monitor your progress.</p>
             </div>
         </div>
     </section>
