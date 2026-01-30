@@ -2520,5 +2520,150 @@
             });
         })();
     </script>
+
+    <!-- Step Progress & Copy Button -->
+    <script>
+        (function() {
+            var STORAGE_KEY = 'dailyscalper_steps';
+            var TOTAL_STEPS = 5;
+
+            // Load saved progress from localStorage
+            function loadProgress() {
+                try {
+                    var saved = localStorage.getItem(STORAGE_KEY);
+                    return saved ? JSON.parse(saved) : {};
+                } catch (e) {
+                    return {};
+                }
+            }
+
+            // Save progress to localStorage
+            function saveProgress(progress) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+                } catch (e) {
+                    // localStorage not available
+                }
+            }
+
+            // Update progress bar and step visuals
+            function updateUI(progress) {
+                var completedCount = Object.keys(progress).filter(function(k) { return progress[k]; }).length;
+                var percentage = (completedCount / TOTAL_STEPS) * 100;
+
+                // Update progress bar
+                var progressBar = document.getElementById('progress-bar');
+                var progressText = document.getElementById('progress-text');
+                if (progressBar) progressBar.style.width = percentage + '%';
+                if (progressText) progressText.textContent = completedCount + ' of ' + TOTAL_STEPS + ' completed';
+
+                // Update step cards
+                document.querySelectorAll('.step-card').forEach(function(card) {
+                    var stepNum = card.getAttribute('data-step');
+                    var checkbox = card.querySelector('input[type="checkbox"]');
+
+                    if (progress[stepNum]) {
+                        card.classList.add('completed');
+                        card.classList.remove('active', 'opacity-60');
+                        if (checkbox) checkbox.checked = true;
+                    } else {
+                        card.classList.remove('completed');
+                        if (checkbox) checkbox.checked = false;
+                    }
+                });
+
+                // Find first incomplete step and make it active
+                var foundActive = false;
+                document.querySelectorAll('.step-card').forEach(function(card) {
+                    var stepNum = card.getAttribute('data-step');
+                    if (!progress[stepNum] && !foundActive) {
+                        card.classList.add('active');
+                        card.classList.remove('opacity-60');
+                        foundActive = true;
+                    } else if (!progress[stepNum]) {
+                        card.classList.remove('active');
+                        card.classList.add('opacity-60');
+                    }
+                });
+
+                // Show success message if all complete
+                var setupComplete = document.getElementById('setup-complete');
+                if (setupComplete) {
+                    if (completedCount === TOTAL_STEPS) {
+                        setupComplete.classList.remove('hidden');
+                    } else {
+                        setupComplete.classList.add('hidden');
+                    }
+                }
+            }
+
+            // Initialize
+            var progress = loadProgress();
+            updateUI(progress);
+
+            // Handle checkbox changes
+            document.querySelectorAll('.step-checkbox input[type="checkbox"]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var stepNum = this.getAttribute('data-step');
+                    progress[stepNum] = this.checked;
+                    saveProgress(progress);
+                    updateUI(progress);
+
+                    // Track step completion
+                    if (typeof gtag === 'function') {
+                        gtag('event', this.checked ? 'step_completed' : 'step_unchecked', {
+                            'event_category': 'Onboarding',
+                            'event_label': 'Step ' + stepNum,
+                            'step_number': parseInt(stepNum)
+                        });
+                    }
+                });
+            });
+
+            // Copy Partner Code button
+            var copyBtn = document.getElementById('copy-partner-code');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    var code = 'vbes';
+                    var btn = this;
+                    var originalHTML = btn.innerHTML;
+
+                    navigator.clipboard.writeText(code).then(function() {
+                        btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+                        btn.classList.add('copy-success');
+
+                        setTimeout(function() {
+                            btn.innerHTML = originalHTML;
+                            btn.classList.remove('copy-success');
+                        }, 2000);
+
+                        // Track copy event
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'partner_code_copied', {
+                                'event_category': 'Onboarding',
+                                'event_label': 'vbes',
+                                'partner_code': code
+                            });
+                        }
+                    }).catch(function() {
+                        // Fallback for older browsers
+                        var textarea = document.createElement('textarea');
+                        textarea.value = code;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+
+                        btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+                        setTimeout(function() {
+                            btn.innerHTML = originalHTML;
+                        }, 2000);
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
