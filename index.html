@@ -466,6 +466,63 @@
             background: linear-gradient(135deg, rgba(34, 166, 94, 0.1), rgba(27, 77, 122, 0.1));
             border: 1px solid rgba(34, 166, 94, 0.3);
         }
+        /* Step Cards */
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card.completed {
+            opacity: 1 !important;
+            border-color: #22A65E;
+            background: rgba(34, 166, 94, 0.05);
+        }
+        .step-card.completed .step-icon {
+            display: none;
+        }
+        .step-card.completed .step-check {
+            display: block !important;
+        }
+        .step-card.completed > div > div:first-child > div:first-child {
+            background: #22A65E;
+            border-color: #22A65E;
+        }
+        .step-card.active {
+            opacity: 1 !important;
+            border-color: #22A65E;
+            box-shadow: 0 0 30px rgba(34, 166, 94, 0.15);
+        }
+        .step-card.active > div > div:last-child > div:first-child > span:first-child {
+            background: rgba(34, 166, 94, 0.2);
+            color: #22A65E;
+        }
+        .step-checkbox input[type="checkbox"] {
+            appearance: none;
+            background: #111D2A;
+            border: 2px solid #1E3A52;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .step-checkbox input[type="checkbox"]:checked {
+            background: #22A65E;
+            border-color: #22A65E;
+        }
+        .step-checkbox input[type="checkbox"]:checked::after {
+            content: '✓';
+            display: block;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 16px;
+        }
+        /* Copy Button Animation */
+        .copy-success {
+            animation: copyPulse 0.3s ease;
+        }
+        @keyframes copyPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
         /* Comparison Table */
         .comparison-table {
             border-collapse: separate;
