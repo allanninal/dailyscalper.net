@@ -476,6 +476,9 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop lg:hidden"></div>
+
     <!-- Page Header -->
     <main id="main-content">
     <section class="pt-24 lg:pt-32 pb-12 bg-dark-bg">
@@ -646,7 +649,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
                 <h2 class="text-xl font-bold mb-6">Weekly Summary</h2>
-                <div class="overflow-x-auto scrollbar-thin">
+                <!-- Mobile scroll hint -->
+                <div class="scroll-hint md:hidden">
+                    <span>Swipe to see more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="overflow-x-auto scrollbar-thin scroll-indicator" data-scroll-indicator>
                     <table class="w-full min-w-[600px]">
                         <thead>
                             <tr class="border-b border-border-color">
@@ -783,7 +793,15 @@
                     </div>
 
                     <!-- Calendar Grid -->
-                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                    <!-- Mobile scroll hint -->
+                    <div class="scroll-hint md:hidden">
+                        <span>Swipe to see full calendar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <div class="calendar-scroll-container scroll-indicator" data-scroll-indicator>
+                    <div class="calendar-grid-wrapper bg-dark-bg/50 rounded-xl p-4">
                         <!-- Header -->
                         <div class="grid grid-cols-7 gap-2 mb-2">
                             <div class="text-center text-xs text-text-secondary font-semibold py-2">Sun</div>
@@ -838,6 +856,7 @@
                             <div class="calendar-day no-trade"><span class="day-num">31</span><span class="day-label">No Trade</span></div>
                         </div>
                     </div>
+                    </div><!-- close calendar-scroll-container -->
 
                     <!-- Bottom Stats -->
                     <div class="grid grid-cols-3 gap-3 mt-4">
@@ -895,7 +914,15 @@
                     </div>
 
                     <!-- Calendar Grid -->
-                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                    <!-- Mobile scroll hint -->
+                    <div class="scroll-hint md:hidden">
+                        <span>Swipe to see full calendar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <div class="calendar-scroll-container scroll-indicator" data-scroll-indicator>
+                    <div class="calendar-grid-wrapper bg-dark-bg/50 rounded-xl p-4">
                         <!-- Header -->
                         <div class="grid grid-cols-7 gap-2 mb-2">
                             <div class="text-center text-xs text-text-secondary font-semibold py-2">Sun</div>
@@ -950,6 +977,7 @@
                             <div class="calendar-day empty"></div>
                         </div>
                     </div>
+                    </div><!-- close calendar-scroll-container -->
 
                     <!-- Bottom Stats -->
                     <div class="grid grid-cols-3 gap-3 mt-4">
@@ -2276,12 +2304,37 @@
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBackdrop.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBackdrop.classList.add('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Close mobile menu when clicking backdrop
+        mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
         });
 
         // Day Card Accordion
@@ -2648,6 +2701,35 @@
                         'page': 'diary'
                     });
                 }
+            });
+
+            // Scroll indicator for tables
+            document.querySelectorAll('[data-scroll-indicator]').forEach(function(container) {
+                function updateScrollIndicators() {
+                    var scrollLeft = container.scrollLeft;
+                    var maxScroll = container.scrollWidth - container.clientWidth;
+
+                    if (scrollLeft > 5) {
+                        container.classList.add('can-scroll-left');
+                    } else {
+                        container.classList.remove('can-scroll-left');
+                    }
+
+                    if (scrollLeft < maxScroll - 5) {
+                        container.classList.add('can-scroll-right');
+                    } else {
+                        container.classList.remove('can-scroll-right');
+                    }
+                }
+
+                // Initial check
+                updateScrollIndicators();
+
+                // Update on scroll
+                container.addEventListener('scroll', updateScrollIndicators, { passive: true });
+
+                // Update on resize
+                window.addEventListener('resize', updateScrollIndicators, { passive: true });
             });
         })();
     </script>
