@@ -619,6 +619,9 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop lg:hidden"></div>
+
     <!-- Hero Section -->
     <main id="main-content">
     <section class="hero-bg min-h-screen flex items-center pt-20 lg:pt-0">
@@ -1475,8 +1478,15 @@
                 <p class="text-text-secondary text-lg max-w-2xl mx-auto">Compare your options for earning from the gold market</p>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="comparison-table w-full text-left">
+            <!-- Mobile scroll hint -->
+            <div class="scroll-hint md:hidden">
+                <span>Swipe to see more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </div>
+            <div class="overflow-x-auto scroll-indicator" data-scroll-indicator>
+                <table class="comparison-table w-full text-left min-w-[600px]">
                     <thead>
                         <tr class="border-b-2 border-primary-green">
                             <th class="py-4 px-4 text-text-secondary font-semibold">Feature</th>
@@ -2025,22 +2035,37 @@
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBackdrop.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBackdrop.classList.add('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
         });
+
+        // Close mobile menu when clicking backdrop
+        mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
 
         // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
 
         // Smooth scroll for anchor links
@@ -2663,6 +2688,35 @@
                     });
                 });
             }
+
+            // Scroll indicator for tables
+            document.querySelectorAll('[data-scroll-indicator]').forEach(function(container) {
+                function updateScrollIndicators() {
+                    var scrollLeft = container.scrollLeft;
+                    var maxScroll = container.scrollWidth - container.clientWidth;
+
+                    if (scrollLeft > 5) {
+                        container.classList.add('can-scroll-left');
+                    } else {
+                        container.classList.remove('can-scroll-left');
+                    }
+
+                    if (scrollLeft < maxScroll - 5) {
+                        container.classList.add('can-scroll-right');
+                    } else {
+                        container.classList.remove('can-scroll-right');
+                    }
+                }
+
+                // Initial check
+                updateScrollIndicators();
+
+                // Update on scroll
+                container.addEventListener('scroll', updateScrollIndicators, { passive: true });
+
+                // Update on resize
+                window.addEventListener('resize', updateScrollIndicators, { passive: true });
+            });
         })();
     </script>
 </body>
