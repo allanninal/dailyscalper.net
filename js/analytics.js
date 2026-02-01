@@ -14,7 +14,7 @@
             var destination = 'unknown';
             var eventName = 'cta_click';
 
-            if (href.includes('roboforex.com/copy-trading')) {
+            if (href.includes('my.roboforex.com/en/copyfx')) {
                 destination = 'roboforex_copy_page';
                 eventName = 'roboforex_copy_click';
             } else if (href.includes('my.roboforex.com')) {
