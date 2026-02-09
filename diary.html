@@ -717,7 +717,7 @@
                                 <td class="py-4 px-4 text-center">88.3%</td>
                                 <td class="py-4 px-4 text-right text-success font-semibold">+$350.33</td>
                             </tr>
-                            <tr class="hover:bg-border-color/20">
+                            <tr class="border-b border-border-color/50 hover:bg-border-color/20">
                                 <td class="py-4 px-4 font-medium">Jan 26-30, 2026</td>
                                 <td class="py-4 px-4 text-center">194</td>
                                 <td class="py-4 px-4 text-center text-success">175</td>
@@ -725,15 +725,23 @@
                                 <td class="py-4 px-4 text-center">90.2%</td>
                                 <td class="py-4 px-4 text-right text-success font-semibold">+$440.55</td>
                             </tr>
+                            <tr class="hover:bg-border-color/20">
+                                <td class="py-4 px-4 font-medium">Feb 2-6, 2026</td>
+                                <td class="py-4 px-4 text-center">198</td>
+                                <td class="py-4 px-4 text-center text-success">161</td>
+                                <td class="py-4 px-4 text-center text-loss">37</td>
+                                <td class="py-4 px-4 text-center">81.3%</td>
+                                <td class="py-4 px-4 text-right text-success font-semibold">+$1,867.28</td>
+                            </tr>
                         </tbody>
                         <tfoot>
                             <tr class="border-t-2 border-primary-green/50 bg-primary-green/5">
                                 <td class="py-4 px-4 font-bold">Total</td>
-                                <td class="py-4 px-4 text-center font-bold">1,351</td>
-                                <td class="py-4 px-4 text-center font-bold text-success">1,178</td>
-                                <td class="py-4 px-4 text-center font-bold text-loss">173</td>
-                                <td class="py-4 px-4 text-center font-bold">87.2%</td>
-                                <td class="py-4 px-4 text-right font-bold text-success">+$3,212.68</td>
+                                <td class="py-4 px-4 text-center font-bold">1,460</td>
+                                <td class="py-4 px-4 text-center font-bold text-success">1,255</td>
+                                <td class="py-4 px-4 text-center font-bold text-loss">205</td>
+                                <td class="py-4 px-4 text-center font-bold">86.0%</td>
+                                <td class="py-4 px-4 text-right font-bold text-success">+$5,078.09</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -753,7 +761,10 @@
                     </h2>
                     <!-- Month Tabs -->
                     <div class="flex gap-2">
-                        <button class="month-tab active px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="jan2026">
+                        <button class="month-tab active px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="feb2026">
+                            Feb 2026
+                        </button>
+                        <button class="month-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="jan2026">
                             Jan 2026
                         </button>
                         <button class="month-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all" data-month="dec2025">
@@ -762,8 +773,118 @@
                     </div>
                 </div>
 
+                <!-- February 2026 Calendar -->
+                <div id="calendar-feb2026" class="calendar-month">
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                        <div class="bg-success/10 border border-success/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Net Profit</p>
+                            <p class="text-xl font-bold text-success">+$1,867.28</p>
+                        </div>
+                        <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win Rate</p>
+                            <p class="text-xl font-bold text-orange-400">81.3%</p>
+                        </div>
+                        <div class="bg-primary-dark/20 border border-primary-dark/40 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Total Trades</p>
+                            <p class="text-xl font-bold">198</p>
+                        </div>
+                        <div class="bg-primary-green/10 border border-primary-green/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Win/Loss</p>
+                            <p class="text-xl font-bold text-primary-green">161/37</p>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-4 text-sm">
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-success"></span>
+                            <span class="text-text-secondary">5 Profit Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-loss"></span>
+                            <span class="text-text-secondary">0 Loss Days</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full">
+                            <span class="w-3 h-3 rounded-full bg-gray-600"></span>
+                            <span class="text-text-secondary">2 No Trade</span>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="scroll-hint md:hidden">
+                        <span>Swipe to see full calendar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <div class="calendar-scroll-container scroll-indicator" data-scroll-indicator>
+                    <div class="calendar-grid-wrapper bg-dark-bg/50 rounded-xl p-4">
+                        <!-- Header -->
+                        <div class="grid grid-cols-7 gap-2 mb-2">
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sun</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Mon</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Tue</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Wed</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Thu</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Fri</div>
+                            <div class="text-center text-xs text-text-secondary font-semibold py-2">Sat</div>
+                        </div>
+                        <!-- Days (Feb 1, 2026 = Sunday) -->
+                        <div class="grid grid-cols-7 gap-2">
+                            <!-- Week 1 -->
+                            <div class="calendar-day no-trade"><span class="day-num">1</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day profit"><span class="day-num">2</span><span class="profit-badge">+$79.89</span><span class="trade-info">34 trades</span><span class="wl-info">32W/2L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">3</span><span class="profit-badge">+$276.47</span><span class="trade-info">54 trades</span><span class="wl-info">47W/7L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">4</span><span class="profit-badge">+$444.86</span><span class="trade-info">49 trades</span><span class="wl-info">39W/10L</span></div>
+                            <div class="calendar-day profit best"><span class="best-tag">BEST</span><span class="day-num">5</span><span class="profit-badge">+$1,034.90</span><span class="trade-info">30 trades</span><span class="wl-info">25W/5L</span></div>
+                            <div class="calendar-day profit"><span class="day-num">6</span><span class="profit-badge">+$31.17</span><span class="trade-info">31 trades</span><span class="wl-info">18W/13L</span></div>
+                            <div class="calendar-day no-trade"><span class="day-num">7</span><span class="day-label">No Trade</span></div>
+                            <!-- Week 2+ (future) -->
+                            <div class="calendar-day no-trade"><span class="day-num">8</span><span class="day-label">No Trade</span></div>
+                            <div class="calendar-day empty"><span class="day-num">9</span></div>
+                            <div class="calendar-day empty"><span class="day-num">10</span></div>
+                            <div class="calendar-day empty"><span class="day-num">11</span></div>
+                            <div class="calendar-day empty"><span class="day-num">12</span></div>
+                            <div class="calendar-day empty"><span class="day-num">13</span></div>
+                            <div class="calendar-day empty"><span class="day-num">14</span></div>
+                            <div class="calendar-day empty"><span class="day-num">15</span></div>
+                            <div class="calendar-day empty"><span class="day-num">16</span></div>
+                            <div class="calendar-day empty"><span class="day-num">17</span></div>
+                            <div class="calendar-day empty"><span class="day-num">18</span></div>
+                            <div class="calendar-day empty"><span class="day-num">19</span></div>
+                            <div class="calendar-day empty"><span class="day-num">20</span></div>
+                            <div class="calendar-day empty"><span class="day-num">21</span></div>
+                            <div class="calendar-day empty"><span class="day-num">22</span></div>
+                            <div class="calendar-day empty"><span class="day-num">23</span></div>
+                            <div class="calendar-day empty"><span class="day-num">24</span></div>
+                            <div class="calendar-day empty"><span class="day-num">25</span></div>
+                            <div class="calendar-day empty"><span class="day-num">26</span></div>
+                            <div class="calendar-day empty"><span class="day-num">27</span></div>
+                            <div class="calendar-day empty"><span class="day-num">28</span></div>
+                        </div>
+                    </div>
+                    </div><!-- close calendar-scroll-container -->
+
+                    <!-- Bottom Stats -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Best Day (Feb 5)</p>
+                            <p class="text-lg font-bold text-yellow-400">+$1,034.90</p>
+                        </div>
+                        <div class="bg-pink-500/10 border border-pink-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">First Day (Feb 2)</p>
+                            <p class="text-lg font-bold text-pink-400">+$79.89</p>
+                        </div>
+                        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center">
+                            <p class="text-xs text-text-secondary mb-1">Trading Days</p>
+                            <p class="text-lg font-bold text-blue-400">5/28</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- January 2026 Calendar -->
-                <div id="calendar-jan2026" class="calendar-month">
+                <div id="calendar-jan2026" class="calendar-month hidden">
                     <!-- Stats Row -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
                         <div class="bg-success/10 border border-success/30 rounded-xl p-4 text-center">
@@ -1129,6 +1250,181 @@
             </div>
 
             <div class="space-y-4" id="daily-logs">
+                <!-- February 6, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">February 6, 2026</h3>
+                                <p class="text-text-secondary text-sm">Friday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">31</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">58.1%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$31.17</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <p class="text-text-secondary text-sm text-center">31 trades executed • 18 wins, 13 losses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- February 5, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">February 5, 2026</h3>
+                                <p class="text-text-secondary text-sm">Thursday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">30</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">83.3%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$1,034.90</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <p class="text-text-secondary text-sm text-center">30 trades executed • 25 wins, 5 losses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- February 4, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">February 4, 2026</h3>
+                                <p class="text-text-secondary text-sm">Wednesday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">49</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">79.6%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$444.86</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <p class="text-text-secondary text-sm text-center">49 trades executed • 39 wins, 10 losses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- February 3, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">February 3, 2026</h3>
+                                <p class="text-text-secondary text-sm">Tuesday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">54</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">87.0%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$276.47</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <p class="text-text-secondary text-sm text-center">54 trades executed • 47 wins, 7 losses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- February 2, 2026 -->
+                <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
+                    <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calendar-day text-primary-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">February 2, 2026</h3>
+                                <p class="text-text-secondary text-sm">Monday</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 lg:space-x-8">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Trades</p>
+                                <p class="font-semibold">34</p>
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-text-secondary text-xs">Win Rate</p>
+                                <p class="font-semibold">94.1%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-text-secondary text-xs">Profit</p>
+                                <p class="font-bold text-success">+$79.89</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-primary-green transition-transform"></i>
+                        </div>
+                    </button>
+                    <div class="day-content">
+                        <div class="px-4 lg:px-6 pb-4 lg:pb-6">
+                            <p class="text-text-secondary text-sm text-center">34 trades executed • 32 wins, 2 losses</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- January 30, 2026 -->
                 <div class="day-card bg-card-bg border border-border-color rounded-2xl overflow-hidden">
                     <button class="day-trigger w-full flex items-center justify-between p-4 lg:p-6 text-left hover:bg-border-color/20 transition-colors">
@@ -2538,11 +2834,12 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Dec 15-21', 'Dec 22-28', 'Dec 29 - Jan 4', 'Jan 5-9', 'Jan 12-16', 'Jan 19-23', 'Jan 26-30'],
+                labels: ['Dec 15-21', 'Dec 22-28', 'Dec 29 - Jan 4', 'Jan 5-9', 'Jan 12-16', 'Jan 19-23', 'Jan 26-30', 'Feb 2-6'],
                 datasets: [{
                     label: 'Profit (USD)',
-                    data: [323.58, 426.91, 811.48, 548.34, 309.62, 350.33, 440.55],
+                    data: [323.58, 426.91, 811.48, 548.34, 309.62, 350.33, 440.55, 1867.28],
                     backgroundColor: [
+                        'rgba(34, 166, 94, 0.8)',
                         'rgba(34, 166, 94, 0.8)',
                         'rgba(34, 166, 94, 0.8)',
                         'rgba(34, 166, 94, 0.8)',
@@ -2552,6 +2849,7 @@
                         'rgba(34, 166, 94, 0.8)'
                     ],
                     borderColor: [
+                        'rgba(34, 166, 94, 1)',
                         'rgba(34, 166, 94, 1)',
                         'rgba(34, 166, 94, 1)',
                         'rgba(34, 166, 94, 1)',

@@ -729,7 +729,7 @@
             <div class="text-center mb-12">
                 <div class="inline-flex items-center space-x-2 bg-success/10 border border-success/30 rounded-full px-4 py-2 mb-6">
                     <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
-                    <span class="text-sm text-success font-semibold">5 Weeks of Verified Payouts</span>
+                    <span class="text-sm text-success font-semibold">6 Weeks of Verified Payouts</span>
                 </div>
                 <h2 class="text-3xl lg:text-4xl font-bold mb-4">Real Investor Profits</h2>
                 <p class="text-text-secondary text-lg max-w-2xl mx-auto">Actual weekly payouts to our subscribers. These are real profits, not projections.</p>
@@ -739,12 +739,12 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
                 <div class="bg-card-bg border border-border-color rounded-2xl p-5 text-center">
                     <p class="text-text-secondary text-sm mb-1">Total Distributed</p>
-                    <p class="text-2xl lg:text-3xl font-bold text-success">$8,639</p>
-                    <p class="text-xs text-text-secondary mt-1">in 5 weeks</p>
+                    <p class="text-2xl lg:text-3xl font-bold text-success">$9,338</p>
+                    <p class="text-xs text-text-secondary mt-1">in 6 weeks</p>
                 </div>
                 <div class="bg-card-bg border border-border-color rounded-2xl p-5 text-center">
                     <p class="text-text-secondary text-sm mb-1">Payout Events</p>
-                    <p class="text-2xl lg:text-3xl font-bold text-white">83</p>
+                    <p class="text-2xl lg:text-3xl font-bold text-white">110</p>
                     <p class="text-xs text-text-secondary mt-1">profitable payouts</p>
                 </div>
                 <div class="bg-card-bg border border-border-color rounded-2xl p-5 text-center">
@@ -754,7 +754,7 @@
                 </div>
                 <div class="bg-card-bg border border-border-color rounded-2xl p-5 text-center">
                     <p class="text-text-secondary text-sm mb-1">Weekly Average</p>
-                    <p class="text-2xl lg:text-3xl font-bold text-success">$1,728</p>
+                    <p class="text-2xl lg:text-3xl font-bold text-success">$1,556</p>
                     <p class="text-xs text-text-secondary mt-1">total distributed</p>
                 </div>
             </div>
@@ -762,8 +762,11 @@
             <!-- Week Tabs -->
             <div class="flex justify-center mb-6">
                 <div class="inline-flex bg-card-bg border border-border-color rounded-xl p-1 flex-wrap justify-center gap-1">
-                    <button onclick="showWeek('week7')" id="week7-tab" class="week-tab px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all bg-primary-green text-white">
-                        Jan 26-31
+                    <button onclick="showWeek('week8')" id="week8-tab" class="week-tab px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all bg-primary-green text-white">
+                        Feb 2-8
+                    </button>
+                    <button onclick="showWeek('week7')" id="week7-tab" class="week-tab px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-text-secondary hover:text-white">
+                        Jan 26-30
                     </button>
                     <button onclick="showWeek('week6')" id="week6-tab" class="week-tab px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-text-secondary hover:text-white">
                         Jan 19-23
@@ -780,13 +783,148 @@
                 </div>
             </div>
 
-            <!-- Week 7: Jan 26-31 Payouts -->
-            <div id="week7-content" class="week-content">
+            <!-- Week 8: Feb 2-8 Payouts -->
+            <div id="week8-content" class="week-content">
                 <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
                         <h3 class="text-lg font-semibold flex items-center">
                             <i class="fas fa-wallet text-primary-green mr-2"></i>
-                            Week 7: Jan 26-31
+                            Week 8: Feb 2-8
+                        </h3>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-success bg-success/10 px-3 py-1 rounded-full">27 profitable</span>
+                            <span class="text-xs text-white bg-primary-green/20 px-3 py-1 rounded-full font-semibold">$698.58 total</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                        <!-- Top 5 highlighted -->
+                        <div class="bg-gradient-to-br from-success/20 to-success/5 border border-success/30 rounded-xl p-4 text-center">
+                            <p class="text-xs text-success mb-1"><i class="fas fa-trophy"></i> #1</p>
+                            <p class="text-xl font-bold text-success">$137.77</p>
+                            <p class="text-[10px] text-text-secondary mt-1 font-mono">320***05</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-success/15 to-success/5 border border-success/25 rounded-xl p-4 text-center">
+                            <p class="text-xs text-success/80 mb-1">#2</p>
+                            <p class="text-xl font-bold text-success">$109.68</p>
+                            <p class="text-[10px] text-text-secondary mt-1 font-mono">471***80</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-success/15 to-success/5 border border-success/25 rounded-xl p-4 text-center">
+                            <p class="text-xs text-success/80 mb-1">#3</p>
+                            <p class="text-xl font-bold text-success">$104.89</p>
+                            <p class="text-[10px] text-text-secondary mt-1 font-mono">320***05</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-success/10 to-transparent border border-success/20 rounded-xl p-4 text-center">
+                            <p class="text-xs text-success/70 mb-1">#4</p>
+                            <p class="text-lg font-bold text-success">$45.87</p>
+                            <p class="text-[10px] text-text-secondary mt-1 font-mono">253***39</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-success/10 to-transparent border border-success/20 rounded-xl p-4 text-center">
+                            <p class="text-xs text-success/70 mb-1">#5</p>
+                            <p class="text-lg font-bold text-success">$45.42</p>
+                            <p class="text-[10px] text-text-secondary mt-1 font-mono">320***21</p>
+                        </div>
+
+                        <!-- Rest of payouts -->
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$37.07</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***76</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$35.27</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***14</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$29.55</p>
+                            <p class="text-[10px] text-text-secondary font-mono">380***24</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$23.06</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***48</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$21.87</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***52</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$21.11</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***21</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$21.09</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***74</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$11.99</p>
+                            <p class="text-[10px] text-text-secondary font-mono">331***42</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$9.37</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***89</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$8.03</p>
+                            <p class="text-[10px] text-text-secondary font-mono">341***26</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$7.42</p>
+                            <p class="text-[10px] text-text-secondary font-mono">310***87</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$6.14</p>
+                            <p class="text-[10px] text-text-secondary font-mono">331***88</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$5.33</p>
+                            <p class="text-[10px] text-text-secondary font-mono">380***21</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$3.81</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***05</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$3.26</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***10</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$3.24</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***07</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$2.36</p>
+                            <p class="text-[10px] text-text-secondary font-mono">310***63</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$1.89</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***35</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$1.38</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***95</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$1.19</p>
+                            <p class="text-[10px] text-text-secondary font-mono">471***39</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$0.31</p>
+                            <p class="text-[10px] text-text-secondary font-mono">320***25</p>
+                        </div>
+                        <div class="bg-border-color/30 rounded-xl p-3 text-center">
+                            <p class="text-lg font-semibold text-success">$0.21</p>
+                            <p class="text-[10px] text-text-secondary font-mono">470***00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 7: Jan 26-30 Payouts -->
+            <div id="week7-content" class="week-content hidden">
+                <div class="bg-card-bg border border-border-color rounded-2xl p-6 lg:p-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
+                        <h3 class="text-lg font-semibold flex items-center">
+                            <i class="fas fa-wallet text-primary-green mr-2"></i>
+                            Week 7: Jan 26-30
                         </h3>
                         <div class="flex items-center gap-3">
                             <span class="text-xs text-success bg-success/10 px-3 py-1 rounded-full">21 profitable</span>
