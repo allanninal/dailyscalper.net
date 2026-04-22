@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Consent Mode v2 - Set defaults before loading gtag -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  if (localStorage.getItem('cookie_consent') === 'granted') {
+    gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M52H10GCH6"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-M52H10GCH6');
+  window.onerror = function(msg, url, line, col, error) {
+    gtag('event', 'js_error', {
+      'event_category': 'Error',
+      'event_label': msg,
+      'error_url': url, 'error_line': line, 'error_col': col,
+      'error_stack': error ? error.stack : ''
+    });
+    return false;
+  };
+  window.addEventListener('unhandledrejection', function(e) {
+    gtag('event', 'promise_error', {
+      'event_category': 'Error',
+      'event_label': e.reason ? e.reason.toString() : 'Unknown promise rejection'
+    });
+  });
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Day 2 — Why the forex market even exists | Daily Scalper</title>
@@ -120,5 +161,6 @@
 <footer>
   <p>&copy; 2026 Daily Scalper &middot; <a href="/">Home</a> &middot; <a href="/diary.html">Trading Diary</a> &middot; <a href="/blog/">All posts</a></p>
 </footer>
+<script src="/js/analytics.js" defer></script>
 </body>
 </html>

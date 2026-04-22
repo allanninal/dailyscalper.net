@@ -2008,46 +2008,13 @@
         })();
     </script>
 
-    <!-- Google Analytics Click Tracking -->
+    <!-- Shared analytics (CTA, MyFxBook, link_click, scroll_depth, time_on_page, copy_text, menu_toggle) -->
+    <script src="/js/analytics.js" defer></script>
+
+    <!-- Page-specific analytics for diary (tab_click, diary_day_click, cookie-consent log) + table scroll UI -->
     <script>
         (function() {
-            // Track CTA button clicks with specific destination detection
-            document.querySelectorAll('a.vbes').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    var href = this.href || '';
-                    var destination = 'unknown';
-                    var eventName = 'cta_click';
-
-                    if (href.includes('roboforex.com/ph/copy-trading') || href.includes('my.roboforex.com/en/copyfx')) {
-                        destination = 'roboforex_copy_page';
-                        eventName = 'roboforex_copy_click';
-                    } else if (href.includes('my.roboforex.com')) {
-                        destination = 'roboforex_register';
-                        eventName = 'roboforex_register_click';
-                    }
-
-                    gtag('event', eventName, {
-                        'event_category': 'CTA',
-                        'event_label': this.textContent.trim().substring(0, 50),
-                        'link_url': href,
-                        'link_destination': destination,
-                        'page': 'diary'
-                    });
-                });
-            });
-
-            // Track MyFxBook verification links
-            document.querySelectorAll('a[href*="myfxbook"]').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    gtag('event', 'myfxbook_click', {
-                        'event_category': 'External Link',
-                        'event_label': 'MyFxBook Verification',
-                        'link_url': this.href,
-                        'link_destination': 'myfxbook',
-                        'page': 'diary'
-                    });
-                });
-            });
+            if (typeof gtag !== 'function') return;
 
             // Track month tab clicks
             document.querySelectorAll('.month-tab').forEach(function(btn) {
@@ -2072,105 +2039,22 @@
                 });
             });
 
-            // Track cookie consent button clicks
-            document.getElementById('cookie-accept').addEventListener('click', function() {
+            // Track cookie consent button clicks (consent update is in the banner script above)
+            var acceptBtn = document.getElementById('cookie-accept');
+            var declineBtn = document.getElementById('cookie-decline');
+            if (acceptBtn) acceptBtn.addEventListener('click', function() {
                 gtag('event', 'cookie_consent', {
                     'event_category': 'Cookie Consent',
                     'event_label': 'Accepted',
                     'page': 'diary'
                 });
             });
-
-            document.getElementById('cookie-decline').addEventListener('click', function() {
+            if (declineBtn) declineBtn.addEventListener('click', function() {
                 gtag('event', 'cookie_consent', {
                     'event_category': 'Cookie Consent',
                     'event_label': 'Declined',
                     'page': 'diary'
                 });
-            });
-
-            // Track mobile menu toggle
-            var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    gtag('event', 'menu_toggle', {
-                        'event_category': 'Navigation',
-                        'event_label': 'Mobile Menu',
-                        'page': 'diary'
-                    });
-                });
-            }
-
-            // Track ALL link clicks (excluding already tracked ones)
-            document.addEventListener('click', function(e) {
-                var link = e.target.closest('a');
-                if (!link) return;
-
-                // Skip links already tracked with specific events
-                if (link.classList.contains('vbes')) return;
-                if (link.href && link.href.includes('myfxbook')) return;
-
-                var href = link.href || '';
-                var isExternal = href && !href.includes(window.location.hostname) && href.startsWith('http');
-                var linkText = link.textContent.trim().substring(0, 50) || link.getAttribute('aria-label') || 'No text';
-
-                gtag('event', 'link_click', {
-                    'event_category': isExternal ? 'External Link' : 'Internal Link',
-                    'event_label': linkText,
-                    'link_url': href,
-                    'page': 'diary'
-                });
-            });
-
-            // Scroll Depth Tracking
-            var scrollThresholds = [25, 50, 75, 100];
-            var scrollTracked = {};
-            window.addEventListener('scroll', function() {
-                var scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-                scrollThresholds.forEach(function(threshold) {
-                    if (scrollPercent >= threshold && !scrollTracked[threshold]) {
-                        scrollTracked[threshold] = true;
-                        gtag('event', 'scroll_depth', {
-                            'event_category': 'Engagement',
-                            'event_label': threshold + '%',
-                            'scroll_percentage': threshold,
-                            'page': 'diary'
-                        });
-                    }
-                });
-            });
-
-            // Time on Page Tracking
-            var timeThresholds = [30, 60, 120, 300]; // seconds
-            var timeTracked = {};
-            var startTime = Date.now();
-            setInterval(function() {
-                var elapsed = Math.floor((Date.now() - startTime) / 1000);
-                timeThresholds.forEach(function(threshold) {
-                    if (elapsed >= threshold && !timeTracked[threshold]) {
-                        timeTracked[threshold] = true;
-                        var label = threshold < 60 ? threshold + 's' : Math.floor(threshold / 60) + 'm';
-                        gtag('event', 'time_on_page', {
-                            'event_category': 'Engagement',
-                            'event_label': label,
-                            'time_seconds': threshold,
-                            'page': 'diary'
-                        });
-                    }
-                });
-            }, 5000);
-
-            // Copy Text Tracking
-            document.addEventListener('copy', function(e) {
-                var selectedText = window.getSelection().toString().trim();
-                if (selectedText.length > 0) {
-                    gtag('event', 'copy_text', {
-                        'event_category': 'Engagement',
-                        'event_label': selectedText.substring(0, 100),
-                        'text_length': selectedText.length,
-                        'page': 'diary'
-                    });
-                }
             });
 
             // Scroll indicator for tables
