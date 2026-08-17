@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+/**
+ * Shared HTML partials. Everything user-visible is generated from these so the
+ * head (consent mode, CSP, analytics) can never drift between pages.
+ */
+import { LINKS } from './config.mjs';
+
+export const esc = (s) =>
+  String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+const GA_ID = 'G-M52H10GCH6';
+const ADSENSE = 'ca-pub-3474747237489350';
+
+export function head({ title, description, canonical }) {
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,22 +52,22 @@
         connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
     ">
 
-    <title>Page not found | DailyScalper</title>
-    <meta name="description" content="That page does not exist. Jump to this week’s screened copy-trading rankings.">
-    <link rel="canonical" href="https://dailyscalper.net/404.html">
+    <title>${esc(title)}</title>
+    <meta name="description" content="${esc(description)}">
+    <link rel="canonical" href="${esc(canonical)}">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Page not found | DailyScalper">
-    <meta property="og:description" content="That page does not exist. Jump to this week’s screened copy-trading rankings.">
-    <meta property="og:url" content="https://dailyscalper.net/404.html">
+    <meta property="og:title" content="${esc(title)}">
+    <meta property="og:description" content="${esc(description)}">
+    <meta property="og:url" content="${esc(canonical)}">
     <meta property="og:image" content="https://dailyscalper.net/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3474747237489350" crossorigin="anonymous"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M52H10GCH6"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
     <script>
       gtag('js', new Date());
-      gtag('config', 'G-M52H10GCH6');
+      gtag('config', '${GA_ID}');
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,30 +75,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body>`;
+}
 
+export function masthead(active = '') {
+  const link = (href, label, key) =>
+    `<a href="${href}"${active === key ? ' style="color:var(--text)"' : ''}>${label}</a>`;
+  return `
 <header class="masthead">
   <div class="wrap masthead__inner">
     <a class="wordmark" href="/">Daily<span>Scalper</span></a>
     <nav>
-      <a href="/rankings/">Rankings</a>
-      <a href="/methodology/">Methodology</a>
-      <a href="/partners/">Earn as a Partner</a>
+      ${link('/rankings/', 'Rankings', 'rankings')}
+      ${link('/methodology/', 'Methodology', 'methodology')}
+      ${link('/partners/', 'Earn as a Partner', 'partners')}
     </nav>
   </div>
-</header>
-<section class="hero">
-  <div class="wrap hero__inner">
-    <p class="eyebrow">Error 404</p>
-    <h1>This page isn't in the ledger.</h1>
-    <p class="lede">The link may be stale — the site was restructured around the weekly rankings.</p>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="/rankings/">This week's top 10</a>
-      <a class="btn btn--ghost" href="/">Home</a>
-    </div>
-  </div>
-</section>
+</header>`;
+}
 
+export function footer(generatedAt) {
+  const stamp = generatedAt
+    ? new Date(generatedAt).toUTCString().replace('GMT', 'UTC')
+    : 'not yet generated';
+  return `
 <footer class="footer">
   <div class="wrap">
     <div class="footer__cols">
@@ -95,8 +112,8 @@
       <div>
         <h4>Brokers</h4>
         <ul>
-          <li><a href="https://my.roboforex.com/en/?a=vbes" rel="sponsored nofollow" target="_blank">RoboForex</a></li>
-          <li><a href="https://www.litefinance.org/social-trading/?uid=135262069" rel="sponsored nofollow" target="_blank">LiteFinance</a></li>
+          <li><a href="${LINKS.roboforexSignup()}" rel="sponsored nofollow" target="_blank">RoboForex</a></li>
+          <li><a href="${LINKS.litefinanceSignup()}" rel="sponsored nofollow" target="_blank">LiteFinance</a></li>
         </ul>
       </div>
       <div>
@@ -107,7 +124,7 @@
       </div>
       <div>
         <h4>Updated</h4>
-        <ul><li class="num">Mon, 17 Aug 2026 15:18:52 UTC</li></ul>
+        <ul><li class="num">${esc(stamp)}</li></ul>
       </div>
     </div>
 
@@ -124,10 +141,31 @@
       <strong>Affiliate disclosure.</strong> Links to RoboForex and LiteFinance are affiliate links. If you
       open an account through them we may earn a commission from the broker's spread — at no extra cost to
       you. This never affects the screening rules, which are applied mechanically and published in full.
-      &nbsp;·&nbsp; &copy; 2026 DailyScalper
+      &nbsp;·&nbsp; &copy; ${new Date().getUTCFullYear()} DailyScalper
     </p>
   </div>
 </footer>
 <script src="/js/analytics.js" defer></script>
 </body>
-</html>
+</html>`;
+}
+
+/** Inline sparkline from a cumulative-return curve. */
+export function sparkline(curve = []) {
+  if (!curve || curve.length < 2) return '<span class="dim">—</span>';
+  const pts = curve.slice(-40);
+  const min = Math.min(...pts);
+  const max = Math.max(...pts);
+  const span = max - min || 1;
+  const w = 92;
+  const h = 26;
+  const d = pts
+    .map((v, i) => {
+      const x = (i / (pts.length - 1)) * w;
+      const y = h - ((v - min) / span) * (h - 3) - 1.5;
+      return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(' ');
+  const negative = pts[pts.length - 1] < pts[0];
+  return `<svg class="spark${negative ? ' is-neg' : ''}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${d}"/></svg>`;
+}

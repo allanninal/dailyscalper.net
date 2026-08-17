@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Consent Mode v2 - defaults before gtag loads -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+      if (localStorage.getItem('cookie_consent') === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https: blob:;
+        frame-src https://staticmy.roboforex.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;
+        connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
+    ">
+
+    <title>How we screen copy trading strategies | DailyScalper</title>
+    <meta name="description" content="The full ranking methodology: eligibility gates, martingale detection, scoring, data sources and known limitations.">
+    <link rel="canonical" href="https://dailyscalper.net/methodology/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="How we screen copy trading strategies | DailyScalper">
+    <meta property="og:description" content="The full ranking methodology: eligibility gates, martingale detection, scoring, data sources and known limitations.">
+    <meta property="og:url" content="https://dailyscalper.net/methodology/">
+    <meta property="og:image" content="https://dailyscalper.net/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3474747237489350" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M52H10GCH6"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-M52H10GCH6');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="wordmark" href="/">Daily<span>Scalper</span></a>
+    <nav>
+      <a href="/rankings/">Rankings</a>
+      <a href="/methodology/" style="color:var(--text)">Methodology</a>
+      <a href="/partners/">Earn as a Partner</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-block:clamp(3rem,7vw,5rem) 2rem">
+  <div class="wrap hero__inner">
+    <p class="eyebrow">Methodology · version 2</p>
+    <h1>Every rule, in full</h1>
+    <p class="lede">
+      We have no copiers to point to and we publish no testimonials. The only thing that should
+      persuade you is the method — so here it is, including what it cannot do.
+    </p>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap grid-2" style="align-items:start">
+    <div>
+      <p class="eyebrow">Step 1 — Eligibility</p>
+      <h3>RoboForex gates</h3>
+      <div style="margin-top:1.25rem">
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>At least 90 days live</strong><span>Shorter records are indistinguishable from luck.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Max drawdown ≤ 40%</strong><span>Uses the broker's own published dd_max figure.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>At least 50 trades</strong><span>A handful of wins is not a strategy.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>At least 3 copiers</strong><span>Someone else already has real money at stake.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Yield between 0% and 1000%</strong><span>Above the ceiling, returns are a red flag rather than an achievement.</span></div></div>
+      </div>
+      <h3 style="margin-top:2.5rem">LiteFinance gates</h3>
+      <p class="dim" style="font-size:.88rem;margin-top:.75rem">
+        Different, because LiteFinance publishes different fields.
+      </p>
+      <div style="margin-top:1rem">
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Broker risk score ≤ 5/10</strong><span>LiteFinance's own risk rating; we do not recompute it.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Derived drawdown ≤ 40%</strong><span>Calculated from the published equity curve — a lower bound, not official.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>At least 3 copiers</strong><span>Same test as RoboForex.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>At least 12 curve points</strong><span>Too few samples to judge otherwise.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Yield up to 5000%</strong><span>Higher ceiling than RoboForex because this figure is all-time, not 3-month.</span></div></div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Step 2 — Martingale detection</p>
+      <div class="panel">
+        <p>
+          A martingale or grid strategy adds to losing positions instead of closing them. Losses stay
+          off the equity curve until the position is finally forced out, so the curve shows a long run
+          of small, unusually consistent gains and then a cliff.
+        </p>
+        <p>We reject a strategy when either signature appears:</p>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>A cliff</strong><span>The worst single period is at least 12× the typical move and at least 8% deep — the pyramid unwinding.</span></div></div>
+        <div class="gate"><span class="gate__mark">▸</span><div class="gate__body"><strong>Losses that never show</strong><span>A 90%+ win rate combined with a 20%+ drawdown. The losses exist; they were simply averaged down until they detonated.</span></div></div>
+        <p style="margin-top:1.25rem" class="dim">
+          This run flagged <strong class="neg">103</strong> of 544 screened strategies.
+        </p>
+      </div>
+
+      <p class="eyebrow" style="margin-top:2.5rem">Step 3 — Scoring</p>
+      <div class="panel">
+        <p style="font-family:var(--mono);font-size:.95rem">score = yield ÷ max drawdown</p>
+        <p>
+          Return per unit of drawdown. A strategy that made 40% while asking you to sit through a 3%
+          decline scores higher than one that made 160% through a 40% decline — because most people
+          stop copying during the decline, and a copier who quits at the bottom never sees the recovery.
+        </p>
+        <p class="dim" style="font-size:.88rem">
+          For LiteFinance the divisor is floored at 5% — its curve is sampled too sparsely to resolve
+          smaller dips, and unmeasurable risk must not score as no risk.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Limitations</p>
+    <h2>What this method cannot tell you</h2>
+    <div class="grid-3" style="margin-top:2rem">
+      <div class="panel"><h3>It is backward-looking</h3><p class="dim">Every input describes the past. A clean history is not a forecast, and a strategy can change behaviour the day after it is ranked.</p></div>
+      <div class="panel"><h3>We cannot audit the brokers</h3><p class="dim">The figures are whatever RoboForex and LiteFinance publish. We check them for internal consistency, not for truth.</p></div>
+      <div class="panel"><h3>Detection is not perfect</h3><p class="dim">A martingale account that has not yet blown up may show a clean curve. The screen removes the obvious cases, not every case.</p></div>
+      <div class="panel"><h3>The two lists differ</h3><p class="dim">Different fields, different windows, different gates. Rank 1 on one board is not equivalent to rank 1 on the other.</p></div>
+      <div class="panel"><h3>The pool is limited</h3><p class="dim">LiteFinance exposes roughly 44 strategies publicly. We can only rank what is published without a login.</p></div>
+      <div class="panel"><h3>We are paid by referral</h3><p class="dim">Affiliate links fund the site. The gates are mechanical and identical for every strategy, but you should weigh the incentive yourself.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Rankings</h4>
+        <ul>
+          <li><a href="/rankings/">This week's top 10</a></li>
+          <li><a href="/methodology/">How we screen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Brokers</h4>
+        <ul>
+          <li><a href="https://my.roboforex.com/en/?a=vbes" rel="sponsored nofollow" target="_blank">RoboForex</a></li>
+          <li><a href="https://www.litefinance.org/social-trading/?uid=135262069" rel="sponsored nofollow" target="_blank">LiteFinance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Earn</h4>
+        <ul>
+          <li><a href="/partners/">Partner programmes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Updated</h4>
+        <ul><li class="num">Mon, 17 Aug 2026 15:18:52 UTC</li></ul>
+      </div>
+    </div>
+
+    <p class="risk-note">
+      <strong>Risk warning.</strong> Trading leveraged products carries a high level of risk and can
+      result in the loss of all of your capital. Past performance is not indicative of future results:
+      every figure on this site describes what a strategy has already done, not what it will do. The
+      rankings are produced mechanically from data published by RoboForex and LiteFinance and are not
+      investment advice, a recommendation, or an endorsement of any trader. DailyScalper does not manage
+      money, does not hold client funds, and cannot verify the brokers' underlying numbers independently.
+      Never copy with money you cannot afford to lose.
+    </p>
+    <p class="risk-note" style="border:0;padding-top:0.75rem">
+      <strong>Affiliate disclosure.</strong> Links to RoboForex and LiteFinance are affiliate links. If you
+      open an account through them we may earn a commission from the broker's spread — at no extra cost to
+      you. This never affects the screening rules, which are applied mechanically and published in full.
+      &nbsp;·&nbsp; &copy; 2026 DailyScalper
+    </p>
+  </div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

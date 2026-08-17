@@ -12,3 +12,6 @@ quotes/
 
 # Node.js
 node_modules/
+
+# Pre-overhaul backup of the old personal-account site
+.backup-pre-overhaul/

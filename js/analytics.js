@@ -7,10 +7,10 @@
     var page = (function () {
         var path = location.pathname;
         if (path === '/' || path === '/index.html') return 'home';
-        if (path === '/diary.html' || path === '/diary') return 'diary';
+        if (path.indexOf('/rankings') === 0) return 'rankings';
+        if (path.indexOf('/methodology') === 0) return 'methodology';
+        if (path.indexOf('/partners') === 0) return 'partners';
         if (path === '/404.html' || path === '/404') return '404';
-        if (path === '/blog/' || path === '/blog/index.html') return 'blog_index';
-        if (path.indexOf('/blog/') === 0) return 'blog_post';
         return path;
     })();
 
@@ -29,6 +29,12 @@
         } else if (href.indexOf('my.roboforex.com') !== -1) {
             eventName = 'roboforex_register_click';
             destination = 'roboforex_register';
+        } else if (href.indexOf('my.litefinance.org/traders') !== -1) {
+            eventName = 'litefinance_copy_click';
+            destination = 'litefinance_trader_page';
+        } else if (href.indexOf('litefinance.org') !== -1) {
+            eventName = 'litefinance_register_click';
+            destination = 'litefinance_register';
         }
         if (!eventName) return;
 
@@ -43,19 +49,6 @@
         });
     }, true);
 
-    // --- MyFxBook verification clicks ---
-    document.addEventListener('click', function (e) {
-        var link = e.target.closest('a[href*="myfxbook"]');
-        if (!link) return;
-        gtag('event', 'myfxbook_click', {
-            'event_category': 'External Link',
-            'event_label': 'MyFxBook Verification',
-            'link_url': link.href,
-            'link_destination': 'myfxbook',
-            'page': page
-        });
-    }, true);
-
     // --- Generic internal link_click (GA4 Enhanced Measurement already handles outbound) ---
     document.addEventListener('click', function (e) {
         var link = e.target.closest('a');
@@ -64,7 +57,7 @@
 
         // Skip links already tracked with specific events
         if (href.indexOf('roboforex.com') !== -1) return;
-        if (href.indexOf('myfxbook') !== -1) return;
+        if (href.indexOf('litefinance.org') !== -1) return;
 
         // Skip external links — GA4 Enhanced Measurement "Outbound clicks" covers them
         var isExternal = href.indexOf(location.hostname) === -1 && href.indexOf('http') === 0;

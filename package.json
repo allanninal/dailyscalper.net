@@ -1,12 +1,12 @@
 {
   "name": "dailyscalper",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Weekly screened copy-trading rankings for RoboForex and LiteFinance",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
-  },
-  "devDependencies": {
-    "puppeteer": "^24.36.0",
-    "tailwindcss": "^3.4.1"
+    "rankings": "node scripts/fetch-rankings.mjs",
+    "build": "node scripts/build-site.mjs",
+    "update": "npm run rankings && npm run build",
+    "serve": "python3 -m http.server 8899"
   }
 }
