@@ -35,14 +35,14 @@
         connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
     ">
 
-    <title>Page not found | DailyScalper</title>
-    <meta name="description" content="That page does not exist. Jump to this week’s screened copy-trading rankings.">
-    <link rel="canonical" href="https://www.dailyscalper.net/404.html">
+    <title>Daily copy trading rankings | DailyScalper</title>
+    <meta name="description" content="Day-over-day movement in the screened copy-trading rankings, measured from our own dated snapshots. Neither broker publishes a daily return window.">
+    <link rel="canonical" href="https://www.dailyscalper.net/rankings/daily/">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Page not found | DailyScalper">
-    <meta property="og:description" content="That page does not exist. Jump to this week’s screened copy-trading rankings.">
-    <meta property="og:url" content="https://www.dailyscalper.net/404.html">
+    <meta property="og:title" content="Daily copy trading rankings | DailyScalper">
+    <meta property="og:description" content="Day-over-day movement in the screened copy-trading rankings, measured from our own dated snapshots. Neither broker publishes a daily return window.">
+    <meta property="og:url" content="https://www.dailyscalper.net/rankings/daily/">
     <meta property="og:image" content="https://www.dailyscalper.net/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -57,6 +57,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.dailyscalper.net/#org","name":"DailyScalper","url":"https://www.dailyscalper.net/","logo":"https://www.dailyscalper.net/og-image.png","description":"Independent screening of public copy-trading strategies on RoboForex and LiteFinance."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dailyscalper.net/"},{"@type":"ListItem","position":2,"name":"Rankings","item":"https://www.dailyscalper.net/rankings/"},{"@type":"ListItem","position":3,"name":"Daily","item":"https://www.dailyscalper.net/rankings/daily/"}]}]}</script>
 </head>
 <body>
 
@@ -64,24 +65,46 @@
   <div class="wrap masthead__inner">
     <a class="wordmark" href="/">Daily<span>Scalper</span></a>
     <nav>
-      <a href="/rankings/">Rankings</a>
+      <a href="/rankings/" style="color:var(--text)">Rankings</a>
       <a href="/methodology/">Methodology</a>
       <a href="/blog/">Learn</a>
       <a href="/partners/">Earn as a Partner</a>
     </nav>
   </div>
 </header>
-<section class="hero">
+
+<section class="hero" style="padding-block:clamp(3rem,7vw,5rem) 2rem">
   <div class="wrap hero__inner">
-    <p class="eyebrow">Error 404</p>
-    <h1>This page isn't in the ledger.</h1>
-    <p class="lede">The link may be stale — the site was restructured around the weekly rankings.</p>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="/rankings/">This week's top 10</a>
-      <a class="btn btn--ghost" href="/">Home</a>
-    </div>
+    <p class="eyebrow">Rankings · Daily</p>
+    <h1>Daily rankings</h1>
+    <nav class="board-nav" aria-label="Ranking period">
+    <a href="/rankings/">3-month <span>flagship</span></a>
+    <a href="/rankings/daily/" aria-current="page">Daily</a><a href="/rankings/weekly/">Weekly</a><a href="/rankings/monthly/">Monthly</a><a href="/rankings/all-time/">All-time</a>
+  </nav>
   </div>
 </section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <div class="panel">
+      <h3>Tracking starts today</h3>
+      <p class="lede" style="margin-top:1rem">
+        Neither RoboForex nor LiteFinance publishes a one-day return window, so a daily board
+        cannot be taken from their data. This one is built from our own dated snapshots instead:
+        each run records where every screened strategy stood, and this page reports what moved
+        since the previous run.
+      </p>
+      <p class="lede">
+        The first snapshot was taken on <strong>2026-08-22</strong>.
+        There is nothing to compare it against yet, so this board stays empty until the next run.
+        We would rather show you nothing than invent a number.
+      </p>
+      <div class="btn-row"><a class="btn btn--primary" href="/rankings/">See the 3-month rankings</a></div>
+    </div>
+    
+  </div>
+</section>
+
 
 <footer class="footer">
   <div class="wrap">

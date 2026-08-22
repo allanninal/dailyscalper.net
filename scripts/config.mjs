@@ -70,6 +70,64 @@ export const MARTINGALE = {
 
 export const PERIOD = {
   // RoboForex period enum: 0=all,1=week,2=month,3=3mo,4=6mo,5=year,6=? — 3mo is the
-  // shortest window that still filters out lucky streaks.
+  // shortest window that still filters out lucky streaks. Verified 2026-08-23 by
+  // comparing one account across every value: p1/p2/p3 returned 33.7/50.5/2290.7%.
   roboforex: 3,
 };
+
+/**
+ * The ranking boards.
+ *
+ * Only RoboForex has a period parameter. LiteFinance ignores `period`,
+ * `interval` and `sort_period` entirely — every value returns a byte-identical
+ * board — so it publishes ALL-TIME figures only and can appear on the all-time
+ * board alone. Putting it on a weekly board would mean labelling an all-time
+ * return as a weekly one.
+ *
+ * The eligibility gates do NOT relax for shorter windows. A weekly board that
+ * dropped the 90-day/50-trade requirement would rank whichever martingale
+ * account happened to be mid-streak — precisely what this site exists to filter.
+ * The window changes what we RANK by, never who is allowed on the board.
+ */
+export const BOARDS = [
+  {
+    key: 'daily',
+    label: 'Daily',
+    slug: '/rankings/daily/',
+    // No broker exposes a daily window. This board is built from our own dated
+    // snapshots and shows day-over-day movement, not a one-day return.
+    source: 'snapshot',
+    rankLabel: 'Movement since yesterday',
+  },
+  {
+    key: 'weekly',
+    label: 'Weekly',
+    slug: '/rankings/weekly/',
+    source: 'roboforex',
+    roboforexPeriod: 1,
+    yieldLabel: 'Yield 1w',
+    rankLabel: 'Return per unit of drawdown, ranked on the last 7 days',
+  },
+  {
+    key: 'monthly',
+    label: 'Monthly',
+    slug: '/rankings/monthly/',
+    source: 'roboforex',
+    roboforexPeriod: 2,
+    yieldLabel: 'Yield 1mo',
+    rankLabel: 'Return per unit of drawdown, ranked on the last 30 days',
+  },
+  {
+    key: 'all-time',
+    label: 'All-time',
+    slug: '/rankings/all-time/',
+    source: 'roboforex',
+    roboforexPeriod: 0,
+    includeLiteFinance: true,
+    yieldLabel: 'Yield all-time',
+    rankLabel: 'Return per unit of drawdown over the full published history',
+  },
+];
+
+/** How many dated snapshots to retain for the daily-movement board. */
+export const SNAPSHOT_RETENTION_DAYS = 90;

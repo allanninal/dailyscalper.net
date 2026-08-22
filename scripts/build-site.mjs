@@ -7,7 +7,7 @@
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
-import { GATES, LINKS, AFFILIATE, MARTINGALE } from './config.mjs';
+import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
@@ -100,12 +100,12 @@ const faq = (pairs) => ({
 
 /* ------------------------------------------------------------------ tables */
 
-function roboforexTable(rows) {
+function roboforexTable(rows, yieldLabel = 'Yield 3mo') {
   return `
 <div class="table-scroll">
 <table class="ledger">
   <thead><tr>
-    <th></th><th>Strategy</th><th>90-day curve</th><th>Yield 3mo</th>
+    <th></th><th>Strategy</th><th>Curve</th><th>${yieldLabel}</th>
     <th>Max DD</th><th>Trades</th><th>Copiers</th><th>Min dep.</th>
     <th>Fee</th><th>Score</th><th></th>
   </tr></thead>
@@ -372,6 +372,7 @@ ${masthead('rankings')}
   <div class="wrap hero__inner">
     <p class="eyebrow">Week of ${esc(updated)}</p>
     <h1>This week's rankings</h1>
+    ${boardNav(null)}
     <p class="lede">
       Rebuilt every Monday from the brokers' public data. Ranked by yield divided by maximum
       drawdown — return per unit of pain — after every strategy has cleared the eligibility gates.
@@ -635,6 +636,174 @@ ${masthead()}
 </section>
 ${footer(data.generatedAt)}`;
 
+/* ------------------------------------------------------- period board pages */
+
+// Function declaration, not a const: the rankings page template literal above
+// is evaluated before this point in the module and would otherwise hit the TDZ.
+function boardNav(activeKey) {
+  return `<nav class="board-nav" aria-label="Ranking period">
+    <a href="/rankings/"${activeKey === null ? ' aria-current="page"' : ''}>3-month <span>flagship</span></a>
+    ${BOARDS.map(
+      (b) =>
+        `<a href="${b.slug}"${activeKey === b.key ? ' aria-current="page"' : ''}>${b.label}</a>`
+    ).join('')}
+  </nav>`;
+}
+
+const movementRow = (e) => {
+  const arrow =
+    e.isNew || e.rankDelta === null
+      ? '<span class="tag">new</span>'
+      : e.rankDelta > 0
+        ? `<span class="pos">▲ ${e.rankDelta}</span>`
+        : e.rankDelta < 0
+          ? `<span class="neg">▼ ${Math.abs(e.rankDelta)}</span>`
+          : '<span class="dim">—</span>';
+  const yd =
+    e.yieldDelta === null
+      ? '<span class="dim">—</span>'
+      : `<span class="${e.yieldDelta >= 0 ? 'pos' : 'neg'}">${e.yieldDelta >= 0 ? '+' : ''}${e.yieldDelta}%</span>`;
+  return `<tr>
+    <td class="rank">${e.rank}</td>
+    <td><div class="trader-name">${esc(e.strategy || e.trader)}</div>
+        <div class="trader-sub">${e.broker === 'roboforex' ? 'RoboForex' : 'LiteFinance'}</div></td>
+    <td>${arrow}</td>
+    <td>${fmt(e.yieldPct, 1, '%')}</td>
+    <td>${yd}</td>
+  </tr>`;
+};
+
+function dailyBody() {
+  const d = data.daily ?? { since: null, entries: [] };
+  if (!d.since || !d.entries.length) {
+    return `<div class="panel">
+      <h3>Tracking starts today</h3>
+      <p class="lede" style="margin-top:1rem">
+        Neither RoboForex nor LiteFinance publishes a one-day return window, so a daily board
+        cannot be taken from their data. This one is built from our own dated snapshots instead:
+        each run records where every screened strategy stood, and this page reports what moved
+        since the previous run.
+      </p>
+      <p class="lede">
+        The first snapshot was taken on <strong>${esc(data.generatedAt.slice(0, 10))}</strong>.
+        There is nothing to compare it against yet, so this board stays empty until the next run.
+        We would rather show you nothing than invent a number.
+      </p>
+      <div class="btn-row"><a class="btn btn--primary" href="/rankings/">See the 3-month rankings</a></div>
+    </div>`;
+  }
+  return `
+  <p class="lede" style="margin:1.25rem 0 2.5rem">
+    Movement since <strong>${esc(d.since)}</strong>. Rank change is against our own snapshot of
+    that date, not a figure either broker publishes.
+  </p>
+  <div class="table-scroll">
+  <table class="ledger">
+    <thead><tr><th></th><th>Strategy</th><th>Rank move</th><th>Yield</th><th>Yield change</th></tr></thead>
+    <tbody>${d.entries.map(movementRow).join('')}</tbody>
+  </table>
+  </div>`;
+}
+
+function boardPage(board) {
+  const b = data.boards?.[board.key];
+  const isDaily = board.source === 'snapshot';
+  const rfRows = b?.roboforex?.ranked ?? [];
+  const lfRows = b?.litefinance?.ranked ?? [];
+
+  const body = isDaily
+    ? dailyBody()
+    : !rfRows.length
+      ? `<div class="panel"><h3>This board did not build</h3><p class="lede" style="margin-top:1rem">The last run could not fetch the ${esc(board.label.toLowerCase())} window from RoboForex, so nothing is published here rather than showing stale figures.</p></div>`
+      : `
+    <p class="lede" style="margin:1.25rem 0 2.5rem">
+      ${b.roboforex.screened} strategies screened · ${b.roboforex.rejectedForMartingale} martingale-flagged ·
+      ${b.roboforex.eligibleCount} cleared every gate. ${esc(board.rankLabel)}.
+    </p>
+    ${roboforexTable(rfRows, board.yieldLabel)}
+    ${
+      lfRows.length
+        ? `<h2 style="margin-top:4rem">Top ${lfRows.length} · LiteFinance</h2>
+    <p class="lede" style="margin:1.25rem 0 2.5rem">
+      LiteFinance publishes no period filter at all — every window returns the same board — so these
+      are all-time figures and belong on this page only. Drawdown is derived from the published
+      curve and is a lower bound.
+    </p>
+    ${litefinanceTable(lfRows)}`
+        : `<p class="risk-note" style="margin-top:2.5rem">
+      LiteFinance is absent from this board on purpose. It exposes no period parameter, so the only
+      figure it publishes is all-time — putting it here would mean labelling an all-time return as a
+      ${esc(board.label.toLowerCase())} one.
+    </p>`
+    }`;
+
+  const ld = [
+    graph(
+      ORG,
+      breadcrumbs([
+        ['Home', '/'],
+        ['Rankings', '/rankings/'],
+        [board.label, board.slug],
+      ]),
+      ...(rfRows.length
+        ? [
+            rankingItemList({
+              id: 'roboforex',
+              name: `${board.label} top ${rfRows.length} RoboForex copy-trading strategies`,
+              description: board.rankLabel,
+              rows: rfRows,
+              brokerName: 'RoboForex',
+              url: board.slug,
+            }),
+          ]
+        : []),
+      ...(lfRows.length
+        ? [
+            rankingItemList({
+              id: 'litefinance',
+              name: `All-time top ${lfRows.length} LiteFinance copy-trading strategies`,
+              description: 'Ranked on all-time return per unit of derived drawdown.',
+              rows: lfRows,
+              brokerName: 'LiteFinance',
+              url: board.slug,
+            }),
+          ]
+        : [])
+    ),
+  ];
+
+  return `${head({
+    title: `${board.label} copy trading rankings | DailyScalper`,
+    description: isDaily
+      ? 'Day-over-day movement in the screened copy-trading rankings, measured from our own dated snapshots. Neither broker publishes a daily return window.'
+      : `${board.label} top ${rfRows.length} screened copy-trading strategies on RoboForex, ranked by return per unit of drawdown. ${board.rankLabel}.`,
+    canonical: `${SITE}${board.slug}`,
+    jsonLd: ld,
+  })}
+${masthead('rankings')}
+
+<section class="hero" style="padding-block:clamp(3rem,7vw,5rem) 2rem">
+  <div class="wrap hero__inner">
+    <p class="eyebrow">Rankings · ${esc(board.label)}</p>
+    <h1>${esc(board.label)} rankings</h1>
+    ${boardNav(board.key)}
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    ${body}
+    ${
+      isDaily
+        ? ''
+        : `<div class="btn-row"><a class="btn btn--primary" href="${esc(LINKS.roboforexSignup())}" rel="sponsored nofollow" target="_blank">Open a RoboForex account</a></div>`
+    }
+  </div>
+</section>
+
+${footer(data.generatedAt)}`;
+}
+
 /* ------------------------------------------------------------------ write */
 
 async function emit(path, html) {
@@ -649,6 +818,10 @@ await emit('rankings/index.html', rankingsPage);
 await emit('methodology/index.html', methodologyPage);
 await emit('partners/index.html', partnersPage);
 await emit('404.html', notFoundPage);
+
+for (const board of BOARDS) {
+  await emit(`${board.slug.slice(1)}index.html`, boardPage(board));
+}
 
 /* --------------------------------------------------- sitemap + llms.txt */
 
@@ -673,6 +846,7 @@ const generated = [
   { url: '/rankings/', freq: 'weekly', priority: '0.9' },
   { url: '/methodology/', freq: 'monthly', priority: '0.7' },
   { url: '/partners/', freq: 'monthly', priority: '0.6' },
+  ...BOARDS.map((b) => ({ url: b.slug, freq: b.key === 'daily' ? 'daily' : 'weekly', priority: '0.8' })),
   { url: '/blog/', freq: 'monthly', priority: '0.6' },
   ...blogMeta.map((b) => ({ url: b.url, freq: 'yearly', priority: '0.4' })),
 ];

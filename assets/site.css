@@ -383,3 +383,43 @@ p { margin: 0 0 1rem; }
   .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
   @keyframes rise { to { opacity: 1; transform: none; } }
 }
+
+/* --------------------------------------------------------------- board nav */
+/* Period switcher on the ranking boards. Scrolls horizontally on narrow
+   screens rather than wrapping, so the set always reads as one control. */
+.board-nav {
+  display: flex;
+  gap: .5rem;
+  margin-top: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: .25rem;
+}
+.board-nav::-webkit-scrollbar { display: none; }
+
+.board-nav a {
+  flex: 0 0 auto;
+  padding: .55rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: .9rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s, background-color .15s;
+}
+.board-nav a span {
+  color: var(--text-faint);
+  font-size: .78rem;
+}
+.board-nav a:hover {
+  border-color: var(--gold);
+  color: var(--text);
+}
+.board-nav a[aria-current='page'] {
+  background: var(--panel-2);
+  border-color: var(--gold);
+  color: var(--text);
+}
+.board-nav a[aria-current='page'] span { color: var(--gold); }

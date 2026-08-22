@@ -7,8 +7,8 @@
  *
  * No API keys, no auth, no dependencies. Run: node scripts/fetch-rankings.mjs
  */
-import { writeFile, mkdir } from 'node:fs/promises';
-import { GATES, PERIOD } from './config.mjs';
+import { writeFile, mkdir, readdir, readFile } from 'node:fs/promises';
+import { GATES, PERIOD, BOARDS, SNAPSHOT_RETENTION_DAYS } from './config.mjs';
 import {
   maxDrawdownFromCurve,
   detectMartingale,
@@ -25,7 +25,7 @@ const UA =
 
 /* ------------------------------------------------------------------ RoboForex */
 
-async function fetchRoboForexPage(offset, limit = 100) {
+async function fetchRoboForexPage(offset, limit = 100, period = PERIOD.roboforex) {
   const res = await fetch('https://roboforex.com/api/copy/getRating', {
     method: 'POST',
     headers: {
@@ -35,7 +35,7 @@ async function fetchRoboForexPage(offset, limit = 100) {
       'user-agent': UA,
     },
     body: JSON.stringify({
-      period: PERIOD.roboforex,
+      period,
       platforms: ['mt4', 'mt5', 'rst'],
       sort: [{ field: 'profit_percent', order: 'desc' }],
       page: { limit, offset },
@@ -47,10 +47,10 @@ async function fetchRoboForexPage(offset, limit = 100) {
   return { entries: json.data.entries ?? [], more: json.data.page?.more };
 }
 
-async function collectRoboForex(maxRows = 500) {
+async function collectRoboForex(maxRows = 500, period = PERIOD.roboforex) {
   const rows = [];
   for (let offset = 0; offset < maxRows; offset += 100) {
-    const { entries, more } = await fetchRoboForexPage(offset);
+    const { entries, more } = await fetchRoboForexPage(offset, 100, period);
     rows.push(...entries);
     if (!more || entries.length === 0) break;
   }
@@ -251,6 +251,77 @@ function summarise(all) {
   };
 }
 
+/* ------------------------------------------------------------- snapshots */
+
+const SNAP_DIR = 'data/snapshots';
+const snapKey = (r) => `${r.broker}:${r.id}`;
+
+/** Today's flagship board, reduced to what a movement calculation needs. */
+function snapshotOf(ranked) {
+  return Object.fromEntries(
+    ranked.map((r) => [snapKey(r), { rank: r.rank, yieldPct: r.yieldPct, score: r.score }])
+  );
+}
+
+async function previousSnapshot(today) {
+  let files;
+  try {
+    files = (await readdir(SNAP_DIR)).filter((f) => f.endsWith('.json')).sort();
+  } catch {
+    return null; // no snapshot directory yet — first ever run
+  }
+  const prior = files.filter((f) => f.slice(0, 10) < today);
+  if (!prior.length) return null;
+  const name = prior[prior.length - 1];
+  try {
+    return JSON.parse(await readFile(`${SNAP_DIR}/${name}`, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Day-over-day movement of the flagship board. Neither broker publishes a daily
+ * window, so this is the only honest daily figure available: how a strategy's
+ * rank and yield changed between two of our own dated observations. Entries with
+ * no prior observation are reported as new, never as a zero change.
+ */
+function dailyMovement(ranked, prev) {
+  if (!prev) return { since: null, comparedTo: null, entries: [] };
+  const before = prev.entries ?? {};
+  const entries = ranked.map((r) => {
+    const was = before[snapKey(r)];
+    return {
+      broker: r.broker,
+      id: r.id,
+      trader: r.trader,
+      strategy: r.strategy,
+      rank: r.rank,
+      yieldPct: r.yieldPct,
+      isNew: !was,
+      rankDelta: was ? was.rank - r.rank : null, // positive = climbed
+      yieldDelta: was ? round(r.yieldPct - was.yieldPct, 2) : null,
+    };
+  });
+  return { since: prev.date, comparedTo: prev.date, entries };
+}
+
+async function pruneSnapshots(today) {
+  let files;
+  try {
+    files = (await readdir(SNAP_DIR)).filter((f) => f.endsWith('.json'));
+  } catch {
+    return;
+  }
+  const cutoff = new Date(Date.parse(today) - SNAPSHOT_RETENTION_DAYS * 86400000)
+    .toISOString()
+    .slice(0, 10);
+  const { unlink } = await import('node:fs/promises');
+  for (const f of files) {
+    if (f.slice(0, 10) < cutoff) await unlink(`${SNAP_DIR}/${f}`).catch(() => {});
+  }
+}
+
 async function main() {
   const errors = [];
   let rf = [];
@@ -273,19 +344,56 @@ async function main() {
     process.exit(1);
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+
+  /* Extra boards. Each is a separate RoboForex period; LiteFinance has no period
+     parameter at all, so it joins the all-time board only. A board that fails to
+     fetch is omitted rather than published empty. */
+  const boards = {};
+  for (const board of BOARDS) {
+    if (board.source !== 'roboforex') continue;
+    try {
+      const rows = (await collectRoboForex(500, board.roboforexPeriod)).map(evaluateRoboForex);
+      boards[board.key] = {
+        label: board.label,
+        roboforex: summarise(rows),
+        ...(board.includeLiteFinance && lf.length ? { litefinance: summarise(lf) } : {}),
+      };
+    } catch (e) {
+      errors.push(`board ${board.key}: ${e.message}`);
+    }
+  }
+
+  const flagship = summarise(rf);
+  const flagshipLf = summarise(lf);
+  const prev = await previousSnapshot(today);
+
   const payload = {
     generatedAt: new Date().toISOString(),
     methodologyVersion: 2,
     gates: GATES,
     brokers: {
-      roboforex: summarise(rf),
-      litefinance: summarise(lf),
+      roboforex: flagship,
+      litefinance: flagshipLf,
     },
+    boards,
+    daily: dailyMovement([...flagship.ranked, ...flagshipLf.ranked], prev),
     errors,
   };
 
   await mkdir('data', { recursive: true });
   await writeFile('data/rankings.json', JSON.stringify(payload, null, 2) + '\n');
+
+  await mkdir(SNAP_DIR, { recursive: true });
+  await writeFile(
+    `${SNAP_DIR}/${today}.json`,
+    JSON.stringify(
+      { date: today, entries: snapshotOf([...flagship.ranked, ...flagshipLf.ranked]) },
+      null,
+      2
+    ) + '\n'
+  );
+  await pruneSnapshots(today);
 
   for (const [name, b] of Object.entries(payload.brokers)) {
     console.log(
@@ -294,6 +402,18 @@ async function main() {
       ).padStart(3)} | martingale-flagged ${String(b.rejectedForMartingale).padStart(3)} | published ${b.ranked.length}`
     );
   }
+  for (const [key, b] of Object.entries(boards)) {
+    console.log(
+      `board ${key.padEnd(10)} roboforex ${String(b.roboforex.ranked.length).padStart(2)} published${
+        b.litefinance ? ` | litefinance ${b.litefinance.ranked.length}` : ''
+      }`
+    );
+  }
+  console.log(
+    payload.daily.since
+      ? `daily movement vs ${payload.daily.since} (${payload.daily.entries.length} tracked)`
+      : `daily movement: no prior snapshot — tracking starts ${today}`
+  );
   if (errors.length) console.warn('Warnings:', errors.join('; '));
 }
 
