@@ -98,6 +98,7 @@ export function masthead(active = '') {
     <nav>
       ${link('/rankings/', 'Rankings', 'rankings')}
       ${link('/methodology/', 'Methodology', 'methodology')}
+      ${link('/blog/', 'Learn', 'blog')}
       ${link('/partners/', 'Earn as a Partner', 'partners')}
     </nav>
   </div>
@@ -124,6 +125,15 @@ export function footer(generatedAt) {
         <ul>
           <li><a href="${LINKS.roboforexSignup()}" rel="sponsored nofollow" target="_blank">RoboForex</a></li>
           <li><a href="${LINKS.litefinanceSignup()}" rel="sponsored nofollow" target="_blank">LiteFinance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/blog/">Forex &amp; copy trading basics</a></li>
+          <li><a href="/blog/day-001-what-is-forex/">What is forex?</a></li>
+          <li><a href="/blog/day-022-leverage-explained/">Leverage explained</a></li>
+          <li><a href="/blog/day-026-drawdown/">Understanding drawdown</a></li>
         </ul>
       </div>
       <div>
