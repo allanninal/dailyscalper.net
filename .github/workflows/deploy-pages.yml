@@ -1,0 +1,46 @@
+name: Deploy to Pages
+
+# The legacy branch-based Pages builder stopped firing for this repo after
+# 2026-06-04, so pushes to main no longer publish. This deploys explicitly
+# instead of relying on that trigger.
+#
+# Requires: Settings -> Pages -> Source = "GitHub Actions".
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Called directly by weekly-rankings.yml. Its commit is pushed with the
+  # default GITHUB_TOKEN, and GitHub does not fire `push` workflows from those
+  # pushes — so the weekly rebuild must invoke this deploy explicitly.
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      # The site is already static in the repo root — nothing to compile here.
+      # data/rankings.json and the generated pages are committed by the weekly
+      # rankings workflow.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
