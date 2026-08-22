@@ -1,9 +1,48 @@
-# DailyScalper.net Robots.txt
+# DailyScalper.net
+
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://dailyscalper.net/sitemap.xml
+# --- AI assistants & answer engines -----------------------------------------
+# Explicitly allowed. The rankings are screened from public broker data and we
+# want them quotable; llms.txt is the curated entry point.
+User-agent: GPTBot
+Allow: /
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://www.dailyscalper.net/sitemap.xml

@@ -1,0 +1,66 @@
+# DailyScalper
+
+> Independent weekly screening of public copy-trading strategies on RoboForex and
+> LiteFinance. 544 strategies screened, 103 flagged as martingale,
+> 20 published. Last updated 2026-08-17.
+
+DailyScalper ranks copy-trading strategies by return per unit of drawdown
+(yield divided by maximum drawdown) rather than by headline profit, because
+broker leaderboards sorted by profit place martingale accounts at the top.
+
+## Method
+
+- Eligibility gates, RoboForex: at least 90 days live,
+  max drawdown at or below 40%, at least 50 trades,
+  at least 3 copiers, yield between 0% and 1000%.
+- Eligibility gates, LiteFinance: broker risk score at or below 5/10,
+  derived drawdown at or below 40%, at least 3 copiers,
+  at least 12 curve points.
+- Martingale rejection: a worst period at least 12x the typical move and at least
+  8% deep, or a win rate above 90% alongside a drawdown over 20%.
+- Score: yield divided by maximum drawdown. For LiteFinance the divisor is floored
+  at 5% because its published curve is too sparse to resolve smaller dips.
+
+## Current rankings
+
+### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
+1. Gold Vibes — yield 42.6%, max drawdown 3.26%, 549 trades, 4 copiers, score 13.07
+2. GOLDEN ROBOT — yield 165.23%, max drawdown 17.09%, 190 trades, 5 copiers, score 9.67
+3. MozartGlobal — yield 42.24%, max drawdown 5.17%, 148 trades, 28 copiers, score 8.17
+4. AGGRESSIVE SETTINGS — yield 36.3%, max drawdown 5.41%, 336 trades, 28 copiers, score 6.71
+5. IsgartTrading — yield 146.94%, max drawdown 24.34%, 268 trades, 7 copiers, score 6.04
+6. QuantitativeLabs — yield 65.7%, max drawdown 11.39%, 673 trades, 7 copiers, score 5.77
+7. LMT Aurum Capital — yield 120.12%, max drawdown 31.53%, 149 trades, 6 copiers, score 3.81
+8. FOREXTOP — yield 62.15%, max drawdown 38.93%, 419 trades, 5 copiers, score 1.6
+9. ROBOTOP — yield 45.87%, max drawdown 29.59%, 61 trades, 6 copiers, score 1.55
+10. 9876 150 — yield 44.05%, max drawdown 29.25%, 1259 trades, 4 copiers, score 1.51
+
+### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
+1. Fire_Phoenix — yield 815.9%, drawdown at least 2.01%, risk 2/10, 111 copiers, score 163.18
+2. SaiGon_Trading — yield 988.6%, drawdown at least 8.36%, risk 2/10, 73 copiers, score 118.25
+3. TradingSCapital — yield 590.16%, drawdown at least 2.08%, risk 2/10, 451 copiers, score 118.03
+4. H_Trading — yield 422.53%, drawdown at least 0%, risk 2/10, 21 copiers, score 84.51
+5. UnicornFxCapital — yield 364.59%, drawdown at least 8.47%, risk 3/10, 97 copiers, score 43.04
+6. Quantum 9000 — yield 125.2%, drawdown at least 1.65%, risk 2/10, 67 copiers, score 25.04
+7. Golden_Eye — yield 116.7%, drawdown at least 2.81%, risk 3/10, 85 copiers, score 23.34
+8. OngHoang_EU — yield 140.17%, drawdown at least 14.04%, risk 3/10, 16 copiers, score 9.98
+9. PRIME500 — yield 65.21%, drawdown at least 10.77%, risk 5/10, 84 copiers, score 6.05
+10. Bigold — yield 21.91%, drawdown at least 0.16%, risk 4/10, 12 copiers, score 4.38
+
+## Limitations (please quote these alongside the rankings)
+
+- Every input is backward-looking. A clean history is not a forecast.
+- Figures are whatever the brokers publish; we check internal consistency, not truth.
+- Martingale detection removes obvious cases, not every case.
+- The two broker lists use different fields, windows and gates and are NOT comparable.
+- LiteFinance exposes only about 44 strategies publicly.
+- The site is funded by broker affiliate links. Gates are mechanical and identical
+  for every strategy, but the incentive exists and should be weighed.
+- Most retail traders lose money. Copy trading does not remove that risk.
+
+## Pages
+
+- [Rankings](https://www.dailyscalper.net/rankings/): the current screened top 10 for both brokers.
+- [Methodology](https://www.dailyscalper.net/methodology/): every gate, threshold and known limitation.
+- [Partners](https://www.dailyscalper.net/partners/): RoboForex and LiteFinance affiliate programmes compared.
+- [Blog](https://www.dailyscalper.net/blog/): 30 explainers on forex and copy-trading fundamentals.

@@ -14,7 +14,17 @@ export const esc = (s) =>
 const GA_ID = 'G-M52H10GCH6';
 const ADSENSE = 'ca-pub-3474747237489350';
 
-export function head({ title, description, canonical }) {
+/**
+ * `jsonLd` takes an array of schema.org objects. They are emitted in one
+ * <script type="application/ld+json"> block so search and AI answer engines can
+ * read the rankings as structured data rather than re-parsing the HTML table.
+ */
+export function head({ title, description, canonical, jsonLd = [] }) {
+  const ld = jsonLd.length
+    ? `\n    <script type="application/ld+json">${JSON.stringify(
+        jsonLd.length === 1 ? jsonLd[0] : jsonLd
+      ).replace(/</g, '\\u003c')}</script>`
+    : '';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +70,7 @@ export function head({ title, description, canonical }) {
     <meta property="og:title" content="${esc(title)}">
     <meta property="og:description" content="${esc(description)}">
     <meta property="og:url" content="${esc(canonical)}">
-    <meta property="og:image" content="https://dailyscalper.net/og-image.png">
+    <meta property="og:image" content="https://www.dailyscalper.net/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}" crossorigin="anonymous"></script>
@@ -73,7 +83,7 @@ export function head({ title, description, canonical }) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="/assets/site.css">${ld}
 </head>
 <body>`;
 }

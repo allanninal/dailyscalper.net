@@ -5,11 +5,11 @@
  * Every number that reaches a page comes from the JSON. Nothing is hand-written,
  * so the site cannot claim a figure the screening did not actually produce.
  */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
-import { GATES, LINKS, AFFILIATE } from './config.mjs';
+import { GATES, LINKS, AFFILIATE, MARTINGALE } from './config.mjs';
 
-const SITE = 'https://dailyscalper.net';
+const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
 const rf = data.brokers.roboforex;
 const lf = data.brokers.litefinance;
@@ -27,6 +27,75 @@ const updated = new Date(data.generatedAt).toLocaleDateString('en-GB', {
   month: 'long',
   year: 'numeric',
   timeZone: 'UTC',
+});
+
+/* ----------------------------------------------------------------- schema.org */
+
+const ORG = {
+  '@type': 'Organization',
+  '@id': `${SITE}/#org`,
+  name: 'DailyScalper',
+  url: `${SITE}/`,
+  logo: `${SITE}/og-image.png`,
+  description:
+    'Independent screening of public copy-trading strategies on RoboForex and LiteFinance.',
+};
+
+const WEBSITE = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#site`,
+  url: `${SITE}/`,
+  name: 'DailyScalper',
+  publisher: { '@id': `${SITE}/#org` },
+};
+
+const graph = (...nodes) => ({ '@context': 'https://schema.org', '@graph': nodes });
+
+const breadcrumbs = (trail) => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map(([name, url], i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name,
+    item: `${SITE}${url}`,
+  })),
+});
+
+/**
+ * The ranking table as an ItemList. This is the part answer engines quote, so
+ * every published figure is repeated here in machine-readable form rather than
+ * left for them to scrape out of the <td>s.
+ */
+const rankingItemList = ({ id, name, description, rows, brokerName, url }) => ({
+  '@type': 'ItemList',
+  '@id': `${SITE}${url}#${id}`,
+  name,
+  description,
+  numberOfItems: rows.length,
+  itemListOrder: 'https://schema.org/ItemListOrderDescending',
+  itemListElement: rows.map((r) => ({
+    '@type': 'ListItem',
+    position: r.rank,
+    name: r.strategy || r.trader,
+    item: {
+      '@type': 'FinancialProduct',
+      name: r.strategy || r.trader,
+      description: `Copy-trading strategy on ${brokerName}. Yield ${r.yieldPct}%, maximum drawdown ${r.drawdownPct}%, ${r.copiers} copiers.`,
+      provider: { '@type': 'Organization', name: brokerName },
+      ...(r.commissionPct != null
+        ? { feesAndCommissionsSpecification: `${r.commissionPct}% performance fee` }
+        : {}),
+    },
+  })),
+});
+
+const faq = (pairs) => ({
+  '@type': 'FAQPage',
+  mainEntity: pairs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
 });
 
 /* ------------------------------------------------------------------ tables */
@@ -121,6 +190,36 @@ const indexPage = `${head({
   title: 'DailyScalper — Copy trading rankings, screened weekly',
   description: `Every week we screen ${totalScreened} live copy-trading strategies on RoboForex and LiteFinance, throw out the martingale accounts, and publish the ${totalPublished} that survive. Methodology published in full.`,
   canonical: `${SITE}/`,
+  jsonLd: [
+    graph(
+      ORG,
+      WEBSITE,
+      {
+        '@type': 'CollectionPage',
+        '@id': `${SITE}/#page`,
+        url: `${SITE}/`,
+        name: 'Copy trading rankings, screened weekly',
+        isPartOf: { '@id': `${SITE}/#site` },
+        dateModified: data.generatedAt,
+      },
+      rankingItemList({
+        id: 'roboforex',
+        name: `Top ${rf.ranked.length} screened RoboForex copy-trading strategies`,
+        description: `${rf.screened} RoboForex strategies screened, ${rf.rejectedForMartingale} flagged as martingale, top ${rf.ranked.length} ranked by return per unit of drawdown.`,
+        rows: rf.ranked,
+        brokerName: 'RoboForex',
+        url: '/',
+      }),
+      rankingItemList({
+        id: 'litefinance',
+        name: `Top ${lf.ranked.length} screened LiteFinance copy-trading strategies`,
+        description: `${lf.screened} LiteFinance strategies screened, top ${lf.ranked.length} ranked by return per unit of drawdown.`,
+        rows: lf.ranked,
+        brokerName: 'LiteFinance',
+        url: '/',
+      })
+    ),
+  ],
 })}
 ${masthead('home')}
 
@@ -241,6 +340,31 @@ const rankingsPage = `${head({
   title: `Top 10 copy trading strategies — week of ${updated} | DailyScalper`,
   description: `This week's screened top 10 on RoboForex and LiteFinance. ${totalScreened} strategies checked, ${totalFlagged} flagged as martingale, ${totalPublished} published.`,
   canonical: `${SITE}/rankings/`,
+  jsonLd: [
+    graph(
+      ORG,
+      breadcrumbs([
+        ['Home', '/'],
+        ['Rankings', '/rankings/'],
+      ]),
+      rankingItemList({
+        id: 'roboforex',
+        name: `Top ${rf.ranked.length} RoboForex copy-trading strategies`,
+        description: `Screened ${rf.screened} strategies; ranked by yield divided by maximum drawdown.`,
+        rows: rf.ranked,
+        brokerName: 'RoboForex',
+        url: '/rankings/',
+      }),
+      rankingItemList({
+        id: 'litefinance',
+        name: `Top ${lf.ranked.length} LiteFinance copy-trading strategies`,
+        description: `Screened ${lf.screened} strategies; drawdown derived from the published equity curve.`,
+        rows: lf.ranked,
+        brokerName: 'LiteFinance',
+        url: '/rankings/',
+      })
+    ),
+  ],
 })}
 ${masthead('rankings')}
 
@@ -309,6 +433,37 @@ const methodologyPage = `${head({
   description:
     'The full ranking methodology: eligibility gates, martingale detection, scoring, data sources and known limitations.',
   canonical: `${SITE}/methodology/`,
+  jsonLd: [
+    graph(
+      ORG,
+      breadcrumbs([
+        ['Home', '/'],
+        ['Methodology', '/methodology/'],
+      ]),
+      faq([
+        [
+          'How are the copy trading strategies ranked?',
+          `Each strategy is scored as yield divided by maximum drawdown — return per unit of drawdown — after clearing every eligibility gate. A strategy that returned 40% through a 3% decline ranks above one that returned 160% through a 40% decline.`,
+        ],
+        [
+          'What is martingale and how is it detected?',
+          `A martingale strategy adds to losing positions instead of closing them, so losses stay off the equity curve until the position is forced out. We reject a strategy when its worst period is at least ${MARTINGALE.cliffRatio}x the typical move and at least ${MARTINGALE.minCliffDropPct}% deep, or when a win rate above ${Math.round(MARTINGALE.suspiciousWinRate * 100)}% coincides with a drawdown over ${MARTINGALE.withDrawdownPct}%.`,
+        ],
+        [
+          'Why are the RoboForex and LiteFinance lists not comparable?',
+          'RoboForex publishes an official maximum drawdown, trade count and copier count over a rolling 3-month window. LiteFinance publishes an all-time return and a 1-10 risk score but no drawdown and no trade count, so drawdown there is derived from the published equity curve and is a lower bound. The two lists are scored on different evidence.',
+        ],
+        [
+          'How is DailyScalper paid?',
+          'Through broker affiliate links. The eligibility gates are mechanical and applied identically to every strategy, and the full methodology is published, but you should weigh the incentive yourself.',
+        ],
+        [
+          'How often are the rankings updated?',
+          'The screening is re-run and the site rebuilt every week from each broker\u2019s public data.',
+        ],
+      ])
+    ),
+  ],
 })}
 ${masthead('methodology')}
 
@@ -404,6 +559,15 @@ const partnersPage = `${head({
   description:
     'Side-by-side comparison of the RoboForex and LiteFinance affiliate programmes: revenue share, per-lot payouts, sub-partner tiers and payout mechanics.',
   canonical: `${SITE}/partners/`,
+  jsonLd: [
+    graph(
+      ORG,
+      breadcrumbs([
+        ['Home', '/'],
+        ['Partners', '/partners/'],
+      ])
+    ),
+  ],
 })}
 ${masthead('partners')}
 
@@ -486,21 +650,115 @@ await emit('methodology/index.html', methodologyPage);
 await emit('partners/index.html', partnersPage);
 await emit('404.html', notFoundPage);
 
-const urls = ['/', '/rankings/', '/methodology/', '/partners/'];
+/* --------------------------------------------------- sitemap + llms.txt */
+
+// The blog is static HTML that predates this build script, so it is discovered
+// from disk rather than generated. Absent from the sitemap it is simply lost:
+// the posts are already public and already carry correct canonicals.
+const blogPosts = (await readdir('blog', { withFileTypes: true }))
+  .filter((d) => d.isDirectory() && d.name.startsWith('day-'))
+  .map((d) => d.name)
+  .sort();
+
+const blogMeta = await Promise.all(
+  blogPosts.map(async (slug) => {
+    const html = await readFile(`blog/${slug}/index.html`, 'utf8');
+    const title = (html.match(/<title>([^<]*)<\/title>/) ?? [])[1] ?? slug;
+    return { slug, url: `/blog/${slug}/`, title: title.split('|')[0].trim() };
+  })
+);
+
+const generated = [
+  { url: '/', freq: 'weekly', priority: '1.0' },
+  { url: '/rankings/', freq: 'weekly', priority: '0.9' },
+  { url: '/methodology/', freq: 'monthly', priority: '0.7' },
+  { url: '/partners/', freq: 'monthly', priority: '0.6' },
+  { url: '/blog/', freq: 'monthly', priority: '0.6' },
+  ...blogMeta.map((b) => ({ url: b.url, freq: 'yearly', priority: '0.4' })),
+];
+
 await emit(
   'sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
+${generated
   .map(
     (u) =>
-      `  <url><loc>${SITE}${u}</loc><lastmod>${data.generatedAt.slice(0, 10)}</lastmod><changefreq>${
-        u === '/' || u === '/rankings/' ? 'weekly' : 'monthly'
-      }</changefreq></url>`
+      `  <url><loc>${SITE}${u.url}</loc><lastmod>${data.generatedAt.slice(
+        0,
+        10
+      )}</lastmod><changefreq>${u.freq}</changefreq><priority>${u.priority}</priority></url>`
   )
   .join('\n')}
 </urlset>
 `
 );
+
+/**
+ * llms.txt — the curated entry point for AI answer engines. Same facts as the
+ * pages, but stated once, in order, without the markup they would otherwise
+ * have to strip. Crucially it states the limitations too: an engine that quotes
+ * the rankings should also be able to quote what they do not prove.
+ */
+const llms = `# DailyScalper
+
+> Independent weekly screening of public copy-trading strategies on RoboForex and
+> LiteFinance. ${totalScreened} strategies screened, ${totalFlagged} flagged as martingale,
+> ${totalPublished} published. Last updated ${data.generatedAt.slice(0, 10)}.
+
+DailyScalper ranks copy-trading strategies by return per unit of drawdown
+(yield divided by maximum drawdown) rather than by headline profit, because
+broker leaderboards sorted by profit place martingale accounts at the top.
+
+## Method
+
+- Eligibility gates, RoboForex: at least ${GATES.roboforex.minTrackRecordDays} days live,
+  max drawdown at or below ${GATES.roboforex.maxDrawdownPct}%, at least ${GATES.roboforex.minDeals} trades,
+  at least ${GATES.roboforex.minCopiers} copiers, yield between ${GATES.roboforex.minYieldPct}% and ${GATES.roboforex.maxYieldPct}%.
+- Eligibility gates, LiteFinance: broker risk score at or below ${GATES.litefinance.maxRiskScore}/10,
+  derived drawdown at or below ${GATES.litefinance.maxDrawdownPct}%, at least ${GATES.litefinance.minCopiers} copiers,
+  at least ${GATES.litefinance.minCurvePoints} curve points.
+- Martingale rejection: a worst period at least ${MARTINGALE.cliffRatio}x the typical move and at least
+  ${MARTINGALE.minCliffDropPct}% deep, or a win rate above ${Math.round(MARTINGALE.suspiciousWinRate * 100)}% alongside a drawdown over ${MARTINGALE.withDrawdownPct}%.
+- Score: yield divided by maximum drawdown. For LiteFinance the divisor is floored
+  at 5% because its published curve is too sparse to resolve smaller dips.
+
+## Current rankings
+
+### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
+${rf.ranked
+  .map(
+    (r) =>
+      `${r.rank}. ${r.strategy || r.trader} — yield ${r.yieldPct}%, max drawdown ${r.drawdownPct}%, ${r.trades} trades, ${r.copiers} copiers, score ${r.score}`
+  )
+  .join('\n')}
+
+### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
+${lf.ranked
+  .map(
+    (r) =>
+      `${r.rank}. ${r.trader} — yield ${r.yieldPct}%, drawdown at least ${r.drawdownPct}%, risk ${r.riskScore}/10, ${r.copiers} copiers, score ${r.score}`
+  )
+  .join('\n')}
+
+## Limitations (please quote these alongside the rankings)
+
+- Every input is backward-looking. A clean history is not a forecast.
+- Figures are whatever the brokers publish; we check internal consistency, not truth.
+- Martingale detection removes obvious cases, not every case.
+- The two broker lists use different fields, windows and gates and are NOT comparable.
+- LiteFinance exposes only about ${lf.screened} strategies publicly.
+- The site is funded by broker affiliate links. Gates are mechanical and identical
+  for every strategy, but the incentive exists and should be weighed.
+- Most retail traders lose money. Copy trading does not remove that risk.
+
+## Pages
+
+- [Rankings](${SITE}/rankings/): the current screened top 10 for both brokers.
+- [Methodology](${SITE}/methodology/): every gate, threshold and known limitation.
+- [Partners](${SITE}/partners/): RoboForex and LiteFinance affiliate programmes compared.
+- [Blog](${SITE}/blog/): ${blogMeta.length} explainers on forex and copy-trading fundamentals.
+`;
+await emit('llms.txt', llms);
 
 console.log('Build complete.');
