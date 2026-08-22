@@ -423,3 +423,101 @@ p { margin: 0 0 1rem; }
   color: var(--text);
 }
 .board-nav a[aria-current='page'] span { color: var(--gold); }
+
+/* ------------------------------------------------------------------- blog */
+/* Article typography is scoped under .post so the prose cannot collide with
+   the ranking pages — notably `.hero`, which is a full-bleed section there but
+   arrived from the old blog template as a <figure> class. */
+.post__wrap { max-width: 72ch; }
+.post__head { padding-block: clamp(3rem, 7vw, 5rem) 1.5rem; }
+.post__head h1 { margin-bottom: 1.25rem; }
+.post__head h1 em { font-style: italic; color: var(--gold); }
+.post__head .lede { color: var(--text-dim); font-size: 1.15rem; }
+
+.post__hero {
+  margin: 0 0 3rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--panel);
+}
+.post__hero img { display: block; width: 100%; height: auto; }
+
+.post__body { font-size: 1.05rem; line-height: 1.75; color: var(--text-dim); }
+.post__body h2 {
+  margin: 3rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  color: var(--text);
+  line-height: 1.25;
+}
+.post__body p { margin: 0 0 1.35rem; }
+.post__body strong { color: var(--text); font-weight: 600; }
+.post__body em { font-style: italic; }
+.post__body ul { margin: 0 0 1.5rem; padding-left: 1.25rem; }
+.post__body li { margin-bottom: 0.6rem; }
+.post__body li::marker { color: var(--gold); }
+.post__body hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+.post__body a { color: var(--gold); }
+
+.post__cta {
+  margin: 3.5rem 0 0;
+  padding: 2rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.post__cta h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.75rem; }
+.post__cta p { color: var(--text-dim); margin-bottom: 1.5rem; }
+
+.post__pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
+}
+.post__pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.post__pager-link:hover { border-color: var(--gold); }
+.post__pager-link:last-child { text-align: right; }
+.post__pager-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.post__pager-title { color: var(--text); font-weight: 500; }
+
+/* --- blog index --- */
+.post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; counter-reset: none; }
+.post-list li { margin: 0; }
+.post-list a {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.post-list a:hover { border-color: var(--gold); background: var(--panel); }
+.post-list img { width: 96px; height: 96px; object-fit: cover; border-radius: 6px; display: block; }
+.post-list h3 { font-family: var(--serif); font-size: 1.25rem; margin: 0.15rem 0 0.4rem; color: var(--text); }
+.post-list .dim { font-size: 0.92rem; margin: 0; }
+
+@media (max-width: 640px) {
+  .post__pager { grid-template-columns: 1fr; }
+  .post__pager-link:last-child { text-align: left; }
+  .post-list a { grid-template-columns: 64px 1fr; gap: 0.9rem; }
+  .post-list img { width: 64px; height: 64px; }
+}

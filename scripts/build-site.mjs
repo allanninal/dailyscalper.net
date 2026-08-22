@@ -935,4 +935,8 @@ ${lf.ranked
 `;
 await emit('llms.txt', llms);
 
+// The blog renders from data/blog.json through the same partials as everything
+// else; keep it in this build so a template change can never leave it behind.
+await import('./build-blog.mjs');
+
 console.log('Build complete.');
