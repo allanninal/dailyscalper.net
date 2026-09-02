@@ -24,28 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. Captain Snail 3 — yield 44.7%, max drawdown 2.26%, 51 trades, 11 copiers, score 19.78
-2. GOLDEN ROBOT — yield 202.96%, max drawdown 10.67%, 193 trades, 8 copiers, score 19.02
-3. Forex Take e Stop — yield 220.92%, max drawdown 14.32%, 192 trades, 11 copiers, score 15.43
+1. Captain Snail 3 — yield 42.86%, max drawdown 2.26%, 51 trades, 11 copiers, score 18.96
+2. GOLDEN ROBOT — yield 197.86%, max drawdown 10.67%, 200 trades, 8 copiers, score 18.54
+3. Forex Take e Stop — yield 220.92%, max drawdown 14.32%, 192 trades, 12 copiers, score 15.43
 4. TradeWithEase — yield 73.77%, max drawdown 7.94%, 88 trades, 85 copiers, score 9.29
-5. Aura Gold EA — yield 34.27%, max drawdown 3.94%, 120 trades, 8 copiers, score 8.7
+5. Aura Gold EA — yield 34.01%, max drawdown 3.94%, 123 trades, 8 copiers, score 8.63
 6. FINTEX Premium — yield 151.88%, max drawdown 21.88%, 75 trades, 94 copiers, score 6.94
-7. MozartGlobal — yield 73.66%, max drawdown 12.26%, 284 trades, 28 copiers, score 6.01
-8. FC Gold Trend — yield 47.53%, max drawdown 8.27%, 221 trades, 5 copiers, score 5.75
-9. Emerald — yield 69.49%, max drawdown 12.21%, 93 trades, 3 copiers, score 5.69
-10. IsgartTrading — yield 118.42%, max drawdown 24.34%, 219 trades, 3 copiers, score 4.87
+7. MozartGlobal — yield 77.36%, max drawdown 12.26%, 299 trades, 28 copiers, score 6.31
+8. FC Gold Trend — yield 45.73%, max drawdown 8.27%, 228 trades, 5 copiers, score 5.53
+9. Emerald — yield 62.92%, max drawdown 12.21%, 93 trades, 3 copiers, score 5.15
+10. IsgartTrading — yield 117.73%, max drawdown 24.34%, 223 trades, 3 copiers, score 4.84
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. Fire_Phoenix — yield 850.27%, drawdown at least 1.66%, risk 4/10, 104 copiers, score 170.05
-2. EkoCapital — yield 3960.05%, drawdown at least 25.01%, risk 4/10, 4 copiers, score 158.34
-3. TradingSCapital — yield 587.31%, drawdown at least 0.12%, risk 2/10, 445 copiers, score 117.46
-4. SaiGon_Trading — yield 1007.9%, drawdown at least 9.59%, risk 2/10, 83 copiers, score 105.1
-5. sungrouptb — yield 263.19%, drawdown at least 4.62%, risk 2/10, 3 copiers, score 52.64
-6. UnicornFxCapital — yield 374.96%, drawdown at least 7.19%, risk 2/10, 88 copiers, score 52.15
-7. Golden_Eye — yield 141.89%, drawdown at least 1.89%, risk 3/10, 92 copiers, score 28.38
-8. Blue_Dragon — yield 130.06%, drawdown at least 2.72%, risk 2/10, 19 copiers, score 26.01
-9. Quantum 9000 — yield 126.08%, drawdown at least 0.84%, risk 2/10, 68 copiers, score 25.22
-10. OngHoang_EU — yield 138.09%, drawdown at least 12.04%, risk 3/10, 17 copiers, score 11.47
+1. Fire_Phoenix — yield 850.27%, drawdown at least 2.66%, risk 4/10, 104 copiers, score 170.05
+2. TradingSCapital — yield 585.01%, drawdown at least 0.52%, risk 2/10, 434 copiers, score 117
+3. SaiGon_Trading — yield 1007.89%, drawdown at least 8.88%, risk 2/10, 86 copiers, score 113.5
+4. UnicornFxCapital — yield 375.93%, drawdown at least 7.07%, risk 2/10, 88 copiers, score 53.17
+5. Golden_Eye — yield 141.89%, drawdown at least 1.86%, risk 3/10, 92 copiers, score 28.38
+6. Blue_Dragon — yield 130.9%, drawdown at least 2.95%, risk 2/10, 19 copiers, score 26.18
+7. Quantum 9000 — yield 122.67%, drawdown at least 0.66%, risk 2/10, 68 copiers, score 24.53
+8. OngHoang_EU — yield 139.56%, drawdown at least 11.57%, risk 3/10, 17 copiers, score 12.06
+9. PRIME500 — yield 65.1%, drawdown at least 6.51%, risk 2/10, 88 copiers, score 10
+10. Bigold — yield 49.09%, drawdown at least 4.48%, risk 5/10, 12 copiers, score 9.82
 
 ## Limitations (please quote these alongside the rankings)
 
