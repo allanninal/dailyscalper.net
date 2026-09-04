@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-04",
+  "entries": {
+    "litefinance:1613066": {
+      "rank": 1,
+      "yieldPct": 850.27,
+      "score": 170.05
+    },
+    "litefinance:2290559": {
+      "rank": 2,
+      "yieldPct": 1020.79,
+      "score": 126.34
+    },
+    "litefinance:3671829": {
+      "rank": 3,
+      "yieldPct": 3943.68,
+      "score": 124.84
+    },
+    "litefinance:1143035": {
+      "rank": 4,
+      "yieldPct": 589.64,
+      "score": 117.93
+    },
+    "litefinance:1256589": {
+      "rank": 5,
+      "yieldPct": 377,
+      "score": 42.45
+    },
+    "litefinance:2129983": {
+      "rank": 6,
+      "yieldPct": 141.89,
+      "score": 28.38
+    },
+    "litefinance:1216727": {
+      "rank": 7,
+      "yieldPct": 132.06,
+      "score": 26.41
+    },
+    "litefinance:2388096": {
+      "rank": 8,
+      "yieldPct": 128.15,
+      "score": 25.63
+    },
+    "litefinance:2259188": {
+      "rank": 9,
+      "yieldPct": 60.58,
+      "score": 12.12
+    },
+    "litefinance:2187036": {
+      "rank": 10,
+      "yieldPct": 142.98,
+      "score": 10.51
+    }
+  }
+}
