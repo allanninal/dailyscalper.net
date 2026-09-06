@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 545 strategies screened, 158 flagged as martingale,
-> 20 published. Last updated 2026-09-05.
+> LiteFinance. 545 strategies screened, 139 flagged as martingale,
+> 20 published. Last updated 2026-09-06.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,28 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. GOLDEN ROBOT — yield 157.48%, max drawdown 10.67%, 184 trades, 15 copiers, score 14.76
-2. Aura Gold EA — yield 29.46%, max drawdown 2.82%, 114 trades, 10 copiers, score 10.45
+1. GOLDEN ROBOT — yield 147.25%, max drawdown 10.67%, 176 trades, 15 copiers, score 13.8
+2. Aura Gold EA — yield 27.26%, max drawdown 2.82%, 110 trades, 11 copiers, score 9.67
 3. Forex Take e Stop — yield 43.02%, max drawdown 4.79%, 154 trades, 12 copiers, score 8.98
 4. FINTEX Premium — yield 155.08%, max drawdown 21.88%, 78 trades, 94 copiers, score 7.09
-5. FC Gold Trend — yield 46.76%, max drawdown 8.27%, 199 trades, 5 copiers, score 5.65
-6. Medium risk  — yield 62.87%, max drawdown 12.03%, 686 trades, 40 copiers, score 5.23
-7. MozartGlobal — yield 63.94%, max drawdown 12.26%, 294 trades, 28 copiers, score 5.22
-8. average risk  — yield 46.51%, max drawdown 9.95%, 686 trades, 43 copiers, score 4.67
-9. TradeWithEase — yield 27.97%, max drawdown 7.94%, 68 trades, 87 copiers, score 3.52
-10. ED FINANCIALS — yield 54.43%, max drawdown 24.47%, 444 trades, 7 copiers, score 2.22
+5. FC Gold Trend — yield 43.69%, max drawdown 8.27%, 191 trades, 5 copiers, score 5.28
+6. Medium risk  — yield 55.37%, max drawdown 12.03%, 643 trades, 41 copiers, score 4.6
+7. average risk  — yield 42.61%, max drawdown 9.95%, 644 trades, 46 copiers, score 4.28
+8. MozartGlobal — yield 50.24%, max drawdown 12.26%, 268 trades, 28 copiers, score 4.1
+9. Diversified Investor — yield 48.44%, max drawdown 13.61%, 299 trades, 3 copiers, score 3.56
+10. TradeWithEase — yield 27.97%, max drawdown 7.94%, 68 trades, 87 copiers, score 3.52
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. Fire_Phoenix — yield 850.27%, drawdown at least 2.5%, risk 4/10, 102 copiers, score 170.05
-2. SaiGon_Trading — yield 1020.79%, drawdown at least 7.4%, risk 2/10, 81 copiers, score 137.94
-3. EkoCapital — yield 3943.68%, drawdown at least 29.77%, risk 3/10, 4 copiers, score 132.47
-4. TradingSCapital — yield 589.64%, drawdown at least 0%, risk 2/10, 450 copiers, score 117.93
-5. UnicornFxCapital — yield 377%, drawdown at least 9.34%, risk 2/10, 90 copiers, score 40.36
-6. Golden_Eye — yield 141.89%, drawdown at least 1.61%, risk 3/10, 94 copiers, score 28.38
-7. Blue_Dragon — yield 132.06%, drawdown at least 3.67%, risk 2/10, 19 copiers, score 26.41
-8. Quantum 9000 — yield 128.15%, drawdown at least 0.66%, risk 2/10, 68 copiers, score 25.63
+1. Fire_Phoenix — yield 850.27%, drawdown at least 2.42%, risk 4/10, 102 copiers, score 170.05
+2. SaiGon_Trading — yield 1020.78%, drawdown at least 6.56%, risk 2/10, 83 copiers, score 155.61
+3. EkoCapital — yield 3943.68%, drawdown at least 27.26%, risk 3/10, 4 copiers, score 144.67
+4. TradingSCapital — yield 589.75%, drawdown at least 0.02%, risk 2/10, 450 copiers, score 117.95
+5. UnicornFxCapital — yield 376.98%, drawdown at least 9.79%, risk 2/10, 93 copiers, score 38.51
+6. Golden_Eye — yield 141.89%, drawdown at least 1.8%, risk 3/10, 94 copiers, score 28.38
+7. Blue_Dragon — yield 132.06%, drawdown at least 3.53%, risk 2/10, 18 copiers, score 26.41
+8. Quantum 9000 — yield 128.15%, drawdown at least 0.74%, risk 2/10, 68 copiers, score 25.63
 9. Bigold — yield 60.58%, drawdown at least 2.39%, risk 5/10, 13 copiers, score 12.12
-10. OngHoang_EU — yield 142.98%, drawdown at least 14.24%, risk 3/10, 17 copiers, score 10.04
+10. OngHoang_EU — yield 142.81%, drawdown at least 14.74%, risk 3/10, 17 copiers, score 9.69
 
 ## Limitations (please quote these alongside the rankings)
 
