@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-02",
+  "entries": {
+    "roboforex:bbbb-77042654": {
+      "rank": 1,
+      "yieldPct": 39.21,
+      "score": 5.89
+    },
+    "roboforex:bbba-37366644": {
+      "rank": 2,
+      "yieldPct": 55.68,
+      "score": 5.01
+    },
+    "roboforex:aaal-25317131": {
+      "rank": 3,
+      "yieldPct": 51.96,
+      "score": 4.48
+    },
+    "roboforex:bbba-27420276": {
+      "rank": 4,
+      "yieldPct": 32.48,
+      "score": 3.23
+    },
+    "roboforex:aaax-33191556": {
+      "rank": 5,
+      "yieldPct": 36.59,
+      "score": 2.44
+    },
+    "roboforex:aaac-72057878": {
+      "rank": 6,
+      "yieldPct": 59.2,
+      "score": 2.32
+    },
+    "roboforex:aaao-46157041": {
+      "rank": 7,
+      "yieldPct": 38.72,
+      "score": 1.98
+    },
+    "roboforex:bbba-37314026": {
+      "rank": 8,
+      "yieldPct": 45.39,
+      "score": 1.18
+    },
+    "roboforex:aaak-38069336": {
+      "rank": 9,
+      "yieldPct": 34.77,
+      "score": 1.12
+    },
+    "litefinance:1613066": {
+      "rank": 1,
+      "yieldPct": 871.88,
+      "score": 174.38
+    },
+    "litefinance:2290559": {
+      "rank": 2,
+      "yieldPct": 1010.89,
+      "score": 154.1
+    },
+    "litefinance:2129983": {
+      "rank": 3,
+      "yieldPct": 173.63,
+      "score": 34.73
+    },
+    "litefinance:2388096": {
+      "rank": 4,
+      "yieldPct": 140.89,
+      "score": 28.18
+    },
+    "litefinance:1216727": {
+      "rank": 5,
+      "yieldPct": 134.65,
+      "score": 26.93
+    },
+    "litefinance:843190": {
+      "rank": 6,
+      "yieldPct": 71.18,
+      "score": 14.24
+    },
+    "litefinance:1720071": {
+      "rank": 7,
+      "yieldPct": 51.99,
+      "score": 10.4
+    },
+    "litefinance:2306753": {
+      "rank": 8,
+      "yieldPct": 68.15,
+      "score": 7.27
+    },
+    "litefinance:2187036": {
+      "rank": 9,
+      "yieldPct": 90.01,
+      "score": 4.05
+    },
+    "litefinance:2013636": {
+      "rank": 10,
+      "yieldPct": 31.14,
+      "score": 4
+    }
+  }
+}
