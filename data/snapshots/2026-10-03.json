@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-03",
+  "entries": {
+    "roboforex:bbba-37366644": {
+      "rank": 1,
+      "yieldPct": 40.66,
+      "score": 3.66
+    },
+    "roboforex:bbba-27420276": {
+      "rank": 2,
+      "yieldPct": 32.48,
+      "score": 3.23
+    },
+    "roboforex:aaar-34186215": {
+      "rank": 3,
+      "yieldPct": 40.45,
+      "score": 2.39
+    },
+    "roboforex:aaax-33191556": {
+      "rank": 4,
+      "yieldPct": 34.1,
+      "score": 2.28
+    },
+    "roboforex:aaac-72057878": {
+      "rank": 5,
+      "yieldPct": 57.2,
+      "score": 2.24
+    },
+    "roboforex:aaao-46157041": {
+      "rank": 6,
+      "yieldPct": 41.11,
+      "score": 2.1
+    },
+    "roboforex:aaal-25369786": {
+      "rank": 7,
+      "yieldPct": 33.54,
+      "score": 2.01
+    },
+    "roboforex:aaab-22754650": {
+      "rank": 8,
+      "yieldPct": 38.21,
+      "score": 1.84
+    },
+    "roboforex:aaak-38069336": {
+      "rank": 9,
+      "yieldPct": 47.01,
+      "score": 1.52
+    },
+    "roboforex:bbbb-77023353": {
+      "rank": 10,
+      "yieldPct": 33.53,
+      "score": 0.86
+    },
+    "litefinance:2290559": {
+      "rank": 1,
+      "yieldPct": 1010.89,
+      "score": 177.35
+    },
+    "litefinance:1613066": {
+      "rank": 2,
+      "yieldPct": 871.88,
+      "score": 174.38
+    },
+    "litefinance:1273817": {
+      "rank": 3,
+      "yieldPct": 2075.34,
+      "score": 58.63
+    },
+    "litefinance:2129983": {
+      "rank": 4,
+      "yieldPct": 173.63,
+      "score": 34.73
+    },
+    "litefinance:2388096": {
+      "rank": 5,
+      "yieldPct": 140.89,
+      "score": 28.18
+    },
+    "litefinance:1216727": {
+      "rank": 6,
+      "yieldPct": 134.65,
+      "score": 26.93
+    },
+    "litefinance:843190": {
+      "rank": 7,
+      "yieldPct": 71.18,
+      "score": 14.24
+    },
+    "litefinance:1720071": {
+      "rank": 8,
+      "yieldPct": 51.99,
+      "score": 10.4
+    },
+    "litefinance:2306753": {
+      "rank": 9,
+      "yieldPct": 68.15,
+      "score": 6.17
+    },
+    "litefinance:2013636": {
+      "rank": 10,
+      "yieldPct": 31.14,
+      "score": 4.46
+    }
+  }
+}
