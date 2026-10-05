@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-05",
+  "entries": {
+    "roboforex:bbbb-77049465": {
+      "rank": 1,
+      "yieldPct": 32.37,
+      "score": 10.41
+    },
+    "roboforex:bbba-27420276": {
+      "rank": 2,
+      "yieldPct": 32.48,
+      "score": 3.23
+    },
+    "roboforex:bbba-37366644": {
+      "rank": 3,
+      "yieldPct": 33.75,
+      "score": 3.04
+    },
+    "roboforex:aaax-33191556": {
+      "rank": 4,
+      "yieldPct": 36.74,
+      "score": 2.45
+    },
+    "roboforex:aaao-46157041": {
+      "rank": 5,
+      "yieldPct": 35.38,
+      "score": 1.81
+    },
+    "roboforex:aaac-72057878": {
+      "rank": 6,
+      "yieldPct": 44.3,
+      "score": 1.74
+    },
+    "roboforex:aaak-38069336": {
+      "rank": 7,
+      "yieldPct": 39.19,
+      "score": 1.27
+    },
+    "roboforex:bbbb-77023353": {
+      "rank": 8,
+      "yieldPct": 37.85,
+      "score": 1.12
+    },
+    "roboforex:bbba-37296056": {
+      "rank": 9,
+      "yieldPct": 33.12,
+      "score": 0.87
+    },
+    "litefinance:2692560": {
+      "rank": 1,
+      "yieldPct": 1733.28,
+      "score": 257.93
+    },
+    "litefinance:1613066": {
+      "rank": 2,
+      "yieldPct": 871.88,
+      "score": 174.38
+    },
+    "litefinance:1273817": {
+      "rank": 3,
+      "yieldPct": 2085,
+      "score": 60.5
+    },
+    "litefinance:2129983": {
+      "rank": 4,
+      "yieldPct": 173.63,
+      "score": 34.73
+    },
+    "litefinance:2388096": {
+      "rank": 5,
+      "yieldPct": 139.38,
+      "score": 27.88
+    },
+    "litefinance:1216727": {
+      "rank": 6,
+      "yieldPct": 134.65,
+      "score": 26.93
+    },
+    "litefinance:843190": {
+      "rank": 7,
+      "yieldPct": 71.73,
+      "score": 14.35
+    },
+    "litefinance:1720071": {
+      "rank": 8,
+      "yieldPct": 51.83,
+      "score": 10.37
+    },
+    "litefinance:2306753": {
+      "rank": 9,
+      "yieldPct": 68.88,
+      "score": 5.84
+    },
+    "litefinance:2013636": {
+      "rank": 10,
+      "yieldPct": 31.14,
+      "score": 5.57
+    }
+  }
+}
