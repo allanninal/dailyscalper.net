@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 545 strategies screened, 143 flagged as martingale,
-> 19 published. Last updated 2026-10-05.
+> LiteFinance. 545 strategies screened, 137 flagged as martingale,
+> 16 published. Last updated 2026-10-06.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,27 +24,24 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. BTC Future — yield 32.37%, max drawdown 3.11%, 130 trades, 5 copiers, score 10.41
-2. TradeWithEase — yield 32.48%, max drawdown 10.05%, 68 trades, 127 copiers, score 3.23
-3. Every day 2 procent  — yield 33.75%, max drawdown 11.11%, 56 trades, 8 copiers, score 3.04
-4. GENESIS Mr Jonny — yield 36.74%, max drawdown 14.98%, 514 trades, 4 copiers, score 2.45
-5. EURUSD XAUUSD SWAP — yield 35.38%, max drawdown 19.54%, 104 trades, 3 copiers, score 1.81
-6. FINTEX Premium — yield 44.3%, max drawdown 25.52%, 118 trades, 94 copiers, score 1.74
-7. CHILL INVEST — yield 39.19%, max drawdown 30.95%, 186 trades, 29 copiers, score 1.27
-8. StormTrader — yield 37.85%, max drawdown 33.93%, 543 trades, 13 copiers, score 1.12
-9. Safe pension plan — yield 33.12%, max drawdown 38.11%, 4114 trades, 4 copiers, score 0.87
+1. Every day 2 procent  — yield 36.49%, max drawdown 11.11%, 58 trades, 8 copiers, score 3.28
+2. EURUSD XAUUSD SWAP — yield 36.06%, max drawdown 19.54%, 111 trades, 3 copiers, score 1.85
+3. CHILL INVEST — yield 45.27%, max drawdown 30.95%, 209 trades, 29 copiers, score 1.46
+4. Andrea Gold — yield 42.24%, max drawdown 29.12%, 226 trades, 25 copiers, score 1.45
+5. Nur Gold — yield 41.96%, max drawdown 35.07%, 54 trades, 7 copiers, score 1.2
+6. StormTrader — yield 39.74%, max drawdown 33.93%, 581 trades, 13 copiers, score 1.17
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. TS_ISP — yield 1733.28%, drawdown at least 6.72%, risk 3/10, 7 copiers, score 257.93
-2. Fire_Phoenix — yield 871.88%, drawdown at least 2.19%, risk 3/10, 98 copiers, score 174.38
-3. nrise — yield 2085%, drawdown at least 34.46%, risk 2/10, 3 copiers, score 60.5
-4. Golden_Eye — yield 173.63%, drawdown at least 2.12%, risk 2/10, 113 copiers, score 34.73
-5. Quantum 9000 — yield 139.38%, drawdown at least 0.81%, risk 2/10, 77 copiers, score 27.88
-6. Blue_Dragon — yield 134.65%, drawdown at least 2.83%, risk 2/10, 16 copiers, score 26.93
-7. steady_pips — yield 71.73%, drawdown at least 0%, risk 2/10, 21 copiers, score 14.35
-8. Atlas_Capital — yield 51.83%, drawdown at least 2.51%, risk 5/10, 93 copiers, score 10.37
-9. PRIME500 — yield 68.88%, drawdown at least 11.79%, risk 4/10, 87 copiers, score 5.84
-10. FxFunC — yield 31.14%, drawdown at least 5.59%, risk 2/10, 5 copiers, score 5.57
+1. TS_ISP — yield 1831.85%, drawdown at least 6.06%, risk 3/10, 7 copiers, score 302.29
+2. Fire_Phoenix — yield 874.89%, drawdown at least 2.11%, risk 3/10, 98 copiers, score 174.98
+3. nrise — yield 2079.46%, drawdown at least 33.94%, risk 2/10, 3 copiers, score 61.27
+4. Quantum 9000 — yield 141.86%, drawdown at least 0.88%, risk 2/10, 77 copiers, score 28.37
+5. Blue_Dragon — yield 134.65%, drawdown at least 2.98%, risk 2/10, 16 copiers, score 26.93
+6. Golden_Eye — yield 139.73%, drawdown at least 8.39%, risk 3/10, 112 copiers, score 16.65
+7. steady_pips — yield 71.67%, drawdown at least 0%, risk 2/10, 21 copiers, score 14.33
+8. Atlas_Capital — yield 51.46%, drawdown at least 2.56%, risk 5/10, 93 copiers, score 10.29
+9. PRIME500 — yield 69.35%, drawdown at least 11.26%, risk 4/10, 87 copiers, score 6.16
+10. FxFunC — yield 31.14%, drawdown at least 6.24%, risk 2/10, 5 copiers, score 4.99
 
 ## Limitations (please quote these alongside the rankings)
 
