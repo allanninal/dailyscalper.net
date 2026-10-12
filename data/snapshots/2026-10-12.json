@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-12",
+  "entries": {
+    "roboforex:aaav-24061843": {
+      "rank": 1,
+      "yieldPct": 33.91,
+      "score": 3.67
+    },
+    "roboforex:bbba-37371619": {
+      "rank": 2,
+      "yieldPct": 40.15,
+      "score": 2.3
+    },
+    "roboforex:aaax-33185342": {
+      "rank": 3,
+      "yieldPct": 48.73,
+      "score": 1.53
+    },
+    "roboforex:bbba-27379762": {
+      "rank": 4,
+      "yieldPct": 55.14,
+      "score": 1.41
+    },
+    "roboforex:bbbb-7774971": {
+      "rank": 5,
+      "yieldPct": 47.84,
+      "score": 1.36
+    },
+    "roboforex:aaao-46159629": {
+      "rank": 6,
+      "yieldPct": 40.16,
+      "score": 1.14
+    },
+    "roboforex:aaar-34185845": {
+      "rank": 7,
+      "yieldPct": 41.37,
+      "score": 1.04
+    },
+    "roboforex:aaap-47145356": {
+      "rank": 8,
+      "yieldPct": 41.27,
+      "score": 1.04
+    },
+    "roboforex:aaao-46146158": {
+      "rank": 9,
+      "yieldPct": 37.53,
+      "score": 0.96
+    },
+    "litefinance:1613066": {
+      "rank": 1,
+      "yieldPct": 855.72,
+      "score": 171.14
+    },
+    "litefinance:1143035": {
+      "rank": 2,
+      "yieldPct": 604.49,
+      "score": 120.9
+    },
+    "litefinance:2388096": {
+      "rank": 3,
+      "yieldPct": 143.69,
+      "score": 28.74
+    },
+    "litefinance:1216727": {
+      "rank": 4,
+      "yieldPct": 134.06,
+      "score": 26.81
+    },
+    "litefinance:2129983": {
+      "rank": 5,
+      "yieldPct": 145.65,
+      "score": 22.86
+    },
+    "litefinance:843190": {
+      "rank": 6,
+      "yieldPct": 72.54,
+      "score": 14.51
+    },
+    "litefinance:2306753": {
+      "rank": 7,
+      "yieldPct": 69.73,
+      "score": 12.41
+    },
+    "litefinance:1720071": {
+      "rank": 8,
+      "yieldPct": 50.71,
+      "score": 10.14
+    },
+    "litefinance:2187036": {
+      "rank": 9,
+      "yieldPct": 66.73,
+      "score": 2.2
+    },
+    "litefinance:2298475": {
+      "rank": 10,
+      "yieldPct": 12.99,
+      "score": 0.78
+    }
+  }
+}
