@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 546 strategies screened, 121 flagged as martingale,
-> 19 published. Last updated 2026-10-12.
+> LiteFinance. 546 strategies screened, 115 flagged as martingale,
+> 20 published. Last updated 2026-10-13.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,27 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. ONEGOLDAI  — yield 33.91%, max drawdown 9.24%, 116 trades, 8 copiers, score 3.67
-2. Grid the Gold — yield 40.15%, max drawdown 17.45%, 9462 trades, 4 copiers, score 2.3
-3. COPY ORION — yield 48.73%, max drawdown 31.94%, 153 trades, 7 copiers, score 1.53
-4. Trend trading — yield 55.14%, max drawdown 39.05%, 88 trades, 16 copiers, score 1.41
-5. Nur Gold — yield 47.84%, max drawdown 35.07%, 54 trades, 7 copiers, score 1.36
-6. Pullback Strategie — yield 40.16%, max drawdown 35.35%, 102 trades, 9 copiers, score 1.14
-7. Vanguard — yield 41.37%, max drawdown 39.96%, 191 trades, 6 copiers, score 1.04
-8. NovaTerra 1 AI — yield 41.27%, max drawdown 39.86%, 190 trades, 94 copiers, score 1.04
-9. EazyTrade Test verze — yield 37.53%, max drawdown 38.91%, 191 trades, 23 copiers, score 0.96
+1. ONEGOLDAI  — yield 44.95%, max drawdown 9.24%, 122 trades, 8 copiers, score 4.86
+2. PRIME — yield 39.24%, max drawdown 15.95%, 393 trades, 4 copiers, score 2.46
+3. Grid the Gold — yield 41.94%, max drawdown 17.45%, 9902 trades, 5 copiers, score 2.4
+4. EURUSD XAUUSD SWAP — yield 38.15%, max drawdown 19.54%, 122 trades, 3 copiers, score 1.95
+5. Trend trading — yield 66.51%, max drawdown 39.05%, 91 trades, 17 copiers, score 1.7
+6. COPY ORION — yield 48.69%, max drawdown 31.94%, 163 trades, 7 copiers, score 1.52
+7. Pullback Strategie — yield 48%, max drawdown 35.35%, 111 trades, 10 copiers, score 1.36
+8. Nur Gold — yield 47.84%, max drawdown 35.07%, 54 trades, 7 copiers, score 1.36
+9. Vanguard — yield 46.27%, max drawdown 39.96%, 194 trades, 6 copiers, score 1.16
+10. NovaTerra 1 AI — yield 46.15%, max drawdown 39.86%, 190 trades, 94 copiers, score 1.16
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. Fire_Phoenix — yield 855.72%, drawdown at least 0.79%, risk 3/10, 98 copiers, score 171.14
-2. TradingSCapital — yield 604.49%, drawdown at least 0.01%, risk 2/10, 449 copiers, score 120.9
-3. Quantum 9000 — yield 143.69%, drawdown at least 0.57%, risk 2/10, 77 copiers, score 28.74
-4. Blue_Dragon — yield 134.06%, drawdown at least 3.23%, risk 2/10, 17 copiers, score 26.81
-5. Golden_Eye — yield 145.65%, drawdown at least 6.37%, risk 3/10, 109 copiers, score 22.86
-6. steady_pips — yield 72.54%, drawdown at least 0.57%, risk 2/10, 22 copiers, score 14.51
-7. PRIME500 — yield 69.73%, drawdown at least 5.62%, risk 4/10, 85 copiers, score 12.41
-8. Atlas_Capital — yield 50.71%, drawdown at least 1.66%, risk 5/10, 91 copiers, score 10.14
-9. OngHoang_EU — yield 66.73%, drawdown at least 30.28%, risk 5/10, 15 copiers, score 2.2
-10. Gold_LiveTop — yield 12.99%, drawdown at least 16.65%, risk 4/10, 13 copiers, score 0.78
+1. Fire_Phoenix — yield 889.43%, drawdown at least 0.82%, risk 3/10, 98 copiers, score 177.89
+2. TradingSCapital — yield 605.64%, drawdown at least 0%, risk 2/10, 462 copiers, score 121.13
+3. Quantum 9000 — yield 145.18%, drawdown at least 0.62%, risk 2/10, 79 copiers, score 29.04
+4. Blue_Dragon — yield 135.01%, drawdown at least 3.5%, risk 2/10, 18 copiers, score 27
+5. Golden_Eye — yield 145.65%, drawdown at least 5.4%, risk 3/10, 112 copiers, score 26.97
+6. steady_pips — yield 72.9%, drawdown at least 0.52%, risk 2/10, 22 copiers, score 14.58
+7. Atlas_Capital — yield 51.64%, drawdown at least 1.47%, risk 5/10, 92 copiers, score 10.33
+8. PRIME500 — yield 69.69%, drawdown at least 7.61%, risk 4/10, 87 copiers, score 9.16
+9. OngHoang_EU — yield 77.61%, drawdown at least 28.22%, risk 5/10, 15 copiers, score 2.75
+10. Ballantine40 — yield 43.37%, drawdown at least 32.35%, risk 3/10, 24 copiers, score 1.34
 
 ## Limitations (please quote these alongside the rankings)
 
