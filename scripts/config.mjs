@@ -179,6 +179,8 @@ export const TOOLS = [
     text: 'ABCD, Gartley and Bat harmonic patterns with their reversal zone, drawn when price reaches it, with alerts.' },
   { name: 'Harmonic Scanner MT5', id: 201814, price: 'Paid', kind: 'Indicator', logo: 'harmonic-scanner-mt5.png',
     text: 'Eight harmonic patterns across many symbols and timeframes, with zone alerts and an outcome table.' },
+  { name: 'Prop Rules Monitor', id: 201817, price: 'Free', kind: 'Utility', logo: 'prop-rules-monitor.png',
+    text: 'Live daily loss and max loss of a prop-firm account, with the firm\'s reset clock and alerts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
