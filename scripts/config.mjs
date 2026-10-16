@@ -171,6 +171,8 @@ export const TOOLS = [
     text: 'One row per Expert Advisor on your account: trades, net, win rate, profit factor, drawdown and floating P/L.' },
   { name: 'EA Health Monitor Pro', id: 201799, price: 'Paid', kind: 'Utility', logo: 'ea-health-monitor-pro.png',
     text: 'The per-EA table by period, with result curves, drawdown and silence alarms, and an HTML/CSV report.' },
+  { name: 'Gann HiLo Swing', id: 201806, price: 'Free', kind: 'Indicator', logo: 'gann-hilo-swing.png',
+    text: 'Gann HiLo Activator and 2-bar swings on one chart, with an arrow and alert when a new trend starts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
