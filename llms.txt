@@ -54,7 +54,7 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 - Martingale detection removes obvious cases, not every case.
 - The two broker lists use different fields, windows and gates and are NOT comparable.
 - LiteFinance exposes only about 46 strategies publicly.
-- The site is funded by broker affiliate links. Gates are mechanical and identical
+- The site is funded by broker and VPS affiliate links. Gates are mechanical and identical
   for every strategy, but the incentive exists and should be weighed.
 - Most retail traders lose money. Copy trading does not remove that risk.
 
@@ -63,4 +63,6 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 - [Rankings](https://www.dailyscalper.net/rankings/): the current screened top 10 for both brokers.
 - [Methodology](https://www.dailyscalper.net/methodology/): every gate, threshold and known limitation.
 - [Partners](https://www.dailyscalper.net/partners/): RoboForex and LiteFinance affiliate programmes compared.
+- [Tools](https://www.dailyscalper.net/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
+  (8, 4 free; details at https://www.allanninal.dev/mql5/) and forex VPS options.
 - [Blog](https://www.dailyscalper.net/blog/): 30 explainers on forex and copy-trading fundamentals.

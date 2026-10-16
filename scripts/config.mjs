@@ -9,6 +9,9 @@ export const AFFILIATE = {
 
   // LiteFinance partner id, appended as ?uid=<id>.
   litefinanceUid: '135262069',
+
+  // FXVM forex VPS affiliate id, appended as ?aff=<id> (10% of payments).
+  fxvm: '30702',
 };
 
 export const LINKS = {
@@ -18,6 +21,10 @@ export const LINKS = {
   litefinanceTrader: (id) =>
     `https://my.litefinance.org/traders/info?id=${id}` +
     (AFFILIATE.litefinanceUid ? `&uid=${AFFILIATE.litefinanceUid}` : ''),
+  roboforexFreeVps: () => `https://rinfinity.com/en/free-vps-server?a=${AFFILIATE.roboforex}`,
+  fxvm: () => `https://fxvm.net/?aff=${AFFILIATE.fxvm}`,
+  mql5Product: (id) => `https://www.mql5.com/en/market/product/${id}`,
+  authorTools: () => 'https://www.allanninal.dev/mql5/',
   litefinanceSignup: () =>
     `https://www.litefinance.org/social-trading/` +
     (AFFILIATE.litefinanceUid ? `?uid=${AFFILIATE.litefinanceUid}` : ''),
@@ -131,3 +138,27 @@ export const BOARDS = [
 
 /** How many dated snapshots to retain for the daily-movement board. */
 export const SNAPSHOT_RETENTION_DAYS = 90;
+
+/**
+ * The author's own MetaTrader tools on the MQL5 Market (shown on /tools/). These are plain links, not
+ * affiliate links: MQL5 pays the seller for a purchase, which the page states. Keep in step with
+ * https://www.allanninal.dev/mql5/ — add a row when a product is published.
+ */
+export const TOOLS = [
+  { name: 'Gold Breakout Sentinel', id: 200385, price: 'Free', kind: 'Expert Advisor', logo: 'gold-breakout-sentinel.png',
+    text: 'XAUUSD H1. Stop orders at yesterday\'s high and low when a stochastic turn and a Bollinger filter agree; fixed stop and target on every trade; a panel that shows the risk before it is placed.' },
+  { name: 'Gold Breakout Sentinel Pro', id: 200903, price: 'Paid', kind: 'Expert Advisor', logo: 'gold-breakout-sentinel-pro.png',
+    text: 'The same strategy and defaults, plus risk-based lot sizing, daily loss and drawdown limits, news and time filters and alerts.' },
+  { name: 'Gold Trend Sentinel', id: 200427, price: 'Free', kind: 'Expert Advisor', logo: 'gold-trend-sentinel.png',
+    text: 'XAUUSD H4 trend follower: UT Bot entries confirmed by the daily 200 EMA and Supertrend, with a 3 x ATR trailing stop.' },
+  { name: 'Gold Trend Sentinel PRO', id: 201334, price: 'Paid', kind: 'Expert Advisor', logo: 'gold-trend-sentinel-pro.png',
+    text: 'The same rule and defaults, plus risk sizing, account protection, break-even and partial close, filters and alerts.' },
+  { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
+    text: 'The UT Bot ATR trailing-stop signals on one chart, on closed bars only, with pop-up, push and e-mail alerts.' },
+  { name: 'UT Bot Scanner MT5', id: 201600, price: 'Paid', kind: 'Indicator', logo: 'ut-bot-scanner-mt5.png',
+    text: 'The same UT Bot calculation across many symbols and timeframes in one panel, with one alert for new signals.' },
+  { name: 'Half Trend ADX', id: 201564, price: 'Paid', kind: 'Indicator', logo: 'half-trend-adx.png',
+    text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
+  { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
+    text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
+];

@@ -7,7 +7,7 @@
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
-import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS } from './config.mjs';
+import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
@@ -301,6 +301,27 @@ ${masthead('home')}
     ${litefinanceTable(lf.ranked)}
     <div class="btn-row">
       <a class="btn btn--primary" href="${esc(LINKS.litefinanceSignup())}" rel="sponsored nofollow" target="_blank">Open a LiteFinance account</a>
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <div>
+        <p class="eyebrow">From the author</p>
+        <h3>MetaTrader tools, tested the same way</h3>
+        <p class="lede" style="margin-top:1rem">
+          DailyScalper is built by Allan Niñal, who also publishes Expert Advisors and indicators on the
+          MQL5 Market: stop losses on every trade, signals on closed bars only, results shown with the bad
+          years in. Four of the eight are free. Running an EA also needs MetaTrader on 24/7, which is what a
+          forex VPS is for.
+        </p>
+        <div class="btn-row"><a class="btn btn--primary" href="/tools/">See the tools and VPS options</a></div>
+      </div>
+      <div>
+        <a href="/tools/"><img src="/assets/tools/fxvm-ea-vps.jpg" alt="A forex VPS keeps your EAs running 24/7" width="1200" height="675" loading="lazy" style="width:100%;height:auto;border-radius:12px"></a>
+      </div>
     </div>
   </div>
 </section>
@@ -615,6 +636,119 @@ ${masthead('partners')}
 
 ${footer(data.generatedAt)}`;
 
+/* ------------------------------------------------------------ tools page */
+
+const toolCard = (t) => `
+      <div class="panel" style="display:flex;flex-direction:column;gap:.75rem">
+        <div style="display:flex;gap:1rem;align-items:center">
+          <img src="/assets/tools/${esc(t.logo)}" alt="${esc(t.name)} logo" width="64" height="64" loading="lazy" style="border-radius:12px">
+          <div>
+            <h3 style="margin:0">${esc(t.name)}</h3>
+            <p class="dim" style="margin:.25rem 0 0">${esc(t.kind)} · ${esc(t.price)} on MQL5</p>
+          </div>
+        </div>
+        <p style="margin:0">${esc(t.text)}</p>
+        <div class="btn-row" style="margin-top:auto"><a class="btn btn--ghost" href="${esc(LINKS.mql5Product(t.id))}" target="_blank" rel="noopener">View on MQL5</a></div>
+      </div>`;
+
+const toolsPage = `${head({
+  title: 'MetaTrader tools and forex VPS from the author | DailyScalper',
+  description:
+    'Expert Advisors and indicators for MetaTrader 5 and 4 by the author of DailyScalper, four of them free, and the VPS options that keep an EA running 24/7.',
+  canonical: `${SITE}/tools/`,
+  jsonLd: [
+    graph(
+      ORG,
+      breadcrumbs([
+        ['Home', '/'],
+        ['Tools', '/tools/'],
+      ]),
+      {
+        '@type': 'ItemList',
+        '@id': `${SITE}/tools/#list`,
+        name: 'MetaTrader tools by the author of DailyScalper',
+        numberOfItems: TOOLS.length,
+        itemListElement: TOOLS.map((t, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          item: {
+            '@type': 'SoftwareApplication',
+            name: t.name,
+            applicationCategory: 'FinanceApplication',
+            operatingSystem: t.kind === 'MT4 utility' ? 'MetaTrader 4' : 'MetaTrader 5',
+            url: LINKS.mql5Product(t.id),
+          },
+        })),
+      }
+    ),
+  ],
+})}
+${masthead('tools')}
+
+<section class="hero" style="padding-block:clamp(3rem,7vw,5rem) 2rem">
+  <div class="wrap hero__inner">
+    <p class="eyebrow">From the author</p>
+    <h1>Tools for the traders who run their own</h1>
+    <p class="lede">
+      The same rule this site applies to copy-trading strategies applies to these: show the risk, show
+      the bad years, and never hide a loss behind averaging down. Every Expert Advisor puts a stop loss
+      on every trade; every indicator signals on closed bars only and is checked bar by bar against an
+      independent calculation. They are published on the MQL5 Market, MetaTrader's own store.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="${esc(LINKS.authorTools())}" target="_blank" rel="noopener">Details and backtests</a>
+      <a class="btn btn--ghost" href="#vps">Keep MetaTrader running 24/7</a>
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">On the MQL5 Market</p>
+    <h2>${TOOLS.length} tools, ${TOOLS.filter((t) => t.price === 'Free').length} of them free</h2>
+    <div class="grid-2" style="margin-top:2rem">${TOOLS.map(toolCard).join('')}
+    </div>
+    <p class="risk-note" style="margin-top:2rem">
+      These are the author's own products: buying a paid one pays the author through MQL5. Backtests
+      describe the past on broker history, weak years included, and do not predict the future.
+    </p>
+  </div>
+</section>
+
+<section class="block rule-top" id="vps">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <div>
+        <p class="eyebrow">Keep MetaTrader running</p>
+        <h2>A forex VPS</h2>
+        <p class="lede" style="margin-top:1rem">
+          An Expert Advisor, the trailing stops it manages and every alert work only while the terminal is
+          running. A forex VPS is a small Windows server close to the broker that keeps it on when your own
+          computer is off.
+        </p>
+        <p class="lede">
+          <a href="${esc(LINKS.fxvm())}" rel="sponsored nofollow" target="_blank">FXVM</a> is a VPS made for
+          MetaTrader. RoboForex also offers a <a href="${esc(LINKS.roboforexFreeVps())}" rel="sponsored nofollow" target="_blank">free VPS</a>
+          to clients who meet its conditions; read them on its page first.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="${esc(LINKS.fxvm())}" rel="sponsored nofollow" target="_blank">FXVM forex VPS</a>
+          <a class="btn btn--ghost" href="${esc(LINKS.roboforexFreeVps())}" rel="sponsored nofollow" target="_blank">RoboForex free VPS</a>
+        </div>
+      </div>
+      <div>
+        <a href="${esc(LINKS.fxvm())}" rel="sponsored nofollow" target="_blank"><img src="/assets/tools/fxvm-ea-vps.jpg" alt="FXVM forex VPS: your EAs always working" width="1200" height="675" loading="lazy" style="width:100%;height:auto;border-radius:12px"></a>
+      </div>
+    </div>
+    <p class="risk-note" style="margin-top:2rem">
+      FXVM and RoboForex links are affiliate links: if you sign up through them we may earn a commission,
+      at no extra cost to you. Check the plan, location and price against your broker before you buy.
+    </p>
+  </div>
+</section>
+
+${footer(data.generatedAt)}`;
+
 /* ------------------------------------------------------------------- 404 */
 
 const notFoundPage = `${head({
@@ -817,6 +951,7 @@ await emit('index.html', indexPage);
 await emit('rankings/index.html', rankingsPage);
 await emit('methodology/index.html', methodologyPage);
 await emit('partners/index.html', partnersPage);
+await emit('tools/index.html', toolsPage);
 await emit('404.html', notFoundPage);
 
 for (const board of BOARDS) {
@@ -846,6 +981,7 @@ const generated = [
   { url: '/rankings/', freq: 'weekly', priority: '0.9' },
   { url: '/methodology/', freq: 'monthly', priority: '0.7' },
   { url: '/partners/', freq: 'monthly', priority: '0.6' },
+  { url: '/tools/', freq: 'monthly', priority: '0.6' },
   ...BOARDS.map((b) => ({ url: b.slug, freq: b.key === 'daily' ? 'daily' : 'weekly', priority: '0.8' })),
   { url: '/blog/', freq: 'monthly', priority: '0.6' },
   ...blogMeta.map((b) => ({ url: b.url, freq: 'yearly', priority: '0.4' })),
@@ -922,7 +1058,7 @@ ${lf.ranked
 - Martingale detection removes obvious cases, not every case.
 - The two broker lists use different fields, windows and gates and are NOT comparable.
 - LiteFinance exposes only about ${lf.screened} strategies publicly.
-- The site is funded by broker affiliate links. Gates are mechanical and identical
+- The site is funded by broker and VPS affiliate links. Gates are mechanical and identical
   for every strategy, but the incentive exists and should be weighed.
 - Most retail traders lose money. Copy trading does not remove that risk.
 
@@ -931,6 +1067,8 @@ ${lf.ranked
 - [Rankings](${SITE}/rankings/): the current screened top 10 for both brokers.
 - [Methodology](${SITE}/methodology/): every gate, threshold and known limitation.
 - [Partners](${SITE}/partners/): RoboForex and LiteFinance affiliate programmes compared.
+- [Tools](${SITE}/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
+  (${TOOLS.length}, ${TOOLS.filter((t) => t.price === 'Free').length} free; details at ${LINKS.authorTools()}) and forex VPS options.
 - [Blog](${SITE}/blog/): ${blogMeta.length} explainers on forex and copy-trading fundamentals.
 `;
 await emit('llms.txt', llms);

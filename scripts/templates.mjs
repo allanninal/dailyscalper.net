@@ -99,6 +99,7 @@ export function masthead(active = '') {
       ${link('/rankings/', 'Rankings', 'rankings')}
       ${link('/methodology/', 'Methodology', 'methodology')}
       ${link('/blog/', 'Learn', 'blog')}
+      ${link('/tools/', 'Tools', 'tools')}
       ${link('/partners/', 'Earn as a Partner', 'partners')}
     </nav>
   </div>
@@ -137,6 +138,13 @@ export function footer(generatedAt) {
         </ul>
       </div>
       <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/tools/">MetaTrader tools</a></li>
+          <li><a href="/tools/#vps">Forex VPS</a></li>
+        </ul>
+      </div>
+      <div>
         <h4>Earn</h4>
         <ul>
           <li><a href="/partners/">Partner programmes</a></li>
@@ -158,9 +166,9 @@ export function footer(generatedAt) {
       Never copy with money you cannot afford to lose.
     </p>
     <p class="risk-note" style="border:0;padding-top:0.75rem">
-      <strong>Affiliate disclosure.</strong> Links to RoboForex and LiteFinance are affiliate links. If you
-      open an account through them we may earn a commission from the broker's spread — at no extra cost to
-      you. This never affects the screening rules, which are applied mechanically and published in full.
+      <strong>Affiliate disclosure.</strong> Links to RoboForex, LiteFinance and FXVM are affiliate links. If you
+      open an account or buy a VPS through them we may earn a commission — at no extra cost to you. The
+      MetaTrader tools on /tools/ are the author's own products. This never affects the screening rules, which are applied mechanically and published in full.
       &nbsp;·&nbsp; &copy; ${new Date().getUTCFullYear()} DailyScalper
     </p>
   </div>
