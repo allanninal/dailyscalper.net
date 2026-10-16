@@ -61,7 +61,7 @@ if ! node scripts/build-site.mjs >>"$LOG" 2>&1; then
   exit 1
 fi
 
-git add data index.html 404.html rankings methodology partners sitemap.xml llms.txt
+git add data index.html 404.html rankings methodology partners tools sitemap.xml llms.txt
 
 if git diff --staged --quiet; then
   log "OK no changes this run"
