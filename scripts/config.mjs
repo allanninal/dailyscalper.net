@@ -161,6 +161,8 @@ export const TOOLS = [
     text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
   { name: 'Candlestick Signal Alerts', id: 201775, price: 'Free', kind: 'Indicator', logo: 'candlestick-signal-alerts.png',
     text: 'Thirteen classic candlestick patterns on one chart, marked on the closed bar that completes them, with alerts.' },
+  { name: 'Candlestick Scanner MT5', id: 201779, price: 'Paid', kind: 'Indicator', logo: 'candlestick-scanner-mt5.png',
+    text: 'Twenty-one candlestick patterns across many symbols and timeframes, with alerts and an honest statistics table.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
