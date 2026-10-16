@@ -159,6 +159,8 @@ export const TOOLS = [
     text: 'The same UT Bot calculation across many symbols and timeframes in one panel, with one alert for new signals.' },
   { name: 'Half Trend ADX', id: 201564, price: 'Paid', kind: 'Indicator', logo: 'half-trend-adx.png',
     text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
+  { name: 'Candlestick Signal Alerts', id: 201775, price: 'Free', kind: 'Indicator', logo: 'candlestick-signal-alerts.png',
+    text: 'Thirteen classic candlestick patterns on one chart, marked on the closed bar that completes them, with alerts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
