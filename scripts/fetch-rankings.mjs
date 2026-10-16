@@ -8,7 +8,7 @@
  * No API keys, no auth, no dependencies. Run: node scripts/fetch-rankings.mjs
  */
 import { writeFile, mkdir, readdir, readFile } from 'node:fs/promises';
-import { GATES, PERIOD, BOARDS, SNAPSHOT_RETENTION_DAYS } from './config.mjs';
+import { GATES, PERIOD, BOARDS, SNAPSHOT_RETENTION_DAYS, AUTHOR_STRATEGY } from './config.mjs';
 import {
   maxDrawdownFromCurve,
   detectMartingale,
@@ -322,6 +322,19 @@ async function pruneSnapshots(today) {
   }
 }
 
+/** The author's own strategy, evaluated with the same gates; null when the broker does not list it. */
+async function findAuthor(rf) {
+  const hit = rf.find((r) => String(r.login) === String(AUTHOR_STRATEGY.login));
+  if (hit) return hit;
+  for (let offset = 500; offset < 3000; offset += 100) {
+    const { entries, more } = await fetchRoboForexPage(offset, 100);
+    const raw = entries.find((e) => String(e.login) === String(AUTHOR_STRATEGY.login));
+    if (raw) return evaluateRoboForex(raw);
+    if (!more || entries.length === 0) break;
+  }
+  return null;
+}
+
 async function main() {
   const errors = [];
   let rf = [];
@@ -364,6 +377,13 @@ async function main() {
     }
   }
 
+  let author = null;
+  try {
+    author = await findAuthor(rf);
+  } catch (e) {
+    errors.push(`author strategy: ${e.message}`);
+  }
+
   const flagship = summarise(rf);
   const flagshipLf = summarise(lf);
   const prev = await previousSnapshot(today);
@@ -377,6 +397,7 @@ async function main() {
       litefinance: flagshipLf,
     },
     boards,
+    author,
     daily: dailyMovement([...flagship.ranked, ...flagshipLf.ranked], prev),
     errors,
   };

@@ -7,7 +7,7 @@
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
-import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS } from './config.mjs';
+import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
@@ -651,6 +651,56 @@ const toolCard = (t) => `
         <div class="btn-row" style="margin-top:auto"><a class="btn btn--ghost" href="${esc(LINKS.mql5Product(t.id))}" target="_blank" rel="noopener">View on MQL5</a></div>
       </div>`;
 
+
+const author = data.author;
+const authorSection = !author
+  ? ''
+  : `
+<section class="block rule-top" id="strategy">
+  <div class="wrap">
+    <p class="eyebrow">The author's own strategy · shown for transparency</p>
+    <h2>${esc(author.strategy || author.trader)}, screened like everyone else</h2>
+    <p class="lede" style="margin:1.25rem 0 2rem">
+      This is the author's own public RoboForex strategy. It is <strong>not</strong> in the rankings and is not
+      recommended by them: it goes through exactly the same gates and martingale check as every other strategy,
+      and the result is printed below as the screening produced it on ${esc(updated)}.
+    </p>
+    <div class="grid-2" style="align-items:start">
+      <div class="panel">
+        <div class="table-scroll">
+        <table class="ledger">
+          <tbody>
+            <tr><td style="text-align:left">Yield, rolling 3 months</td><td>${fmt(author.yieldPct, 2, '%')}</td></tr>
+            <tr><td style="text-align:left">Max drawdown (broker-published)</td><td class="neg">${fmt(author.drawdownPct, 2, '%')}</td></tr>
+            <tr><td style="text-align:left">Track record</td><td>${int(author.trackDays)} days</td></tr>
+            <tr><td style="text-align:left">Trades</td><td>${int(author.trades)}</td></tr>
+            <tr><td style="text-align:left">Copiers</td><td>${int(author.copiers)}</td></tr>
+            <tr><td style="text-align:left">Leverage</td><td>${author.leverage ? '1:' + esc(author.leverage) : '<span class="dim">—</span>'}</td></tr>
+            <tr><td style="text-align:left">Performance fee</td><td>${fmt(author.commissionPct, 0, '%')}</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div>
+        ${
+          author.eligible
+            ? `<p class="tag">Passes every gate</p><p class="lede" style="margin-top:1rem">It clears every eligibility gate and the martingale check; whether it reaches the top 10 depends on its score against the others.</p>`
+            : `<p class="tag tag--warn">Does not pass this site's gates</p>
+        <ul class="reject-list" style="margin-top:1rem">${author.rejections.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+        <p class="lede" style="margin-top:1rem">By the rules this site applies to every strategy, it would not be published. High returns with a drawdown of this size are exactly the pattern the homepage warns about.</p>`
+        }
+        <div class="btn-row">
+          <a class="btn btn--ghost" href="${esc(LINKS.roboforexStrategy(author.sourceId, author.login))}" rel="sponsored nofollow" target="_blank">View it on RoboForex</a>
+        </div>
+      </div>
+    </div>
+    <p class="risk-note" style="margin-top:2rem">
+      A short, high-drawdown track record says very little about the future, and copying it can lose the whole
+      amount copied. The link is an affiliate link. Never copy with money you cannot afford to lose.
+    </p>
+  </div>
+</section>`;
+
 const toolsPage = `${head({
   title: 'MetaTrader tools and forex VPS from the author | DailyScalper',
   description:
@@ -714,6 +764,8 @@ ${masthead('tools')}
     </p>
   </div>
 </section>
+
+${authorSection}
 
 <section class="block rule-top" id="vps">
   <div class="wrap">
@@ -1069,6 +1121,9 @@ ${lf.ranked
 - [Partners](${SITE}/partners/): RoboForex and LiteFinance affiliate programmes compared.
 - [Tools](${SITE}/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
   (${TOOLS.length}, ${TOOLS.filter((t) => t.price === 'Free').length} free; details at ${LINKS.authorTools()}) and forex VPS options.
+  The page also shows the author's own RoboForex strategy, screened with the same gates; it is never ranked by hand${
+    data.author ? (data.author.eligible ? ' (it currently passes every gate)' : ` and currently fails: ${data.author.rejections.join(', ')}`) : ''
+  }.
 - [Blog](${SITE}/blog/): ${blogMeta.length} explainers on forex and copy-trading fundamentals.
 `;
 await emit('llms.txt', llms);

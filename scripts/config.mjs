@@ -162,3 +162,10 @@ export const TOOLS = [
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
+
+/**
+ * The author's own public RoboForex strategy. It is screened with the same gates as every other strategy and
+ * shown on /tools/ as the author's, outside the rankings, with whichever gates it fails. It is never added to
+ * the rankings by hand.
+ */
+export const AUTHOR_STRATEGY = { sourceId: 'bbba', login: 37410742 };
