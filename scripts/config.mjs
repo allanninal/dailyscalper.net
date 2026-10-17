@@ -191,6 +191,8 @@ export const TOOLS = [
     text: 'A range filter line that ignores chop, with buy and sell arrows where it turns. Closed bars only.' },
   { name: 'Range Filter Scanner MT5', id: 201873, price: 'Paid', kind: 'Indicator', logo: 'range-filter-scanner-mt5.png',
     text: 'The range filter on many symbols and timeframes in one table, with higher-timeframe agreement and alerts.' },
+  { name: 'Sequential Countdown', id: 201875, price: 'Free', kind: 'Indicator', logo: 'sequential-countdown.png',
+    text: 'The 9-13 sequential count with perfected 9s and alerts on 9 and 13. Closed bars only, rules stated.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
