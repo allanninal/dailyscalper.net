@@ -189,6 +189,8 @@ export const TOOLS = [
     text: 'Sizes the lot from your lines, sends the order when you press OPEN, then partial close, break-even and trailing.' },
   { name: 'Range Filter Signals', id: 201871, price: 'Free', kind: 'Indicator', logo: 'range-filter-signals.png',
     text: 'A range filter line that ignores chop, with buy and sell arrows where it turns. Closed bars only.' },
+  { name: 'Range Filter Scanner MT5', id: 201873, price: 'Paid', kind: 'Indicator', logo: 'range-filter-scanner-mt5.png',
+    text: 'The range filter on many symbols and timeframes in one table, with higher-timeframe agreement and alerts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
