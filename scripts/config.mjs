@@ -185,6 +185,8 @@ export const TOOLS = [
     text: 'Prop-firm rules enforced: daily and max loss on equity, 22 firm presets, and a lock before a limit.' },
   { name: 'Risk Position Tool', id: 201865, price: 'Free', kind: 'Utility', logo: 'risk-position-tool.png',
     text: 'Drag entry, stop and target lines to get the lot for your risk, reward:risk and margin. Never trades.' },
+  { name: 'Risk Trade Manager MT5', id: 201867, price: 'Paid', kind: 'Utility', logo: 'risk-trade-manager-mt5.png',
+    text: 'Sizes the lot from your lines, sends the order when you press OPEN, then partial close, break-even and trailing.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
