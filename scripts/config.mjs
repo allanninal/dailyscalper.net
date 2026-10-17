@@ -203,6 +203,8 @@ export const TOOLS = [
     text: 'Asia, London and New York session ranges plus previous day and week highs and lows, with break alerts.' },
   { name: 'SuperTrend Signal Alerts', id: 201882, price: 'Free', kind: 'Indicator', logo: 'supertrend-signal-alerts.png',
     text: 'SuperTrend line with buy and sell arrows on each flip, optional EMA and RSI filters, and alerts.' },
+  { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
+    text: 'Six indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
