@@ -187,6 +187,8 @@ export const TOOLS = [
     text: 'Drag entry, stop and target lines to get the lot for your risk, reward:risk and margin. Never trades.' },
   { name: 'Risk Trade Manager MT5', id: 201867, price: 'Paid', kind: 'Utility', logo: 'risk-trade-manager-mt5.png',
     text: 'Sizes the lot from your lines, sends the order when you press OPEN, then partial close, break-even and trailing.' },
+  { name: 'Range Filter Signals', id: 201871, price: 'Free', kind: 'Indicator', logo: 'range-filter-signals.png',
+    text: 'A range filter line that ignores chop, with buy and sell arrows where it turns. Closed bars only.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
