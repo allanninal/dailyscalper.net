@@ -197,6 +197,8 @@ export const TOOLS = [
     text: 'The 9-13 sequential count on many symbols and timeframes in one table, with alerts on 9 and 13.' },
   { name: 'SMC Session Scanner MT5', id: 201879, price: 'Paid', kind: 'Indicator', logo: 'smc-session-scanner-mt5.png',
     text: 'BOS, CHoCH, sweeps, order blocks, fair value gaps and session breaks on many symbols in one panel.' },
+  { name: 'SMC Zones', id: 201880, price: 'Free', kind: 'Indicator', logo: 'smc-zones.png',
+    text: 'BOS, CHoCH, liquidity sweeps, order blocks and fair value gaps on the chart, with alerts. Closed bars only.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
