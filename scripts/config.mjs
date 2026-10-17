@@ -183,6 +183,8 @@ export const TOOLS = [
     text: 'Live daily loss and max loss of a prop-firm account, with the firm\'s reset clock and alerts.' },
   { name: 'Prop Rules Guard MT5', id: 201823, price: 'Paid', kind: 'Utility', logo: 'prop-rules-guard-mt5.png',
     text: 'Prop-firm rules enforced: daily and max loss on equity, 22 firm presets, and a lock before a limit.' },
+  { name: 'Risk Position Tool', id: 201865, price: 'Free', kind: 'Utility', logo: 'risk-position-tool.png',
+    text: 'Drag entry, stop and target lines to get the lot for your risk, reward:risk and margin. Never trades.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
