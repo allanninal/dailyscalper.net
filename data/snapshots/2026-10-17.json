@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-17",
+  "entries": {
+    "roboforex:aaal-25298935": {
+      "rank": 1,
+      "yieldPct": 44.51,
+      "score": 3.42
+    },
+    "roboforex:bbba-37371619": {
+      "rank": 2,
+      "yieldPct": 37.1,
+      "score": 3.07
+    },
+    "roboforex:aaao-46157041": {
+      "rank": 3,
+      "yieldPct": 43.79,
+      "score": 2.24
+    },
+    "roboforex:aaar-34190026": {
+      "rank": 4,
+      "yieldPct": 35.58,
+      "score": 2.23
+    },
+    "roboforex:bbba-37266655": {
+      "rank": 5,
+      "yieldPct": 33.78,
+      "score": 1.97
+    },
+    "roboforex:aaab-22751117": {
+      "rank": 6,
+      "yieldPct": 67.55,
+      "score": 1.74
+    },
+    "roboforex:bbba-27379762": {
+      "rank": 7,
+      "yieldPct": 38.29,
+      "score": 1.67
+    },
+    "roboforex:aaax-33197157": {
+      "rank": 8,
+      "yieldPct": 34.41,
+      "score": 1.53
+    },
+    "roboforex:aaaj-75070931": {
+      "rank": 9,
+      "yieldPct": 41.07,
+      "score": 1.5
+    },
+    "litefinance:2692560": {
+      "rank": 1,
+      "yieldPct": 2031.67,
+      "score": 293.17
+    },
+    "litefinance:1613066": {
+      "rank": 2,
+      "yieldPct": 890.76,
+      "score": 178.15
+    },
+    "litefinance:1143035": {
+      "rank": 3,
+      "yieldPct": 602.81,
+      "score": 120.56
+    },
+    "litefinance:1216727": {
+      "rank": 4,
+      "yieldPct": 134.5,
+      "score": 26.9
+    },
+    "litefinance:2388096": {
+      "rank": 5,
+      "yieldPct": 133.77,
+      "score": 26.75
+    },
+    "litefinance:2129983": {
+      "rank": 6,
+      "yieldPct": 145.65,
+      "score": 20.31
+    },
+    "litefinance:843190": {
+      "rank": 7,
+      "yieldPct": 73.9,
+      "score": 14.78
+    },
+    "litefinance:1720071": {
+      "rank": 8,
+      "yieldPct": 49.33,
+      "score": 9.87
+    },
+    "litefinance:2306753": {
+      "rank": 9,
+      "yieldPct": 65,
+      "score": 5.52
+    },
+    "litefinance:2187036": {
+      "rank": 10,
+      "yieldPct": 87.08,
+      "score": 3.36
+    }
+  }
+}
