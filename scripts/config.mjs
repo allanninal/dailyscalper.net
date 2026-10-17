@@ -199,6 +199,8 @@ export const TOOLS = [
     text: 'BOS, CHoCH, sweeps, order blocks, fair value gaps and session breaks on many symbols in one panel.' },
   { name: 'SMC Zones', id: 201880, price: 'Free', kind: 'Indicator', logo: 'smc-zones.png',
     text: 'BOS, CHoCH, liquidity sweeps, order blocks and fair value gaps on the chart, with alerts. Closed bars only.' },
+  { name: 'Session Levels', id: 201881, price: 'Free', kind: 'Indicator', logo: 'session-levels.png',
+    text: 'Asia, London and New York session ranges plus previous day and week highs and lows, with break alerts.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
