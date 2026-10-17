@@ -155,6 +155,8 @@ export const TOOLS = [
     text: 'The same rule and defaults, plus risk sizing, account protection, break-even and partial close, filters and alerts.' },
   { name: 'Prior Day Breakout', id: 201959, price: 'Free', kind: 'Expert Advisor', logo: 'prior-day-breakout.png',
     text: 'XAUEUR H1 and M15. Trades the first close beyond yesterday\'s high or low, stop at the other side of the range, flat at 23:00; ships only the presets that passed both the Python backtest and the MT5 Strategy Tester.' },
+  { name: 'Prior Day Breakout Pro', id: 201963, price: 'Paid', kind: 'Expert Advisor', logo: 'prior-day-breakout-pro.png',
+    text: 'The same rule with all six validated XAUEUR presets, plus risk sizing, news pause modes, spread and Friday filters, break-even and the Prop Rules Guard lock.' },
   { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
     text: 'The UT Bot ATR trailing-stop signals on one chart, on closed bars only, with pop-up, push and e-mail alerts.' },
   { name: 'UT Bot Scanner MT5', id: 201600, price: 'Paid', kind: 'Indicator', logo: 'ut-bot-scanner-mt5.png',
