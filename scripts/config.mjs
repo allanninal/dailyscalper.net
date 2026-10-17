@@ -153,6 +153,8 @@ export const TOOLS = [
     text: 'XAUUSD H4 trend follower: UT Bot entries confirmed by the daily 200 EMA and Supertrend, with a 3 x ATR trailing stop.' },
   { name: 'Gold Trend Sentinel PRO', id: 201334, price: 'Paid', kind: 'Expert Advisor', logo: 'gold-trend-sentinel-pro.png',
     text: 'The same rule and defaults, plus risk sizing, account protection, break-even and partial close, filters and alerts.' },
+  { name: 'Prior Day Breakout', id: 201959, price: 'Free', kind: 'Expert Advisor', logo: 'prior-day-breakout.png',
+    text: 'XAUEUR H1 and M15. Trades the first close beyond yesterday\'s high or low, stop at the other side of the range, flat at 23:00; ships only the presets that passed both the Python backtest and the MT5 Strategy Tester.' },
   { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
     text: 'The UT Bot ATR trailing-stop signals on one chart, on closed bars only, with pop-up, push and e-mail alerts.' },
   { name: 'UT Bot Scanner MT5', id: 201600, price: 'Paid', kind: 'Indicator', logo: 'ut-bot-scanner-mt5.png',
