@@ -163,6 +163,8 @@ export const TOOLS = [
     text: 'The same signals and validated preset, plus risk sizing, a confirmation source, break-even, partial close and trailing, news, spread and time filters and the Prop Rules Guard lock.' },
   { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
     text: 'The UT Bot ATR trailing-stop signals on one chart, on closed bars only, with pop-up, push and e-mail alerts.' },
+  { name: 'UT Bot Signal Alerts MT4', id: 202304, price: 'Free', kind: 'MT4 indicator', logo: 'ut-bot-signal-alerts.png',
+    text: 'The UT Bot ATR trailing-stop signals for MetaTrader 4: a buy or sell arrow on the closed bar where price crosses the stop line, with pop-up, sound, push and e-mail alerts.' },
   { name: 'UT Bot Scanner MT5', id: 201600, price: 'Paid', kind: 'Indicator', logo: 'ut-bot-scanner-mt5.png',
     text: 'The same UT Bot calculation across many symbols and timeframes in one panel, with one alert for new signals.' },
   { name: 'Half Trend ADX', id: 201564, price: 'Paid', kind: 'Indicator', logo: 'half-trend-adx.png',
