@@ -191,6 +191,8 @@ export const TOOLS = [
     text: 'Gann Square of 9, fan angles and box from confirmed swings, with a multi-symbol HiLo trend table.' },
   { name: 'Harmonic Signal Alerts', id: 201811, price: 'Free', kind: 'Indicator', logo: 'harmonic-signal-alerts.png',
     text: 'ABCD, Gartley and Bat harmonic patterns with their reversal zone, drawn when price reaches it, with alerts.' },
+  { name: 'Harmonic Signal Alerts MT4', id: 202361, price: 'Free', kind: 'MT4 indicator', logo: 'harmonic-signal-alerts.png',
+    text: 'ABCD, Gartley and Bat harmonic patterns for MetaTrader 4 from confirmed swings: XABCD lines, the reversal zone and an arrow on the closed bar where the pattern completes, with alerts.' },
   { name: 'Harmonic Scanner MT5', id: 201814, price: 'Paid', kind: 'Indicator', logo: 'harmonic-scanner-mt5.png',
     text: 'Eight harmonic patterns across many symbols and timeframes, with zone alerts and an outcome table.' },
   { name: 'Prop Rules Monitor', id: 201817, price: 'Free', kind: 'Utility', logo: 'prop-rules-monitor.png',
