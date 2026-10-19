@@ -185,6 +185,8 @@ export const TOOLS = [
     text: 'RSI and MACD histogram divergences for MetaTrader 4: a line between the two price pivots and an arrow on the closed bar where the divergence became known, with alerts.' },
   { name: 'Divergence Scanner MT5', id: 201796, price: 'Paid', kind: 'Indicator', logo: 'divergence-scanner-mt5.png',
     text: 'RSI, MACD, Stochastic, CCI and OBV divergences across many symbols and timeframes in one panel, with alerts.' },
+  { name: 'Divergence Scanner MT4', id: 202403, price: 'Paid', kind: 'MT4 indicator', logo: 'divergence-scanner-mt5.png',
+    text: 'The latest RSI, MACD, Stochastic, CCI and OBV divergence across many symbols and timeframes in one panel for MetaTrader 4, regular or hidden, from confirmed pivots on closed bars, with alerts.' },
   { name: 'EA Health Monitor', id: 201797, price: 'Free', kind: 'Utility', logo: 'ea-health-monitor.png',
     text: 'One row per Expert Advisor on your account: trades, net, win rate, profit factor, drawdown and floating P/L.' },
   { name: 'EA Health Monitor Pro', id: 201799, price: 'Paid', kind: 'Utility', logo: 'ea-health-monitor-pro.png',
