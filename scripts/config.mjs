@@ -175,6 +175,8 @@ export const TOOLS = [
     text: 'Twenty-one candlestick patterns across many symbols and timeframes, with alerts and an honest statistics table.' },
   { name: 'Divergence Signal Alerts', id: 201785, price: 'Free', kind: 'Indicator', logo: 'divergence-signal-alerts.png',
     text: 'RSI and MACD divergences on one chart, marked on the closed bar where they became known, with alerts.' },
+  { name: 'Divergence Signal Alerts MT4', id: 202356, price: 'Free', kind: 'MT4 indicator', logo: 'divergence-signal-alerts.png',
+    text: 'RSI and MACD histogram divergences for MetaTrader 4: a line between the two price pivots and an arrow on the closed bar where the divergence became known, with alerts.' },
   { name: 'Divergence Scanner MT5', id: 201796, price: 'Paid', kind: 'Indicator', logo: 'divergence-scanner-mt5.png',
     text: 'RSI, MACD, Stochastic, CCI and OBV divergences across many symbols and timeframes in one panel, with alerts.' },
   { name: 'EA Health Monitor', id: 201797, price: 'Free', kind: 'Utility', logo: 'ea-health-monitor.png',
