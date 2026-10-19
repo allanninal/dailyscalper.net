@@ -171,6 +171,8 @@ export const TOOLS = [
     text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
   { name: 'Candlestick Signal Alerts', id: 201775, price: 'Free', kind: 'Indicator', logo: 'candlestick-signal-alerts.png',
     text: 'Thirteen classic candlestick patterns on one chart, marked on the closed bar that completes them, with alerts.' },
+  { name: 'Candlestick Signal Alerts MT4', id: 202358, price: 'Free', kind: 'MT4 indicator', logo: 'candlestick-signal-alerts.png',
+    text: 'Thirteen classic candlestick patterns for MetaTrader 4, marked on closed bars with optional trend and location filters, with pop-up, sound, push and e-mail alerts.' },
   { name: 'Candlestick Scanner MT5', id: 201779, price: 'Paid', kind: 'Indicator', logo: 'candlestick-scanner-mt5.png',
     text: 'Twenty-one candlestick patterns across many symbols and timeframes, with alerts and an honest statistics table.' },
   { name: 'Divergence Signal Alerts', id: 201785, price: 'Free', kind: 'Indicator', logo: 'divergence-signal-alerts.png',
