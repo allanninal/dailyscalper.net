@@ -205,6 +205,8 @@ export const TOOLS = [
     text: 'ABCD, Gartley and Bat harmonic patterns for MetaTrader 4 from confirmed swings: XABCD lines, the reversal zone and an arrow on the closed bar where the pattern completes, with alerts.' },
   { name: 'Harmonic Scanner MT5', id: 201814, price: 'Paid', kind: 'Indicator', logo: 'harmonic-scanner-mt5.png',
     text: 'Eight harmonic patterns across many symbols and timeframes, with zone alerts and an outcome table.' },
+  { name: 'Harmonic Scanner Pro MT4', id: 202421, price: 'Paid', kind: 'MT4 indicator', logo: 'harmonic-scanner-mt5.png',
+    text: 'Eight harmonic patterns (ABCD, Gartley, Bat, Alternate Bat, Butterfly, Crab, Deep Crab, Cypher) on a symbols x timeframes panel for MetaTrader 4: completed and forming patterns near their reversal zone, with alerts.' },
   { name: 'Prop Rules Monitor', id: 201817, price: 'Free', kind: 'Utility', logo: 'prop-rules-monitor.png',
     text: 'Live daily loss and max loss of a prop-firm account, with the firm\'s reset clock and alerts.' },
   { name: 'Prop Rules Guard MT5', id: 201823, price: 'Paid', kind: 'Utility', logo: 'prop-rules-guard-mt5.png',
