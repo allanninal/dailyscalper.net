@@ -64,6 +64,6 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 - [Methodology](https://www.dailyscalper.net/methodology/): every gate, threshold and known limitation.
 - [Partners](https://www.dailyscalper.net/partners/): RoboForex and LiteFinance affiliate programmes compared.
 - [Tools](https://www.dailyscalper.net/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
-  (47, 28 free; details at https://www.allanninal.dev/mql5/) and forex VPS options.
+  (48, 28 free; details at https://www.allanninal.dev/mql5/) and forex VPS options.
   The page also shows the author's own RoboForex strategy, screened with the same gates; it is never ranked by hand and currently fails: only 27d track record, 0 copiers.
 - [Blog](https://www.dailyscalper.net/blog/): 30 explainers on forex and copy-trading fundamentals.

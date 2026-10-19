@@ -171,6 +171,8 @@ export const TOOLS = [
     text: 'The UT Bot calculation across many symbols and timeframes in one panel for MetaTrader 4: buy or sell side, closed bars since the last signal, alerts, and a click on a cell opens that chart.' },
   { name: 'Half Trend ADX', id: 201564, price: 'Paid', kind: 'Indicator', logo: 'half-trend-adx.png',
     text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
+  { name: 'Half Trend ADX MT4', id: 202401, price: 'Paid', kind: 'MT4 indicator', logo: 'half-trend-adx.png',
+    text: 'The Half Trend line for MetaTrader 4 with buy and sell arrows where the trend turns, an optional ATR channel, an ADX filter for weak trends and alerts on closed bars.' },
   { name: 'Candlestick Signal Alerts', id: 201775, price: 'Free', kind: 'Indicator', logo: 'candlestick-signal-alerts.png',
     text: 'Thirteen classic candlestick patterns on one chart, marked on the closed bar that completes them, with alerts.' },
   { name: 'Candlestick Signal Alerts MT4', id: 202358, price: 'Free', kind: 'MT4 indicator', logo: 'candlestick-signal-alerts.png',
