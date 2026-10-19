@@ -199,6 +199,8 @@ export const TOOLS = [
     text: 'W.D. Gann\'s HiLo Activator line and 2-bar swing chart for MetaTrader 4: a swing line through confirmed swing highs and lows, and an arrow and alert on the closed bar where a new trend starts.' },
   { name: 'Gann Toolkit MT5', id: 201807, price: 'Paid', kind: 'Indicator', logo: 'gann-toolkit-mt5.png',
     text: 'Gann Square of 9, fan angles and box from confirmed swings, with a multi-symbol HiLo trend table.' },
+  { name: 'Gann Toolkit MT4', id: 202424, price: 'Paid', kind: 'MT4 indicator', logo: 'gann-toolkit-mt5.png',
+    text: 'W.D. Gann\'s Square of 9 price levels, fan angles and box for MetaTrader 4, anchored to confirmed swings on closed bars, with the HiLo Activator, a multi-symbol HiLo trend table and alerts.' },
   { name: 'Harmonic Signal Alerts', id: 201811, price: 'Free', kind: 'Indicator', logo: 'harmonic-signal-alerts.png',
     text: 'ABCD, Gartley and Bat harmonic patterns with their reversal zone, drawn when price reaches it, with alerts.' },
   { name: 'Harmonic Signal Alerts MT4', id: 202361, price: 'Free', kind: 'MT4 indicator', logo: 'harmonic-signal-alerts.png',
