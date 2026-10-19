@@ -225,6 +225,8 @@ export const TOOLS = [
     text: 'Smart-money concepts for MetaTrader 4: swing structure with BOS and CHoCH, liquidity sweeps, order blocks and fair value gaps as zones until mitigated, with alerts. Closed bars only.' },
   { name: 'Session Levels', id: 201881, price: 'Free', kind: 'Indicator', logo: 'session-levels.png',
     text: 'Asia, London and New York session ranges plus previous day and week highs and lows, with break alerts.' },
+  { name: 'Session Levels MT4', id: 202384, price: 'Free', kind: 'MT4 indicator', logo: 'session-levels.png',
+    text: 'The Asia, London and New York session ranges and the previous day and week highs and lows for MetaTrader 4, with alerts on the first close beyond a level.' },
   { name: 'SuperTrend Signal Alerts', id: 201882, price: 'Free', kind: 'Indicator', logo: 'supertrend-signal-alerts.png',
     text: 'SuperTrend line with buy and sell arrows on each flip, optional EMA and RSI filters, and alerts.' },
   { name: 'SuperTrend Signal Alerts MT4', id: 202324, price: 'Free', kind: 'MT4 indicator', logo: 'supertrend-signal-alerts.png',
