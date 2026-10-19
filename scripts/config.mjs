@@ -167,6 +167,8 @@ export const TOOLS = [
     text: 'The UT Bot ATR trailing-stop signals for MetaTrader 4: a buy or sell arrow on the closed bar where price crosses the stop line, with pop-up, sound, push and e-mail alerts.' },
   { name: 'UT Bot Scanner MT5', id: 201600, price: 'Paid', kind: 'Indicator', logo: 'ut-bot-scanner-mt5.png',
     text: 'The same UT Bot calculation across many symbols and timeframes in one panel, with one alert for new signals.' },
+  { name: 'UT Bot Scanner Pro MT4', id: 202391, price: 'Paid', kind: 'MT4 indicator', logo: 'ut-bot-scanner-mt5.png',
+    text: 'The UT Bot calculation across many symbols and timeframes in one panel for MetaTrader 4: buy or sell side, closed bars since the last signal, alerts, and a click on a cell opens that chart.' },
   { name: 'Half Trend ADX', id: 201564, price: 'Paid', kind: 'Indicator', logo: 'half-trend-adx.png',
     text: 'A Half Trend line with arrows where the trend turns and an ADX filter that skips weak trends.' },
   { name: 'Candlestick Signal Alerts', id: 201775, price: 'Free', kind: 'Indicator', logo: 'candlestick-signal-alerts.png',
