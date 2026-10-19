@@ -235,6 +235,8 @@ export const TOOLS = [
     text: 'The SuperTrend line with buy and sell arrows on each flip for MetaTrader 4, optional EMA and RSI filters, closed bars only, with pop-up, sound, push and e-mail alerts.' },
   { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
     text: 'Six indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
+  { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
+    text: 'One row per symbol for MetaTrader 4: six checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot) and a BUY, SELL or WAIT verdict when enough of them agree, with alerts. Closed bars only.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
