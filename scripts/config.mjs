@@ -196,7 +196,7 @@ export const TOOLS = [
   { name: 'EA Health Monitor Pro', id: 201799, price: 'Paid', kind: 'Utility', logo: 'ea-health-monitor-pro.png',
     text: 'The per-EA table by period, with result curves, drawdown and silence alarms, and an HTML/CSV report.' },
   { name: 'EA Health Monitor Pro MT4', id: 202431, price: 'Paid', kind: 'MT4 utility', logo: 'ea-health-monitor-pro.png',
-    text: 'The per-EA table for MetaTrader 4 with periods, result curves, alarms when an EA stops or loses, and an HTML report.' },
+    text: 'The per-EA table for MetaTrader 4 with periods, result curves, alarms for a floating loss or drawdown over your limit or an EA gone silent, and an HTML report.' },
   { name: 'Gann HiLo Swing', id: 201806, price: 'Free', kind: 'Indicator', logo: 'gann-hilo-swing.png',
     text: 'Gann HiLo Activator and 2-bar swings on one chart, with an arrow and alert when a new trend starts.' },
   { name: 'Gann HiLo Swing MT4', id: 202367, price: 'Free', kind: 'MT4 indicator', logo: 'gann-hilo-swing.png',
