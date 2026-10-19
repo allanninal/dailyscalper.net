@@ -187,6 +187,8 @@ export const TOOLS = [
     text: 'The per-EA table by period, with result curves, drawdown and silence alarms, and an HTML/CSV report.' },
   { name: 'Gann HiLo Swing', id: 201806, price: 'Free', kind: 'Indicator', logo: 'gann-hilo-swing.png',
     text: 'Gann HiLo Activator and 2-bar swings on one chart, with an arrow and alert when a new trend starts.' },
+  { name: 'Gann HiLo Swing MT4', id: 202367, price: 'Free', kind: 'MT4 indicator', logo: 'gann-hilo-swing.png',
+    text: 'W.D. Gann\'s HiLo Activator line and 2-bar swing chart for MetaTrader 4: a swing line through confirmed swing highs and lows, and an arrow and alert on the closed bar where a new trend starts.' },
   { name: 'Gann Toolkit MT5', id: 201807, price: 'Paid', kind: 'Indicator', logo: 'gann-toolkit-mt5.png',
     text: 'Gann Square of 9, fan angles and box from confirmed swings, with a multi-symbol HiLo trend table.' },
   { name: 'Harmonic Signal Alerts', id: 201811, price: 'Free', kind: 'Indicator', logo: 'harmonic-signal-alerts.png',
