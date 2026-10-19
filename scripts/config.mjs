@@ -213,6 +213,8 @@ export const TOOLS = [
     text: 'The range filter on many symbols and timeframes in one table, with higher-timeframe agreement and alerts.' },
   { name: 'Sequential Countdown', id: 201875, price: 'Free', kind: 'Indicator', logo: 'sequential-countdown.png',
     text: 'The 9-13 sequential count with perfected 9s and alerts on 9 and 13. Closed bars only, rules stated.' },
+  { name: 'Sequential Countdown MT4', id: 202363, price: 'Free', kind: 'MT4 indicator', logo: 'sequential-countdown.png',
+    text: 'The 9-13 sequential count for MetaTrader 4: setup 1-9 with perfected 9s marked, countdown 1-13 with the cancel rules stated in full, and alerts on 9 and 13. Closed bars only.' },
   { name: 'Sequential Scanner MT5', id: 201877, price: 'Paid', kind: 'Indicator', logo: 'sequential-scanner-mt5.png',
     text: 'The 9-13 sequential count on many symbols and timeframes in one table, with alerts on 9 and 13.' },
   { name: 'SMC Session Scanner MT5', id: 201879, price: 'Paid', kind: 'Indicator', logo: 'smc-session-scanner-mt5.png',
