@@ -215,6 +215,8 @@ export const TOOLS = [
     text: 'The range filter line for MetaTrader 4: it moves only when price travels further than its smoothed average range, with buy and sell arrows where it turns and alerts. Closed bars only.' },
   { name: 'Range Filter Scanner MT5', id: 201873, price: 'Paid', kind: 'Indicator', logo: 'range-filter-scanner-mt5.png',
     text: 'The range filter on many symbols and timeframes in one table, with higher-timeframe agreement and alerts.' },
+  { name: 'Range Filter Scanner MT4', id: 202402, price: 'Paid', kind: 'MT4 indicator', logo: 'range-filter-scanner-mt5.png',
+    text: 'The range-filter engine of Range Filter Signals run over many symbols and timeframes in one table for MetaTrader 4: direction and bars since the turn, with alerts. Closed bars only.' },
   { name: 'Sequential Countdown', id: 201875, price: 'Free', kind: 'Indicator', logo: 'sequential-countdown.png',
     text: 'The 9-13 sequential count with perfected 9s and alerts on 9 and 13. Closed bars only, rules stated.' },
   { name: 'Sequential Countdown MT4', id: 202363, price: 'Free', kind: 'MT4 indicator', logo: 'sequential-countdown.png',
