@@ -219,6 +219,8 @@ export const TOOLS = [
     text: 'Live distance to a prop firm\'s daily loss limit and max loss for MetaTrader 4, measured on equity with the firm\'s reset time and zone, with warning and breach alerts. Never trades.' },
   { name: 'Prop Rules Guard MT5', id: 201823, price: 'Paid', kind: 'Utility', logo: 'prop-rules-guard-mt5.png',
     text: 'Prop-firm rules enforced: daily and max loss on equity, 22 firm presets, and a lock before a limit.' },
+  { name: 'Prop Rules Guard MT4', id: 202436, price: 'Paid', kind: 'MT4 utility', logo: 'prop-rules-guard-mt5.png',
+    text: 'Keeps a prop-firm account inside its rules on MetaTrader 4: it measures the daily and max loss on equity like the firm, and at a safety buffer it closes trades and keeps the account flat until the reset. 22 dated firm presets; news alerts from a built-in USD list. Never opens a trade.' },
   { name: 'Risk Position Tool', id: 201865, price: 'Free', kind: 'Utility', logo: 'risk-position-tool.png',
     text: 'Drag entry, stop and target lines to get the lot for your risk, reward:risk and margin. Never trades.' },
   { name: 'Risk Trade Manager MT5', id: 201867, price: 'Paid', kind: 'Utility', logo: 'risk-trade-manager-mt5.png',
