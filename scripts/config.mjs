@@ -191,6 +191,8 @@ export const TOOLS = [
     text: 'The latest RSI, MACD, Stochastic, CCI and OBV divergence across many symbols and timeframes in one panel for MetaTrader 4, regular or hidden, from confirmed pivots on closed bars, with alerts.' },
   { name: 'EA Health Monitor', id: 201797, price: 'Free', kind: 'Utility', logo: 'ea-health-monitor.png',
     text: 'One row per Expert Advisor on your account: trades, net, win rate, profit factor, drawdown and floating P/L.' },
+  { name: 'EA Health Monitor MT4', id: 202428, price: 'Free', kind: 'MT4 utility', logo: 'ea-health-monitor.png',
+    text: 'One table row per Expert Advisor by magic number for MetaTrader 4, plus manual trades and a total: closed trades, net result, win rate, profit factor, drawdown, today, open trades and floating.' },
   { name: 'EA Health Monitor Pro', id: 201799, price: 'Paid', kind: 'Utility', logo: 'ea-health-monitor-pro.png',
     text: 'The per-EA table by period, with result curves, drawdown and silence alarms, and an HTML/CSV report.' },
   { name: 'Gann HiLo Swing', id: 201806, price: 'Free', kind: 'Indicator', logo: 'gann-hilo-swing.png',
