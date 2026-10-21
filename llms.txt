@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 546 strategies screened, 117 flagged as martingale,
-> 19 published. Last updated 2026-10-20.
+> LiteFinance. 546 strategies screened, 128 flagged as martingale,
+> 17 published. Last updated 2026-10-21.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,27 +24,25 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. Shootingstar — yield 150.04%, max drawdown 33.65%, 310 trades, 35 copiers, score 4.46
-2. BTCUSD XAUUSD SWAP — yield 65.18%, max drawdown 15.51%, 113 trades, 3 copiers, score 4.2
-3. LORMT FX — yield 45.24%, max drawdown 13.02%, 240 trades, 5 copiers, score 3.47
-4. Grid the Gold — yield 37.89%, max drawdown 12.07%, 9869 trades, 6 copiers, score 3.14
-5. StormTrader — yield 63.09%, max drawdown 25.57%, 705 trades, 13 copiers, score 2.47
-6. PRIME — yield 35.8%, max drawdown 15.95%, 386 trades, 4 copiers, score 2.24
-7. TRADING SAFETY — yield 35.52%, max drawdown 17.19%, 544 trades, 4 copiers, score 2.07
-8. FOREXTOP — yield 36.52%, max drawdown 27.76%, 558 trades, 12 copiers, score 1.32
-9. CMEgroup — yield 46.17%, max drawdown 38.86%, 72 trades, 19 copiers, score 1.19
+1. Shootingstar — yield 160.07%, max drawdown 33.65%, 315 trades, 37 copiers, score 4.76
+2. BTCUSD XAUUSD SWAP — yield 49.85%, max drawdown 15%, 116 trades, 3 copiers, score 3.32
+3. Grid the Gold — yield 38.05%, max drawdown 12.07%, 9808 trades, 6 copiers, score 3.15
+4. StormTrader — yield 49.46%, max drawdown 25.57%, 743 trades, 13 copiers, score 1.93
+5. Quantum — yield 66.51%, max drawdown 36.9%, 1559 trades, 20 copiers, score 1.8
+6. Cna precision — yield 37.13%, max drawdown 25.12%, 146 trades, 3 copiers, score 1.48
+7. CMEgroup — yield 53.52%, max drawdown 38.86%, 69 trades, 19 copiers, score 1.38
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. Fire_Phoenix — yield 889.51%, drawdown at least 0.83%, risk 3/10, 96 copiers, score 177.9
-2. TradingSCapital — yield 603.76%, drawdown at least 0.08%, risk 2/10, 466 copiers, score 120.75
-3. Quantum 9000 — yield 147.02%, drawdown at least 0.96%, risk 2/10, 79 copiers, score 29.4
-4. Blue_Dragon — yield 131.02%, drawdown at least 3.5%, risk 2/10, 16 copiers, score 26.2
-5. Golden_Eye — yield 145.65%, drawdown at least 8.37%, risk 3/10, 109 copiers, score 17.4
-6. steady_pips — yield 74.22%, drawdown at least 0.28%, risk 2/10, 21 copiers, score 14.84
-7. Atlas_Capital — yield 53.42%, drawdown at least 2.6%, risk 5/10, 89 copiers, score 10.68
-8. PRIME500 — yield 70.55%, drawdown at least 10.77%, risk 3/10, 85 copiers, score 6.55
-9. OngHoang_EU — yield 88.14%, drawdown at least 26.75%, risk 5/10, 15 copiers, score 3.29
-10. Ballantine40 — yield 52.6%, drawdown at least 31.71%, risk 3/10, 24 copiers, score 1.66
+1. Fire_Phoenix — yield 896.9%, drawdown at least 0.7%, risk 3/10, 96 copiers, score 179.38
+2. TradingSCapital — yield 605.13%, drawdown at least 0.08%, risk 2/10, 469 copiers, score 121.03
+3. Quantum 9000 — yield 146.96%, drawdown at least 1.03%, risk 2/10, 79 copiers, score 29.39
+4. Blue_Dragon — yield 131.32%, drawdown at least 3.52%, risk 2/10, 16 copiers, score 26.26
+5. Golden_Eye — yield 145.65%, drawdown at least 7.91%, risk 3/10, 110 copiers, score 18.41
+6. steady_pips — yield 74.32%, drawdown at least 0.46%, risk 2/10, 21 copiers, score 14.86
+7. Atlas_Capital — yield 53.87%, drawdown at least 2.45%, risk 5/10, 89 copiers, score 10.77
+8. PRIME500 — yield 70.55%, drawdown at least 10.24%, risk 3/10, 84 copiers, score 6.89
+9. OngHoang_EU — yield 86.39%, drawdown at least 26.72%, risk 5/10, 15 copiers, score 3.23
+10. Aliakhavan72 — yield 5.29%, drawdown at least 2.57%, risk 2/10, 274 copiers, score 1.06
 
 ## Limitations (please quote these alongside the rankings)
 
@@ -64,5 +62,5 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 - [Partners](https://www.dailyscalper.net/partners/): RoboForex and LiteFinance affiliate programmes compared.
 - [Tools](https://www.dailyscalper.net/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
   (59, 30 free; details at https://www.allanninal.dev/mql5/) and forex VPS options.
-  The page also shows the author's own RoboForex strategy, screened with the same gates; it is never ranked by hand and currently fails: only 29d track record, 40.2% max drawdown, 0 copiers.
+  The page also shows the author's own RoboForex strategy, screened with the same gates; it is never ranked by hand and currently fails: only 30d track record, 40.2% max drawdown, 0 copiers.
 - [Blog](https://www.dailyscalper.net/blog/): 30 explainers on forex and copy-trading fundamentals.
