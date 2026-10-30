@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 544 strategies screened, 126 flagged as martingale,
-> 16 published. Last updated 2026-10-29.
+> LiteFinance. 544 strategies screened, 141 flagged as martingale,
+> 20 published. Last updated 2026-10-30.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,24 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. Every day 2 procent  — yield 45.79%, max drawdown 12.28%, 82 trades, 11 copiers, score 3.73
-2. BTCUSD XAUUSD SWAP — yield 44.99%, max drawdown 15%, 87 trades, 6 copiers, score 3
-3. TRADING SAFETY — yield 39.34%, max drawdown 17.19%, 249 trades, 4 copiers, score 2.29
-4. Shootingstar — yield 72.4%, max drawdown 33.65%, 259 trades, 37 copiers, score 2.15
-5. Signals PrideTrade — yield 44.96%, max drawdown 29.92%, 785 trades, 3 copiers, score 1.5
-6. Golden Phantom — yield 54.7%, max drawdown 36.99%, 1736 trades, 4 copiers, score 1.48
+1. LORMT FX — yield 46.49%, max drawdown 9.14%, 313 trades, 5 copiers, score 5.09
+2. Every day 2 procent  — yield 48.28%, max drawdown 12.28%, 87 trades, 11 copiers, score 3.93
+3. BTCUSD XAUUSD SWAP — yield 44.99%, max drawdown 15%, 87 trades, 6 copiers, score 3
+4. TRADING SAFETY — yield 45.05%, max drawdown 17.19%, 256 trades, 4 copiers, score 2.62
+5. SchorizonTrading FX — yield 31.04%, max drawdown 12.39%, 1266 trades, 15 copiers, score 2.51
+6. PRIME — yield 34.72%, max drawdown 15.95%, 423 trades, 8 copiers, score 2.18
+7. EURUSD — yield 34.62%, max drawdown 16.23%, 147 trades, 3 copiers, score 2.13
+8. Shootingstar — yield 70.06%, max drawdown 33.65%, 270 trades, 37 copiers, score 2.08
+9. Golden Phantom — yield 56.85%, max drawdown 36.99%, 1792 trades, 4 copiers, score 1.54
+10. Signals PrideTrade — yield 44.87%, max drawdown 29.92%, 785 trades, 3 copiers, score 1.5
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. Fire_Phoenix — yield 907.51%, drawdown at least 0.88%, risk 2/10, 96 copiers, score 181.5
-2. TradingSCapital — yield 602.05%, drawdown at least 0.27%, risk 2/10, 449 copiers, score 120.41
-3. ProjectFX_Minero — yield 2287%, drawdown at least 30.3%, risk 5/10, 30 copiers, score 75.48
-4. Earth_Taurus — yield 233.61%, drawdown at least 0.69%, risk 2/10, 93 copiers, score 46.72
-5. Quantum 9000 — yield 149.99%, drawdown at least 0.74%, risk 2/10, 79 copiers, score 30
-6. Blue_Dragon — yield 136.71%, drawdown at least 4.4%, risk 2/10, 17 copiers, score 27.34
-7. steady_pips — yield 74.71%, drawdown at least 0.28%, risk 2/10, 21 copiers, score 14.94
-8. PRIME500 — yield 71.58%, drawdown at least 4.96%, risk 3/10, 88 copiers, score 14.32
-9. Atlas_Capital — yield 52.94%, drawdown at least 1.6%, risk 5/10, 86 copiers, score 10.59
-10. Golden_Eye — yield 124.15%, drawdown at least 14.25%, risk 4/10, 107 copiers, score 8.71
+1. TS_ISP — yield 1760.82%, drawdown at least 6.04%, risk 4/10, 5 copiers, score 291.53
+2. Fire_Phoenix — yield 907.51%, drawdown at least 0.92%, risk 2/10, 95 copiers, score 181.5
+3. TradingSCapital — yield 600.16%, drawdown at least 0.51%, risk 2/10, 448 copiers, score 120.03
+4. Earth_Taurus — yield 233.61%, drawdown at least 0.73%, risk 2/10, 95 copiers, score 46.72
+5. Quantum 9000 — yield 150%, drawdown at least 0.76%, risk 2/10, 79 copiers, score 30
+6. Blue_Dragon — yield 137.22%, drawdown at least 3.05%, risk 2/10, 17 copiers, score 27.44
+7. steady_pips — yield 75.34%, drawdown at least 0.11%, risk 2/10, 21 copiers, score 15.07
+8. PRIME500 — yield 70.11%, drawdown at least 6.63%, risk 3/10, 88 copiers, score 10.57
+9. Atlas_Capital — yield 52.81%, drawdown at least 2.02%, risk 5/10, 85 copiers, score 10.56
+10. Golden_Eye — yield 135.51%, drawdown at least 14.42%, risk 4/10, 107 copiers, score 9.4
 
 ## Limitations (please quote these alongside the rankings)
 
