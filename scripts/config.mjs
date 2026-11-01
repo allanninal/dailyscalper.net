@@ -163,6 +163,8 @@ export const TOOLS = [
     text: 'Trades the closed-bar signals of UT Bot, SuperTrend, Range Filter, Half Trend or Price Action Levels, one source at a time, with an ATR stop and a fixed 0.01 lot on MetaTrader 4. It takes entries on any chart by default; the tested presets are listed on the product page.' },
   { name: 'Signal Trader Pro', id: 201969, price: 'Paid', kind: 'Expert Advisor', logo: 'signal-trader-pro.png',
     text: 'The same signals and validated preset, plus risk sizing, a confirmation source, break-even, partial close and trailing, news, spread and time filters and the Prop Rules Guard lock.' },
+  { name: 'Signal Trader Pro MT4', id: 205541, price: 'Paid', kind: 'MT4 expert advisor', logo: 'signal-trader-pro.png',
+    text: 'Signal Trader\'s closed-bar signals on MetaTrader 4, plus risk-based lot sizing, a confirmation source, break-even, partial close and trailing, news, spread and time filters and the optional Prop Rules Guard lock.' },
   { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
     text: 'The UT Bot ATR trailing-stop signals on one chart, on closed bars only, with pop-up, push and e-mail alerts.' },
   { name: 'UT Bot Signal Alerts MT4', id: 202304, price: 'Free', kind: 'MT4 indicator', logo: 'ut-bot-signal-alerts.png',
