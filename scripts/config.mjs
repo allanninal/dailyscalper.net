@@ -159,6 +159,8 @@ export const TOOLS = [
     text: 'The same rule with all six validated XAUEUR presets, plus risk sizing, news pause modes, spread and Friday filters, break-even and the Prop Rules Guard lock.' },
   { name: 'Signal Trader', id: 201967, price: 'Free', kind: 'Expert Advisor', logo: 'signal-trader.png',
     text: 'Trades the closed-bar signals of UT Bot, SuperTrend, Range Filter or Half Trend with an ATR stop and 0.01 lot; live it trades only the preset that passed both backtests (SuperTrend, XAUUSD H4).' },
+  { name: 'Signal Trader MT4', id: 205343, price: 'Free', kind: 'MT4 expert advisor', logo: 'signal-trader.png',
+    text: 'Trades the closed-bar signals of UT Bot, SuperTrend, Range Filter, Half Trend or Price Action Levels, one source at a time, with an ATR stop and a fixed 0.01 lot on MetaTrader 4. It takes entries on any chart by default; the tested presets are listed on the product page.' },
   { name: 'Signal Trader Pro', id: 201969, price: 'Paid', kind: 'Expert Advisor', logo: 'signal-trader-pro.png',
     text: 'The same signals and validated preset, plus risk sizing, a confirmation source, break-even, partial close and trailing, news, spread and time filters and the Prop Rules Guard lock.' },
   { name: 'UT Bot Signal Alerts', id: 201607, price: 'Free', kind: 'Indicator', logo: 'ut-bot-signal-alerts.png',
