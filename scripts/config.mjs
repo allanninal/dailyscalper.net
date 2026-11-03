@@ -265,6 +265,8 @@ export const TOOLS = [
     text: 'Six indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
     text: 'One row per symbol for MetaTrader 4: six checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot) and a BUY, SELL or WAIT verdict when enough of them agree, with alerts. Closed bars only.' },
+  { name: 'Vitals MT5', id: 205865, price: 'Free', kind: 'Utility', logo: 'vitals-mt5.png',
+    text: 'Your whole account on one card: equity, floating drawdown journal, positions, risk at stops, exposure, results and stats.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
