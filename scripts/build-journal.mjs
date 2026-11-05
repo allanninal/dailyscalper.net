@@ -221,15 +221,16 @@ function goalPanel(s, j) {
       ${
         reached
           ? `The balance has reached ${usd(goal)}. The author is preparing to open this account to copy trading on RoboForex — this page will link to it the day it opens.`
-          : `The author started this account with ${usd(start)} and is trading it to ${usd(goal)} in public. <strong>When it reaches ${usd(goal)}, it opens to copy trading on RoboForex</strong> so anyone following along can copy it. Until then there is nothing to copy — just this page, updated every hour, losses included. It is a <strong>cent account</strong>, so every figure here is in US cents (¢): 100¢ is $1.`
+          : `The author started this account with ${usd(start)} and is trading it to ${usd(goal)} in public. <strong>RoboForex only lets an account be copied once it holds at least ${usd(goal).replace(/\.00$/, "")}</strong>, so that is the goal: the day the balance reaches it, the author opens it to copy trading for anyone following along. Until then there is nothing to copy — just this page, updated every hour, losses included. It is a <strong>cent account</strong>, so every figure here is in US cents (¢): 100¢ is $1.`
       }
     </p>
-    <p class="trader-sub" style="margin-top:1rem">
-      Why $100: RoboForex's <a href="${esc(LINKS.roboforexPage(JOURNAL.procent.shareUrl))}" rel="sponsored nofollow" target="_blank">Copy Trading Service</a>
-      (formerly CopyFX) lets any real MT5 account with hedging share a strategy once it holds at least
-      $${JOURNAL.procent.providerMinUsd}. ${
+    <p class="tag tag--warn" style="margin-top:1.25rem">RoboForex requires at least $${JOURNAL.procent.providerMinUsd} (${cents(JOURNAL.procent.providerMinUsd * 100, { dp: 0 })}) to share a strategy</p>
+    <p class="trader-sub" style="margin-top:.75rem">
+      A strategy account on RoboForex's <a href="${esc(LINKS.roboforexPage(JOURNAL.procent.shareUrl))}" rel="sponsored nofollow" target="_blank">Copy Trading Service</a>
+      (formerly CopyFX) must hold <strong>at least $${JOURNAL.procent.providerMinUsd}</strong> before it can be opened to copiers, and it
+      must be a real MT5 account with hedging. ${
         j.account.margin === 'hedging'
-          ? 'This account is a real MT5 hedging account, so the balance is the only thing left to reach.'
+          ? `This account already is one, so the $${JOURNAL.procent.providerMinUsd} balance is the only requirement left.`
           : ''
       }
     </p>
@@ -700,7 +701,7 @@ export function journalPage(j, notes = {}) {
 
   return `${head({
     title: '$16 to $100 challenge: live MT5 trading journal | DailyScalper',
-    description: `The author's real RoboForex MT5 cent account, synced hourly: ${s.count} trades, ${pct(s.gainPct).replace(/<[^>]+>/g, '')} gain, ${s.maxDdPct.toFixed(2)}% max drawdown. Daily P&L calendar, Myfxbook-style statistics and every trade. Copy trading opens when it reaches $100.`,
+    description: `The author's real RoboForex MT5 cent account, synced hourly: ${s.count} trades, ${pct(s.gainPct).replace(/<[^>]+>/g, '')} gain, ${s.maxDdPct.toFixed(2)}% max drawdown. Daily P&L calendar, Myfxbook-style statistics and every trade. RoboForex requires at least $100 to share a strategy; copy trading opens when it gets there.`,
     canonical: `${SITE}/journal/`,
     jsonLd: [
       {
