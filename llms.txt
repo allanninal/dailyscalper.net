@@ -63,7 +63,7 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 - [Rankings](https://www.dailyscalper.net/rankings/): the current screened top 10 for both brokers.
 - [Methodology](https://www.dailyscalper.net/methodology/): every gate, threshold and known limitation.
 - [Journal](https://www.dailyscalper.net/journal/): the author's own real RoboForex MT5 cent account (amounts in US cents),
-  synced hourly from the terminal: daily P&L calendar, Myfxbook-style statistics and every trade.
+  synced hourly from the terminal: daily P&L calendar, performance and risk statistics and every trade.
   Not yet copyable; the author plans to open it to copy trading when the balance reaches 10,000 cents ($100).
 - [Partners](https://www.dailyscalper.net/partners/): RoboForex and LiteFinance affiliate programmes compared.
 - [Tools](https://www.dailyscalper.net/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market

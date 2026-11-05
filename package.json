@@ -7,6 +7,12 @@
     "rankings": "node scripts/fetch-rankings.mjs",
     "build": "node scripts/build-site.mjs",
     "update": "npm run rankings && npm run build",
-    "serve": "python3 -m http.server 8899"
+    "serve": "python3 -m http.server 8899",
+    "test": "node --test test/unit/",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
   }
 }

@@ -67,6 +67,12 @@ if ! node scripts/build-site.mjs >>"$LOG" 2>&1; then
   exit 1
 fi
 
+# Unit tests check the stats and the generated pages; never publish a build that fails them.
+if ! node --test test/unit/ >/dev/null 2>>"$LOG"; then
+  log "FAIL unit tests — nothing committed (run: npm test)"
+  exit 1
+fi
+
 git add data index.html 404.html rankings methodology partners tools journal blog sitemap.xml llms.txt
 
 if git diff --staged --quiet; then

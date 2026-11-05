@@ -64,14 +64,25 @@
 <header class="masthead">
   <div class="wrap masthead__inner">
     <a class="wordmark" href="/">Daily<span>Scalper</span></a>
-    <nav>
-      <a href="/rankings/" style="color:var(--text)">Rankings</a>
+    <nav aria-label="Main">
+      <a href="/rankings/" aria-current="page" style="color:var(--text)">Rankings</a>
       <a href="/journal/">Journal</a>
       <a href="/methodology/">Methodology</a>
       <a href="/blog/">Learn</a>
       <a href="/tools/">Tools</a>
       <a href="/partners/">Earn as a Partner</a>
     </nav>
+    <details class="menu">
+      <summary aria-label="Open menu">Menu</summary>
+      <nav class="menu__panel" aria-label="Main">
+      <a href="/rankings/" aria-current="page" style="color:var(--text)">Rankings</a>
+      <a href="/journal/">Journal</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/blog/">Learn</a>
+      <a href="/tools/">Tools</a>
+      <a href="/partners/">Earn as a Partner</a>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -95,7 +106,7 @@
     </p>
     
 <div class="table-scroll">
-<table class="ledger">
+<table class="ledger ledger--stack">
   <thead><tr>
     <th></th><th>Strategy</th><th>Curve</th><th>Yield 1mo</th>
     <th>Max DD</th><th>Trades</th><th>Copiers</th><th>Min dep.</th>
@@ -103,155 +114,155 @@
   </tr></thead>
   <tbody>
   <tr>
-    <td class="rank">1</td>
-    <td>
+    <td data-label="" class="rank">1</td>
+    <td data-label="Strategy">
       <div class="trader-name">Forex com EA</div>
       <div class="trader-sub">Tiago007 · 269d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L15.3,18.8 L30.7,16.1 L46.0,14.3 L61.3,6.3 L76.7,4.1 L92.0,1.5"/></svg></td>
-    <td class="pos">50.0%</td>
-    <td class="neg">0.5%</td>
-    <td>33480</td>
-    <td>38</td>
-    <td>$100</td>
-    <td>0%</td>
-    <td><strong>50.04</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaaj/75068823/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L15.3,18.8 L30.7,16.1 L46.0,14.3 L61.3,6.3 L76.7,4.1 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">50.0%</td>
+    <td data-label="Max DD" class="neg">0.5%</td>
+    <td data-label="Trades">33480</td>
+    <td data-label="Copiers">38</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">0%</td>
+    <td data-label="Score"><strong>50.04</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaaj/75068823/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">2</td>
-    <td>
+    <td data-label="" class="rank">2</td>
+    <td data-label="Strategy">
       <div class="trader-name">xauwin</div>
       <div class="trader-sub">simoncolombia · 168d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,23.1 L9.2,24.5 L18.4,17.2 L27.6,22.5 L36.8,21.0 L46.0,7.7 L55.2,7.7 L64.4,7.7 L73.6,6.7 L82.8,1.5 L92.0,2.1"/></svg></td>
-    <td class="pos">18.8%</td>
-    <td class="neg">0.6%</td>
-    <td>344</td>
-    <td>6</td>
-    <td>$100</td>
-    <td>20%</td>
-    <td><strong>18.81</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37283524/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,23.1 L9.2,24.5 L18.4,17.2 L27.6,22.5 L36.8,21.0 L46.0,7.7 L55.2,7.7 L64.4,7.7 L73.6,6.7 L82.8,1.5 L92.0,2.1"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">18.8%</td>
+    <td data-label="Max DD" class="neg">0.6%</td>
+    <td data-label="Trades">344</td>
+    <td data-label="Copiers">6</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">20%</td>
+    <td data-label="Score"><strong>18.81</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37283524/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">3</td>
-    <td>
+    <td data-label="" class="rank">3</td>
+    <td data-label="Strategy">
       <div class="trader-name">SchorizonTrading FX</div>
       <div class="trader-sub">SchorizonTrading · 260d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L9.2,21.7 L18.4,20.2 L27.6,24.5 L36.8,19.3 L46.0,15.5 L55.2,14.5 L64.4,13.4 L73.6,14.0 L82.8,9.5 L92.0,1.5"/></svg></td>
-    <td class="pos">37.2%</td>
-    <td class="neg">6.9%</td>
-    <td>1554</td>
-    <td>15</td>
-    <td>$1000</td>
-    <td>30%</td>
-    <td><strong>5.37</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbbb/77037422/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L9.2,21.7 L18.4,20.2 L27.6,24.5 L36.8,19.3 L46.0,15.5 L55.2,14.5 L64.4,13.4 L73.6,14.0 L82.8,9.5 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">37.2%</td>
+    <td data-label="Max DD" class="neg">6.9%</td>
+    <td data-label="Trades">1554</td>
+    <td data-label="Copiers">15</td>
+    <td data-label="Min dep.">$1000</td>
+    <td data-label="Fee">30%</td>
+    <td data-label="Score"><strong>5.37</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbbb/77037422/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">4</td>
-    <td>
+    <td data-label="" class="rank">4</td>
+    <td data-label="Strategy">
       <div class="trader-name">FAZENDA TARGET GO</div>
       <div class="trader-sub">TargetGo · 112d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,22.6 L16.7,21.7 L25.1,19.8 L33.5,16.9 L41.8,12.8 L50.2,10.2 L58.5,5.1 L66.9,5.1 L75.3,2.3 L83.6,1.7 L92.0,1.5"/></svg></td>
-    <td class="pos">29.7%</td>
-    <td class="neg">8.6%</td>
-    <td>1384</td>
-    <td>58</td>
-    <td>$100</td>
-    <td>30%</td>
-    <td><strong>3.47</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37375574/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,22.6 L16.7,21.7 L25.1,19.8 L33.5,16.9 L41.8,12.8 L50.2,10.2 L58.5,5.1 L66.9,5.1 L75.3,2.3 L83.6,1.7 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">29.7%</td>
+    <td data-label="Max DD" class="neg">8.6%</td>
+    <td data-label="Trades">1384</td>
+    <td data-label="Copiers">58</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">30%</td>
+    <td data-label="Score"><strong>3.47</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37375574/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">5</td>
-    <td>
+    <td data-label="" class="rank">5</td>
+    <td data-label="Strategy">
       <div class="trader-name">Argentum</div>
       <div class="trader-sub">ProfitWinning · 1228d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L30.7,22.1 L61.3,1.5 L92.0,1.5"/></svg></td>
-    <td class="pos">60.2%</td>
-    <td class="neg">19.4%</td>
-    <td>65</td>
-    <td>64</td>
-    <td>$200</td>
-    <td>30%</td>
-    <td><strong>3.10</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaax/33054708/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L30.7,22.1 L61.3,1.5 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">60.2%</td>
+    <td data-label="Max DD" class="neg">19.4%</td>
+    <td data-label="Trades">65</td>
+    <td data-label="Copiers">64</td>
+    <td data-label="Min dep.">$200</td>
+    <td data-label="Fee">30%</td>
+    <td data-label="Score"><strong>3.10</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaax/33054708/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">6</td>
-    <td>
+    <td data-label="" class="rank">6</td>
+    <td data-label="Strategy">
       <div class="trader-name">ORO SCALP</div>
       <div class="trader-sub">ZukoCarmona · 91d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,21.8 L16.7,18.4 L25.1,16.5 L33.5,13.2 L41.8,11.8 L50.2,9.8 L58.5,7.9 L66.9,7.9 L75.3,6.2 L83.6,3.2 L92.0,1.5"/></svg></td>
-    <td class="pos">14.6%</td>
-    <td class="neg">5.5%</td>
-    <td>530</td>
-    <td>4</td>
-    <td>$100</td>
-    <td>50%</td>
-    <td><strong>2.65</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37386825/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,21.8 L16.7,18.4 L25.1,16.5 L33.5,13.2 L41.8,11.8 L50.2,9.8 L58.5,7.9 L66.9,7.9 L75.3,6.2 L83.6,3.2 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">14.6%</td>
+    <td data-label="Max DD" class="neg">5.5%</td>
+    <td data-label="Trades">530</td>
+    <td data-label="Copiers">4</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">50%</td>
+    <td data-label="Score"><strong>2.65</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/37386825/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">7</td>
-    <td>
+    <td data-label="" class="rank">7</td>
+    <td data-label="Strategy">
       <div class="trader-name">RobotV1</div>
       <div class="trader-sub">Badiashvili · 199d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,22.0 L16.7,20.3 L25.1,18.3 L33.5,14.9 L41.8,13.7 L50.2,10.8 L58.5,9.4 L66.9,9.4 L75.3,7.1 L83.6,4.6 L92.0,1.5"/></svg></td>
-    <td class="pos">16.3%</td>
-    <td class="neg">6.2%</td>
-    <td>2862</td>
-    <td>199</td>
-    <td>$100</td>
-    <td>30%</td>
-    <td><strong>2.62</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/27406010/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L8.4,22.0 L16.7,20.3 L25.1,18.3 L33.5,14.9 L41.8,13.7 L50.2,10.8 L58.5,9.4 L66.9,9.4 L75.3,7.1 L83.6,4.6 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">16.3%</td>
+    <td data-label="Max DD" class="neg">6.2%</td>
+    <td data-label="Trades">2862</td>
+    <td data-label="Copiers">199</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">30%</td>
+    <td data-label="Score"><strong>2.62</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/bbba/27406010/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">8</td>
-    <td>
+    <td data-label="" class="rank">8</td>
+    <td data-label="Strategy">
       <div class="trader-name">EURUSD NZDCAD</div>
       <div class="trader-sub">Cooky · 237d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L7.1,20.7 L14.2,19.2 L21.2,19.2 L28.3,16.7 L35.4,13.1 L42.5,18.8 L49.5,14.1 L56.6,11.9 L63.7,11.9 L70.8,11.9 L77.8,11.0 L84.9,10.0 L92.0,1.5"/></svg></td>
-    <td class="pos">15.9%</td>
-    <td class="neg">6.2%</td>
-    <td>128</td>
-    <td>4</td>
-    <td>$400</td>
-    <td>5%</td>
-    <td><strong>2.57</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaak/38063552/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L7.1,20.7 L14.2,19.2 L21.2,19.2 L28.3,16.7 L35.4,13.1 L42.5,18.8 L49.5,14.1 L56.6,11.9 L63.7,11.9 L70.8,11.9 L77.8,11.0 L84.9,10.0 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">15.9%</td>
+    <td data-label="Max DD" class="neg">6.2%</td>
+    <td data-label="Trades">128</td>
+    <td data-label="Copiers">4</td>
+    <td data-label="Min dep.">$400</td>
+    <td data-label="Fee">5%</td>
+    <td data-label="Score"><strong>2.57</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaak/38063552/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">9</td>
-    <td>
+    <td data-label="" class="rank">9</td>
+    <td data-label="Strategy">
       <div class="trader-name">Gold IA Saruja </div>
       <div class="trader-sub">CacuatroTraderBR · 288d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L15.3,9.1 L30.7,1.5 L46.0,10.9 L61.3,9.8 L76.7,9.8 L92.0,3.7"/></svg></td>
-    <td class="pos">19.4%</td>
-    <td class="neg">8.0%</td>
-    <td>83</td>
-    <td>5</td>
-    <td>$200</td>
-    <td>30%</td>
-    <td><strong>2.43</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaav/24256216/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L15.3,9.1 L30.7,1.5 L46.0,10.9 L61.3,9.8 L76.7,9.8 L92.0,3.7"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">19.4%</td>
+    <td data-label="Max DD" class="neg">8.0%</td>
+    <td data-label="Trades">83</td>
+    <td data-label="Copiers">5</td>
+    <td data-label="Min dep.">$200</td>
+    <td data-label="Fee">30%</td>
+    <td data-label="Score"><strong>2.43</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaav/24256216/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr><tr>
-    <td class="rank">10</td>
-    <td>
+    <td data-label="" class="rank">10</td>
+    <td data-label="Strategy">
       <div class="trader-name">Gold Low Risk</div>
       <div class="trader-sub">Rolf888 · 1084d live</div>
     </td>
-    <td><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L10.2,24.1 L20.4,22.5 L30.7,12.6 L40.9,8.2 L51.1,6.9 L61.3,3.7 L71.6,3.7 L81.8,2.8 L92.0,1.5"/></svg></td>
-    <td class="pos">19.3%</td>
-    <td class="neg">8.1%</td>
-    <td>56</td>
-    <td>4</td>
-    <td>$100</td>
-    <td>0%</td>
-    <td><strong>2.38</strong></td>
-    <td><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaap/47101105/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
+    <td data-label="Curve"><svg class="spark" viewBox="0 0 92 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0.0,24.5 L10.2,24.1 L20.4,22.5 L30.7,12.6 L40.9,8.2 L51.1,6.9 L61.3,3.7 L71.6,3.7 L81.8,2.8 L92.0,1.5"/></svg></td>
+    <td data-label="Yield 1mo" class="pos">19.3%</td>
+    <td data-label="Max DD" class="neg">8.1%</td>
+    <td data-label="Trades">56</td>
+    <td data-label="Copiers">4</td>
+    <td data-label="Min dep.">$100</td>
+    <td data-label="Fee">0%</td>
+    <td data-label="Score"><strong>2.38</strong></td>
+    <td data-label=""><a class="btn btn--ghost" style="padding:.5rem .9rem" href="https://roboforex.com/ph/copy-trading/rating/aaap/47101105/?a=vbes" rel="sponsored nofollow" target="_blank">Copy</a></td>
   </tr>
   </tbody>
 </table>

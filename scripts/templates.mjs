@@ -88,23 +88,59 @@ export function head({ title, description, canonical, jsonLd = [] }) {
 <body>`;
 }
 
+const NAV = [
+  ['/rankings/', 'Rankings', 'rankings'],
+  ['/journal/', 'Journal', 'journal'],
+  ['/methodology/', 'Methodology', 'methodology'],
+  ['/blog/', 'Learn', 'blog'],
+  ['/tools/', 'Tools', 'tools'],
+  ['/partners/', 'Earn as a Partner', 'partners'],
+];
+
 export function masthead(active = '') {
-  const link = (href, label, key) =>
-    `<a href="${href}"${active === key ? ' style="color:var(--text)"' : ''}>${label}</a>`;
+  const links = NAV.map(
+    ([href, label, key]) =>
+      `<a href="${href}"${active === key ? ' aria-current="page" style="color:var(--text)"' : ''}>${label}</a>`
+  ).join('\n      ');
+  // Below 800px the inline nav is hidden and the same links open from a
+  // <details> menu: works without JavaScript, which the CSP keeps minimal.
   return `
 <header class="masthead">
   <div class="wrap masthead__inner">
     <a class="wordmark" href="/">Daily<span>Scalper</span></a>
-    <nav>
-      ${link('/rankings/', 'Rankings', 'rankings')}
-      ${link('/journal/', 'Journal', 'journal')}
-      ${link('/methodology/', 'Methodology', 'methodology')}
-      ${link('/blog/', 'Learn', 'blog')}
-      ${link('/tools/', 'Tools', 'tools')}
-      ${link('/partners/', 'Earn as a Partner', 'partners')}
+    <nav aria-label="Main">
+      ${links}
     </nav>
+    <details class="menu">
+      <summary aria-label="Open menu">Menu</summary>
+      <nav class="menu__panel" aria-label="Main">
+      ${links}
+      </nav>
+    </details>
   </div>
 </header>`;
+}
+
+/**
+ * Copies each column header of a `<table class="ledger">` onto its cells as
+ * data-label and marks the table `ledger--stack`, so CSS can turn every row
+ * into a labelled card on narrow screens instead of letting columns run off
+ * the edge. Tables with their own small-screen layout use other classes and
+ * are left alone.
+ */
+export function stackTables(html) {
+  const strip = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  return html.replace(/<table class="ledger">([\s\S]*?)<\/table>/g, (whole, inner) => {
+    const thead = inner.match(/<thead>([\s\S]*?)<\/thead>/);
+    if (!thead) return whole;
+    const labels = [...thead[1].matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g)].map((m) => strip(m[1]));
+    const body = inner.replace(/<tr\b[^>]*>([\s\S]*?)<\/tr>/g, (row, cells) => {
+      if (row.includes('<th')) return row;
+      let i = 0;
+      return row.replace(/<td\b/g, () => `<td data-label="${esc(labels[i++] ?? '')}"`);
+    });
+    return `<table class="ledger ledger--stack">${body}</table>`;
+  });
 }
 
 export function footer(generatedAt) {

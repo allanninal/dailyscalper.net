@@ -29,7 +29,8 @@ const cents = (n, { sign = false, dp = 2 } = {}) =>
   n === null || n === undefined || !Number.isFinite(n)
     ? dim
     : `${sign && n > 0 ? '+' : ''}${n < 0 ? '−' : ''}${group(Math.abs(n), dp)}¢`;
-const usd = (c) => `$${group(c / 100, 2)}`;
+/** Dollars for a cent amount; whole dollars drop the .00 ($100, not $100.00). */
+const usd = (c) => `$${Number.isInteger(c / 100) ? group(c / 100, 0) : group(c / 100, 2)}`;
 const pct = (n, dp = 2, sign = true) =>
   n === null || n === undefined || !Number.isFinite(n)
     ? dim
@@ -286,6 +287,7 @@ function monthCalendar(ym, days, notes, today, maxAbs) {
       }
       const body = b
         ? `<span class="cal__pnl num">${cents(b.net, { sign: true })}</span>
+             <span class="cal__short num">${b.net > 0 ? '+' : b.net < 0 ? '−' : ''}${Math.round(Math.abs(b.net))}</span>
              <span class="cal__meta num">${b.count} trade${b.count === 1 ? '' : 's'} · ${pct(b.pct, 1)}</span>`
         : '';
       const title = b
@@ -341,29 +343,27 @@ function calendars(s, j, notes) {
     .join('');
 }
 
-/** MQL5-style year × month growth table. */
+/** Year × month growth, compounded within each month. */
 function monthlyTable(s) {
   const months = bucket(s.trades, (t) => monthKey(t.closeTime));
   const years = [...new Set([...months.keys()].map((k) => k.slice(0, 4)))].sort().reverse();
   if (!years.length) return '';
-  return `
-  <div class="table-scroll">
-  <table class="ledger journal-months">
-    <thead><tr><th>Year</th>${MONTHS.map((m) => `<th>${m}</th>`).join('')}<th>Year</th></tr></thead>
-    <tbody>${years
-      .map((y) => {
-        let g = 1;
-        const tds = MONTHS.map((_, i) => {
-          const b = months.get(`${y}-${String(i + 1).padStart(2, '0')}`);
-          if (!b) return `<td>${dim}</td>`;
-          g *= b.growth;
-          return `<td class="${tone(b.pct)}">${pct(b.pct, 1)}</td>`;
-        });
-        return `<tr><td>${y}</td>${tds.join('')}<td class="${tone(g - 1)}"><strong>${pct((g - 1) * 100, 1)}</strong></td></tr>`;
-      })
-      .join('')}</tbody>
-  </table>
+  // Tiles rather than a 14-column table, so it wraps on a phone instead of scrolling.
+  return years
+    .map((y) => {
+      let g = 1;
+      const tiles = MONTHS.map((m, i) => {
+        const b = months.get(`${y}-${String(i + 1).padStart(2, '0')}`);
+        if (b) g *= b.growth;
+        return `<div class="month-tile${b ? ` ${tone(b.pct)}` : ' is-empty'}"><span>${m}</span><b class="num">${b ? pct(b.pct, 1) : dim}</b></div>`;
+      }).join('');
+      return `
+  <div class="month-year">
+    <div class="month-year__head"><h3>${y}</h3><p class="num ${tone(g - 1)}">${pct((g - 1) * 100, 2)} <span class="dim">for the year</span></p></div>
+    <div class="month-tiles">${tiles}</div>
   </div>`;
+    })
+    .join('');
 }
 
 function statsTable(s) {
@@ -375,7 +375,7 @@ function statsTable(s) {
   <div class="grid-2" style="align-items:start">
     <div class="panel">
       <h3>Performance</h3>
-      <table class="ledger"><tbody>
+      <table class="ledger journal-kv"><tbody>
         ${row('Gain', `<span class="${tone(s.gainPct)}">${pct(s.gainPct)}</span>`, 'time-weighted; deposits excluded')}
         ${row('Absolute gain', pct(s.absGainPct), 'net profit ÷ net deposits')}
         ${row('Average daily', pct(s.dailyPct, 3))}
@@ -384,13 +384,13 @@ function statsTable(s) {
         ${row('Deposits', cents(s.deposits))}
         ${row('Profit factor', ratio(s.profitFactor), 'gross profit ÷ gross loss')}
         ${row('Recovery factor', ratio(s.recovery), 'net profit ÷ max drawdown')}
-        ${row('Sharpe ratio', ratio(s.sharpe), 'per trade, as MQL5 Signals')}
+        ${row('Sharpe ratio', ratio(s.sharpe), 'average trade return ÷ its standard deviation')}
         ${row('AHPR / GHPR', `${pct(s.ahpr, 3)} / ${pct(s.ghpr, 3)}`, 'average return per trade, arithmetic / geometric')}
       </tbody></table>
     </div>
     <div class="panel">
       <h3>Risk</h3>
-      <table class="ledger"><tbody>
+      <table class="ledger journal-kv"><tbody>
         ${row('Max drawdown', `<span class="neg">${pct(-s.maxDdPct, 2, false)}</span>`, 'closed-trade balance, peak to trough')}
         ${row('Max drawdown, cents', `<span class="neg">${cents(-s.maxDdAbs)}</span>`)}
         ${row('Worst trade', `<span class="${tone(s.worst)}">${cents(s.worst, { sign: true })}</span>`)}
@@ -402,7 +402,7 @@ function statsTable(s) {
     </div>
     <div class="panel">
       <h3>Trades</h3>
-      <table class="ledger"><tbody>
+      <table class="ledger journal-kv"><tbody>
         ${row('Closed trades', String(s.count))}
         ${row('Win rate', s.winRate === null ? dim : `${s.winRate.toFixed(1)}%`)}
         ${row('Average win', `<span class="pos">${cents(s.avgWin, { sign: true })}</span>`)}
@@ -414,7 +414,7 @@ function statsTable(s) {
     </div>
     <div class="panel">
       <h3>Activity</h3>
-      <table class="ledger"><tbody>
+      <table class="ledger journal-kv"><tbody>
         ${row('Tracking since', esc(longDate(s.firstTime)))}
         ${row('Trading days', String(s.tradingDays))}
         ${row('Average holding time', duration(s.avgHold))}
@@ -425,46 +425,45 @@ function statsTable(s) {
   </div>`;
 }
 
-/** Balance after every cash movement and closed trade, plotted against time. */
+/**
+ * Balance after every cash movement and closed trade, plotted against time.
+ * The SVG stretches to any width; its labels are HTML so they stay a readable
+ * size on a phone instead of shrinking with the drawing.
+ */
 function balanceChart(s) {
   const pts = s.curve;
   if (pts.length < 2) return '';
-  const w = 900;
-  const h = 220;
-  const pad = { l: 64, r: 12, t: 12, b: 26 };
-  const t0 = Date.parse(pts[0].time);
+  const w = 1000;
+  const h = 300;
+  // The first point is the deposit; the plotted line starts at the first trade.
+  const t0 = Date.parse(pts[1].time);
   const t1 = Date.parse(pts[pts.length - 1].time);
   const vals = pts.map((p) => p.balance);
   const lo = Math.min(...vals.slice(1));
   const hi = Math.max(...vals);
   const span = hi - lo || 1;
-  const x = (t) => pad.l + ((Date.parse(t) - t0) / (t1 - t0 || 1)) * (w - pad.l - pad.r);
-  const y = (v) => pad.t + (1 - (v - lo) / span) * (h - pad.t - pad.b);
+  const x = (t) => ((Date.parse(t) - t0) / (t1 - t0 || 1)) * w;
+  const y = (v) => 8 + (1 - (v - lo) / span) * (h - 16);
   // Start the line at the first deposit, not at zero, so the scale shows trading.
   const d = pts
     .slice(1)
     .map((p, i) => `${i === 0 ? 'M' : 'L'}${x(p.time).toFixed(1)},${y(p.balance).toFixed(1)}`)
     .join(' ');
-  const ticks = [lo, (lo + hi) / 2, hi];
   return `
   <figure class="panel journal-chart">
-    <svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Balance in cents after each closed trade, from ${cents(lo)} to ${cents(hi)}">
-      ${ticks
-        .map(
-          (v) =>
-            `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" class="journal-chart__grid"/>
-      <text x="${pad.l - 8}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end">${group(v, 0)}¢</text>`
-        )
-        .join('')}
-      <path d="${d}" class="journal-chart__line"/>
-      <text x="${pad.l}" y="${h - 6}">${esc(dayKey(pts[1].time))}</text>
-      <text x="${w - pad.r}" y="${h - 6}" text-anchor="end">${esc(dayKey(pts[pts.length - 1].time))}</text>
-    </svg>
+    <div class="journal-chart__plot">
+      <div class="journal-chart__axis num"><span>${group(hi, 0)}¢</span><span>${group((lo + hi) / 2, 0)}¢</span><span>${group(lo, 0)}¢</span></div>
+      <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Balance in cents after each closed trade, from ${cents(lo)} to ${cents(hi)}">
+        ${[8, h / 2, h - 8].map((gy) => `<line x1="0" x2="${w}" y1="${gy}" y2="${gy}" class="journal-chart__grid"/>`).join('')}
+        <path d="${d}" class="journal-chart__line"/>
+      </svg>
+    </div>
+    <div class="journal-chart__dates num"><span>${esc(dayKey(pts[1].time))}</span><span>${esc(dayKey(pts[pts.length - 1].time))}</span></div>
     <figcaption class="trader-sub">Balance after each closed trade, in cents. Floating profit on open trades is not included.</figcaption>
   </figure>`;
 }
 
-/** Hour-of-day and weekday breakdown, as Myfxbook's and MQL5's activity charts. */
+/** Hour-of-day and weekday breakdown. */
 function activity(s) {
   const byHour = bucket(s.trades, (t) => Number(t.openTime.slice(11, 13)));
   const byDow = bucket(s.trades, (t) => (new Date(t.openTime).getUTCDay() + 6) % 7);
@@ -488,7 +487,7 @@ function activity(s) {
     </div>
     <div class="panel">
       <h3>By weekday opened</h3>
-      <table class="ledger"><thead><tr><th>Day</th><th>Trades</th><th>Won</th><th>Net</th></tr></thead><tbody>
+      <table class="ledger journal-kv"><thead><tr><th>Day</th><th>Trades</th><th>Won</th><th>Net</th></tr></thead><tbody>
       ${WEEKDAYS.map((d, i) => {
         const b = byDow.get(i);
         return `<tr><td style="text-align:left">${d}</td><td>${b ? b.count : dim}</td><td>${
@@ -504,33 +503,32 @@ const EXIT_LABEL = { tp: 'Take profit', sl: 'Stop loss', ea: 'Closed by EA', man
 
 function tradeRows(trades) {
   return trades
-    .map(
-      (t) => `<tr>
-      <td style="text-align:left" class="num">${esc(dayKey(t.closeTime))} <span class="dim">${esc(hhmm(t.openTime))}→${esc(hhmm(t.closeTime))}</span></td>
-      <td style="text-align:left"><span class="tag ${t.side === 'buy' ? 'tag--rf' : 'tag--lf'}">${t.side}</span> ${esc(t.symbol)}</td>
-      <td>${t.volume.toFixed(2)}</td>
-      <td>${price(t.openPrice, t.closePrice)[0]}</td>
-      <td>${price(t.openPrice, t.closePrice)[1]}</td>
-      <td>${duration(Date.parse(t.closeTime) - Date.parse(t.openTime))}</td>
-      <td class="dim">${EXIT_LABEL[t.exit] ?? esc(t.exit)}${t.by === 'manual' ? ' · manual entry' : ''}</td>
-      <td class="${tone(t.profit)}">${cents(t.profit, { sign: true })}</td>
-      <td class="${tone(t.r)}">${pct(t.r * 100)}</td>
-    </tr>`
-    )
+    .map((t) => {
+      const [entry, exit] = price(t.openPrice, t.closePrice);
+      return `<tr>
+      <td class="num">${esc(dayKey(t.closeTime))}<div class="trader-sub">${esc(hhmm(t.openTime))} → ${esc(hhmm(t.closeTime))}</div></td>
+      <td><span class="tag ${t.side === 'buy' ? 'tag--rf' : 'tag--lf'}">${t.side}</span> ${esc(t.symbol)}<div class="trader-sub">${t.volume.toFixed(2)} lots</div></td>
+      <td class="hide-sm">${entry}</td>
+      <td class="hide-sm">${exit}</td>
+      <td class="hide-sm">${duration(Date.parse(t.closeTime) - Date.parse(t.openTime))}</td>
+      <td class="dim hide-sm">${EXIT_LABEL[t.exit] ?? esc(t.exit)}${t.by === 'manual' ? ' · manual entry' : ''}</td>
+      <td class="${tone(t.profit)}">${cents(t.profit, { sign: true })}<div class="trader-sub show-sm">${pct(t.r * 100)}</div></td>
+      <td class="${tone(t.r)} hide-sm">${pct(t.r * 100)}</td>
+    </tr>`;
+    })
     .join('');
 }
 
 function openTable(j) {
   if (!j.openPositions.length) return '<p class="dim">No open trades at the last sync.</p>';
-  return `<div class="table-scroll"><table class="ledger">
-    <thead><tr><th>Opened (UTC)</th><th>Trade</th><th>Lots</th><th>Entry</th><th>Floating</th></tr></thead>
+  return `<div class="table-scroll"><table class="ledger journal-trades">
+    <thead><tr><th>Opened (UTC)</th><th>Trade</th><th class="hide-sm">Entry</th><th>Floating</th></tr></thead>
     <tbody>${j.openPositions
       .map(
         (p) => `<tr>
-      <td style="text-align:left" class="num">${esc(p.openTime.slice(0, 16).replace('T', ' '))}</td>
-      <td style="text-align:left"><span class="tag ${p.side === 'buy' ? 'tag--rf' : 'tag--lf'}">${p.side}</span> ${esc(p.symbol)}</td>
-      <td>${p.volume.toFixed(2)}</td>
-      <td>${price(p.openPrice)[0]}</td>
+      <td class="num">${esc(dayKey(p.openTime))}<div class="trader-sub">${esc(hhmm(p.openTime))}</div></td>
+      <td><span class="tag ${p.side === 'buy' ? 'tag--rf' : 'tag--lf'}">${p.side}</span> ${esc(p.symbol)}<div class="trader-sub">${p.volume.toFixed(2)} lots</div></td>
+      <td class="hide-sm">${price(p.openPrice)[0]}</td>
       <td class="${tone(p.floating)}">${cents(p.floating, { sign: true })}</td>
     </tr>`
       )
@@ -637,7 +635,7 @@ function phoneDays(s, j) {
 /* ------------------------------------------------------- why ProCent */
 
 /** Trades held through at least one daily rollover (broker server midnight). */
-function overnight(trades, offsetMin) {
+export function overnight(trades, offsetMin) {
   const off = (offsetMin ?? 0) * 60_000;
   return trades.filter((t) => {
     const open = Date.parse(t.openTime) + off;
@@ -734,7 +732,7 @@ export function journalPage(j, notes = {}) {
 
   return `${head({
     title: '$16 to $100 challenge: live MT5 trading journal | DailyScalper',
-    description: `The author's real RoboForex MT5 cent account, synced hourly: ${s.count} trades, ${pct(s.gainPct).replace(/<[^>]+>/g, '')} gain, ${s.maxDdPct.toFixed(2)}% max drawdown. Daily P&L calendar, Myfxbook-style statistics and every trade. RoboForex requires at least $100 to share a strategy; copy trading opens when it gets there.`,
+    description: `The author's real RoboForex MT5 cent account, synced hourly: ${s.count} trades, ${pct(s.gainPct).replace(/<[^>]+>/g, '')} gain, ${s.maxDdPct.toFixed(2)}% max drawdown. Daily P&L calendar, full statistics and every trade. RoboForex requires at least $100 to share a strategy; copy trading opens when it gets there.`,
     canonical: `${SITE}/journal/`,
     jsonLd: [
       {
@@ -817,10 +815,10 @@ ${masthead('journal')}
 <section class="block rule-top" id="stats">
   <div class="wrap">
     <p class="eyebrow">Statistics</p>
-    <h2>The numbers Myfxbook and MQL5 would show</h2>
+    <h2>Performance, risk and activity</h2>
     <p class="lede" style="margin:1rem 0 2rem">
-      Computed from the closed trades below, with the definitions those services publish, so you can check any of
-      them by hand. A record this short says very little: wait for months, not days, before reading much into a ratio.
+      Every figure is computed from the closed trades below with standard, published definitions — gain ignores
+      deposits, drawdown is peak to trough — so you can check any of them by hand. A record this short says very little: wait for months, not days, before reading much into a ratio.
     </p>
     ${statsTable(s)}
   </div>
@@ -841,8 +839,8 @@ ${masthead('journal')}
     <div style="margin:1.5rem 0 3rem">${openTable(j)}</div>
     <h2>Last ${recent.length} closed trades</h2>
     <div class="table-scroll" style="margin-top:1.5rem">
-    <table class="ledger">
-      <thead><tr><th>Closed (UTC)</th><th>Trade</th><th>Lots</th><th>Entry</th><th>Exit</th><th>Held</th><th>Closed by</th><th>Profit</th><th>Return</th></tr></thead>
+    <table class="ledger journal-trades">
+      <thead><tr><th>Closed (UTC)</th><th>Trade</th><th class="hide-sm">Entry</th><th class="hide-sm">Exit</th><th class="hide-sm">Held</th><th class="hide-sm">Closed by</th><th>Profit</th><th class="hide-sm">Return</th></tr></thead>
       <tbody>${tradeRows(recent)}</tbody>
     </table>
     </div>

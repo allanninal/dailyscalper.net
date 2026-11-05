@@ -6,7 +6,7 @@
  * so the site cannot claim a figure the screening did not actually produce.
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
-import { head, masthead, footer, sparkline, esc } from './templates.mjs';
+import { head, masthead, footer, sparkline, esc, stackTables } from './templates.mjs';
 import { journalPage, journalTeaser } from './build-journal.mjs';
 import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY } from './config.mjs';
 
@@ -1011,8 +1011,9 @@ ${footer(data.generatedAt)}`;
 async function emit(path, html) {
   const dir = path.split('/').slice(0, -1).join('/');
   if (dir) await mkdir(dir, { recursive: true });
-  await writeFile(path, html);
-  console.log(`  wrote ${path} (${(html.length / 1024).toFixed(1)} KB)`);
+  const out = path.endsWith('.html') ? stackTables(html) : html;
+  await writeFile(path, out);
+  console.log(`  wrote ${path} (${(out.length / 1024).toFixed(1)} KB)`);
 }
 
 await emit('index.html', indexPage);
@@ -1139,7 +1140,7 @@ ${lf.ranked
   journal
     ? `
 - [Journal](${SITE}/journal/): the author's own real RoboForex MT5 cent account (amounts in US cents),
-  synced hourly from the terminal: daily P&L calendar, Myfxbook-style statistics and every trade.
+  synced hourly from the terminal: daily P&L calendar, performance and risk statistics and every trade.
   Not yet copyable; the author plans to open it to copy trading when the balance reaches 10,000 cents ($100).`
     : ''
 }

@@ -56,6 +56,12 @@ if ! node scripts/build-site.mjs >/dev/null 2>>"$LOG"; then
   exit 1
 fi
 
+# Unit tests check the stats and the generated pages; never publish a build that fails them.
+if ! node --test test/unit/ >/dev/null 2>>"$LOG"; then
+  log "FAIL unit tests — nothing committed (run: npm test)"
+  exit 1
+fi
+
 git add "${GENERATED[@]}"
 
 if git diff --staged --quiet; then
