@@ -7,7 +7,7 @@
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
-import { journalPage } from './build-journal.mjs';
+import { journalPage, journalTeaser } from './build-journal.mjs';
 import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
@@ -247,7 +247,9 @@ ${masthead('home')}
     </p>
     <div class="btn-row">
       <a class="btn btn--primary" href="/rankings/">See this week's top 10 →</a>
-      <a class="btn btn--ghost" href="/methodology/">How the screening works</a>
+      <a class="btn btn--ghost" href="/methodology/">How the screening works</a>${
+        journal ? '\n      <a class="btn btn--ghost" href="/journal/">Follow the $16 → $100 challenge</a>' : ''
+      }
     </div>
     <dl class="hero__meta">
       <div><dt>Strategies screened</dt><dd>${totalScreened}</dd></div>
@@ -316,6 +318,8 @@ ${masthead('home')}
     </div>
   </div>
 </section>
+
+${journal ? journalTeaser(journal) : ''}
 
 <section class="block rule-top">
   <div class="wrap">

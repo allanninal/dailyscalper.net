@@ -692,6 +692,39 @@ function whyProCent(s, j) {
 </section>`;
 }
 
+/* -------------------------------------------------------- homepage card */
+
+/** The challenge in one block, for the homepage. Same figures as /journal/. */
+export function journalTeaser(j) {
+  const s = journalStats(j);
+  const goal = JOURNAL.goalCents;
+  const progress = Math.min(100, Math.max(0, ((s.balance - s.deposits) / (goal - s.deposits || 1)) * 100));
+  const item = (label, value, cls = '') => `<div><dt>${label}</dt><dd class="${cls}">${value}</dd></div>`;
+  return `<section class="block rule-top" id="challenge">
+  <div class="wrap">
+    <p class="eyebrow">Live journal · the author's own account</p>
+    <h2>From $16 to $100, in public</h2>
+    <p class="lede" style="margin:1rem 0 1.5rem">
+      The author is trading a real RoboForex MT5 cent account from ${usd(s.deposits).replace(/\.\d+$/, '')} to
+      ${usd(goal).replace(/\.00$/, '')}, the minimum RoboForex requires before an account can be copied. Every trade,
+      winning or losing, is synced from the terminal every hour.
+    </p>
+    <div class="journal-goal__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress.toFixed(0)}" aria-label="Progress from the starting deposit to the $100 goal">
+      <span style="width:${progress.toFixed(2)}%"></span>
+    </div>
+    <div class="journal-goal__ends num"><span>Start ${usd(s.deposits)}</span><span>${progress.toFixed(1)}% · ${usd(s.balance)} now</span><span>Goal ${usd(goal)}</span></div>
+    <dl class="hero__meta">
+      ${item('Gain', pct(s.gainPct), tone(s.gainPct))}
+      ${item('Max drawdown', pct(-s.maxDdPct, 2, false), 'neg')}
+      ${item('Trades', String(s.count))}
+      ${item('Win rate', s.winRate === null ? dim : `${s.winRate.toFixed(0)}%`)}
+    </dl>
+    <div class="btn-row"><a class="btn btn--primary" href="/journal/">Open the journal</a>
+      <a class="btn btn--ghost" href="/journal/#calendar">See the daily calendar</a></div>
+  </div>
+</section>`;
+}
+
 /* ------------------------------------------------------------------ page */
 
 export function journalPage(j, notes = {}) {
