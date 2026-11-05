@@ -27,6 +27,13 @@ export const LINKS = {
   fxvm: () => `https://fxvm.net/?aff=${AFFILIATE.fxvm}`,
   mql5Product: (id) => `https://www.mql5.com/en/market/product/${id}`,
   authorTools: () => 'https://www.allanninal.dev/mql5/',
+  // Partner (IB) programmes. The partner code makes a new partner the author's
+  // sub-partner, which is how the site earns from this page.
+  roboforexPartner: () => `https://roboforex.com/partner-program/?a=${AFFILIATE.roboforex}`,
+  roboforexCopyPartner: () =>
+    `https://roboforex.com/partner-program/copy-trading-partner-program/?a=${AFFILIATE.roboforex}`,
+  litefinancePartner: () =>
+    `https://www.litefinance.org/partners/` + (AFFILIATE.litefinanceUid ? `?uid=${AFFILIATE.litefinanceUid}` : ''),
   litefinanceSignup: () =>
     `https://www.litefinance.org/social-trading/` +
     (AFFILIATE.litefinanceUid ? `?uid=${AFFILIATE.litefinanceUid}` : ''),
@@ -303,5 +310,47 @@ export const JOURNAL = {
     goldAvgSpreadPoints: 18, // ProCent XAUUSD average spread, specifications page
     goldSwapLong: -60, // standard ProCent XAUUSD swap, points — what Swap-Free waives
     goldSwapShort: 19,
+  },
+};
+
+/**
+ * Partner-programme terms shown on /partners/, as each broker published them.
+ * Checked 2026-11-05 on the pages in `sources`; brokers change these without
+ * notice, so re-check before editing copy and bump `checked`.
+ */
+export const PARTNERS = {
+  checked: '2026-11-05',
+  roboforex: {
+    spreadSharePct: 85, // "up to"
+    swapSharePct: 30, // on open positions
+    subPartnerPct: 10,
+    perLot: { XAUUSD: 8.8, EURUSD: 8.8, GBPUSD: 9.3, USDJPY: 8.3 }, // USD per lot, payout from spread
+    countedAccounts: 'MT4/MT5 Pro and R StocksTrader accounts',
+    copyTraderFeePct: [10, 20, 30, 40, 50], // trader's commission options on its calculator
+    copyPartnerPct: [10, 20, 30, 50], // partner's share of that commission
+    sources: [
+      'https://roboforex.com/partner-program/',
+      'https://roboforex.com/partner-program/copy-trading-partner-program/',
+      'https://roboforex.com/promo/loyalty-program/',
+    ],
+  },
+  litefinance: {
+    revenueSharePct: 70, // from 100 lots or $5,000 referral deposits in the past month
+    revenueShareLowPct: 30, // below both thresholds
+    tierLots: 100,
+    tierDepositUsd: 5000,
+    subPartnerPct: 10,
+    eurusdCompanyProfitPerLot: 5, // its FAQ example, regular ECN account
+    cpsUsd: 50, // per referral: $100+ deposit, then 50 trades totalling 2+ lots
+    cpsMinDepositUsd: 100,
+    cpsTrades: 50,
+    cpsLots: 2,
+    autoWithdrawUsdPerDay: 5000,
+    sources: [
+      'https://www.litefinance.org/partners/',
+      'https://www.litefinance.org/partners/programs/revenue-share/',
+      'https://www.litefinance.org/partners/programs/cps/',
+      'https://www.litefinance.org/support/faq/',
+    ],
   },
 };

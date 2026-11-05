@@ -35,6 +35,17 @@ export function overflowReport(page) {
         if (!p) out.push(`off-screen ${name(el)}`);
       }
     }
+    // Text itself must land on screen, whatever its boxes report.
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      const host = n.parentElement;
+      if (!n.textContent.trim() || !host || host.closest('ins, iframe, script, style, .table-scroll')) continue;
+      const range = document.createRange();
+      range.selectNodeContents(n);
+      for (const b of range.getClientRects()) {
+        if (b.width && (b.right > vw + 1 || b.left < -1)) out.push(`text off-screen "${n.textContent.trim().slice(0, 24)}"`);
+      }
+    }
     return [...new Set(out)];
   });
 }

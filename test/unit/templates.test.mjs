@@ -33,6 +33,8 @@ test('every RoboForex link builder carries the partner code', () => {
     LINKS.roboforexFreeVps(),
     LINKS.roboforexPage('https://roboforex.com/promo/full-swap-free/'),
     LINKS.roboforexPage('https://roboforex.com/x/?lang=en'),
+    LINKS.roboforexPartner(),
+    LINKS.roboforexCopyPartner(),
   ]) {
     assert.match(url, /[?&]a=vbes(&|$)/, url);
   }
@@ -40,4 +42,10 @@ test('every RoboForex link builder carries the partner code', () => {
 
 test('esc neutralises markup', () => {
   assert.equal(esc('<a href="x">&</a>'), '&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;');
+});
+
+test('every LiteFinance link builder carries the partner uid', () => {
+  for (const url of [LINKS.litefinanceSignup(), LINKS.litefinancePartner(), LINKS.litefinanceTrader(1)]) {
+    assert.match(url, new RegExp(`[?&]uid=${AFFILIATE.litefinanceUid}(&|$)`), url);
+  }
 });

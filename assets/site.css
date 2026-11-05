@@ -249,6 +249,7 @@ p { margin: 0 0 1rem; }
 }
 
 .grid-2 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-4 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
 .grid-3 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 .block { padding-block: clamp(3.5rem, 8vw, 6rem); }
@@ -675,6 +676,12 @@ p { margin: 0 0 1rem; }
   .ledger--stack tr:has(td.rank) td.rank { grid-column: 1; grid-row: 1; align-self: start; width: auto; }
   .ledger--stack tr:has(td.rank) td:nth-child(2) { grid-row: 1; justify-content: flex-start; text-align: left !important; }
   .ledger--stack tr:has(td.rank) td:nth-child(2)::before { display: none; }
+  /* Unranked rows (e.g. comparisons): the first cell is the card's title. */
+  .ledger--stack tr:not(:has(td.rank)) td:first-child {
+    justify-content: flex-start; text-align: left !important; padding-bottom: 0.5rem;
+    font-family: var(--sans); font-weight: 600; font-size: 1rem; color: var(--text);
+  }
+  .ledger--stack tr:not(:has(td.rank)) td:first-child::before { display: none; }
   .ledger--stack td .btn { width: 100%; text-align: center; }
   .ledger--stack .spark { width: 120px; }
 }
@@ -696,3 +703,15 @@ p { margin: 0 0 1rem; }
   .ledger { font-size: 0.86rem; }
   .ledger .spark { width: 72px; }
 }
+
+/* Partner FAQ: native <details>, no script. */
+.faq { margin-bottom: 0.75rem; padding-block: 1.1rem; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font-family: var(--mono); color: var(--gold); font-size: 1.2rem; }
+.faq[open] summary::after { content: '−'; }
+.faq summary h3 { margin: 0; font-size: 1.05rem; }
+
+/* Text comparison tables wrap their cells instead of growing past the page. */
+.table-text td { white-space: normal; vertical-align: top; }
+.table-text td:first-child { white-space: nowrap; color: var(--text-dim); }

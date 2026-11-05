@@ -8,7 +8,7 @@
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc, stackTables } from './templates.mjs';
 import { journalPage, journalTeaser } from './build-journal.mjs';
-import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY } from './config.mjs';
+import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY, PARTNERS } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
@@ -357,13 +357,13 @@ ${journal ? journalTeaser(journal) : ''}
       </div>
       <div>
         <p class="eyebrow">Or earn instead</p>
-        <h3>Refer, and take a share of the spread</h3>
+        <h3>Earn without depositing or trading</h3>
         <p class="lede" style="margin-top:1rem">
           Both brokers run partner programmes that pay a share of the spread on every trade your
-          referrals make — RoboForex up to 85%, LiteFinance 70%, both with 10% from sub-partners.
-          It's a second income path that doesn't require you to deposit at all.
+          referrals make — RoboForex up to ${PARTNERS.roboforex.spreadSharePct}%, LiteFinance ${PARTNERS.litefinance.revenueShareLowPct}–${PARTNERS.litefinance.revenueSharePct}%,
+          both with ${PARTNERS.roboforex.subPartnerPct}% from sub-partners. It's a second income path that doesn't require you to deposit or trade at all.
         </p>
-        <div class="btn-row"><a class="btn btn--ghost" href="/partners/">Compare the programmes</a></div>
+        <div class="btn-row"><a class="btn btn--ghost" href="/partners/">How partners earn</a></div>
       </div>
     </div>
   </div>
@@ -592,10 +592,61 @@ ${footer(data.generatedAt)}`;
 
 /* --------------------------------------------------------- partners page */
 
+const RFP = PARTNERS.roboforex;
+const LFP = PARTNERS.litefinance;
+/** $50, $8.80, $1,500 — cents shown only when there are any. */
+const money = (n) => {
+  const dp = Number.isInteger(n) ? 0 : 2;
+  return `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp })}`;
+};
+
+// Worked examples: arithmetic on the brokers' own published rates, nothing more.
+const EXAMPLES = {
+  rfLots: 10,
+  lfLots: 10,
+  copyProfit: 1000,
+  copyTraderPct: 20,
+  copyPartnerPct: 30,
+  cpsReferrals: 5,
+};
+const ex = {
+  rf: EXAMPLES.rfLots * RFP.perLot.XAUUSD,
+  lfLow: EXAMPLES.lfLots * LFP.eurusdCompanyProfitPerLot * (LFP.revenueShareLowPct / 100),
+  lfHigh: EXAMPLES.lfLots * LFP.eurusdCompanyProfitPerLot * (LFP.revenueSharePct / 100),
+  copy: EXAMPLES.copyProfit * (EXAMPLES.copyTraderPct / 100) * (EXAMPLES.copyPartnerPct / 100),
+  cps: EXAMPLES.cpsReferrals * LFP.cpsUsd,
+};
+
+const partnerFaq = [
+  [
+    'Do I need to deposit or trade to become a partner?',
+    `No deposit or trading requirement appears on either broker's partner pages. You register, open a partner account and share your link. LiteFinance asks you to verify your client profile (ID and proof of address) before your referral link appears.`,
+  ],
+  [
+    'What exactly am I paid for?',
+    `For the trading of the people you refer. RoboForex pays up to ${RFP.spreadSharePct}% of the spread on their closed trades and ${RFP.swapSharePct}% of the swap on their open positions. LiteFinance pays ${LFP.revenueShareLowPct}–${LFP.revenueSharePct}% of its profit from their trades, or a flat ${money(LFP.cpsUsd)} per qualifying referral on its CPS plan. If your referrals do not trade, you earn nothing.`,
+  ],
+  [
+    'Can I earn from copy trading without being a trader?',
+    `Yes. On RoboForex, a partner whose referral copies a strategy receives a share of that strategy's performance fee: investor profit × trader's fee × partner's share. The trader pays it, not the investor on top. LiteFinance describes the same idea: you earn part of a trader's profit when your referral copies a trader who has set a partner percentage.`,
+  ],
+  [
+    'What are sub-partners?',
+    `People you refer who become partners themselves. Both brokers pay you ${RFP.subPartnerPct}% of what your sub-partners earn, on top of your own referrals.`,
+  ],
+  [
+    'Can I refer myself or my family?',
+    `No. LiteFinance states that neither a partner nor relatives or affiliated entities may act as a referral. Treat the same as true everywhere: self-referral is the fastest way to have a partner account closed.`,
+  ],
+  [
+    'Which accounts count on RoboForex?',
+    `RoboForex states that partner commission is calculated on ${RFP.countedAccounts}. Its partner pages do not mention cent (ProCent) accounts, so confirm in the partner cabinet before steering referrals to them.`,
+  ],
+];
+
 const partnersPage = `${head({
-  title: 'RoboForex vs LiteFinance partner programmes compared | DailyScalper',
-  description:
-    'Side-by-side comparison of the RoboForex and LiteFinance affiliate programmes: revenue share, per-lot payouts, sub-partner tiers and payout mechanics.',
+  title: 'Earn without depositing: RoboForex and LiteFinance partner programmes | DailyScalper',
+  description: `How to earn from forex without depositing or trading: refer traders and copiers to RoboForex (up to ${RFP.spreadSharePct}% of spread) or LiteFinance (${LFP.revenueShareLowPct}–${LFP.revenueSharePct}% revenue share or ${money(LFP.cpsUsd)} per referral). Steps, worked examples, rules and sources.`,
   canonical: `${SITE}/partners/`,
   jsonLd: [
     graph(
@@ -603,7 +654,8 @@ const partnersPage = `${head({
       breadcrumbs([
         ['Home', '/'],
         ['Partners', '/partners/'],
-      ])
+      ]),
+      faq(partnerFaq)
     ),
   ],
 })}
@@ -612,40 +664,159 @@ ${masthead('partners')}
 <section class="hero" style="padding-block:clamp(3rem,7vw,5rem) 2rem">
   <div class="wrap hero__inner">
     <p class="eyebrow">Second income path</p>
-    <h1>Earn without depositing</h1>
+    <h1>Earn without depositing or <em>trading</em></h1>
     <p class="lede">
-      Copying is the main way to use this site. The other way is to refer: both brokers pay partners
-      a share of the spread their referrals generate, with no requirement to fund an account yourself.
-      Figures below are the brokers' own published rates.
+      Copying a strategy is the main way to use this site, and it needs money in an account. This is the other
+      way: become a broker partner and get paid a share of what the people you refer generate. Neither broker asks
+      a partner to fund an account or place a trade.
     </p>
+    <dl class="hero__meta">
+      <div><dt>RoboForex spread share</dt><dd>up to ${RFP.spreadSharePct}%</dd></div>
+      <div><dt>LiteFinance revenue share</dt><dd>${LFP.revenueShareLowPct}–${LFP.revenueSharePct}%</dd></div>
+      <div><dt>From sub-partners</dt><dd>${RFP.subPartnerPct}%</dd></div>
+      <div><dt>Deposit needed</dt><dd class="pos">$0</dd></div>
+    </dl>
   </div>
 </section>
 
 <section class="block rule-top">
   <div class="wrap">
-    <div class="table-scroll">
+    <p class="eyebrow">How it works</p>
+    <h2>Four steps, no deposit</h2>
+    <div class="grid-4" style="margin-top:2rem">
+      ${[
+        ['1 · Register as a partner', 'Open a free partner account with the broker. LiteFinance also asks you to verify your profile with ID and proof of address before your link appears.'],
+        ['2 · Get your links', 'The partner cabinet gives you a referral link, plus a separate link for each copy-trading strategy on RoboForex. LiteFinance adds banners, landing pages and a partner app.'],
+        ['3 · Share them honestly', 'Write, post or explain trading to people who already want to trade or copy. Every person who signs up through your link is tied to you.'],
+        ['4 · Get paid on their activity', 'When your referrals trade, or copy a strategy that profits, the broker credits you a share. You never touch their money and they pay nothing extra.'],
+      ]
+        .map(([t, d]) => `<div class="panel"><h3>${t}</h3><p style="margin:.75rem 0 0;color:var(--text-dim)">${d}</p></div>`)
+        .join('')}
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Ways to earn</p>
+    <h2>What you can be paid for</h2>
+    <div class="grid-3" style="margin-top:2rem">
+      <div class="panel">
+        <p class="eyebrow">Trading referrals</p>
+        <h3>A share of spread and swap</h3>
+        <p style="margin:.75rem 0 0;color:var(--text-dim)">
+          RoboForex pays up to ${RFP.spreadSharePct}% of the spread on your referrals' closed trades — about
+          ${money(RFP.perLot.XAUUSD)} per lot of gold or EURUSD — and ${RFP.swapSharePct}% of the swap on positions they hold
+          overnight. LiteFinance pays ${LFP.revenueSharePct}% of its profit from their trades once they trade
+          ${LFP.tierLots}+ lots or deposit ${money(LFP.tierDepositUsd)}+ in a month, ${LFP.revenueShareLowPct}% below that.
+        </p>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Copy-trading referrals</p>
+        <h3>A share of the trader's fee</h3>
+        <p style="margin:.75rem 0 0;color:var(--text-dim)">
+          Refer someone who copies a strategy, and when that strategy earns its performance fee you receive part of
+          it. On RoboForex: investor profit × trader's fee (${RFP.copyTraderFeePct[0]}–${RFP.copyTraderFeePct.at(-1)}%) ×
+          partner share (${RFP.copyPartnerPct[0]}–${RFP.copyPartnerPct.at(-1)}%), paid by the trader, credited as soon as the
+          trader is paid.
+        </p>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Per sign-up · and partners of partners</p>
+        <h3>Flat fees and sub-partners</h3>
+        <p style="margin:.75rem 0 0;color:var(--text-dim)">
+          LiteFinance's CPS plan pays ${money(LFP.cpsUsd)} per referral who deposits ${money(LFP.cpsMinDepositUsd)}+ and then
+          makes ${LFP.cpsTrades} trades totalling ${LFP.cpsLots}+ lots. On both brokers, anyone you refer who becomes a
+          partner is your sub-partner, and you earn ${RFP.subPartnerPct}% of what they earn.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Side by side</p>
+    <h2>The two programmes compared</h2>
+    <div class="table-scroll table-text" style="margin-top:2rem">
     <table class="ledger">
       <thead><tr><th>Term</th><th style="text-align:left">RoboForex</th><th style="text-align:left">LiteFinance</th></tr></thead>
       <tbody>
-        <tr><td style="text-align:left">Revenue share</td><td style="text-align:left">Up to 85% of spread</td><td style="text-align:left">70% of broker profit</td></tr>
-        <tr><td style="text-align:left">Swap share</td><td style="text-align:left">30% on open positions</td><td style="text-align:left" class="dim">Not published</td></tr>
-        <tr><td style="text-align:left">Sub-partners</td><td style="text-align:left">10%</td><td style="text-align:left">10%</td></tr>
-        <tr><td style="text-align:left">Example per lot</td><td style="text-align:left">$8.80 XAUUSD · $9.30 GBPUSD</td><td style="text-align:left">~$3.50 EURUSD · ~$85 BTCUSD</td></tr>
-        <tr><td style="text-align:left">Payouts</td><td style="text-align:left">Via partner account</td><td style="text-align:left">Daily, auto up to $5,000</td></tr>
-        <tr><td style="text-align:left">Materials</td><td style="text-align:left">Banners, informer widgets, landing pages</td><td style="text-align:left">Banners, brochures, landing pages, partner app</td></tr>
-        <tr><td style="text-align:left">Copy-trading angle</td><td style="text-align:left">Share of the trader's performance fee</td><td style="text-align:left" class="dim">Standard revenue share</td></tr>
+        <tr><td style="text-align:left">Deposit to join</td><td style="text-align:left">None stated</td><td style="text-align:left">None stated; profile verification required</td></tr>
+        <tr><td style="text-align:left">Revenue share</td><td style="text-align:left">Up to ${RFP.spreadSharePct}% of spread</td><td style="text-align:left">${LFP.revenueSharePct}% of broker profit (${LFP.revenueShareLowPct}% under ${LFP.tierLots} lots and ${money(LFP.tierDepositUsd)} a month)</td></tr>
+        <tr><td style="text-align:left">Swap share</td><td style="text-align:left">${RFP.swapSharePct}% on open positions</td><td style="text-align:left" class="dim">Not published</td></tr>
+        <tr><td style="text-align:left">Per lot</td><td style="text-align:left">${money(RFP.perLot.XAUUSD)} XAUUSD · ${money(RFP.perLot.EURUSD)} EURUSD · ${money(RFP.perLot.GBPUSD)} GBPUSD</td><td style="text-align:left">${LFP.revenueSharePct}% of ~${money(LFP.eurusdCompanyProfitPerLot)} on EURUSD (its example)</td></tr>
+        <tr><td style="text-align:left">Flat fee per referral</td><td style="text-align:left" class="dim">Not offered</td><td style="text-align:left">${money(LFP.cpsUsd)} (CPS plan)</td></tr>
+        <tr><td style="text-align:left">Copy trading</td><td style="text-align:left">Share of the trader's fee, set per strategy</td><td style="text-align:left">Share of a copied trader's profit, if the trader sets one</td></tr>
+        <tr><td style="text-align:left">Sub-partners</td><td style="text-align:left">${RFP.subPartnerPct}%</td><td style="text-align:left">${LFP.subPartnerPct}%</td></tr>
+        <tr><td style="text-align:left">Accounts counted</td><td style="text-align:left">${RFP.countedAccounts}</td><td style="text-align:left">Classic, ECN and Cent</td></tr>
+        <tr><td style="text-align:left">Payouts</td><td style="text-align:left">Copy-trading share credited when the trader is paid</td><td style="text-align:left">Daily; automatic withdrawals up to ${money(LFP.autoWithdrawUsdPerDay)} a day</td></tr>
+        <tr><td style="text-align:left">Tools</td><td style="text-align:left">Referral and per-strategy links, real-time dashboard, loyalty rewards</td><td style="text-align:left">Links, banners, landing pages, partner app, campaign stats</td></tr>
       </tbody>
     </table>
     </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Worked examples</p>
+    <h2>What the published rates add up to</h2>
+    <p class="lede" style="margin:1rem 0 2rem">Arithmetic on each broker's own figures for one month — not a forecast. Real results depend entirely on how much your referrals trade, and most months most referrals trade little.</p>
+    <div class="grid-4">
+      ${[
+        [`RoboForex · ${EXAMPLES.rfLots} lots of gold`, `${EXAMPLES.rfLots} lots × ${money(RFP.perLot.XAUUSD)}`, money(ex.rf)],
+        [`LiteFinance · ${EXAMPLES.lfLots} lots of EURUSD`, `${EXAMPLES.lfLots} × ${money(LFP.eurusdCompanyProfitPerLot)} × ${LFP.revenueShareLowPct}% (small month) or ${LFP.revenueSharePct}%`, `${money(ex.lfLow)} – ${money(ex.lfHigh)}`],
+        [`Copy trading · ${money(EXAMPLES.copyProfit)} investor profit`, `${money(EXAMPLES.copyProfit)} × ${EXAMPLES.copyTraderPct}% trader fee × ${EXAMPLES.copyPartnerPct}% partner share`, money(ex.copy)],
+        [`LiteFinance CPS · ${EXAMPLES.cpsReferrals} qualifying referrals`, `${EXAMPLES.cpsReferrals} × ${money(LFP.cpsUsd)}`, money(ex.cps)],
+      ]
+        .map(([t, how, total]) => `<div class="panel"><p class="eyebrow">${t}</p><h3 class="num">${total}</h3><p class="trader-sub" style="margin-top:.5rem">${how}</p></div>`)
+        .join('')}
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Before you start</p>
+    <h2>Rules and honest limits</h2>
+    <div style="margin-top:2rem">
+      ${gateRow('No self-referral', 'You, your relatives and your own companies cannot be your referrals. LiteFinance says so outright; assume every broker enforces it.')}
+      ${gateRow('Country restrictions', 'RoboForex and its partners do not target clients in the EU/EEA/UK, the USA, Canada, Japan, Australia and other listed countries; LiteFinance does not serve the EEA, USA, Israel, Russia and others. Check where your audience lives.')}
+      ${gateRow('Which accounts pay', `RoboForex calculates partner commission on ${RFP.countedAccounts}. LiteFinance counts Classic, ECN and Cent. Hedged positions can reduce LiteFinance commission.`)}
+      ${gateRow('Earnings follow their trading', 'No trades, no income. Rates are “up to”, can differ by region and can change without notice; confirm them in the partner cabinet.')}
+      ${gateRow('The conflict of interest', 'You are paid when people trade, and most retail traders lose money. Recommend only what you would use yourself, show the risks, and never promise returns.')}
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top" id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>Partner FAQ</h2>
+    <div style="margin-top:2rem">
+      ${partnerFaq
+        .map(([q, a]) => `<details class="panel faq"><summary><h3>${esc(q)}</h3></summary><p style="margin:1rem 0 0;color:var(--text-dim)">${esc(a)}</p></details>`)
+        .join('')}
+    </div>
+  </div>
+</section>
+
+<section class="block rule-top">
+  <div class="wrap">
+    <p class="eyebrow">Join</p>
+    <h2>Open a partner account</h2>
     <div class="btn-row">
-      <a class="btn btn--primary" href="${esc(LINKS.roboforexSignup())}" rel="sponsored nofollow" target="_blank">RoboForex partner programme</a>
-      <a class="btn btn--ghost" href="${esc(LINKS.litefinanceSignup())}" rel="sponsored nofollow" target="_blank">LiteFinance partner programme</a>
+      <a class="btn btn--primary" href="${esc(LINKS.roboforexPartner())}" rel="sponsored nofollow" target="_blank">RoboForex partner programme</a>
+      <a class="btn btn--ghost" href="${esc(LINKS.roboforexCopyPartner())}" rel="sponsored nofollow" target="_blank">RoboForex copy-trading partners</a>
+      <a class="btn btn--ghost" href="${esc(LINKS.litefinancePartner())}" rel="sponsored nofollow" target="_blank">LiteFinance partner programme</a>
     </div>
     <p class="risk-note" style="margin-top:2.5rem">
-      Rates are as published by each broker and change without notice — confirm current terms in the
-      partner cabinet before relying on them. Partner earnings depend on referred clients trading, and
-      most retail traders lose money; recruiting people into leveraged trading to earn spread rebates
-      carries an obvious conflict of interest that you should think carefully about.
+      <strong>Sources, checked ${esc(PARTNERS.checked)}.</strong>
+      RoboForex: ${RFP.sources.map((u) => `<a href="${esc(LINKS.roboforexPage(u))}" rel="sponsored nofollow" target="_blank">${esc(u.replace('https://', ''))}</a>`).join(' · ')}.
+      LiteFinance: ${LFP.sources.map((u) => `<a href="${esc(u + (AFFILIATE.litefinanceUid ? `?uid=${AFFILIATE.litefinanceUid}` : ''))}" rel="sponsored nofollow" target="_blank">${esc(u.replace('https://', ''))}</a>`).join(' · ')}.
+      Examples are arithmetic on these published rates. These are affiliate links: if you join through them, the
+      author may earn as your upline partner, at no cost to you.
     </p>
   </div>
 </section>

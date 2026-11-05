@@ -38,3 +38,22 @@ test('every RoboForex link carries the vbes partner code', async ({ page }) => {
     expect(bad, path).toEqual([]);
   }
 });
+
+test('every LiteFinance link carries the partner uid', async ({ page }) => {
+  for (const path of ['/', '/rankings/', '/partners/']) {
+    await page.goto(path);
+    const bad = await page.$$eval('a[href*="litefinance."]', (as) => as.map((a) => a.href).filter((h) => !/[?&]uid=135262069(&|$)/.test(h)));
+    expect(bad, path).toEqual([]);
+  }
+});
+
+test('the partners page explains earning without depositing', async ({ page }) => {
+  await page.goto('/partners/');
+  await expect(page.locator('h1')).toContainText('Earn without depositing');
+  // LiteFinance pays 30% below its volume threshold; never present 70% as flat.
+  await expect(page.locator('body')).toContainText('30–70%');
+  const faq = page.locator('details.faq').first();
+  await faq.locator('summary').click();
+  await expect(faq.locator('p')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'RoboForex partner programme' })).toHaveAttribute('href', /partner-program\/\?a=vbes/);
+});
