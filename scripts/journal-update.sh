@@ -46,8 +46,17 @@ fi
 
 git pull --rebase --quiet origin main 2>>"$LOG" || { log "FAIL git pull"; exit 1; }
 
-if ! node scripts/fetch-journal.mjs >>"$LOG" 2>&1; then
-  log "FAIL fetch-journal — VPS terminal unreachable, nothing overwritten"
+# A single dropped tunnel or VPS hiccup should not cost the whole hour: try three times.
+fetched=0
+for attempt in 1 2 3; do
+  if node scripts/fetch-journal.mjs >>"$LOG" 2>&1; then
+    fetched=1
+    break
+  fi
+  [ "$attempt" -lt 3 ] && { log "RETRY fetch-journal in 60 s (attempt $attempt failed)"; sleep 60; }
+done
+if [ "$fetched" -ne 1 ]; then
+  log "FAIL fetch-journal — VPS terminal unreachable after 3 tries, nothing overwritten"
   exit 1
 fi
 
