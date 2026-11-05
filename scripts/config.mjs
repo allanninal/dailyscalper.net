@@ -18,6 +18,8 @@ export const LINKS = {
   roboforexStrategy: (sourceId, login) =>
     `https://roboforex.com/ph/copy-trading/rating/${sourceId}/${login}/?a=${AFFILIATE.roboforex}`,
   roboforexSignup: () => `https://my.roboforex.com/en/?a=${AFFILIATE.roboforex}`,
+  // Any other roboforex.com page, always carrying the partner code.
+  roboforexPage: (url) => `${url}${url.includes('?') ? '&' : '?'}a=${AFFILIATE.roboforex}`,
   litefinanceTrader: (id) =>
     `https://my.litefinance.org/traders/info?id=${id}` +
     (AFFILIATE.litefinanceUid ? `&uid=${AFFILIATE.litefinanceUid}` : ''),

@@ -670,8 +670,8 @@ function whyProCent(s, j) {
     </p>
     <p class="trader-sub" style="margin-top:1rem">
       Broker terms checked ${esc(P.checked)}:
-      <a href="${esc(P.specsUrl)}" target="_blank" rel="noopener">ProCent specifications</a> ·
-      <a href="${esc(P.swapFreeUrl)}" target="_blank" rel="noopener">Swap-Free terms</a>.
+      <a href="${esc(LINKS.roboforexPage(P.specsUrl))}" target="_blank" rel="sponsored nofollow">ProCent specifications</a> ·
+      <a href="${esc(LINKS.roboforexPage(P.swapFreeUrl))}" target="_blank" rel="sponsored nofollow">Swap-Free terms</a>.
       Live figures are this account's own deals, synced hourly.
     </p>
     <div class="btn-row">
