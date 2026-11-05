@@ -296,6 +296,10 @@ export const JOURNAL = {
     checked: '2026-11-05',
     specsUrl: 'https://roboforex.com/forex-trading/trading/specifications/',
     swapFreeUrl: 'https://roboforex.com/promo/full-swap-free/',
+    // CopyFX, renamed Copy Trading Service in late 2025: any real MT5 account with
+    // Hedge enabled can share a strategy, after a deposit of at least 100 USD.
+    shareUrl: 'https://roboforex.com/copy-trading/share-your-strategy/',
+    providerMinUsd: 100,
     goldAvgSpreadPoints: 18, // ProCent XAUUSD average spread, specifications page
     goldSwapLong: -60, // standard ProCent XAUUSD swap, points — what Swap-Free waives
     goldSwapShort: 19,

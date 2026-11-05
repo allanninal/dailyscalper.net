@@ -199,7 +199,7 @@ function bucket(trades, keyOf) {
  * The $16 → $100 challenge: progress is measured from the starting deposit, not
  * from zero, so the bar shows only what trading has added.
  */
-function goalPanel(s) {
+function goalPanel(s, j) {
   const goal = JOURNAL.goalCents;
   const start = s.deposits;
   const progress = Math.min(100, Math.max(0, ((s.balance - start) / (goal - start || 1)) * 100));
@@ -222,6 +222,15 @@ function goalPanel(s) {
         reached
           ? `The balance has reached ${usd(goal)}. The author is preparing to open this account to copy trading on RoboForex — this page will link to it the day it opens.`
           : `The author started this account with ${usd(start)} and is trading it to ${usd(goal)} in public. <strong>When it reaches ${usd(goal)}, it opens to copy trading on RoboForex</strong> so anyone following along can copy it. Until then there is nothing to copy — just this page, updated every hour, losses included. It is a <strong>cent account</strong>, so every figure here is in US cents (¢): 100¢ is $1.`
+      }
+    </p>
+    <p class="trader-sub" style="margin-top:1rem">
+      Why $100: RoboForex's <a href="${esc(LINKS.roboforexPage(JOURNAL.procent.shareUrl))}" rel="sponsored nofollow" target="_blank">Copy Trading Service</a>
+      (formerly CopyFX) lets any real MT5 account with hedging share a strategy once it holds at least
+      $${JOURNAL.procent.providerMinUsd}. ${
+        j.account.margin === 'hedging'
+          ? 'This account is a real MT5 hedging account, so the balance is the only thing left to reach.'
+          : ''
       }
     </p>
   </div>`;
@@ -734,7 +743,7 @@ ${masthead('journal')}
 
 <section class="block rule-top" style="padding-top:2.5rem">
   <div class="wrap">
-    ${goalPanel(s)}
+    ${goalPanel(s, j)}
   </div>
 </section>
 
