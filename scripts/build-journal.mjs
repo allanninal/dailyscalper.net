@@ -221,7 +221,7 @@ function goalPanel(s, j) {
       ${
         reached
           ? `The balance has reached ${usd(goal)}. The author is preparing to open this account to copy trading on RoboForex — this page will link to it the day it opens.`
-          : `The author started this account with ${usd(start)} and is trading it to ${usd(goal)} in public. <strong>RoboForex only lets an account be copied once it holds at least ${usd(goal).replace(/\.00$/, "")}</strong>, so that is the goal: the day the balance reaches it, the author opens it to copy trading for anyone following along. Until then there is nothing to copy — just this page, updated every hour, losses included. It is a <strong>cent account</strong>, so every figure here is in US cents (¢): 100¢ is $1.`
+          : `The author started this account with ${usd(start)} and is trading it to ${usd(goal)} in public. <strong>RoboForex only lets an account be copied once it holds at least ${usd(goal).replace(/\.00$/, "")}</strong>. That is why this is a challenge from ${usd(start).replace(/\.\d+$/, '')} to ${usd(goal).replace(/\.00$/, '')}: the day the balance reaches it, the author opens the account to copy trading for anyone following along. Until then there is nothing to copy — just this page, updated every hour, losses included. It is a <strong>cent account</strong>, so every figure here is in US cents (¢): 100¢ is $1.`
       }
     </p>
     <p class="tag tag--warn" style="margin-top:1.25rem">RoboForex requires at least $${JOURNAL.procent.providerMinUsd} (${cents(JOURNAL.procent.providerMinUsd * 100, { dp: 0 })}) to share a strategy</p>
