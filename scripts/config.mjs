@@ -277,3 +277,13 @@ export const TOOLS = [
  * the rankings by hand.
  */
 export const AUTHOR_STRATEGY = { sourceId: 'bbba', login: 37410742 };
+
+/**
+ * The author's live MT5 journal (/journal/). A RoboForex cent account: every
+ * amount the terminal reports is US cents even though it labels them USD.
+ */
+export const JOURNAL = {
+  goalCents: 10000, // $100 — copy trading opens on this account when the balance reaches it
+  recentTrades: 50, // rows in the closed-trade table
+  phoneDays: 30, // most recent trading days drawn as phone views
+};

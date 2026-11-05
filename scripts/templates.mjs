@@ -97,6 +97,7 @@ export function masthead(active = '') {
     <a class="wordmark" href="/">Daily<span>Scalper</span></a>
     <nav>
       ${link('/rankings/', 'Rankings', 'rankings')}
+      ${link('/journal/', 'Journal', 'journal')}
       ${link('/methodology/', 'Methodology', 'methodology')}
       ${link('/blog/', 'Learn', 'blog')}
       ${link('/tools/', 'Tools', 'tools')}
@@ -119,6 +120,7 @@ export function footer(generatedAt) {
         <ul>
           <li><a href="/rankings/">This week's top 10</a></li>
           <li><a href="/methodology/">How we screen</a></li>
+          <li><a href="/journal/">The author's live journal</a></li>
         </ul>
       </div>
       <div>

@@ -7,10 +7,22 @@
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { head, masthead, footer, sparkline, esc } from './templates.mjs';
+import { journalPage } from './build-journal.mjs';
 import { GATES, LINKS, AFFILIATE, MARTINGALE, BOARDS, TOOLS, AUTHOR_STRATEGY } from './config.mjs';
 
 const SITE = 'https://www.dailyscalper.net';
 const data = JSON.parse(await readFile('data/rankings.json', 'utf8'));
+const readJson = async (path, fallback) => {
+  try {
+    return JSON.parse(await readFile(path, 'utf8'));
+  } catch (e) {
+    if (e.code === 'ENOENT') return fallback;
+    throw e;
+  }
+};
+// Written hourly by fetch-journal.mjs; absent until the first sync.
+const journal = await readJson('data/journal.json', null);
+const journalNotes = await readJson('data/journal-notes.json', {});
 const rf = data.brokers.roboforex;
 const lf = data.brokers.litefinance;
 
@@ -1005,6 +1017,7 @@ await emit('methodology/index.html', methodologyPage);
 await emit('partners/index.html', partnersPage);
 await emit('tools/index.html', toolsPage);
 await emit('404.html', notFoundPage);
+if (journal) await emit('journal/index.html', journalPage(journal, journalNotes));
 
 for (const board of BOARDS) {
   await emit(`${board.slug.slice(1)}index.html`, boardPage(board));
@@ -1031,6 +1044,7 @@ const blogMeta = await Promise.all(
 const generated = [
   { url: '/', freq: 'weekly', priority: '1.0' },
   { url: '/rankings/', freq: 'weekly', priority: '0.9' },
+  ...(journal ? [{ url: '/journal/', freq: 'hourly', priority: '0.8', lastmod: journal.syncedAt }] : []),
   { url: '/methodology/', freq: 'monthly', priority: '0.7' },
   { url: '/partners/', freq: 'monthly', priority: '0.6' },
   { url: '/tools/', freq: 'monthly', priority: '0.6' },
@@ -1046,7 +1060,7 @@ await emit(
 ${generated
   .map(
     (u) =>
-      `  <url><loc>${SITE}${u.url}</loc><lastmod>${data.generatedAt.slice(
+      `  <url><loc>${SITE}${u.url}</loc><lastmod>${(u.lastmod ?? data.generatedAt).slice(
         0,
         10
       )}</lastmod><changefreq>${u.freq}</changefreq><priority>${u.priority}</priority></url>`
@@ -1117,7 +1131,14 @@ ${lf.ranked
 ## Pages
 
 - [Rankings](${SITE}/rankings/): the current screened top 10 for both brokers.
-- [Methodology](${SITE}/methodology/): every gate, threshold and known limitation.
+- [Methodology](${SITE}/methodology/): every gate, threshold and known limitation.${
+  journal
+    ? `
+- [Journal](${SITE}/journal/): the author's own real RoboForex MT5 cent account (amounts in US cents),
+  synced hourly from the terminal: daily P&L calendar, Myfxbook-style statistics and every trade.
+  Not yet copyable; the author plans to open it to copy trading when the balance reaches 10,000 cents ($100).`
+    : ''
+}
 - [Partners](${SITE}/partners/): RoboForex and LiteFinance affiliate programmes compared.
 - [Tools](${SITE}/tools/): the author's own MetaTrader Expert Advisors and indicators on the MQL5 Market
   (${TOOLS.length}, ${TOOLS.filter((t) => t.price === 'Free').length} free; details at ${LINKS.authorTools()}) and forex VPS options.

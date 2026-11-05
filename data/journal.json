@@ -1,0 +1,274 @@
+{
+  "syncedAt": "2026-11-05T08:37:38Z",
+  "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
+  "account": {
+    "broker": "RoboForex",
+    "platform": "MetaTrader 5",
+    "type": "real",
+    "margin": "hedging",
+    "unit": "USC",
+    "balance": 1707.52,
+    "equity": 1686.04,
+    "floating": -21.48
+  },
+  "trades": [
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-03T13:35:06Z",
+      "openPrice": 3904.33,
+      "volume": 0.01,
+      "closeTime": "2026-11-03T14:24:43Z",
+      "closePrice": 3914.34,
+      "exit": "tp",
+      "profit": 10.01
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-03T19:00:29Z",
+      "openPrice": 3927.24,
+      "volume": 0.01,
+      "closeTime": "2026-11-03T22:09:19Z",
+      "closePrice": 3922.25,
+      "exit": "sl",
+      "profit": 4.99
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-04T01:30:55Z",
+      "openPrice": 3928.72,
+      "volume": 0.01,
+      "closeTime": "2026-11-04T01:35:13Z",
+      "closePrice": 3938.81,
+      "exit": "tp",
+      "profit": 10.09
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-04T03:36:01Z",
+      "openPrice": 3956.61,
+      "volume": 0.01,
+      "closeTime": "2026-11-04T03:43:57Z",
+      "closePrice": 3961.52,
+      "exit": "sl",
+      "profit": 4.91
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-04T06:25:49Z",
+      "openPrice": 3940.93,
+      "volume": 0.01,
+      "closeTime": "2026-11-04T07:04:15Z",
+      "closePrice": 3947.05,
+      "exit": "sl",
+      "profit": 6.12
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "manual",
+      "openTime": "2026-11-04T11:20:31Z",
+      "openPrice": 4046.07,
+      "volume": 0.03,
+      "closeTime": "2026-11-04T13:46:01Z",
+      "closePrice": 4041.44,
+      "exit": "manual",
+      "profit": -13.89
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-04T13:45:07Z",
+      "openPrice": 4043.21,
+      "volume": 0.03,
+      "closeTime": "2026-11-04T14:20:55Z",
+      "closePrice": 4038.23,
+      "exit": "sl",
+      "profit": 14.94
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-04T14:20:56Z",
+      "openPrice": 4038.01,
+      "volume": 0.03,
+      "closeTime": "2026-11-04T17:20:06Z",
+      "closePrice": 4033.01,
+      "exit": "sl",
+      "profit": 15
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-04T17:25:02Z",
+      "openPrice": 4031.75,
+      "volume": 0.03,
+      "closeTime": "2026-11-04T19:00:38Z",
+      "closePrice": 4066.63,
+      "exit": "ea",
+      "profit": -104.64
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-04T19:00:39Z",
+      "openPrice": 4066.62,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T02:36:04Z",
+      "closePrice": 4084.43,
+      "exit": "sl",
+      "profit": 53.43
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T02:30:03Z",
+      "openPrice": 4080,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T02:36:04Z",
+      "closePrice": 4083.99,
+      "exit": "sl",
+      "profit": 11.97
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T02:36:04Z",
+      "openPrice": 4085.01,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T02:59:00Z",
+      "closePrice": 4089.22,
+      "exit": "sl",
+      "profit": 12.63
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T02:59:00Z",
+      "openPrice": 4090.23,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T03:06:14Z",
+      "closePrice": 4095.18,
+      "exit": "sl",
+      "profit": 14.85
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T03:06:15Z",
+      "openPrice": 4095.14,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T03:16:17Z",
+      "closePrice": 4106.22,
+      "exit": "sl",
+      "profit": 33.24
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T03:16:17Z",
+      "openPrice": 4106.75,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T03:22:39Z",
+      "closePrice": 4111.72,
+      "exit": "sl",
+      "profit": 14.91
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T03:22:39Z",
+      "openPrice": 4112.06,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T03:54:14Z",
+      "closePrice": 4125.3,
+      "exit": "sl",
+      "profit": 39.72
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T03:54:15Z",
+      "openPrice": 4125.29,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T04:14:36Z",
+      "closePrice": 4130.28,
+      "exit": "sl",
+      "profit": 14.97
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T04:14:37Z",
+      "openPrice": 4130.63,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T04:46:22Z",
+      "closePrice": 4135.59,
+      "exit": "sl",
+      "profit": 14.88
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T04:46:23Z",
+      "openPrice": 4135.72,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T05:59:19Z",
+      "closePrice": 4140.53,
+      "exit": "sl",
+      "profit": 14.43
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-05T05:59:20Z",
+      "openPrice": 4140.03,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T08:00:33Z",
+      "closePrice": 4118.03,
+      "exit": "ea",
+      "profit": -66
+    }
+  ],
+  "cashflow": [
+    {
+      "time": "2026-11-02T16:03:01Z",
+      "kind": "balance",
+      "amount": 1600.96
+    }
+  ],
+  "openPositions": [
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-05T08:00:33Z",
+      "openPrice": 4118.02,
+      "volume": 0.03,
+      "floating": -21.48
+    }
+  ]
+}
