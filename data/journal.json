@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-05T18:35:08Z",
+  "syncedAt": "2026-11-05T19:35:19Z",
   "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
   "account": {
     "broker": "RoboForex",
@@ -8,8 +8,8 @@
     "margin": "hedging",
     "unit": "USC",
     "balance": 1634.68,
-    "equity": 1631.14,
-    "floating": -3.54,
+    "equity": 1635.28,
+    "floating": 0.6,
     "serverUtcOffsetMinutes": 120
   },
   "trades": [
@@ -407,7 +407,7 @@
       "openTime": "2026-11-05T20:00:36Z",
       "openPrice": 4101.58,
       "volume": 0.03,
-      "floating": -3.51
+      "floating": 0.51
     }
   ]
 }
