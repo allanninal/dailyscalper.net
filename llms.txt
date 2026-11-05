@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 545 strategies screened, 142 flagged as martingale,
-> 20 published. Last updated 2026-11-04.
+> LiteFinance. 545 strategies screened, 141 flagged as martingale,
+> 20 published. Last updated 2026-11-05.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,28 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. Forex com EA — yield 50.04%, max drawdown 0.45%, 33480 trades, 38 copiers, score 50.04
-2. Every day 2 procent  — yield 55.16%, max drawdown 12.28%, 88 trades, 11 copiers, score 4.49
-3. SchorizonTrading FX — yield 52.45%, max drawdown 12.39%, 1922 trades, 15 copiers, score 4.23
-4. ORO SCALP — yield 33.58%, max drawdown 8.09%, 1280 trades, 4 copiers, score 4.15
-5. Shootingstar — yield 100.66%, max drawdown 33.65%, 255 trades, 39 copiers, score 2.99
-6. Market situations — yield 42.14%, max drawdown 14.69%, 276 trades, 7 copiers, score 2.87
-7. PRIME — yield 32.22%, max drawdown 11.61%, 401 trades, 8 copiers, score 2.78
-8. EURUSD NZDCAD — yield 42.39%, max drawdown 16.23%, 203 trades, 4 copiers, score 2.61
-9. LORMT FX — yield 27.77%, max drawdown 12.45%, 318 trades, 5 copiers, score 2.23
-10. Signals PrideTrade — yield 60.96%, max drawdown 27.59%, 642 trades, 4 copiers, score 2.21
+1. Forex com EA — yield 54.71%, max drawdown 0.45%, 37993 trades, 38 copiers, score 54.71
+2. Every day 2 procent  — yield 61.19%, max drawdown 12.28%, 90 trades, 13 copiers, score 4.98
+3. SchorizonTrading FX — yield 60.37%, max drawdown 12.39%, 2206 trades, 15 copiers, score 4.87
+4. ORO SCALP — yield 32.54%, max drawdown 8.09%, 1250 trades, 4 copiers, score 4.02
+5. PRIME — yield 33.7%, max drawdown 11.61%, 409 trades, 8 copiers, score 2.9
+6. Market situations — yield 37.1%, max drawdown 14.69%, 283 trades, 8 copiers, score 2.53
+7. EURUSD NZDCAD — yield 34.77%, max drawdown 16.23%, 212 trades, 4 copiers, score 2.14
+8. TRADING SAFETY — yield 36.67%, max drawdown 17.19%, 206 trades, 4 copiers, score 2.13
+9. RobotV1 — yield 38%, max drawdown 17.89%, 6478 trades, 211 copiers, score 2.12
+10. Trend trading — yield 30.32%, max drawdown 21.64%, 95 trades, 18 copiers, score 1.4
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. TS_ISP — yield 1804.14%, drawdown at least 8.72%, risk 4/10, 6 copiers, score 206.9
-2. Fire_Phoenix — yield 907.51%, drawdown at least 0.7%, risk 2/10, 97 copiers, score 181.5
-3. TradingSCapital — yield 614.2%, drawdown at least 0.24%, risk 2/10, 433 copiers, score 122.84
-4. Earth_Taurus — yield 233.61%, drawdown at least 0.44%, risk 2/10, 97 copiers, score 46.72
-5. Quantum 9000 — yield 152.9%, drawdown at least 0.33%, risk 2/10, 82 copiers, score 30.58
-6. Blue_Dragon — yield 136.96%, drawdown at least 3.52%, risk 2/10, 17 copiers, score 27.39
-7. Copygenius — yield 80.48%, drawdown at least 0.02%, risk 2/10, 12 copiers, score 16.1
-8. steady_pips — yield 76.14%, drawdown at least 0.46%, risk 2/10, 21 copiers, score 15.23
-9. PRIME500 — yield 77.66%, drawdown at least 5.21%, risk 4/10, 91 copiers, score 14.91
-10. World of EA — yield 61.79%, drawdown at least 4.88%, risk 2/10, 3 copiers, score 12.36
+1. TS_ISP — yield 1822.07%, drawdown at least 8.24%, risk 4/10, 6 copiers, score 221.13
+2. Fire_Phoenix — yield 907.51%, drawdown at least 0.56%, risk 2/10, 96 copiers, score 181.5
+3. TradingSCapital — yield 613.33%, drawdown at least 0.31%, risk 2/10, 434 copiers, score 122.67
+4. Earth_Taurus — yield 233.61%, drawdown at least 0.45%, risk 2/10, 96 copiers, score 46.72
+5. Quantum 9000 — yield 152.49%, drawdown at least 0.41%, risk 2/10, 84 copiers, score 30.5
+6. Blue_Dragon — yield 140.51%, drawdown at least 3.37%, risk 2/10, 18 copiers, score 28.1
+7. Copygenius — yield 80.85%, drawdown at least 0.02%, risk 2/10, 12 copiers, score 16.17
+8. steady_pips — yield 76.54%, drawdown at least 0.58%, risk 2/10, 21 copiers, score 15.31
+9. PRIME500 — yield 68.84%, drawdown at least 4.43%, risk 4/10, 92 copiers, score 13.77
+10. World of EA — yield 61.89%, drawdown at least 4.88%, risk 2/10, 3 copiers, score 12.38
 
 ## Limitations (please quote these alongside the rankings)
 
