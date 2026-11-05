@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-05T19:35:19Z",
+  "syncedAt": "2026-11-05T20:35:30Z",
   "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
   "account": {
     "broker": "RoboForex",
@@ -7,9 +7,9 @@
     "type": "real",
     "margin": "hedging",
     "unit": "USC",
-    "balance": 1634.68,
-    "equity": 1635.28,
-    "floating": 0.6,
+    "balance": 1598.71,
+    "equity": 1565.98,
+    "floating": -32.73,
     "serverUtcOffsetMinutes": 120
   },
   "trades": [
@@ -390,6 +390,20 @@
       "profit": -28.86,
       "swap": 0,
       "commission": 0
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-05T20:00:36Z",
+      "openPrice": 4101.58,
+      "volume": 0.03,
+      "closeTime": "2026-11-05T22:00:35Z",
+      "closePrice": 4113.57,
+      "exit": "ea",
+      "profit": -35.97,
+      "swap": 0,
+      "commission": 0
     }
   ],
   "cashflow": [
@@ -402,12 +416,12 @@
   "openPositions": [
     {
       "symbol": "XAUUSD",
-      "side": "sell",
+      "side": "buy",
       "by": "ea",
-      "openTime": "2026-11-05T20:00:36Z",
-      "openPrice": 4101.58,
+      "openTime": "2026-11-05T22:00:35Z",
+      "openPrice": 4113.51,
       "volume": 0.03,
-      "floating": 0.51
+      "floating": -32.82
     }
   ]
 }
