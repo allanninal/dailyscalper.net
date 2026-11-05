@@ -113,6 +113,8 @@ function reconstruct(deals) {
         closePrice: null,
         exit: null,
         profit: costs,
+        swap: num(d.swap),
+        commission: num(d.commission) + num(d.fee),
       });
       continue;
     }
@@ -122,6 +124,8 @@ function reconstruct(deals) {
     if (!p) continue; // opened before HISTORY_FROM
     p.closedVolume += num(d.volume_closed ?? d.volume);
     p.profit += num(d.profit) + costs;
+    p.swap += num(d.swap);
+    p.commission += num(d.commission) + num(d.fee);
     p.closeTime = iso(d.open_time);
     p.closePrice = d.price_open;
     p.exit = exitOf(d.reason);
@@ -129,10 +133,17 @@ function reconstruct(deals) {
 
   const trades = [...positions.values()]
     .filter((p) => p.closeTime && p.closedVolume >= p.volume - 1e-9)
-    .map(({ closedVolume, ...p }) => ({ ...p, profit: round(p.profit) }))
+    .map(({ closedVolume, ...p }) => ({ ...p, profit: round(p.profit), swap: round(p.swap), commission: round(p.commission) }))
     .sort((a, b) => a.closeTime.localeCompare(b.closeTime));
 
   return { trades, cashflow };
+}
+
+function serverOffset(c) {
+  const server = Date.parse(`${c?.trade_server_last_known_time}Z`);
+  const utc = Date.parse(c?.utc_time);
+  if (!Number.isFinite(server) || !Number.isFinite(utc)) return null;
+  return Math.round((server - utc) / 1_800_000) * 30; // whole half-hours
 }
 
 /* ------------------------------------------------------------------- main */
@@ -144,7 +155,7 @@ try {
   process.exit(1);
 }
 
-let account, history, open;
+let account, history, open, clock;
 try {
   await rpc(
     'initialize',
@@ -159,6 +170,7 @@ try {
     include_orders: false,
   });
   open = await tool('get_trading_open_positions', { include_orders: false });
+  clock = await tool('get_time_information');
 } catch (e) {
   console.error(`FAIL MT5 terminal: ${e.message} — nothing written`);
   process.exit(1);
@@ -220,6 +232,8 @@ const journal = {
     balance: round(account.balance),
     equity: round(account.equity),
     floating: round(account.profit),
+    // Broker server clock vs UTC; the daily swap rollover is server midnight.
+    serverUtcOffsetMinutes: serverOffset(clock),
   },
   trades,
   cashflow,

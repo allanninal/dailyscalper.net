@@ -623,6 +623,65 @@ function phoneDays(s, j) {
     .join('');
 }
 
+
+/* ------------------------------------------------------- why ProCent */
+
+/** Trades held through at least one daily rollover (broker server midnight). */
+function overnight(trades, offsetMin) {
+  const off = (offsetMin ?? 0) * 60_000;
+  return trades.filter((t) => {
+    const open = Date.parse(t.openTime) + off;
+    const close = Date.parse(t.closeTime) + off;
+    return Math.floor(open / DAY_MS) !== Math.floor(close / DAY_MS);
+  });
+}
+
+function whyProCent(s, j) {
+  const P = JOURNAL.procent;
+  const held = overnight(s.trades, j.account.serverUtcOffsetMinutes);
+  const swap = s.trades.reduce((a, t) => a + (t.swap ?? 0), 0);
+  const commission = s.trades.reduce((a, t) => a + (t.commission ?? 0), 0);
+  const fact = (title, value, body) => `
+      <div class="panel">
+        <p class="eyebrow">${title}</p>
+        <h3 class="num">${value}</h3>
+        <p style="margin:.75rem 0 0;color:var(--text-dim)">${body}</p>
+      </div>`;
+  return `
+<section class="block rule-top" id="why-procent">
+  <div class="wrap">
+    <p class="eyebrow">Why this account</p>
+    <h2>Why RoboForex ProCent</h2>
+    <p class="lede" style="margin:1rem 0 2rem">
+      A small balance only grows if costs do not eat it. ProCent is RoboForex's cent account: it trades the same
+      gold price in cents, with no commission, and with RoboForex's Swap-Free option it pays no overnight fee
+      either. The two figures below come from this account's own trades, not from the broker's brochure.
+    </p>
+    <div class="grid-3">
+      ${fact('Commission paid', cents(commission), `Across all ${s.count} closed trades. ProCent charges no per-lot commission; the cost of a trade is the spread.`)}
+      ${fact('Swap paid', cents(swap), `Including ${held.length} trade${held.length === 1 ? '' : 's'} held through the daily rollover. On a standard ProCent account gold carries a swap of ${P.goldSwapLong} points long and +${P.goldSwapShort} short; this account was opened with Swap-Free.`)}
+      ${fact('Cent units', '1,600¢ = $16', 'Balances and profits are in US cents, so a $16 account can run proper position sizing: a 0.01 lot gold trade moves about 1¢ per $1 move in gold.')}
+    </div>
+    <p class="lede" style="margin:2rem 0 0">
+      What it still costs: the spread. RoboForex's specifications list an average ProCent gold spread of
+      ${P.goldAvgSpreadPoints} points, paid on every entry, so a scalper has to beat that on each trade. Swap-Free is
+      an option chosen when the account is opened, is subject to RoboForex's terms and may not be offered in every
+      region.
+    </p>
+    <p class="trader-sub" style="margin-top:1rem">
+      Broker terms checked ${esc(P.checked)}:
+      <a href="${esc(P.specsUrl)}" target="_blank" rel="noopener">ProCent specifications</a> ·
+      <a href="${esc(P.swapFreeUrl)}" target="_blank" rel="noopener">Swap-Free terms</a>.
+      Live figures are this account's own deals, synced hourly.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="${esc(LINKS.roboforexSignup())}" rel="sponsored nofollow" target="_blank">Open a RoboForex ProCent account</a>
+    </div>
+    <p class="risk-note" style="margin-top:1.5rem">Affiliate link: if you open an account through it, the site may earn a commission at no cost to you.</p>
+  </div>
+</section>`;
+}
+
 /* ------------------------------------------------------------------ page */
 
 export function journalPage(j, notes = {}) {
@@ -746,6 +805,8 @@ ${masthead('journal')}
     </div>
   </div>
 </section>
+
+${whyProCent(s, j)}
 
 ${notesList(notes)}
 

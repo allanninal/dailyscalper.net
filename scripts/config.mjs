@@ -286,4 +286,16 @@ export const JOURNAL = {
   goalCents: 10000, // $100 — copy trading opens on this account when the balance reaches it
   recentTrades: 50, // rows in the closed-trade table
   phoneDays: 30, // most recent trading days drawn as phone views
+
+  // RoboForex ProCent terms quoted on /journal/. Checked 2026-11-05 on the pages
+  // below; re-check before changing the copy. Live swap/commission figures on the
+  // page come from the account itself, not from here.
+  procent: {
+    checked: '2026-11-05',
+    specsUrl: 'https://roboforex.com/forex-trading/trading/specifications/',
+    swapFreeUrl: 'https://roboforex.com/promo/full-swap-free/',
+    goldAvgSpreadPoints: 18, // ProCent XAUUSD average spread, specifications page
+    goldSwapLong: -60, // standard ProCent XAUUSD swap, points — what Swap-Free waives
+    goldSwapShort: 19,
+  },
 };
