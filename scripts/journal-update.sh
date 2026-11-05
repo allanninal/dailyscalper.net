@@ -2,9 +2,10 @@
 #
 # Hourly journal sync, run on this machine by launchd (net.dailyscalper.journal).
 #
-# Reads the live MT5 account from the VPS terminal, rebuilds the site and, only
-# when a trade opened, closed or the balance moved, commits and pushes. The push
-# is the deploy (legacy GitHub Pages builder). Floating P&L alone never commits.
+# Reads the live MT5 account from the VPS terminal, rebuilds the site and, when
+# a trade opened or closed, the balance moved or an open trade's floating P&L
+# changed, commits and pushes. The push is the deploy (legacy GitHub Pages
+# builder). With nothing open, or with the market closed, nothing commits.
 #
 # Install with:  scripts/install-schedule.sh
 # Run by hand:   scripts/journal-update.sh

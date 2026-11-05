@@ -115,13 +115,15 @@ const openPositions = (open.positions ?? []).map((p) => ({
   floating: round(num(p.profit) + num(p.swap)),
 }));
 
-// Shape of the facts that matter. Floating P&L moves every tick, so it alone
-// never rewrites the file: the hourly job would otherwise commit every hour.
+// Shape of the facts that matter. Floating P&L counts, so while a position is
+// open and the market is trading the page (and its "Synced" time) refreshes
+// every hour. With nothing open, or over the weekend when prices stand still,
+// nothing changes and the hourly job commits nothing.
 const material = {
   balance: round(account.balance),
   trades,
   cashflow,
-  open: openPositions.map(({ floating, ...p }) => p),
+  open: openPositions,
 };
 
 let previous = null;
@@ -133,7 +135,7 @@ const previousMaterial = previous && {
   balance: previous.account.balance,
   trades: previous.trades,
   cashflow: previous.cashflow,
-  open: previous.openPositions.map(({ floating, ...p }) => p),
+  open: previous.openPositions,
 };
 
 if (previousMaterial && JSON.stringify(previousMaterial) === JSON.stringify(material)) {
