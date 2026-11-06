@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-06T11:40:04Z",
+  "syncedAt": "2026-11-06T14:41:27Z",
   "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
   "account": {
     "broker": "RoboForex",
@@ -8,8 +8,8 @@
     "margin": "hedging",
     "unit": "USC",
     "balance": 1652.49,
-    "equity": 1652.49,
-    "floating": 0,
+    "equity": 1737.61,
+    "floating": 85.12,
     "serverUtcOffsetMinutes": 120
   },
   "trades": [
@@ -609,5 +609,15 @@
       "amount": 1600.96
     }
   ],
-  "openPositions": []
+  "openPositions": [
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-06T16:08:34Z",
+      "openPrice": 4038.73,
+      "volume": 0.16,
+      "floating": 90.4
+    }
+  ]
 }
