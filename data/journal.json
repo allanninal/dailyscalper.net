@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-06T00:36:12Z",
+  "syncedAt": "2026-11-06T01:36:25Z",
   "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
   "account": {
     "broker": "RoboForex",
@@ -7,9 +7,9 @@
     "type": "real",
     "margin": "hedging",
     "unit": "USC",
-    "balance": 1587.1,
-    "equity": 1524.16,
-    "floating": -62.94,
+    "balance": 1520.79,
+    "equity": 1511.07,
+    "floating": -9.72,
     "serverUtcOffsetMinutes": 120
   },
   "trades": [
@@ -446,6 +446,62 @@
       "profit": 26.79,
       "swap": 0,
       "commission": 0
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-06T01:21:31Z",
+      "openPrice": 4081.24,
+      "volume": 0.03,
+      "closeTime": "2026-11-06T02:45:17Z",
+      "closePrice": 4100.47,
+      "exit": "ea",
+      "profit": -57.69,
+      "swap": 0,
+      "commission": 0
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "buy",
+      "by": "ea",
+      "openTime": "2026-11-06T02:45:17Z",
+      "openPrice": 4100.32,
+      "volume": 0.03,
+      "closeTime": "2026-11-06T03:20:52Z",
+      "closePrice": 4085.3,
+      "exit": "ea",
+      "profit": -45.06,
+      "swap": 0,
+      "commission": 0
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-06T03:20:52Z",
+      "openPrice": 4085.27,
+      "volume": 0.02,
+      "closeTime": "2026-11-06T03:24:43Z",
+      "closePrice": 4080.28,
+      "exit": "sl",
+      "profit": 9.98,
+      "swap": 0,
+      "commission": 0
+    },
+    {
+      "symbol": "XAUUSD",
+      "side": "sell",
+      "by": "ea",
+      "openTime": "2026-11-06T03:24:43Z",
+      "openPrice": 4080.1,
+      "volume": 0.02,
+      "closeTime": "2026-11-06T03:30:54Z",
+      "closePrice": 4066.87,
+      "exit": "sl",
+      "profit": 26.46,
+      "swap": 0,
+      "commission": 0
     }
   ],
   "cashflow": [
@@ -460,10 +516,10 @@
       "symbol": "XAUUSD",
       "side": "sell",
       "by": "ea",
-      "openTime": "2026-11-06T01:21:31Z",
-      "openPrice": 4081.24,
+      "openTime": "2026-11-06T03:35:07Z",
+      "openPrice": 4071.47,
       "volume": 0.03,
-      "floating": -62.94
+      "floating": -8.43
     }
   ]
 }
