@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 546 strategies screened, 150 flagged as martingale,
-> 20 published. Last updated 2026-11-07.
+> LiteFinance. 546 strategies screened, 163 flagged as martingale,
+> 20 published. Last updated 2026-11-08.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -25,27 +25,27 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
 1. Forex com EA — yield 56.16%, max drawdown 0.45%, 47236 trades, 39 copiers, score 56.16
-2. 50u Gold Challenge — yield 52.61%, max drawdown 9.37%, 3132 trades, 3 copiers, score 5.61
-3. SchorizonTrading FX — yield 62.57%, max drawdown 12.39%, 2298 trades, 15 copiers, score 5.05
-4. Every day 2 procent  — yield 61%, max drawdown 12.28%, 90 trades, 15 copiers, score 4.97
+2. SchorizonTrading FX — yield 62.57%, max drawdown 12.39%, 2298 trades, 15 copiers, score 5.05
+3. Every day 2 procent  — yield 57.54%, max drawdown 12.28%, 86 trades, 15 copiers, score 4.69
+4. 50u Gold Challenge — yield 43.95%, max drawdown 9.37%, 2508 trades, 3 copiers, score 4.69
 5. Nur Gold — yield 137.54%, max drawdown 30.79%, 50 trades, 7 copiers, score 4.47
-6. ORO SCALP — yield 32.61%, max drawdown 8.09%, 1234 trades, 4 copiers, score 4.03
-7. SoloXAU — yield 28.4%, max drawdown 7.29%, 2530 trades, 8 copiers, score 3.9
+6. Gold Low Risk — yield 32.65%, max drawdown 8.11%, 85 trades, 4 copiers, score 4.03
+7. ORO SCALP — yield 30.29%, max drawdown 7.57%, 1114 trades, 4 copiers, score 4
 8. Argentum — yield 60.69%, max drawdown 19.4%, 95 trades, 65 copiers, score 3.13
-9. EURUSD NZDCAD — yield 42.54%, max drawdown 18.87%, 215 trades, 4 copiers, score 2.25
-10. Captain Snail 3 — yield 33.38%, max drawdown 15.02%, 96 trades, 12 copiers, score 2.22
+9. Captain Snail 3 — yield 33.38%, max drawdown 15.02%, 96 trades, 12 copiers, score 2.22
+10. TRADING SAFETY — yield 33.1%, max drawdown 15.33%, 102 trades, 4 copiers, score 2.16
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. TS_ISP — yield 1777.55%, drawdown at least 8.67%, risk 4/10, 6 copiers, score 205.02
-2. Fire_Phoenix — yield 907.51%, drawdown at least 0.49%, risk 2/10, 95 copiers, score 181.5
-3. TradingSCapital — yield 612.67%, drawdown at least 0.11%, risk 2/10, 439 copiers, score 122.53
-4. SaiGon_Trading — yield 1061.48%, drawdown at least 8.88%, risk 2/10, 75 copiers, score 119.54
-5. Earth_Taurus — yield 233.61%, drawdown at least 0.49%, risk 2/10, 95 copiers, score 46.72
+1. TS_ISP — yield 1777.55%, drawdown at least 6.55%, risk 4/10, 6 copiers, score 271.38
+2. Fire_Phoenix — yield 907.51%, drawdown at least 0.79%, risk 2/10, 95 copiers, score 181.5
+3. SaiGon_Trading — yield 1061.48%, drawdown at least 8.39%, risk 2/10, 76 copiers, score 126.52
+4. TradingSCapital — yield 612.67%, drawdown at least 0.01%, risk 2/10, 441 copiers, score 122.53
+5. Earth_Taurus — yield 233.61%, drawdown at least 0.5%, risk 2/10, 95 copiers, score 46.72
 6. Quantum 9000 — yield 154.21%, drawdown at least 0.57%, risk 2/10, 85 copiers, score 30.84
-7. Blue_Dragon — yield 132.62%, drawdown at least 3.53%, risk 2/10, 17 copiers, score 26.52
+7. Blue_Dragon — yield 132.62%, drawdown at least 3.8%, risk 2/10, 17 copiers, score 26.52
 8. Copygenius — yield 79.88%, drawdown at least 0%, risk 2/10, 13 copiers, score 15.98
-9. steady_pips — yield 75.88%, drawdown at least 0.6%, risk 2/10, 21 copiers, score 15.18
-10. PRIME500 — yield 69.53%, drawdown at least 2%, risk 4/10, 93 copiers, score 13.91
+9. steady_pips — yield 75.88%, drawdown at least 0.57%, risk 2/10, 22 copiers, score 15.18
+10. PRIME500 — yield 69.53%, drawdown at least 2.44%, risk 4/10, 93 copiers, score 13.91
 
 ## Limitations (please quote these alongside the rankings)
 
