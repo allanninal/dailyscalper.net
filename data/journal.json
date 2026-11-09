@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-09T17:46:04Z",
+  "syncedAt": "2026-11-09T18:46:15Z",
   "source": "MetaTrader 5 terminal on the author’s VPS, read-only",
   "account": {
     "broker": "RoboForex",
@@ -617,7 +617,7 @@
       "openTime": "2026-11-06T16:08:34Z",
       "openPrice": 4038.73,
       "volume": 0.16,
-      "floating": -1031.2
+      "floating": -1035.36
     }
   ]
 }
