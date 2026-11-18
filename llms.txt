@@ -1,8 +1,8 @@
 # DailyScalper
 
 > Independent weekly screening of public copy-trading strategies on RoboForex and
-> LiteFinance. 546 strategies screened, 139 flagged as martingale,
-> 20 published. Last updated 2026-11-17.
+> LiteFinance. 546 strategies screened, 143 flagged as martingale,
+> 20 published. Last updated 2026-11-18.
 
 DailyScalper ranks copy-trading strategies by return per unit of drawdown
 (yield divided by maximum drawdown) rather than by headline profit, because
@@ -24,28 +24,28 @@ broker leaderboards sorted by profit place martingale accounts at the top.
 ## Current rankings
 
 ### RoboForex (yield over a rolling 3-month window, broker-published drawdown)
-1. Forex com EA — yield 74.86%, max drawdown 0.49%, 72869 trades, 50 copiers, score 74.86
-2. xauwin — yield 29.01%, max drawdown 0.63%, 564 trades, 9 copiers, score 29.01
-3. robot — yield 23.68%, max drawdown 2.83%, 372 trades, 27 copiers, score 8.37
-4. RANCapital — yield 48.83%, max drawdown 10.2%, 72 trades, 3 copiers, score 4.79
-5. Ai on DE40 — yield 113.24%, max drawdown 24.19%, 101 trades, 5 copiers, score 4.68
-6. Nur Gold — yield 129.46%, max drawdown 30.79%, 70 trades, 7 copiers, score 4.2
-7. SchorizonTrading FX — yield 51.55%, max drawdown 12.39%, 3754 trades, 16 copiers, score 4.16
-8. 50u Gold Challenge — yield 28.3%, max drawdown 9.37%, 1730 trades, 3 copiers, score 3.02
-9. SoloXAU — yield 36.24%, max drawdown 12.5%, 2818 trades, 8 copiers, score 2.9
-10. Argentum — yield 53.52%, max drawdown 19.4%, 132 trades, 67 copiers, score 2.76
+1. Forex com EA — yield 76.64%, max drawdown 0.49%, 74010 trades, 50 copiers, score 76.64
+2. robot — yield 24.61%, max drawdown 2.83%, 390 trades, 28 copiers, score 8.7
+3. Market Maker Gold — yield 149.31%, max drawdown 17.7%, 52 trades, 10 copiers, score 8.44
+4. SchorizonTrading FX — yield 68.5%, max drawdown 12.39%, 3784 trades, 16 copiers, score 5.53
+5. Fimathe k4 pro — yield 76.67%, max drawdown 14.9%, 62 trades, 3 copiers, score 5.15
+6. Nur Gold — yield 144.77%, max drawdown 30.79%, 72 trades, 7 copiers, score 4.7
+7. RANCapital — yield 39.85%, max drawdown 10.2%, 73 trades, 3 copiers, score 3.91
+8. Grid Gold k4 — yield 40.82%, max drawdown 12.08%, 3015 trades, 3 copiers, score 3.38
+9. JAPAN GOLD — yield 31.78%, max drawdown 9.61%, 286 trades, 9 copiers, score 3.31
+10. Ai on DE40 — yield 78.79%, max drawdown 24.19%, 104 trades, 5 copiers, score 3.26
 
 ### LiteFinance (yield all-time, drawdown derived from the published curve, lower bound)
-1. BlueWhaleCapital — yield 1350.82%, drawdown at least 0.35%, risk 2/10, 51 copiers, score 270.16
-2. TS_ISP — yield 2143.14%, drawdown at least 8.72%, risk 4/10, 8 copiers, score 245.77
-3. EkoCapital — yield 4988.24%, drawdown at least 26.12%, risk 5/10, 4 copiers, score 190.97
-4. Nicolas_Pham — yield 1541.81%, drawdown at least 8.15%, risk 3/10, 5 copiers, score 189.18
-5. Fire_Phoenix — yield 915.11%, drawdown at least 0.7%, risk 2/10, 96 copiers, score 183.02
-6. TradingSCapital — yield 610.91%, drawdown at least 0.24%, risk 2/10, 432 copiers, score 122.18
-7. SaiGon_Trading — yield 895.27%, drawdown at least 10.04%, risk 4/10, 76 copiers, score 89.17
-8. Earth_Taurus — yield 241.29%, drawdown at least 0.44%, risk 2/10, 95 copiers, score 48.26
-9. Tesla_Cent — yield 1341.6%, drawdown at least 38.17%, risk 4/10, 8 copiers, score 35.15
-10. Quantum 9000 — yield 150.9%, drawdown at least 0.33%, risk 2/10, 84 copiers, score 30.18
+1. Nicolas_Pham — yield 1531.92%, drawdown at least 5.08%, risk 3/10, 5 copiers, score 301.56
+2. BlueWhaleCapital — yield 1349.97%, drawdown at least 0.44%, risk 2/10, 49 copiers, score 269.99
+3. TS_ISP — yield 2133.43%, drawdown at least 8.24%, risk 4/10, 8 copiers, score 258.91
+4. Fire_Phoenix — yield 915.11%, drawdown at least 0.54%, risk 2/10, 95 copiers, score 183.02
+5. TradingSCapital — yield 610.64%, drawdown at least 0.29%, risk 2/10, 433 copiers, score 122.13
+6. Earth_Taurus — yield 241.29%, drawdown at least 0.48%, risk 2/10, 95 copiers, score 48.26
+7. Tesla_Cent — yield 1353.36%, drawdown at least 39.89%, risk 4/10, 8 copiers, score 33.93
+8. Quantum 9000 — yield 150.02%, drawdown at least 0.91%, risk 2/10, 84 copiers, score 30
+9. Blue_Dragon — yield 135.77%, drawdown at least 3.37%, risk 2/10, 17 copiers, score 27.15
+10. PRIME500 — yield 67.14%, drawdown at least 2.42%, risk 4/10, 91 copiers, score 13.43
 
 ## Limitations (please quote these alongside the rankings)
 
