@@ -276,6 +276,8 @@ export const TOOLS = [
     text: 'One row per symbol for MetaTrader 4: six checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot) and a BUY, SELL or WAIT verdict when enough of them agree, with alerts. Closed bars only.' },
   { name: 'Vitals MT5', id: 205865, price: 'Free', kind: 'Utility', logo: 'vitals-mt5.png',
     text: 'Your whole account on one card: equity, floating drawdown journal, positions, risk at stops, exposure, results and stats.' },
+  { name: 'Breakout Atlas', id: 209767, price: 'Paid', kind: 'Expert Advisor', logo: 'breakout-atlas.png',
+    text: 'Three breakout entry models with four built-in presets (XAUEUR H1, USDJPY H1, SOLUSD H4, SOLUSD D1) that passed a Python backtest and the MT5 Strategy Tester on 1-minute OHLC and real ticks.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
