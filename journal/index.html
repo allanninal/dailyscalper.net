@@ -57,7 +57,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/site.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dailyscalper.net/"},{"@type":"ListItem","position":2,"name":"Journal","item":"https://www.dailyscalper.net/journal/"}]},{"@type":"Dataset","@id":"https://www.dailyscalper.net/journal/#dataset","name":"DailyScalper live MT5 trading journal","description":"Closed trades and daily results of the author’s real RoboForex MetaTrader 5 cent account, in US cents.","dateModified":"2026-11-23T12:24:31Z","temporalCoverage":"2026-11-23/2026-11-23","creator":{"@id":"https://www.dailyscalper.net/#org"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dailyscalper.net/"},{"@type":"ListItem","position":2,"name":"Journal","item":"https://www.dailyscalper.net/journal/"}]},{"@type":"Dataset","@id":"https://www.dailyscalper.net/journal/#dataset","name":"DailyScalper live MT5 trading journal","description":"Closed trades and daily results of the author’s real RoboForex MetaTrader 5 cent account, in US cents.","dateModified":"2026-11-25T03:40:48Z","temporalCoverage":"2026-11-23/2026-11-25","creator":{"@id":"https://www.dailyscalper.net/#org"}}]}</script>
 </head>
 <body>
 
@@ -93,12 +93,12 @@
     <p class="lede">
       The author's own real account, read straight from the MetaTrader 5 terminal every hour. Nothing is typed in by hand and
       nothing is left out: winning days, losing days and manual trades all count. Synced
-      <span class="num">2026-11-23 12:24 UTC</span>.
+      <span class="num">2026-11-25 03:40 UTC</span>.
     </p>
     <dl class="hero__meta">
       <div><dt>Gain</dt><dd class="dim">0.00%</dd></div>
       <div><dt>Balance</dt><dd class="">3,000.00¢</dd></div>
-      <div><dt>Equity</dt><dd class="">3,000.00¢</dd></div>
+      <div><dt>Equity</dt><dd class="">3,015.47¢</dd></div>
       <div><dt>Max drawdown</dt><dd class="neg">0.00%</dd></div>
       <div><dt>Trades</dt><dd class="">0</dd></div>
     </dl>
@@ -198,11 +198,11 @@
           </td><td class="cal__day is-weekend" title="2026-11-22">
             <span class="cal__date">22</span>
           </td>
-          <td class="cal__week"><span class="dim">—</span></td></tr><tr><td class="cal__day is-today" title="2026-11-23">
+          <td class="cal__week"><span class="dim">—</span></td></tr><tr><td class="cal__day" title="2026-11-23">
             <span class="cal__date">23</span>
-          </td><td class="cal__day is-future" title="2026-11-24">
+          </td><td class="cal__day" title="2026-11-24">
             <span class="cal__date">24</span>
-          </td><td class="cal__day is-future" title="2026-11-25">
+          </td><td class="cal__day is-today" title="2026-11-25">
             <span class="cal__date">25</span>
           </td><td class="cal__day is-future" title="2026-11-26">
             <span class="cal__date">26</span>
@@ -426,7 +426,14 @@
   <div class="wrap">
     <p class="eyebrow">Trade history</p>
     <h2>Open now</h2>
-    <div style="margin:1.5rem 0 3rem"><p class="dim">No open trades at the last sync.</p></div>
+    <div style="margin:1.5rem 0 3rem"><div class="table-scroll"><table class="ledger journal-trades">
+    <thead><tr><th>Opened (UTC)</th><th>Trade</th><th class="hide-sm">Entry</th><th>Floating</th></tr></thead>
+    <tbody><tr>
+      <td class="num">2026-11-24<div class="trader-sub">20:00</div></td>
+      <td><span class="tag tag--lf">sell</span> XAUUSD<div class="trader-sub">0.01 lots</div></td>
+      <td class="hide-sm">3566.67</td>
+      <td class="pos">+15.29¢</td>
+    </tr></tbody></table></div></div>
     <h2>Last 0 closed trades</h2>
     <div class="table-scroll" style="margin-top:1.5rem">
     <table class="ledger journal-trades">
@@ -548,7 +555,7 @@
       </div>
       <div>
         <h4>Updated</h4>
-        <ul><li class="num">Mon, 23 Nov 2026 12:24:31 UTC</li></ul>
+        <ul><li class="num">Wed, 25 Nov 2026 03:40:48 UTC</li></ul>
       </div>
     </div>
 
