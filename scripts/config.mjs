@@ -248,6 +248,8 @@ export const TOOLS = [
     text: 'Keeps a prop-firm account inside its rules on MetaTrader 4: it measures the daily and max loss on equity like the firm, and at a safety buffer it closes trades and keeps the account flat until the reset. 22 dated firm presets; news alerts from a built-in USD list. Never opens a trade.' },
   { name: 'Risk Position Tool', id: 201865, price: 'Free', kind: 'Utility', logo: 'risk-position-tool.png',
     text: 'Drag entry, stop and target lines to get the lot for your risk, reward:risk and margin. Never trades.' },
+  { name: 'Risk Position Tool MT4', id: 211717, price: 'Free', kind: 'MT4 utility', logo: 'risk-position-tool.png',
+    text: 'Free position size calculator for MetaTrader 4: drag the entry, stop-loss and take-profit lines to read the lot for your risk, the money at the stop and target, reward:risk and margin. It only calculates and never places an order.' },
   { name: 'Risk Trade Manager MT5', id: 201867, price: 'Paid', kind: 'Utility', logo: 'risk-trade-manager-mt5.png',
     text: 'Sizes the lot from your lines, sends the order when you press OPEN, then partial close, break-even and trailing.' },
   { name: 'Range Filter Signals', id: 201871, price: 'Free', kind: 'Indicator', logo: 'range-filter-signals.png',
