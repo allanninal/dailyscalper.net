@@ -292,6 +292,8 @@ export const TOOLS = [
     text: 'One panel shows, for many symbols and timeframes, whether price is in a squeeze and for how many bars, or which way the latest squeeze fired and how many bars ago, with alerts when a squeeze fires. Closed bars only; it places no orders.' },
   { name: 'Confluence Signal Alerts', id: 211688, price: 'Free', kind: 'Indicator', logo: 'confluence-signal-alerts.png',
     text: 'Up to eight checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot, Half Trend, Range Filter) vote BUY or SELL on one chart; a small card shows every vote and the verdict, an arrow marks the closed bar where it turns, with alerts.' },
+  { name: 'Confluence Signal Alerts MT4', id: 211690, price: 'Free', kind: 'MT4 indicator', logo: 'confluence-signal-alerts.png',
+    text: 'Free MetaTrader 4 edition of Confluence Signal Alerts. Up to eight checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot, Half Trend, Range Filter) vote BUY or SELL on one chart; a small card shows every vote and the verdict (BUY, SELL or WAIT), an arrow marks the closed bar where the verdict turns, with alerts. Closed bars only, no repaint.' },
   { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
     text: 'Up to eight indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
