@@ -306,6 +306,8 @@ export const TOOLS = [
     text: 'Your whole account on one card: equity, floating drawdown journal, positions, risk at stops, exposure, results and stats.' },
   { name: 'Breakout Atlas', id: 209767, price: 'Paid', kind: 'Expert Advisor', logo: 'breakout-atlas.png',
     text: 'Three breakout entry models with four built-in presets (XAUEUR H1, USDJPY H1, SOLUSD H4, SOLUSD D1) that passed a Python backtest and the MT5 Strategy Tester on 1-minute OHLC and real ticks.' },
+  { name: 'WaveTrend Signals', id: 211786, price: 'Free', kind: 'Indicator', logo: 'wavetrend-signals.png',
+    text: 'Free MetaTrader 5 indicator. The WaveTrend oscillator (LazyBear’s method) with overbought and oversold zones; a BUY or SELL dot and a price arrow when the two lines cross inside a zone, with alerts. Closed bars only, no repaint.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
