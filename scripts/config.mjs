@@ -282,6 +282,8 @@ export const TOOLS = [
     text: 'SuperTrend line with buy and sell arrows on each flip, optional EMA and RSI filters, and alerts.' },
   { name: 'SuperTrend Signal Alerts MT4', id: 202324, price: 'Free', kind: 'MT4 indicator', logo: 'supertrend-signal-alerts.png',
     text: 'The SuperTrend line with buy and sell arrows on each flip for MetaTrader 4, optional EMA and RSI filters, closed bars only, with pop-up, sound, push and e-mail alerts.' },
+  { name: 'Squeeze Momentum Signals', id: 211681, price: 'Free', kind: 'Indicator', logo: 'squeeze-momentum-signals.png',
+    text: 'Shows when volatility is compressed (Bollinger Bands inside the Keltner Channel) and when it releases, with a momentum histogram, fired arrows on closed bars and alerts; a port of LazyBear\'s Squeeze Momentum Indicator.' },
   { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
     text: 'Six indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
