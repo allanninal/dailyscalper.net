@@ -156,6 +156,8 @@ export const SNAPSHOT_RETENTION_DAYS = 90;
 export const TOOLS = [
   { name: 'Gold Breakout Sentinel', id: 200385, price: 'Free', kind: 'Expert Advisor', logo: 'gold-breakout-sentinel.png',
     text: 'XAUUSD H1. Stop orders at yesterday\'s high and low when a stochastic turn and a Bollinger filter agree; fixed stop and target on every trade; a panel that shows the risk before it is placed.' },
+  { name: 'Gold Breakout Sentinel MT4', id: 211630, price: 'Free', kind: 'MT4 expert advisor', logo: 'gold-breakout-sentinel.png',
+    text: 'Places pending stop orders at yesterday\'s high or low on XAUUSD H1 when a stochastic turn and a Bollinger Band filter agree; fixed 0.01 lot, fixed stop and target. Rules-based, no proven edge claimed.' },
   { name: 'Gold Breakout Sentinel Pro', id: 200903, price: 'Paid', kind: 'Expert Advisor', logo: 'gold-breakout-sentinel-pro.png',
     text: 'The same strategy and defaults, plus risk-based lot sizing, daily loss and drawdown limits, news and time filters and alerts.' },
   { name: 'Gold Trend Sentinel', id: 200427, price: 'Free', kind: 'Expert Advisor', logo: 'gold-trend-sentinel.png',
