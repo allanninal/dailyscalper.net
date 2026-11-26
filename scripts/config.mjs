@@ -286,6 +286,8 @@ export const TOOLS = [
     text: 'Shows when volatility is compressed (Bollinger Bands inside the Keltner Channel) and when it releases, with a momentum histogram, fired arrows on closed bars and alerts; a port of LazyBear\'s Squeeze Momentum Indicator.' },
   { name: 'Squeeze Momentum Signals MT4', id: 211682, price: 'Free', kind: 'MT4 indicator', logo: 'squeeze-momentum-signals.png',
     text: 'The MetaTrader 4 edition of Squeeze Momentum Signals. Shows when volatility is compressed (Bollinger Bands inside the Keltner Channel) and when it releases, with a momentum histogram, fired arrows on closed bars and alerts.' },
+  { name: 'Squeeze Momentum Scanner MT5', id: 211684, price: 'Paid', kind: 'Indicator', logo: 'squeeze-momentum-scanner-mt5.png',
+    text: 'The squeeze of Squeeze Momentum Signals on many symbols and timeframes in one panel: in a squeeze and for how many bars, or which way the latest squeeze fired and how many bars ago, with an alert when a squeeze fires. Closed bars only.' },
   { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
     text: 'Six indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
