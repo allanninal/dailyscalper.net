@@ -164,6 +164,8 @@ export const TOOLS = [
     text: 'Trades a trend rule on XAUUSD H4 with a fixed 0.01 lot (or the broker\'s minimum), a stop on every order and a trailing stop. Rules-based gold trend follower; no profit promised.' },
   { name: 'Gold Trend Sentinel PRO MT4', id: 211645, price: 'Paid', kind: 'MT4 expert advisor', logo: 'gold-trend-sentinel-pro.png',
     text: 'An XAUUSD Expert Advisor for MetaTrader 4 that sizes each trade from a risk level, stops itself on daily loss or drawdown and can pause around high-impact USD news. Rules-based; no profit promised.' },
+  { name: 'Prior Day Breakout MT4', id: 211652, price: 'Free', kind: 'MT4 expert advisor', logo: 'prior-day-breakout.png',
+    text: 'Trades the previous-day high and low breakout on XAUEUR with a fixed 0.01 lot, deciding on closed bars; presets for H1 and M15. Rules-based; no profit promised.' },
   { name: 'Gold Breakout Sentinel Pro', id: 200903, price: 'Paid', kind: 'Expert Advisor', logo: 'gold-breakout-sentinel-pro.png',
     text: 'The same strategy and defaults, plus risk-based lot sizing, daily loss and drawdown limits, news and time filters and alerts.' },
   { name: 'Gold Trend Sentinel', id: 200427, price: 'Free', kind: 'Expert Advisor', logo: 'gold-trend-sentinel.png',
