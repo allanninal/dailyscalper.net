@@ -310,6 +310,8 @@ export const TOOLS = [
     text: 'Free MetaTrader 5 indicator. The WaveTrend oscillator (LazyBear’s method) with overbought and oversold zones; a BUY or SELL dot and a price arrow when the two lines cross inside a zone, with alerts. Closed bars only, no repaint.' },
   { name: 'WaveTrend Signals MT4', id: 211787, price: 'Free', kind: 'MT4 indicator', logo: 'wavetrend-signals.png',
     text: 'The free MetaTrader 4 edition of WaveTrend Signals: the WaveTrend oscillator (LazyBear\'s method) with overbought and oversold zones, a BUY or SELL dot and a price arrow when the two lines cross inside a zone, with alerts. Closed bars only; it never repaints.' },
+  { name: 'WaveTrend Scanner MT5', id: 211789, price: 'Paid', kind: 'Indicator', logo: 'wavetrend-scanner-mt5.png',
+    text: 'The WaveTrend signal on many symbols and timeframes in one panel: latest BUY or SELL and how many bars ago, overbought or oversold zone, next-timeframe agreement and divergences, with alerts. Closed bars only.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
