@@ -252,6 +252,8 @@ export const TOOLS = [
     text: 'Free position size calculator for MetaTrader 4: drag the entry, stop-loss and take-profit lines to read the lot for your risk, the money at the stop and target, reward:risk and margin. It only calculates and never places an order.' },
   { name: 'Risk Trade Manager MT5', id: 201867, price: 'Paid', kind: 'Utility', logo: 'risk-trade-manager-mt5.png',
     text: 'Sizes the lot from your lines, sends the order when you press OPEN, then partial close, break-even and trailing.' },
+  { name: 'Risk Trade Manager MT4', id: 211719, price: 'Paid', kind: 'MT4 utility', logo: 'risk-trade-manager-mt4.png',
+    text: 'Utility (Expert Advisor) for MetaTrader 4: drag the entry, stop-loss and take-profit lines, read the lot for your risk and press OPEN for a correctly sized market or pending order, then partial close, break-even and trailing stop manage it. No strategy, no signals.' },
   { name: 'Range Filter Signals', id: 201871, price: 'Free', kind: 'Indicator', logo: 'range-filter-signals.png',
     text: 'A range filter line that ignores chop, with buy and sell arrows where it turns. Closed bars only.' },
   { name: 'Range Filter Signals MT4', id: 202329, price: 'Free', kind: 'MT4 indicator', logo: 'range-filter-signals.png',
