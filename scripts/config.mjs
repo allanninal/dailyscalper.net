@@ -308,6 +308,8 @@ export const TOOLS = [
     text: 'Three breakout entry models with four built-in presets (XAUEUR H1, USDJPY H1, SOLUSD H4, SOLUSD D1) that passed a Python backtest and the MT5 Strategy Tester on 1-minute OHLC and real ticks.' },
   { name: 'WaveTrend Signals', id: 211786, price: 'Free', kind: 'Indicator', logo: 'wavetrend-signals.png',
     text: 'Free MetaTrader 5 indicator. The WaveTrend oscillator (LazyBear’s method) with overbought and oversold zones; a BUY or SELL dot and a price arrow when the two lines cross inside a zone, with alerts. Closed bars only, no repaint.' },
+  { name: 'WaveTrend Signals MT4', id: 211787, price: 'Free', kind: 'MT4 indicator', logo: 'wavetrend-signals.png',
+    text: 'The free MetaTrader 4 edition of WaveTrend Signals: the WaveTrend oscillator (LazyBear\'s method) with overbought and oversold zones, a BUY or SELL dot and a price arrow when the two lines cross inside a zone, with alerts. Closed bars only; it never repaints.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
