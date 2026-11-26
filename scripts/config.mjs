@@ -290,6 +290,8 @@ export const TOOLS = [
     text: 'The squeeze of Squeeze Momentum Signals on many symbols and timeframes in one panel: in a squeeze and for how many bars, or which way the latest squeeze fired and how many bars ago, with an alert when a squeeze fires. Closed bars only.' },
   { name: 'Squeeze Momentum Scanner Pro MT4', id: 211686, price: 'Paid', kind: 'MT4 indicator', logo: 'squeeze-momentum-scanner-pro-mt4.png',
     text: 'One panel shows, for many symbols and timeframes, whether price is in a squeeze and for how many bars, or which way the latest squeeze fired and how many bars ago, with alerts when a squeeze fires. Closed bars only; it places no orders.' },
+  { name: 'Confluence Signal Alerts', id: 211688, price: 'Free', kind: 'Indicator', logo: 'confluence-signal-alerts.png',
+    text: 'Up to eight checks (EMA, ADX, MACD, RSI, SuperTrend, UT Bot, Half Trend, Range Filter) vote BUY or SELL on one chart; a small card shows every vote and the verdict, an arrow marks the closed bar where it turns, with alerts.' },
   { name: 'Confluence Dashboard', id: 201895, price: 'Paid', kind: 'Indicator', logo: 'confluence-dashboard.png',
     text: 'Up to eight indicator checks per symbol and a BUY, SELL or WAIT verdict when enough agree, with alerts.' },
   { name: 'Confluence Dashboard MT4', id: 202396, price: 'Paid', kind: 'MT4 indicator', logo: 'confluence-dashboard.png',
