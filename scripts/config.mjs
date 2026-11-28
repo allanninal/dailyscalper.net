@@ -328,6 +328,8 @@ export const TOOLS = [
     text: 'The MetaTrader 4 edition of Vix Fix Signal Alerts: the Williams Vix Fix fear gauge and its mirror for tops, from the chart\'s timeframe or a higher one, BUY or SELL on the closed bar where a spike ends, with alerts. Closed bars only, no repaint.' },
   { name: 'Vix Fix Scanner MT5', id: 212136, price: 'Paid', kind: 'Indicator', logo: 'vix-fix-scanner-mt5.png',
     text: 'Williams Vix Fix signals on many symbols and timeframes in one panel: latest ended spike and how many bars ago, next-timeframe agreement, a building-spike mark, spike-length and trend filters, with alerts. Closed bars only.' },
+  { name: 'Vix Fix Scanner MT4', id: 212137, price: 'Paid', kind: 'MT4 indicator', logo: 'vix-fix-scanner-mt5.png',
+    text: 'The MetaTrader 4 edition of Vix Fix Scanner MT5: Williams Vix Fix signals on many symbols and timeframes in one panel, the latest ended fear or top spike and how many bars ago, a mark when the next timeframe agrees and when a new spike is building, spike-length and trend filters, with alerts. Closed bars only; it places no orders.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
