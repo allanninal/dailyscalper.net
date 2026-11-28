@@ -336,6 +336,8 @@ export const TOOLS = [
     text: 'Free MT4 Expert Advisor that trades the closed-bar buy and sell signals of an indicator you name (arrows, line or level crosses, value changes), with a stop loss and a fixed 0.01 lot, and margin and volume checks before every order. Not a strategy: test your indicator in the Strategy Tester first.' },
   { name: 'Indicator Arrow Trader Pro', id: 212217, price: 'Paid', kind: 'Expert Advisor', logo: 'indicator-arrow-trader-pro.png',
     text: 'Paid MT5 EA that trades the closed-bar signals of up to three indicators you name when they agree, with risk-based lot sizing, break-even and a trailing stop. Not a strategy: test your indicators in the Strategy Tester first.' },
+  { name: 'Indicator Arrow Trader Pro MT4', id: 212220, price: 'Paid', kind: 'MT4 expert advisor', logo: 'indicator-arrow-trader-pro.png',
+    text: 'Paid MT4 Expert Advisor that trades the closed-bar signals of up to three indicators you name when they agree, with risk-based lot sizing, break-even, a trailing stop and a trading-hours filter, and margin and volume checks before every order. Not a strategy: test your indicators in the Strategy Tester first.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
