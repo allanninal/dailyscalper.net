@@ -279,7 +279,7 @@ export const TOOLS = [
   { name: 'SMC Zones MT4', id: 202375, price: 'Free', kind: 'MT4 indicator', logo: 'smc-zones.png',
     text: 'Smart-money concepts for MetaTrader 4: swing structure with BOS and CHoCH, liquidity sweeps, order blocks and fair value gaps as zones until mitigated, with alerts. Closed bars only.' },
   { name: 'Session Levels', id: 201881, price: 'Free', kind: 'Indicator', logo: 'session-levels.png',
-    text: 'Asia, London and New York session ranges plus previous day and week highs and lows, with break alerts.' },
+    text: 'Asia, London and New York session ranges, London and New York killzones in each city\'s own time, a 50% midline, previous day and week highs and lows and a time panel, with break alerts. Version 1.3.' },
   { name: 'Session Levels MT4', id: 202384, price: 'Free', kind: 'MT4 indicator', logo: 'session-levels.png',
     text: 'The Asia, London and New York session ranges and the previous day and week highs and lows for MetaTrader 4, with alerts on the first close beyond a level.' },
   { name: 'SuperTrend Signal Alerts', id: 201882, price: 'Free', kind: 'Indicator', logo: 'supertrend-signal-alerts.png',
