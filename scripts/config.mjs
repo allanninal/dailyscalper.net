@@ -330,6 +330,8 @@ export const TOOLS = [
     text: 'Williams Vix Fix signals on many symbols and timeframes in one panel: latest ended spike and how many bars ago, next-timeframe agreement, a building-spike mark, spike-length and trend filters, with alerts. Closed bars only.' },
   { name: 'Vix Fix Scanner MT4', id: 212137, price: 'Paid', kind: 'MT4 indicator', logo: 'vix-fix-scanner-mt5.png',
     text: 'The MetaTrader 4 edition of Vix Fix Scanner MT5: Williams Vix Fix signals on many symbols and timeframes in one panel, the latest ended fear or top spike and how many bars ago, a mark when the next timeframe agrees and when a new spike is building, spike-length and trend filters, with alerts. Closed bars only; it places no orders.' },
+  { name: 'Indicator Arrow Trader', id: 212140, price: 'Free', kind: 'Expert Advisor', logo: 'indicator-arrow-trader.png',
+    text: 'Free MT5 EA that trades the closed-bar signals of an indicator you name (arrows, line or level crosses, value changes), with a stop loss and a fixed 0.01 lot. Not a strategy: test your indicator in the Strategy Tester first.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
