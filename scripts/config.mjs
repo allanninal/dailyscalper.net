@@ -322,6 +322,8 @@ export const TOOLS = [
     text: 'MACD signal-line crosses on many symbols and timeframes in one panel: latest BUY or SELL and how many bars ago, next-timeframe agreement and divergences on its own chart, with alerts. Closed bars only.' },
   { name: 'MACD Multi Timeframe Scanner MT4', id: 212133, price: 'Paid', kind: 'MT4 indicator', logo: 'macd-multi-timeframe-scanner-mt5.png',
     text: 'The MetaTrader 4 edition of MACD Multi Timeframe Scanner MT5: MACD signal-line crosses on many symbols and timeframes in one panel, the latest BUY or SELL and how many bars ago, a mark when the next timeframe agrees and divergences on its own chart, with alerts. Closed bars only; it places no orders.' },
+  { name: 'Vix Fix Signal Alerts', id: 212134, price: 'Free', kind: 'Indicator', logo: 'vix-fix-signal-alerts.png',
+    text: 'Free MetaTrader 5 indicator. The Williams Vix Fix fear gauge and its mirror for tops, from the chart’s timeframe or a higher one; BUY or SELL when a spike ends, with alerts. Closed bars only, no repaint.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
