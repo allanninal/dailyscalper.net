@@ -318,6 +318,8 @@ export const TOOLS = [
     text: 'Free MetaTrader 5 indicator. MACD from the chart’s timeframe or any higher one, with a four-colour histogram; BUY or SELL marks on signal-line crosses, zero-line cross marks and alerts. Closed bars only, no repaint.' },
   { name: 'MACD Multi Timeframe Signal Alerts MT4', id: 212131, price: 'Free', kind: 'MT4 indicator', logo: 'macd-multi-timeframe-signal-alerts.png',
     text: 'The MetaTrader 4 edition of MACD Multi Timeframe Signal Alerts: MACD from the chart\'s timeframe or any higher one with a four-colour histogram, BUY or SELL marks on signal-line crosses, zero-line cross marks and alerts. Closed bars only, no repaint.' },
+  { name: 'MACD Multi Timeframe Scanner MT5', id: 212132, price: 'Paid', kind: 'Indicator', logo: 'macd-multi-timeframe-scanner-mt5.png',
+    text: 'MACD signal-line crosses on many symbols and timeframes in one panel: latest BUY or SELL and how many bars ago, next-timeframe agreement and divergences on its own chart, with alerts. Closed bars only.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
