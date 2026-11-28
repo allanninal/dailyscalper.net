@@ -314,6 +314,8 @@ export const TOOLS = [
     text: 'The WaveTrend signal on many symbols and timeframes in one panel: latest BUY or SELL and how many bars ago, overbought or oversold zone, next-timeframe agreement and divergences, with alerts. Closed bars only.' },
   { name: 'WaveTrend Scanner MT4', id: 211790, price: 'Paid', kind: 'MT4 indicator', logo: 'wavetrend-scanner-mt5.png',
     text: 'The MetaTrader 4 edition of WaveTrend Scanner MT5: one panel shows, for many symbols and timeframes, the latest WaveTrend BUY or SELL and how many bars ago, the overbought or oversold zone, a \'+\' when the next timeframe agrees and DIV for a divergence, with alerts. Closed bars only; it places no orders.' },
+  { name: 'MACD Multi Timeframe Signal Alerts', id: 212129, price: 'Free', kind: 'Indicator', logo: 'macd-multi-timeframe-signal-alerts.png',
+    text: 'Free MetaTrader 5 indicator. MACD from the chart’s timeframe or any higher one, with a four-colour histogram; BUY or SELL marks on signal-line crosses, zero-line cross marks and alerts. Closed bars only, no repaint.' },
   { name: 'Vitals', id: 194597, price: 'Free', kind: 'MT4 utility', logo: 'vitals.png',
     text: 'An account panel for MetaTrader 4: balance and margin, live risk, open positions and prop-firm-style statistics.' },
 ];
