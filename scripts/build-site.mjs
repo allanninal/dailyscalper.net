@@ -912,7 +912,7 @@ const toolsPage = `${head({
             '@type': 'SoftwareApplication',
             name: t.name,
             applicationCategory: 'FinanceApplication',
-            operatingSystem: t.kind === 'MT4 utility' ? 'MetaTrader 4' : 'MetaTrader 5',
+            operatingSystem: t.kind.startsWith('MT4') ? 'MetaTrader 4' : 'MetaTrader 5',
             url: LINKS.mql5Product(t.id),
           },
         })),
